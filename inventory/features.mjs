@@ -183,4 +183,19 @@ f('belai-resilience', 'belai', 'belai/resilience', 'Retries, resilience and perf
 f('belai-repo-memory', 'belai', 'belai/sessions', 'Todos and per-repo memory in the TUI', [pkg('todos')]);
 f('belai-docs-tooling', 'belai', 'belai/contributing', 'Developing Belai', [pkg('docparity', 'docsuite'), doc('belai/development\\.md', 'belai/README\\.md', 'belai/site\\.md')]);
 
+// ── Status ─────────────────────────────────────────────────────────────────
+// todo -> drafted (the page is written from the code) -> verified (the page
+// was re-read against the code at the commit in its `checked` list).
+const STATUS = {
+  drafted: ['overview', 'concepts', 'quickstart', 'never-does', 'glossary', 'architecture'],
+  verified: [],
+};
+for (const [status, ids] of Object.entries(STATUS)) {
+  for (const id of ids) {
+    const ft = F.find((x) => x.id === id);
+    if (!ft) throw new Error(`STATUS names unknown feature ${id}`);
+    ft.status = status;
+  }
+}
+
 export default F;
