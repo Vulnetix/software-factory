@@ -99,7 +99,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/belai/assignees` |  |
+| POST | `/v1/belai/assignees` | [Assigning cards to people and agents](/workforce/board/) |
 
 ## /v1/belai/attention
 
@@ -188,28 +188,28 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/kanban/github/backfill` |  |
-| DELETE | `/v1/belai/kanban/github/bindings` |  |
-| PUT | `/v1/belai/kanban/github/bindings` |  |
-| GET | `/v1/belai/kanban/github/config` |  |
-| PUT | `/v1/belai/kanban/github/config` |  |
-| GET | `/v1/belai/kanban/github/conflicts` |  |
-| GET | `/v1/belai/kanban/github/conflicts/{cid}` |  |
-| POST | `/v1/belai/kanban/github/conflicts/{cid}/resolve` |  |
-| GET | `/v1/belai/kanban/github/items/{id}` |  |
-| POST | `/v1/belai/kanban/github/items/{id}/link` |  |
-| POST | `/v1/belai/kanban/github/items/{id}/mirror` |  |
-| POST | `/v1/belai/kanban/github/items/{id}/sync` |  |
-| POST | `/v1/belai/kanban/github/items/{id}/unlink` |  |
-| GET | `/v1/belai/kanban/github/projects` |  |
-| GET | `/v1/belai/kanban/github/repos` |  |
-| GET | `/v1/belai/kanban/github/status` |  |
-| GET | `/v1/belai/kanban/items` |  |
-| DELETE | `/v1/belai/kanban/items/{id}` |  |
-| PUT | `/v1/belai/kanban/items/{id}` |  |
-| POST | `/v1/belai/kanban/items/{id}/classify` |  |
-| GET | `/v1/belai/kanban/items/{id}/context` |  |
-| POST | `/v1/belai/kanban/items/batch` |  |
+| GET | `/v1/belai/kanban/github/backfill` | [The board](/workforce/board/) |
+| DELETE | `/v1/belai/kanban/github/bindings` | [The board](/workforce/board/) |
+| PUT | `/v1/belai/kanban/github/bindings` | [The board](/workforce/board/) |
+| GET | `/v1/belai/kanban/github/config` | [The board](/workforce/board/) |
+| PUT | `/v1/belai/kanban/github/config` | [The board](/workforce/board/) |
+| GET | `/v1/belai/kanban/github/conflicts` | [The board](/workforce/board/) |
+| GET | `/v1/belai/kanban/github/conflicts/{cid}` | [The board](/workforce/board/) |
+| POST | `/v1/belai/kanban/github/conflicts/{cid}/resolve` | [The board](/workforce/board/) |
+| GET | `/v1/belai/kanban/github/items/{id}` | [The board](/workforce/board/) |
+| POST | `/v1/belai/kanban/github/items/{id}/link` | [The board](/workforce/board/) |
+| POST | `/v1/belai/kanban/github/items/{id}/mirror` | [The board](/workforce/board/) |
+| POST | `/v1/belai/kanban/github/items/{id}/sync` | [The board](/workforce/board/) |
+| POST | `/v1/belai/kanban/github/items/{id}/unlink` | [The board](/workforce/board/) |
+| GET | `/v1/belai/kanban/github/projects` | [The board](/workforce/board/) |
+| GET | `/v1/belai/kanban/github/repos` | [The board](/workforce/board/) |
+| GET | `/v1/belai/kanban/github/status` | [The board](/workforce/board/) |
+| GET | `/v1/belai/kanban/items` | [The board](/workforce/board/) |
+| DELETE | `/v1/belai/kanban/items/{id}` | [The board](/workforce/board/) |
+| PUT | `/v1/belai/kanban/items/{id}` | [The board](/workforce/board/) |
+| POST | `/v1/belai/kanban/items/{id}/classify` | [The board](/workforce/board/) |
+| GET | `/v1/belai/kanban/items/{id}/context` | [The board](/workforce/board/) |
+| POST | `/v1/belai/kanban/items/batch` | [The board](/workforce/board/) |
 
 ## /v1/belai/library
 

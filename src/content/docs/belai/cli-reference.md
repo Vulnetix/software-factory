@@ -19,7 +19,7 @@ Every `belai` command, subcommand and flag. Flags take one dash or two (`-json` 
 | `belai budget` |  |
 | `belai command` |  |
 | `belai crew` | [Crews](/workforce/crews/) |
-| `belai kanban` |  |
+| `belai kanban` | [The board](/workforce/board/) |
 | `belai library` |  |
 | `belai login` |  |
 | `belai mcp` |  |

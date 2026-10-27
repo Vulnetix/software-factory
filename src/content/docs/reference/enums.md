@@ -125,13 +125,13 @@ Defined in `api/internal/handler/belai_forge.go`.
 
 ### belaiGHLabelColors
 
-Defined in `api/internal/handler/belai_github_map.go`.
+Explained in [GitHub sync: issues, projects and labels](/workforce/github-sync/). Defined in `api/internal/handler/belai_github_map.go`.
 
 `belai:backlog`, `belai:blocked`, `belai:in-progress`, `belai:review`, `e2564e`, `e8912b`
 
 ### belaiGHListLabels
 
-Defined in `api/internal/handler/belai_github_map.go`.
+Explained in [GitHub sync: issues, projects and labels](/workforce/github-sync/). Defined in `api/internal/handler/belai_github_map.go`.
 
 `backlog`, `belai:backlog`, `belai:blocked`, `belai:in-progress`, `belai:review`, `blocked`, `in_progress`, `review`
 
@@ -155,13 +155,13 @@ Explained in [Package and AI firewalls on factory work](/evidence/firewalls/). D
 
 ### belaiKanbanListOrder
 
-Defined in `api/internal/handler/factory_lifecycle_sources.go`.
+Explained in [The board](/workforce/board/). Defined in `api/internal/handler/factory_lifecycle_sources.go`.
 
 `backlog`, `blocked`, `done`, `in_progress`, `review`
 
 ### belaiKanbanLists
 
-Defined in `api/internal/handler/belai_kanban_store.go`.
+Explained in [The board](/workforce/board/). Defined in `api/internal/handler/belai_kanban_store.go`.
 
 `backlog`, `blocked`, `done`, `in_progress`, `review`
 

@@ -31,7 +31,7 @@ Slash commands you type in the Belai terminal UI. Type `/` to see them with comp
 | <span id="help"></span>`/help` | browse commands and keyboard shortcuts in a scrollable screen |  |
 | <span id="inbox"></span>`/inbox` | cards waiting on you: flow checkpoints, cards assigned to a person, blocked cards |  |
 | <span id="intel"></span>`/intel` | session intelligence: plan limits, pace, trend, runway and usage over time (f12 opens the pane) |  |
-| <span id="kanban"></span>`/kanban` | view and manage the global kanban board; /kanban K-xxxxxx opens on one item |  |
+| <span id="kanban"></span>`/kanban` | view and manage the global kanban board; /kanban K-xxxxxx opens on one item | [The board](/workforce/board/) |
 | <span id="knowledge"></span>`/knowledge` | browse and search indexed knowledge: this project, every project, the agents |  |
 | <span id="locate"></span>`/locate` | list the files explore locate may look at and where it would send its questions (/locate --dry-run) |  |
 | <span id="lsp"></span>`/lsp` | manage language-server diagnostics; /lsp on\|off [language] switches this session |  |
@@ -53,7 +53,7 @@ Slash commands you type in the Belai terminal UI. Type `/` to see them with comp
 | <span id="settings"></span>`/settings` | view and edit settings |  |
 | <span id="skills"></span>`/skills` | list installed skills |  |
 | <span id="sync"></span>`/sync` | show or change session sync to the Vulnetix website |  |
-| <span id="todos"></span>`/todos` | show plan progress |  |
+| <span id="todos"></span>`/todos` | show plan progress | [The board](/workforce/board/) |
 | <span id="tree"></span>`/tree` | browse the session as a tree, continue from an earlier point or fork a branch |  |
 | <span id="trusted"></span>`/trusted` | manage trusted directories, the ones remote control offers |  |
 | <span id="tts"></span>`/tts` | read replies aloud: on, off, stop, voice, speed, cache |  |
