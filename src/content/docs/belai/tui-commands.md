@@ -24,7 +24,7 @@ Slash commands you type in the Belai terminal UI. Type `/` to see them with comp
 | <span id="execute"></span>`/execute` | leave plan mode and execute the plan |  |
 | <span id="exit"></span>`/exit` | quit and print the resume card |  |
 | <span id="export"></span>`/export` | export this session (or one by id) as Markdown |  |
-| <span id="firewall"></span>`/firewall` | configure the AI Firewall |  |
+| <span id="firewall"></span>`/firewall` | configure the AI Firewall | [Package and AI firewalls on factory work](/evidence/firewalls/) |
 | <span id="fleet"></span>`/fleet` | kanban worker agents: start, stop and watch them |  |
 | <span id="gitsync"></span>`/gitsync` | rebase the branch onto origin's default branch before turns: on, off, or global on\|off |  |
 | <span id="handoff"></span>`/handoff` | execute a plan file directly: /handoff <plan file path> [extra direction] |  |

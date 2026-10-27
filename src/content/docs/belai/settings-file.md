@@ -24,6 +24,8 @@ Keys Belai reads from its settings files, grouped by the part of the configurati
 
 ### firewall
 
+Explained in [Package and AI firewalls on factory work](/evidence/firewalls/).
+
 `active`, `adapter`, `enabled`, `header`, `instances`, `mode`, `permission_auto_apply`, `permission_offers`, `providers`, `url`
 
 ### gitrepos

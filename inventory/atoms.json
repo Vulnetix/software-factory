@@ -1,14 +1,14 @@
 {
- "generatedAt": "2026-10-27T13:39:05.357Z",
+ "generatedAt": "2026-10-27T13:51:47.025Z",
  "repos": {
-  "vdb-site": "739b6960d1e2a68bad68fd480fdfd863c490022d",
-  "website": "5c1e7cca3f889bdbee2cc350de0bb43efec8c870",
+  "vdb-site": "284f1d61aec218418a334e1ba10a063b9b7b9174",
+  "website": "956664d85fbf1f8309cf6948503d733ef7506ddd",
   "belai": "b5d33b62b9af7144805bbaaab7082f3d3cc030f4",
   "saas": "aa6c2b46d08710a89f05fdd478bc14e1ae7abe6c"
  },
  "counts": {
   "belai-config": 306,
-  "belai-pkg": 145,
+  "belai-pkg": 146,
   "cli-cmd": 18,
   "cli-flag": 162,
   "cli-sub": 52,
@@ -20,7 +20,7 @@
   "gofile": 289,
   "model": 42,
   "route": 380,
-  "setting": 125,
+  "setting": 168,
   "sf-label": 21,
   "template": 37,
   "tsfile": 66,
@@ -3476,6 +3476,14 @@
    "value": "testrun",
    "sources": [
     "belai/internal/testrun"
+   ]
+  },
+  {
+   "id": "belai-pkg:ticketrules",
+   "kind": "belai-pkg",
+   "value": "ticketrules",
+   "sources": [
+    "belai/internal/ticketrules"
    ]
   },
   {
@@ -23933,6 +23941,202 @@
    }
   },
   {
+   "id": "setting:delivery.kinds.goal.enabled",
+   "kind": "setting",
+   "value": "delivery.kinds.goal.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.goal.minutes",
+   "kind": "setting",
+   "value": "delivery.kinds.goal.minutes",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "480",
+    "default": "3",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.merge.enabled",
+   "kind": "setting",
+   "value": "delivery.kinds.merge.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.merge.minutes",
+   "kind": "setting",
+   "value": "delivery.kinds.merge.minutes",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "480",
+    "default": "8",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.mode.enabled",
+   "kind": "setting",
+   "value": "delivery.kinds.mode.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.mode.minutes",
+   "kind": "setting",
+   "value": "delivery.kinds.mode.minutes",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "480",
+    "default": "0.5",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.other.enabled",
+   "kind": "setting",
+   "value": "delivery.kinds.other.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.other.minutes",
+   "kind": "setting",
+   "value": "delivery.kinds.other.minutes",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "480",
+    "default": "2",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.plan.enabled",
+   "kind": "setting",
+   "value": "delivery.kinds.plan.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.plan.minutes",
+   "kind": "setting",
+   "value": "delivery.kinds.plan.minutes",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "480",
+    "default": "4",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.toolcall.enabled",
+   "kind": "setting",
+   "value": "delivery.kinds.toolcall.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "false",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.toolcall.minutes",
+   "kind": "setting",
+   "value": "delivery.kinds.toolcall.minutes",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "480",
+    "default": "0",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.triage.enabled",
+   "kind": "setting",
+   "value": "delivery.kinds.triage.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.kinds.triage.minutes",
+   "kind": "setting",
+   "value": "delivery.kinds.triage.minutes",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "480",
+    "default": "6",
+    "store": "factory"
+   }
+  },
+  {
    "id": "setting:delivery.manualCardDays",
    "kind": "setting",
    "value": "delivery.manualCardDays",
@@ -24078,6 +24282,411 @@
    "detail": {
     "doc": "num 0 to 60: minutes of reading per 100 changed lines of a review",
     "docDefault": "4",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.devops.enabled",
+   "kind": "setting",
+   "value": "delivery.roles.devops.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.devops.mult",
+   "kind": "setting",
+   "value": "delivery.roles.devops.mult",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0.5",
+    "max": "10",
+    "default": "2.0",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.devops.rate",
+   "kind": "setting",
+   "value": "delivery.roles.devops.rate",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "10000",
+    "default": "90",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.planner.enabled",
+   "kind": "setting",
+   "value": "delivery.roles.planner.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.planner.mult",
+   "kind": "setting",
+   "value": "delivery.roles.planner.mult",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0.5",
+    "max": "10",
+    "default": "1.6",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.planner.rate",
+   "kind": "setting",
+   "value": "delivery.roles.planner.rate",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "10000",
+    "default": "120",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.qa.enabled",
+   "kind": "setting",
+   "value": "delivery.roles.qa.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.qa.mult",
+   "kind": "setting",
+   "value": "delivery.roles.qa.mult",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0.5",
+    "max": "10",
+    "default": "2.2",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.qa.rate",
+   "kind": "setting",
+   "value": "delivery.roles.qa.rate",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "10000",
+    "default": "70",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.reviewer.enabled",
+   "kind": "setting",
+   "value": "delivery.roles.reviewer.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.reviewer.mult",
+   "kind": "setting",
+   "value": "delivery.roles.reviewer.mult",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0.5",
+    "max": "10",
+    "default": "1.5",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.reviewer.rate",
+   "kind": "setting",
+   "value": "delivery.roles.reviewer.rate",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "10000",
+    "default": "95",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.security.enabled",
+   "kind": "setting",
+   "value": "delivery.roles.security.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.security.mult",
+   "kind": "setting",
+   "value": "delivery.roles.security.mult",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0.5",
+    "max": "10",
+    "default": "2.0",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.security.rate",
+   "kind": "setting",
+   "value": "delivery.roles.security.rate",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "10000",
+    "default": "110",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.sse.enabled",
+   "kind": "setting",
+   "value": "delivery.roles.sse.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.sse.mult",
+   "kind": "setting",
+   "value": "delivery.roles.sse.mult",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0.5",
+    "max": "10",
+    "default": "2.4",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.sse.rate",
+   "kind": "setting",
+   "value": "delivery.roles.sse.rate",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "10000",
+    "default": "95",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.writer.enabled",
+   "kind": "setting",
+   "value": "delivery.roles.writer.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.writer.mult",
+   "kind": "setting",
+   "value": "delivery.roles.writer.mult",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0.5",
+    "max": "10",
+    "default": "1.8",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.roles.writer.rate",
+   "kind": "setting",
+   "value": "delivery.roles.writer.rate",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "num",
+    "min": "0",
+    "max": "10000",
+    "default": "60",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.sources.admin",
+   "kind": "setting",
+   "value": "delivery.sources.admin",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.sources.chat",
+   "kind": "setting",
+   "value": "delivery.sources.chat",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.sources.checkpoint",
+   "kind": "setting",
+   "value": "delivery.sources.checkpoint",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.sources.comment",
+   "kind": "setting",
+   "value": "delivery.sources.comment",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.sources.commit",
+   "kind": "setting",
+   "value": "delivery.sources.commit",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.sources.notification",
+   "kind": "setting",
+   "value": "delivery.sources.notification",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.sources.pixcall",
+   "kind": "setting",
+   "value": "delivery.sources.pixcall",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:delivery.sources.review",
+   "kind": "setting",
+   "value": "delivery.sources.review",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
     "store": "factory"
    }
   },

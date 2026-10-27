@@ -167,6 +167,25 @@ function scanGoSemantics() {
       for (const v of values) atom('enum', `${m[1]}=${v}`, 'vdb-site', rel, { set: m[1] });
     }
   }
+  // Delivery settings built in loops over the role, decision-kind and source
+  // tables of factory_delivery_settings.go.
+  const ds = join(dir, 'factory_delivery_settings.go');
+  if (existsSync(ds)) {
+    const src = read(ds);
+    const file = 'api/internal/handler/factory_delivery_settings.go';
+    const table = (name) => { const i = src.indexOf(`var ${name} = `); return i < 0 ? '' : src.slice(i, src.indexOf('\n}', i)); };
+    for (const m of table('fdRoleDefaults').matchAll(/\{"([a-z]+)", ([\d.]+), ([\d.]+)\}/g)) {
+      atom('setting', `delivery.roles.${m[1]}.enabled`, 'vdb-site', file, { detail: { type: 'bool', default: 'true', store: 'factory' } });
+      atom('setting', `delivery.roles.${m[1]}.rate`, 'vdb-site', file, { detail: { type: 'num', min: '0', max: '10000', default: m[2], store: 'factory' } });
+      atom('setting', `delivery.roles.${m[1]}.mult`, 'vdb-site', file, { detail: { type: 'num', min: '0.5', max: '10', default: m[3], store: 'factory' } });
+    }
+    for (const m of table('fdKindDefaults').matchAll(/\{"([a-z]+)", (true|false), ([\d.]+)\}/g)) {
+      atom('setting', `delivery.kinds.${m[1]}.enabled`, 'vdb-site', file, { detail: { type: 'bool', default: m[2], store: 'factory' } });
+      atom('setting', `delivery.kinds.${m[1]}.minutes`, 'vdb-site', file, { detail: { type: 'num', min: '0', max: '480', default: m[3], store: 'factory' } });
+    }
+    const so = src.match(/var fdSourceOrder = \[\]string\{([^}]*)\}/);
+    for (const m of so ? so[1].matchAll(/"([a-z]+)"/g) : []) atom('setting', `delivery.sources.${m[1]}`, 'vdb-site', file, { detail: { type: 'bool', default: 'true', store: 'factory' } });
+  }
   // Webhook trigger events and their actions: factoryWebhookActions.
   const trig = join(dir, 'factory_trigger_conditions.go');
   if (existsSync(trig)) {
