@@ -189,25 +189,29 @@ f('belai-docs-tooling', 'belai', 'belai/contributing', 'Developing Belai', [pkg(
 // todo -> drafted (the page is written from the code) -> verified (the page
 // was re-read against the code at the commit in its `checked` list).
 const STATUS = {
-  drafted: ['overview', 'concepts', 'quickstart', 'never-does', 'glossary', 'architecture',
-    'managed-scope', 'repo-profiles', 'issue-mirroring', 'autonomy', 'kill-switch', 'holds', 'settings-document',
-    'workflow-graphs', 'builder-palette', 'node-trigger', 'node-scan', 'node-decision', 'node-crew', 'node-gate', 'node-human',
-    'node-output', 'node-state', 'triggers', 'source-events', 'label-dispatch', 'schedules', 'internal-fire', 'templates',
-    'template-search', 'defaults', 'graph-limits', 'validation-codes', 'settings-reference',
-    'runs', 'run-artifacts', 'engine', 'no-host', 'sessions', 'session-trigger', 'handoffs', 'pr-checker',
-    'systemone', 'approvals', 'checkpoints', 'merge-conflicts', 'signing',
-    'budgets', 'agent-budgets', 'model-routing', 'usage', 'github-quota',
-    'cockpit', 'trust', 'firewalls', 'audit', 'events', 'facts', 'lifecycle', 'delivery', 'sightings', 'attribution', 'vex', 'analytics',
-    'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops',
-    'agents', 'agent-builder', 'agent-import', 'avatars', 'crews', 'role-manager',
-    'hosts', 'host-attention', 'sandboxes', 'builtin-models', 'board', 'assignment', 'ticket-standard', 'github-sync',
-    'memory', 'a2a', 'forge', 'providers', 'asks', 'dispatches', 'library', 'web-controls', 'messaging', 'notifications',
-    'remote-control', 'teleport', 'host-shell', 'host-schedules', 'session-sync', 'knowledge',
-    'belai-install', 'belai-session-flags', 'belai-modes', 'belai-sessions', 'belai-models', 'belai-tools', 'belai-safety', 'belai-mcp',
-    'belai-hooks', 'belai-plugins', 'belai-acp', 'belai-lsp', 'belai-voice', 'belai-git', 'belai-budgets', 'belai-quality', 'belai-vulnetix',
-    'belai-telemetry', 'belai-tui', 'belai-tui-commands', 'belai-config', 'belai-headless', 'belai-agent-loop', 'belai-resilience',
-    'belai-repo-memory', 'belai-docs-tooling'],
-  verified: [],
+  drafted: [
+    'overview', 'concepts', 'quickstart', 'never-does', 'glossary', 'architecture', 'managed-scope',
+    'repo-profiles', 'issue-mirroring', 'autonomy', 'kill-switch', 'holds', 'settings-document',
+    'workflow-graphs', 'builder-palette', 'node-trigger', 'node-scan', 'node-decision', 'node-crew', 'node-gate',
+    'node-human', 'node-output', 'node-state', 'graph-limits', 'runs', 'run-artifacts', 'engine', 'no-host',
+    'sessions', 'session-trigger', 'handoffs', 'pr-checker', 'systemone', 'approvals', 'checkpoints',
+    'merge-conflicts', 'signing', 'budgets', 'agent-budgets', 'model-routing', 'usage', 'github-quota', 'cockpit',
+    'trust', 'firewalls', 'audit', 'events', 'facts', 'lifecycle', 'delivery', 'sightings', 'attribution', 'vex',
+    'analytics', 'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops', 'agents', 'agent-builder',
+    'agent-import', 'avatars', 'crews', 'role-manager', 'hosts', 'host-attention', 'sandboxes', 'builtin-models',
+    'board', 'assignment', 'ticket-standard', 'github-sync', 'memory', 'a2a', 'forge', 'providers', 'asks',
+    'dispatches', 'library', 'web-controls', 'messaging', 'notifications', 'remote-control', 'teleport',
+    'host-shell', 'host-schedules', 'session-sync', 'knowledge', 'belai-install', 'belai-modes', 'belai-sessions',
+    'belai-models', 'belai-tools', 'belai-safety', 'belai-mcp', 'belai-hooks', 'belai-plugins', 'belai-acp',
+    'belai-lsp', 'belai-voice', 'belai-git', 'belai-budgets', 'belai-quality', 'belai-vulnetix',
+    'belai-telemetry', 'belai-tui', 'belai-headless', 'belai-agent-loop', 'belai-resilience', 'belai-repo-memory',
+    'belai-docs-tooling',
+  ],
+  verified: [
+    'settings-reference', 'triggers', 'source-events', 'label-dispatch', 'schedules', 'internal-fire',
+    'templates', 'template-search', 'defaults', 'validation-codes', 'belai-session-flags', 'belai-tui-commands',
+    'belai-config',
+  ],
 };
 for (const [status, ids] of Object.entries(STATUS)) {
   for (const id of ids) {

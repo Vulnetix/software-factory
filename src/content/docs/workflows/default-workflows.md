@@ -3,7 +3,7 @@ title: Default workflows
 description: The seven workflows every managed organisation gets. What each starts on and does, the autonomy each needs, how to switch them off for the tenant or one repository, and what happens when you edit one.
 order: 25
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_defaults.go, vdb-site/api/internal/handler/factory_defaults_gate.go, vdb-site/api/internal/handler/factory_defaults_seed.go, website/src/shared/factory-settings.ts]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470, saas@aa6c2b4]
 updated: 28 Oct 2026
 ---
 
@@ -35,7 +35,7 @@ A repository with no settings of its own runs at `autonomy.default`. Defaults ar
 
 ## Bounds
 
-Every default has a debounce window and an hourly run cap on its event trigger, a dedupe key so one commit starts one run, `skip_if_running` on its sweeps, and a token budget per run. They name no host, so a step for a repository no machine has is recorded and skipped.
+Every default has a debounce window and an hourly run cap on its event trigger, a dedupe key so one commit starts one run, `skip_if_running` on its sweeps, and a token budget per run on the defaults that run an agent (`approve-ready` and `conflict-fix` set none). They name no host, so a step for a repository no machine has is recorded and skipped.
 
 `github.quota.proactive_writes_per_hour` caps the GitHub calls the defaults make on their own, per installation per hour. The default is 60. A call over the cap waits for the next hour. A person's own actions are not counted.
 
@@ -46,7 +46,7 @@ Every default has a debounce window and an hourly run cap on its event trigger, 
 | Stop all defaults for the tenant | Settings › Defaults › **Run the defaults** off (`defaults.enabled`) |
 | Stop one default for the tenant | Its switch in Settings › Defaults (`defaults.<key>.enabled`) |
 | Stop one default on one repository | The repository's settings on the Repos page |
-| Stop a default for good | Archive it on the Workflows page. An archived default is never recreated. |
+| Remove a default | Archive it on the Workflows page. The background pass that finishes and upgrades defaults never brings it back, but making an organisation managed again seeds a new copy. |
 
 ## Editing a default
 

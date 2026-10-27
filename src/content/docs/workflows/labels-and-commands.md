@@ -4,7 +4,7 @@ nav: Labels and commands
 description: Start factory work from GitHub with a label or a comment. The 22 sf labels, who may use them, how to stop runs, how one delivery fans out to several workflows, and how to create the labels in your repositories.
 order: 22
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_labels.go, vdb-site/api/internal/handler/factory_label_dispatch.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -31,7 +31,7 @@ It fires when the label is added to an issue or a pull request, matched without 
 
 ## The sf labels
 
-A label runs nothing until a workflow has a label trigger for it. The `label-*` [templates](/workflows/templates/) are the first. Every label but `sf:stop` also works as a `/sf` command.
+A label runs nothing until a workflow has a label trigger for it. The `label-*` [templates](/workflows/templates/) are the first. Every label, `sf:stop` included, also works as a `/sf` command.
 
 | Label | On | Agent | Does |
 |---|---|---|---|
@@ -73,7 +73,7 @@ Owners and admins can sync 1 to 20 managed repositories at a time. It costs one 
 
 One delivery can match several triggers, for example a label that two workflows listen for. They fire in `priority` order (1 first to 5, default 3), and at most 6 runs start per delivery. The limit is `factory.fanoutCap`, from 1 to 50. The rest are recorded as `trigger.skipped` with reason `fanout_cap`.
 
-Every run and event records the GitHub delivery id that caused it, so the Events page can show deliveries that started nothing.
+Every run and event records the GitHub delivery id that caused it, so `GET /v1/factory/events/unanswered` can list deliveries that started nothing.
 
 > [!PIX] Labels by phone
 > You do not need a label to start work from your phone. On a call, ask Pix to start a session on a repository. Pix proposes it with `propose_session`, reads it back, and starts it with `start_session` when you say yes.

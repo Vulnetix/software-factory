@@ -3,7 +3,7 @@ title: Templates
 description: Ready-made workflows you start from. How the Templates page ranks suggestions for your organisation, what a template's variants are, and what using one creates.
 order: 24
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_templates.go, vdb-site/api/internal/handler/factory_templates_events.go, vdb-site/api/internal/handler/factory_templates_signals.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -13,10 +13,10 @@ A template is a complete workflow (triggers, steps, limits) that passes the same
 
 ## Using a template
 
-Choose **Use** on a template. It copies the template into a new workflow as **draft version 1**. Nothing runs until you publish it. You can set:
+Choose **Use template** on a template. It copies the template into a new workflow as **draft version 1**. Nothing runs until you publish it. You can set:
 
 - a name, which also gives the workflow its slug
-- the repositories in scope. Leave it empty to use the repository of each event. Repositories outside your managed orgs are refused with `scope_unmanaged_repo`.
+- the repositories in scope. Leave it empty to use the repository of each event. Using the template does not check them; a run started on a repository that is not managed is refused with `scope_unmanaged_repo`.
 - a run token budget, to replace the template's
 
 Each card on the page shows the template's flow (for example `cron → sca+malscan → S1 worth_patching → belai:security → quality gate → draft PR`), its trigger, how many decisions it makes, its token cost per run and its output. A **new crew** badge means it needs a crew your library does not have yet. The card names which.
@@ -41,9 +41,9 @@ A template with variants is one workflow, not one per toolchain. The variant is 
 | Axis | Values |
 |---|---|
 | Package manager | npm, pnpm, yarn, poetry, uv, pip-tools, go, gradle, maven, cargo, bundler, composer |
-| Test runner | jest, vitest, pytest, rspec, phpunit, junit |
-| Secret provider | aws, github, slack, stripe, generic |
-| Artifact | container, cyclonedx, spdx, jar, wheel |
+| Test runner | jest, vitest, pytest, go test, junit, rspec, cargo test, phpunit |
+| Secret provider | aws, github, stripe, slack, private key, generic |
+| Artifact | container, npm tgz, wheel, jar, go binary, cyclonedx, spdx |
 
 ## How suggestions are ranked
 
@@ -56,7 +56,7 @@ The Templates page puts the templates that would do the most for your organisati
 
 Each suggestion gives its reason in a line, for example how many check failures last week went unanswered.
 
-**Dismiss** hides a suggestion and remembers the count at the time. It comes back after 30 days, or once that count doubles. You can undo a dismissal.
+**Dismiss** hides a suggestion and remembers the count at the time. It comes back after 30 days, or once that count doubles. `DELETE /v1/factory/templates/{id}/dismiss` undoes a dismissal; the page has no undo control.
 
 > [!WHY] Why ranking uses unanswered events
 > A template is worth suggesting when it would have done something last week. Counting the deliveries that started no run is a direct measure of work the factory could have taken on.

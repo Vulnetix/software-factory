@@ -4,7 +4,7 @@ nav: Source events
 description: Triggers that fire when the Package Firewall, the AI Firewall or a sandbox's egress sees something new. What each source reports, the research gathered before the run, and how the rule you write closes the review ticket.
 order: 21
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_sources.go, vdb-site/api/internal/handler/factory_sources_fire.go, vdb-site/api/internal/handler/factory_sighting_facts.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -28,7 +28,7 @@ The firewalls only publish what they saw, from writers they already run. Nothing
 
 A sighting that a rule already covers, such as an active curation entry, an allow or deny guardrail naming the capability, or an egress decision on that sandbox, is stored as `covered` and fires nothing.
 
-More than 10 first sightings from one source and repository within 10 minutes are batched, so a fresh install files one batch card, not hundreds.
+More than 10 first sightings of packages for one repository (or the organisation) in the same 10-minute window are batched, so a fresh install files one batch card, not hundreds.
 
 ## The firewall trigger
 

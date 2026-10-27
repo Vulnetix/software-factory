@@ -3,14 +3,14 @@ title: Schedules
 description: Cron triggers for workflows and agent schedules on hosts, in one list. Cron syntax, timezones, where each schedule runs, what happens when runs overlap, and what a missed or held fire does.
 order: 23
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_schedules.go, vdb-site/api/internal/handler/factory_cron.go, vdb-site/api/internal/handler/factory_internal.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
 The **Schedules** tab on the Workflows page lists every schedule in one place:
 
 - **Workflow schedules** are cron trigger nodes in published workflows, owned by the factory.
-- **Agent schedules** are crons a host keeps for its own background agents. They are listed here and can be switched on or off and re-timed, but the host fires them, not the factory.
+- **Agent schedules** are crons a host keeps for its own background agents. They are listed here read-only and edited with the host schedule editor (**New agent schedule** opens it). The host fires them, not the factory.
 
 The list is ordered by next run, with disabled schedules last.
 
@@ -48,7 +48,7 @@ Daylight saving is handled by the scheduler, in the trigger's `tz`.
 | `aws` | AWS EventBridge Scheduler. The default. | any workflow |
 | `cloudflare` | A Cloudflare Durable Object alarm | workflows with a scan, crew, or decision on a Clef model, which is work that runs in the sandbox or on Workers AI |
 | `host` | The host's own schedule | agent schedules only |
-| `engine` | Nothing on a timer: the factory starts the run when the event arrives | webhook, finding, label, kanban and manual triggers. Not valid on a cron trigger. |
+| `engine` | Nothing on a timer: the factory starts the run when the event arrives | webhook, finding, label, kanban, manual and firewall triggers. Not valid on a cron trigger. |
 
 The builder offers only the values valid for the workflow. Anything else is refused with `runs_on_invalid`. Moving a schedule between `aws` and `cloudflare` keeps its next run time.
 
@@ -62,26 +62,25 @@ The builder offers only the values valid for the workflow. Anything else is refu
 
 ## Sync state
 
-Writing a schedule and creating it in the scheduler are two steps. Each workflow schedule shows a state:
+A trigger row and its scheduler entry change together or not at all: a scheduler failure rolls the write back and the API returns the error. Each workflow schedule shows a state:
 
 | State | Meaning |
 |---|---|
-| `synced` | The scheduler has it. |
-| `pending` | Written, scheduler call in progress. |
-| `error` | The scheduler call failed. The error is shown, and a recovery job retries. |
+| `synced` | The scheduler has it, or the trigger needs no AWS schedule. |
+| `pending` | An `aws` cron with no AWS schedule recorded yet. |
 
 ## Editing schedules
 
 On the Schedules tab you can add, change, pause and delete schedules.
 
-- **Adding or re-timing** a workflow schedule changes its trigger node and publishes a new version of the workflow, so the graph stays the one source of truth. It is refused with `bad_state` if the workflow has an unpublished draft with other changes. Publish or discard it first, so a schedule edit never publishes someone else's work.
+- **Adding or re-timing** a workflow schedule changes its trigger node and publishes a new version of the workflow, so the graph stays the one source of truth. It is refused with `bad_state` if the workflow has an unpublished draft. Publish or discard it first, so a schedule edit never publishes someone else's work.
 - **Pausing** (switching `enabled` off) changes only the schedule, not the workflow version.
 - **Deleting** publishes a version without the trigger node and removes it from the scheduler.
-- For **agent schedules**, only `enabled` and `cron` can be changed here.
+- **Agent schedules** cannot be changed here: `PATCH` and `DELETE` refuse a `host_` id and point to the host's own routes.
 
 ## Holds and missed fires
 
-The factory never polls a clock to decide what is due. The scheduler calls the factory's internal trigger endpoint with a signed request. If the factory is paused or stopped, or a maintenance window or blackout is open, the fire is counted as held and nothing runs yet. When the hold lifts, `schedules.missed` decides: one run (`run_once`, the default), none (`skip`), or one per held fire up to 24 (`run_all`). See [Holds and blackouts](/control/holds-and-blackouts/).
+The factory never polls a clock to decide what is due. The scheduler calls the factory's internal trigger endpoint with a signed request. If the factory is paused or stopped, the fire is answered as held and no run starts. During a maintenance window or blackout the fire's runs are created and wait as `held` until the window ends. The `schedules.missed` setting names what to do with fires held by a pause or stop: one run (`run_once`, the default), none (`skip`), or one per held fire (`run_all`). This build keeps no held-fire count, so `POST /v1/factory/resume` reports `heldFires: 0` and no held fire is replayed yet. See [Holds and blackouts](/control/holds-and-blackouts/).
 
 A fire that is not due yet, a duplicate, a disabled schedule, or an overlap that `skip_if_running` skips is ignored.
 
@@ -89,11 +88,11 @@ A fire that is not due yet, a duplicate, a disabled schedule, or an overlap that
 
 | Method | Path | Notes |
 |---|---|---|
-| GET | `/v1/factory/schedules?kind=&host=&workflow=&runsOn=&enabled=` | Up to 500, not paged. Includes the tenant's timezone and blackouts. |
+| GET | `/v1/factory/schedules?kind=&host=&workflow=&runsOn=&enabled=` | Up to 500, not paged. |
 | POST | `/v1/factory/schedules` | `{kind: "workflow", workflowId, nodeId, cron, tz, runsOn, overlap}` |
 | PATCH | `/v1/factory/schedules/{id}` | Any of `enabled`, `cron`, `tz`, `runsOn`, `overlap` |
 | DELETE | `/v1/factory/schedules/{id}` | |
 
-Workflow schedule ids look like `trg_5`. Agent schedule ids look like `host_<hostId>_<sid>`. Hosts manage their own agent schedules at `/v1/belai/hosts/{hostId}/schedules`. See [Host schedules](/workforce/host-schedules/).
+Workflow schedule ids are the trigger's uuid. Agent schedule ids look like `host_<hostId>_<sid>`. Hosts manage their own agent schedules at `/v1/belai/hosts/{hostId}/schedules`. See [Host schedules](/workforce/host-schedules/).
 
 Schedulers fire runs at `POST /v1/factory/internal/trigger`, outside the signed-in API. The credential is a signed request body and an internal key header, not a console session. You do not call it yourself.

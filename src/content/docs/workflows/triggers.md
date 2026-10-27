@@ -4,7 +4,7 @@ nav: Triggers
 description: Every GitHub event and action a workflow can start on, every condition you can narrow it with, how storms and forks are handled, and why a trigger did not fire.
 order: 20
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_trigger_conditions.go, vdb-site/api/internal/handler/factory_trigger_validate.go, vdb-site/api/internal/handler/factory_engine_events.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -25,10 +25,10 @@ Every condition is checked against the delivery as GitHub sent it. No condition 
 | `check_suite` | `completed`, `requested`, `rerequested` | `pr:N` when on a pull request |
 | `workflow_run` | `completed`, `requested`, `in_progress` | `pr:N` when on a pull request |
 | `merge_group` | `checks_requested`, `destroyed` | none |
-| `push` | none | the ref |
+| `push` | none | none |
 | `release` | `published`, `created`, `released`, `prereleased`, `edited` | `release:TAG` |
 | `issues` | `opened`, `labeled`, `reopened`, `closed`, `unlabeled`, `edited`, `assigned`, `milestoned` | `issue:N` |
-| `issue_comment` | `created`, `edited`, `deleted` | `issue:N` or `pr:N` |
+| `issue_comment` | `created`, `edited`, `deleted` | `issue:N`, also for a comment on a pull request |
 | `installation_repositories` | `added`, `removed` | none |
 | `repository` | `created`, `archived`, `unarchived`, `publicized`, `privatized`, `renamed`, `transferred`, `edited` | none |
 | `dependabot_alert` | `created`, `dismissed`, `fixed`, `reintroduced`, `reopened`, `auto_dismissed`, `auto_reopened` | `dependabot:N` |
@@ -63,7 +63,7 @@ Every condition you set must match. Names may be written snake_case (`base_branc
 | `environment` | globs, without case | a `deployment_status`'s environment |
 | `packageType` | `container`, `docker`, `npm`, `maven`, `rubygems`, `nuget` | a `registry_package`'s type |
 
-A `push` or `release` trigger can also set `ref` on the trigger itself: `default` matches the default branch, `tags` matches tag pushes.
+A `push` trigger can also set `ref` on the trigger itself: `tags` matches only tag pushes; `default` (or no `ref`) matches branch pushes and never a tag. A push that deletes its ref never matches.
 
 Conditions that only make sense on some events are refused elsewhere: `conclusion_unsupported_event`, `review_state_unsupported_event`, `severity_unsupported_event`, `environment_unsupported_event` and `package_type_unsupported_event`. `paths` on anything but `push` is refused with `paths_need_push`, because a pull request delivery does not carry its file list and getting it would cost a GitHub call. An unknown condition name is refused with `unknown_condition`, and a blank glob with `invalid_glob`.
 
@@ -71,13 +71,13 @@ A push carries at most 20 commits. On a very large push, `paths` matches on the 
 
 ### Globs
 
-`*` matches any run of characters except `/`. `**` matches any run including `/`. `**/` matches zero or more directories. `?` matches one character except `/`. Everything else is literal. Branches and paths match with case, logins and labels without. A list holds at most 30 entries of at most 200 characters. `@default` is the repository's default branch.
+`*` matches any run of characters except `/`. `**` matches any run including `/`. `**/` matches zero or more directories. `?` matches one character except `/`. Everything else is literal. Branches and paths match with case, logins and labels without. A list holds at most 30 entries. A branch, path or environment glob is at most 200 characters; a label or login at most 100. `@default` is the repository's default branch.
 
 ## Rate and storm limits
 
 | Key | Range | Default | Effect |
 |---|---|---|---|
-| `debounceSeconds` | 0 to 3,600 | 0 | Deliveries for the same trigger, repository and pull request or ref inside the window start one run. The first one wins. |
+| `debounceSeconds` | 0 to 3,600 | 30 for a `push` or a `pull_request` `synchronize`, else 0 | Deliveries for the same trigger, repository and pull request or ref inside the window start one run. The first one wins. |
 | `maxRunsPerHour` | 1 to 1,000 | 60 | At most this many runs per trigger in the last hour. |
 
 ## Safeguards
@@ -87,7 +87,7 @@ A delivery that matches can still be stopped. Each stop is recorded as a `trigge
 | Reason | Why |
 |---|---|
 | `own_branch` | The head branch starts with the factory's own branch prefix (`github.branch_prefix`, `belai/K-` by default). |
-| `own_identity` | The author or sender is the Vulnetix App's bot or `Pix [bot]`, or the head commit is by `Pix [bot]` or `security@vulnetix.com`. |
+| `own_identity` | The author or sender is the Vulnetix App's bot, `pix[bot]` or `pix-bot[bot]`, or the head commit is by `Pix [bot]` or `security@vulnetix.com`. |
 | `coalesced` | Another delivery in the same debounce window already started the run. |
 | `rate_limited` | The trigger hit `maxRunsPerHour`. |
 | `fanout_cap` | The delivery already started the most runs one delivery may start. |
@@ -120,5 +120,5 @@ A run started by a webhook keeps the event's facts: event and action, repository
 ## Finding out why a trigger did not fire
 
 1. Open **Events** and filter on the workflow. A `trigger.skipped` event names the reason.
-2. The Events page's **unanswered** view lists deliveries that started no run at all.
+2. `GET /v1/factory/events/unanswered?days=7` lists deliveries that started no run at all.
 3. If there is nothing, the delivery did not match. Check each condition against the event on GitHub.
