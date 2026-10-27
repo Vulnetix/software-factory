@@ -4,7 +4,7 @@ nav: Pull request checks
 description: How the factory knows a pull request's checks and merge state without polling GitHub, where it reads them from, and when it spends a call to read them live.
 order: 7
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_pr_checker.go, vdb-site/api/internal/handler/factory_session_recheck.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -17,16 +17,16 @@ Gate steps choose with `checkSource`:
 | `checkSource` | Reads |
 |---|---|
 | `mirror` | The webhook-fed mirror. The default. |
-| `posture` | Stored posture data |
-| `live_if_stale` | The mirror, unless the newest signal is older than `liveIfOlderThanMs` and checks are still pending. Then one live read through the quota guard. |
+| `posture` | Accepted; a gate reads the mirror as it does for `mirror` |
+| `live_if_stale` | The mirror, unless the newest signal is older than `liveIfOlderThanMs` (default `github.stale.checks`, 2 minutes) and checks are still pending. Then one live read through the quota guard. A tenant whose `github.read.default` is `live_api` reads this way whatever the node says. |
 
 ## Re-check on GitHub
 
 GitHub does not always say what it knows. In particular it works out mergeability lazily, and no webhook says when the answer is ready. **Re-check on GitHub**, on the run page and on the session's git strip, makes one GraphQL query for the pull request and its checks, writes the result to the mirror, and shows it. It costs 1 GitHub call and shows that price on the button.
 
-The engine uses the same check itself when it must: the approve when ready step asks once for the exact merge state when everything else holds, and the merge conflict step rechecks unknown pull requests at 0, 1, 3 and 10 minutes.
+The engine uses the same check itself when it must: the approve when ready step asks once for the exact merge state when everything else holds, and the merge conflict step rechecks unknown pull requests at 0, 1, 3 and 10 minutes (1, 3 and 10 minutes after a push).
 
-A recheck is refused with `bad_state` when the run or session has no pull request yet, and with a rate limit when the factory's GitHub share is exhausted.
+A recheck is refused with `bad_state` when the run or session has no pull request yet, and with 429 `github_rate_limited` or `github_share_exhausted` (with `resetAt`) when the quota guard refuses the call.
 
 ## API
 

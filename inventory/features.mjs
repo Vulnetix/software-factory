@@ -190,14 +190,12 @@ f('belai-docs-tooling', 'belai', 'belai/contributing', 'Developing Belai', [pkg(
 // was re-read against the code at the commit in its `checked` list).
 const STATUS = {
   drafted: [
-    'runs', 'run-artifacts', 'engine', 'no-host', 'sessions', 'session-trigger', 'handoffs', 'pr-checker',
-    'systemone', 'approvals', 'checkpoints', 'merge-conflicts', 'signing', 'pix-call', 'voice-tools',
-    'call-history', 'pix-ask', 'stops', 'agents', 'agent-builder', 'agent-import', 'avatars', 'crews',
-    'role-manager', 'hosts', 'host-attention', 'sandboxes', 'builtin-models', 'board', 'assignment',
-    'ticket-standard', 'github-sync', 'belai-install', 'belai-modes', 'belai-sessions', 'belai-models',
-    'belai-tools', 'belai-safety', 'belai-mcp', 'belai-hooks', 'belai-plugins', 'belai-acp', 'belai-lsp',
-    'belai-voice', 'belai-git', 'belai-budgets', 'belai-quality', 'belai-vulnetix', 'belai-telemetry',
-    'belai-tui', 'belai-headless', 'belai-agent-loop', 'belai-resilience', 'belai-repo-memory',
+    'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops', 'agents', 'agent-builder', 'agent-import',
+    'avatars', 'crews', 'role-manager', 'hosts', 'host-attention', 'sandboxes', 'builtin-models', 'board',
+    'assignment', 'ticket-standard', 'github-sync', 'belai-install', 'belai-modes', 'belai-sessions',
+    'belai-models', 'belai-tools', 'belai-safety', 'belai-mcp', 'belai-hooks', 'belai-plugins', 'belai-acp',
+    'belai-lsp', 'belai-voice', 'belai-git', 'belai-budgets', 'belai-quality', 'belai-vulnetix',
+    'belai-telemetry', 'belai-tui', 'belai-headless', 'belai-agent-loop', 'belai-resilience', 'belai-repo-memory',
     'belai-docs-tooling',
   ],
   verified: [
@@ -210,7 +208,9 @@ const STATUS = {
     'never-does', 'glossary', 'architecture', 'managed-scope', 'repo-profiles', 'issue-mirroring', 'autonomy',
     'kill-switch', 'holds', 'settings-document', 'memory', 'a2a', 'forge', 'library', 'providers', 'asks',
     'web-controls', 'messaging', 'dispatches', 'notifications', 'remote-control', 'teleport', 'host-shell',
-    'host-schedules', 'session-sync', 'knowledge',
+    'host-schedules', 'session-sync', 'knowledge', 'runs', 'run-artifacts', 'engine', 'no-host', 'sessions',
+    'session-trigger', 'handoffs', 'pr-checker', 'systemone', 'approvals', 'checkpoints', 'merge-conflicts',
+    'signing',
   ],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

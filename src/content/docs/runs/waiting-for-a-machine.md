@@ -3,7 +3,7 @@ title: Waiting for a machine
 description: Why a crew step waits, skips or fails when no host can take it, how long it waits for each reason, and what you can do about each one.
 order: 4
 sources: [vdb-site/docs/factory-engine.md, vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_engine_nohost.go, vdb-site/api/internal/handler/factory_engine_capacity.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -22,7 +22,7 @@ When several machines have the repository, the one closest to working decides.
 | `failed_relaunching` | The sandbox's launch failed, there is none, or its remote control stopped reporting | Asks the sandbox to relaunch, then waits 3 minutes at a time. At most 6 relaunch requests an hour. | Check the sandbox on Pix Sandboxes |
 | `profile_not_offered` | A machine with the repository is online but does not offer the agent or crew | Skipped at once | Update Belai on that machine, or import the profile |
 | `stopped_by_user` | Someone stopped the sandbox | Waits 10 minutes at a time. **Never woken.** The step names who stopped it. | Start the sandbox |
-| `host_offline` | Your own machine with the repository is not running `belai rc` | Waits 10 minutes at a time. Shows in Needs you. | Start `belai rc` on it |
+| `host_offline` | Your own machine with the repository is not running `belai rc` | Waits 10 minutes at a time. The host can also show in Needs you as `host_offline`. | Start `belai rc` on it |
 | `repo_not_attached` | Machines can run work but none has the repository | Skipped, or fails if the step is pinned with `runOnFallback: none` | Add the repository to a sandbox, or check it out on a host |
 | `no_machine` | No usable sandbox or host for the step's `runOn` | Skipped, or fails if pinned | Connect a host, or change `runOn` |
 

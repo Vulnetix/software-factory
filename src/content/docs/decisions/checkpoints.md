@@ -4,7 +4,7 @@ nav: Checkpoints
 description: One queue of everything that waits on a person. The ten kinds of checkpoint, how rows are merged and ordered, what you can do from the page, and the cockpit's Needs you panel.
 order: 4
 sources: [vdb-site/docs/factory.md, website/.repo/factory-checkpoints.md, website/src/shared/factory-checkpoint-kinds.ts, vdb-site/api/internal/handler/factory_checkpoints.go]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -25,11 +25,11 @@ The Checkpoints page (`/resolve/factory-checkpoints`) is one queue of everything
 | `pr_draft` | Draft pull request | An open draft pull request |
 | `issue_external` | Issue with no reply from your team | An open issue from someone outside the team, with no reply from the team |
 | `claim_lapsed` | Claim lapsed | An agent's claim on a card ran out |
-| `host_offline` | Host offline | A host a step needs is not running |
+| `host_offline` | Host offline | A host that runs workers stopped reporting in the last 24 hours |
 
 ## How rows are merged
 
-A pull request or issue linked to a card is shown as one row for the card, with the pull request or issue folded in. A row that is several kinds at once shows its most urgent kind, in this order: `approval`, `question`, `card_held`, `card_blocked`, `card_confirm`, `pr_ready`, `pr_draft`, `issue_external`, `claim_lapsed`, `host_offline`. The queue is oldest first.
+A pull request or issue linked to a card is shown as one row for the card, with the pull request or issue folded in. A row that is several kinds at once shows its most urgent kind, in this order: `approval`, `question`, `card_held`, `card_blocked`, `card_confirm`, `pr_ready`, `pr_draft`, `issue_external`, `claim_lapsed`, `host_offline`. Within a kind, the newest rows come first.
 
 It covers the repositories your GitHub App installations reach, those attached to your Pix Sandboxes, and those your boards are bound to.
 

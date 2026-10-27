@@ -3,7 +3,7 @@ title: Sessions
 description: A session is one Belai conversation on a host. How sessions are listed and classified, what started each one, their end states, the session page, and what you can do to a live session from the console.
 order: 5
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_sessions_aggregate.go, vdb-site/api/internal/handler/belai_trigger.go, website/.repo/session-trigger.md]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -14,9 +14,9 @@ A **session** is one Belai conversation on one host. A crew step's workers are s
 | Source | Started by |
 |---|---|
 | `worker` | A crew step's dispatch |
-| `cloud` | Your own machine running `belai rc` |
-| `sandbox` | A Pix Sandbox web session |
-| `tui` | The Belai terminal UI |
+| `cloud` | A dispatch to a machine running `belai rc`, other than a crew worker |
+| `sandbox` | A session on a Pix Sandbox |
+| `tui` | Anything else, such as the Belai terminal UI |
 | `acp` | An editor through ACP |
 
 Each session also records **what started it**, its trigger:

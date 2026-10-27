@@ -4,7 +4,7 @@ nav: How runs advance
 description: What moves a run from one step to the next, how loops and joins work, leases and recovery, and why a run can sit still without anything being wrong.
 order: 3
 sources: [vdb-site/docs/factory-engine.md, vdb-site/docs/factory-operations.md, vdb-site/api/internal/handler/factory_engine.go, vdb-site/api/internal/handler/factory_engine_walker.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -25,7 +25,7 @@ The engine has no timer that scans for work. A run moves only when something tel
 | A person decides an approval | that run |
 | The factory resumes, or a window ends | held runs |
 | A budget changes | runs parked for budget |
-| A one-shot wake falls due: an approval deadline, a quota reset, a retry backoff, a window end, a host recheck | that step |
+| A one-shot wake falls due: an approval deadline, a quota reset, a retry backoff, a window end, a host or capacity recheck | that step |
 
 So a run that is `waiting` is not stuck. It is waiting for one of these, and the step says which.
 

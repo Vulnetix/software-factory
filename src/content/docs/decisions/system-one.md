@@ -4,7 +4,7 @@ nav: System One
 description: The fast classifier models that decision steps call. Which models there are and when each is available, the tenant defaults every decision inherits, the daily cap, the decision ledger, overrides and retention.
 order: 1
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-systemone.md, vdb-site/api/internal/systemone/decide.go, vdb-site/api/internal/systemone/guard.go, vdb-site/api/internal/handler/factory_systemone.go, website/src/shared/factory-settings.ts]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -43,7 +43,7 @@ Settings › System One decisions holds the defaults every decision step inherit
 | `systemone.override` | | on, off. Whether a person may override any decision. | on |
 | `pix.jevDailyCap` | | decisions a day, shared with the sandbox's own classifier | 2000 |
 
-Changing `systemone.model` needs a new `systemone.min_confidence` in the same save. The server then records which model the threshold is for.
+Changing `systemone.model` needs a new `systemone.min_confidence` in the same save, or it is refused with `threshold_required`. The server then records which model the threshold is for.
 
 > [!WHY] Why a new model needs a new threshold
 > Each model is calibrated differently. A confidence of 0.8 from Clef Flash and 0.8 from Jev are not the same claim, so a threshold is only meaningful for the model it was set for.
@@ -68,7 +68,7 @@ A decision step can set its own `rationaleRetention`. With `audit.sign` on, the 
 
 ## Overrides
 
-While `systemone.override` is on, a person can override a decision: open it on the run page and choose another of the step's outcomes, with a note. The override is a new ledger row that points at the original, with its own audit entry. If the run is still parked on that decision, it is re-routed. An outcome that is not one of the step's is refused with `invalid_outcome`. A run already past that step, and not retryable, is refused with `bad_state`.
+While `systemone.override` is on, a person can override a decision: open it on the run page and choose another of the step's outcomes, with a note. The override is recorded on the decision's own ledger row (the new outcome, who and when), with its own audit entry and a `decision` event. If the run is still parked on that decision, it is re-routed. An outcome that is not one of the step's is refused with `invalid_outcome`. A run already past that step, and not retryable, is refused with `bad_state`.
 
 ## API
 

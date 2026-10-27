@@ -3,13 +3,13 @@ title: Runs and steps
 description: What a run is, the statuses it and its steps move through, the run page and its trace, and how to start, pause, resume, cancel and retry a run.
 order: 1
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_runs.go, vdb-site/api/internal/handler/factory_runs_actions.go, vdb-site/api/internal/handler/factory_run_detail.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
 A run is one execution of a published workflow version, for one repository or one card. Each node the run reaches becomes a **step**. The Runs page (`/resolve/factory-runs`) lists runs and sessions; opening a run (`/resolve/factory-run`) shows its trace.
 
-Runs are named by a display key such as `run_8812`, which also works in filters and URLs.
+Runs are named by a display key, `run_` and the first eight hex characters of the run's id (such as `run_3f9a2c1e`), which also works in filters and URLs.
 
 ## Run statuses
 
@@ -65,7 +65,7 @@ The run page shows:
 - **The pull request** with its checks, when there is one. This comes from webhooks.
 - **Evidence**: SLSA provenance, the SBOM, the sandbox image, the decision ledger, gate evidence and the TEA release, each with a state: `verified`, `ok`, `signed`, `pending`, `failed` or `n/a`.
 - **Network**: the hosts the run's sandbox reached and was refused, with request counts, and the secrets granted to it.
-- **Storage**: the storage folders and database rows that belong to the run, kept 400 days.
+- **Where it is stored**: the storage folders and database rows that belong to the run, kept 400 days.
 - **The event** that started it, when a webhook did.
 
 ## Actions
@@ -75,14 +75,14 @@ The run page shows each action only when it is allowed, with its GitHub price.
 | Action | Allowed when | What it does | GitHub calls |
 |---|---|---|---|
 | Start | the workflow is published and enabled | Starts a run of the published version. **Send to workflow** on the board starts one per repository of the chosen cards. | 0 to start |
-| Pause | `queued`, `running`, `waiting_approval` | Stops new steps for this run. Running steps finish and leases are kept. | 0 |
+| Pause | `queued`, `running`, `waiting_approval` | Stops new steps for this run. | 0 |
 | Resume | `paused` | Continues. | 0 |
-| Cancel | `queued`, `running`, `waiting_approval`, `paused`, `held` | Cancels running steps, withdraws dispatches, releases leases, revokes the run's forge token. | 0 to 1 |
-| Retry | `failed`, `cancelled`, or failed by stopping the line | Retries from a chosen step, by default the first that failed. Earlier steps and their outputs are reused. | up to the GitHub caps of the steps that run again |
+| Cancel | `queued`, `running`, `waiting_approval`, `paused`, `held` | Closes open steps and approvals, withdraws dispatches, releases leases. | 0 |
+| Retry | `failed` (including a stopped line) or `cancelled` | Retries from a chosen step (`fromStepId`), by default the first that failed, and every step after it, returning the run to `queued`. Earlier steps and their outputs are reused. | up to the GitHub caps of the steps that run again |
 | Re-check on GitHub | the run has a pull request | Reads the pull request and its checks live and updates the mirror. | 1 |
-| Download evidence | anything to export | A zip of the SBOM, provenance, decision ledger rows, gate output and pull request links. | 0 |
+| Download evidence | anything to export | A zip of the run's `evidence/` files, its decision ledger rows and a manifest. | 0 |
 
-An action from the wrong state is refused with `bad_state`. Starting or retrying while the factory is stopped is refused with `factory_stopped`.
+An action from the wrong state is refused with `bad_state`. Starting, retrying, pausing or resuming while the factory is stopped is refused with `factory_stopped` (cancel still works).
 
 > [!PIX] Runs by phone
 > Ask Pix "what runs failed today?" (`list_runs`) or "what happened on run 8812?" (`run_facts`). Pix reads the same records as this page.
@@ -95,7 +95,7 @@ An action from the wrong state is refused with `bad_state`. Starting or retrying
 | workflow | id or slug |
 | repo | `owner/name` |
 | trigger | the trigger kind |
-| card | card id or key |
+| card | card id |
 | from, to | start time |
 | fact | `kind:value`, repeatable, all must match. See [Facts](/evidence/facts/). |
 | q | run id, workflow, repository or card key |
@@ -112,4 +112,4 @@ The first page also gives today's runs, live sessions, sessions and tokens in th
 | POST | `/v1/factory/runs/{id}/cancel`, `/pause`, `/resume`, `/retry`, `/recheck-pr` |
 | GET | `/v1/factory/runs/{id}/evidence.zip` |
 
-`POST /v1/factory/runs` accepts an `Idempotency-Key` header. A replay within 24 hours returns the first answer.
+`POST /v1/factory/runs` accepts an `Idempotency-Key` header. A replay with the same key returns the first answer, marked `Idempotent-Replay: true`.

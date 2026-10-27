@@ -3,7 +3,7 @@ title: Commit signing
 description: How commits you make from factory pages are signed as you with a key held in AWS KMS, how agent commits are signed, the key lifecycle, and the signing settings.
 order: 6
 sources: [vdb-site/docs/signing.md, website/.repo/commit-signing.md, website/.repo/pix-sandbox-git-signing.md, vdb-site/api/internal/handler/signing_handlers.go, vdb-site/api/internal/handler/factory_signing.go]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 

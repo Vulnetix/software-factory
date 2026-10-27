@@ -3,7 +3,7 @@ title: Merge conflicts
 description: How the factory resolves a pull request's merge conflicts on its own, in up to five checked attempts, and how a person resolves them in the browser with the conflict editor.
 order: 5
 sources: [belai/docs/merge-conflicts.md, website/.repo/conflict-editor.md, vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_checkpoints_conflicts.go, vdb-site/api/internal/handler/pulls_conflicts.go]
-checked: [vdb-site@c29ffeb, belai@b5d33b6, website@70b0582]
+checked: [vdb-site@284f1d6, belai@35506b9, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -44,7 +44,7 @@ A check that a permission rule stops is not a failed attempt. The card is blocke
 
 ### Pushing
 
-A passing resolution is pushed to the pull request's head branch as a **fast-forward**. It never force-pushes. For a pull request from a fork, the factory cannot push, so the result goes on the pull request as a comment, and the card carries `checkpoint:fork_code` until a person clears it.
+A passing resolution is pushed to the pull request's head branch as a **fast-forward**. It never force-pushes. For a pull request from a fork, Belai does not push to the fork: it pushes the attempt's branch to `origin` (`belai/K-xxxxxx/aN`) and says so in a comment on the pull request. A card filed for a fork carries `checkpoint:fork_code`, so no host runs the fork's code until a person clears it on Checkpoints.
 
 ### When nothing passes
 
@@ -67,14 +67,14 @@ The card drawer and the Checkpoints inspector show these notes as a table: "Atte
 
 The conflict editor (`/resolve/factory-conflicts?repo=owner/name&pr=N`) resolves conflicts in your browser, the way GitHub's own resolver does, and commits the merge **as you**, signed with your key.
 
-1. The server merges the base into the pull request (diff3). Changes that do not overlap are already in. Each overlapping block shows between `<<<<<<< head`, `=======` and `>>>>>>> base`.
+1. The server merges the base into the pull request (diff3). Changes that do not overlap are already in. Each overlapping block shows between `<<<<<<<` (labelled with the head branch), `=======` and `>>>>>>>` (labelled with the base branch).
 2. For each block, accept the current change (the pull request's), the incoming change (the base's), or both, or edit the file.
 3. **Mark as resolved** once no marker is left in the file.
 4. When every file is resolved, **Commit merge**. The dialog shows who you will commit as and how it will be signed. See [Commit signing](/decisions/commit-signing/).
 
 Lockfiles are never offered for editing. The base's copy goes into the commit, and nothing regenerates it, so regenerate it locally or send the pull request to Pix. A file the editor cannot merge as text, a fork, a pull request too large, or one with no merge base is named, with the local git commands to use instead.
 
-If the pull request's head moved while you worked, nothing is written. Reloading keeps the files whose conflict did not change.
+If the pull request's head or base moved while you worked, nothing is written (`head_moved`, `base_moved`). Reloading keeps the files whose conflict did not change.
 
 ## API
 

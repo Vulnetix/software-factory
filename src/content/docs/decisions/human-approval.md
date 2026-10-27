@@ -3,11 +3,11 @@ title: Human approval
 description: What an approval is, the kinds and states it moves through, who can decide one, how deadlines work, and how to decide from the console, a notification or a Pix call.
 order: 3
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_approvals.go, vdb-site/api/internal/handler/factory_engine_approval.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
-An approval is a decision a run waits for. It is created by a [human step](/workflows/nodes/human/), by a decision that escalates, by a gate whose `onFail` is `human_approval`, and by a budget whose limit action is `escalate_human`. While any approval on a run is pending, the run is `waiting_approval`.
+An approval is a decision a run waits for. It is created by a [human step](/workflows/nodes/human/), by a decision that escalates, by a gate whose `onFail` is `human_approval`, by a budget whose limit action is `escalate_human`, and by a GitHub quota guard set to `escalate`. While any approval on a run is pending, the run is `waiting_approval`.
 
 ## Kinds
 
@@ -31,9 +31,9 @@ An approval is a decision a run waits for. It is created by a [human step](/work
 
 ## Who can decide
 
-The approvers the step names (a team, a member, a role or the repository's admins) and always the organisation's owners and admins. Anyone else is refused.
+The first member or role (`owner`, `admin`, `member`) the step names, and always the organisation's owners and admins. A step that names only a team or the repository's admins leaves the decision to owners and admins. Anyone else is refused.
 
-A decision can carry a note of up to 1,000 characters. It is written to the audit ledger with the approver, and an `approval` event is emitted. Deciding an approval someone else already decided is refused with `already_decided`. Approvals carry a revision, so two people deciding at once cannot both win.
+A decision can carry a note of up to 1,000 characters. It is written to the audit ledger (kind `approval`) with the approver, and a `gate` event is emitted. Deciding an approval someone else already decided is refused with `already_decided`. Approvals carry a revision, so two people deciding at once cannot both win.
 
 ## Deadlines
 
@@ -41,7 +41,7 @@ A step's `slaHours` (1 to 720) sets the deadline. When it passes, with `park_and
 
 ## Where to decide
 
-- **Checkpoints** and the cockpit's **Needs you** list every pending approval, oldest first. See [Checkpoints](/decisions/checkpoints/).
+- **Checkpoints** and the cockpit's **Needs you** list every pending approval. See [Checkpoints](/decisions/checkpoints/).
 - **A notification** can carry Approve and Reject buttons that act straight away. See [Notifications](/workforce/notifications/).
 - **On a Pix call**, Pix reads you what is waiting with `needs_attention` and `oldest_checkpoints`.
 
