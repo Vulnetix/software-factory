@@ -64,15 +64,15 @@ f('builder-palette', 'workflows', 'workflows/builder', 'The workflow builder', [
 f('node-trigger', 'workflows', 'workflows/nodes/trigger', 'Trigger node', [e('factoryTriggerKinds')]);
 f('node-scan', 'workflows', 'workflows/nodes/scan', 'Scan node', [g('factory_engine_node_scan'), e('factoryScanSources'), e('factoryFailOn'), e('factorySBOMFormats'), e('factoryNewToScopes'), '^code:new_to_package_only$']);
 f('node-decision', 'workflows', 'workflows/nodes/decision', 'Decision node', [g('factory_engine_node_decision'), e('factoryBelowThreshold'), e('factoryOnAbstain'), '^code:(threshold_required|threshold_adapter_missing|invalid_outcome|adapter_unavailable)$']);
-f('node-crew', 'workflows', 'workflows/nodes/crew', 'Crew node', [g('factory_engine_node_crew'), e('factoryCrewModes'), e('factoryShowInternal'), e('factoryRunOnKinds'), e('factoryRunOnFall'), e('factoryRunsOnValues'), '^code:(crew_not_found|runs_on_invalid)$']);
-f('node-gate', 'workflows', 'workflows/nodes/gate', 'Gate node', [g('factory_engine_node_gate'), e('factoryGateProfiles'), e('factoryGateOnFail'), e('factoryReleaseJail'), e('factoryTestsOnFail'), e('factoryTestsPostEnd')]);
+f('node-crew', 'workflows', 'workflows/nodes/crew', 'Crew node', [g('factory_engine_node_crew'), e('factoryCrewModes'), e('factoryShowInternal'), e('factoryRunOnKinds'), e('factoryRunOnFall'), e('factoryTestsOnFail'), e('factoryTestsPostEnd'), '^code:(crew_not_found|runs_on_invalid)$']);
+f('node-gate', 'workflows', 'workflows/nodes/gate', 'Gate node', [g('factory_engine_node_gate'), e('factoryGateProfiles'), e('factoryGateOnFail'), e('factoryReleaseJail')]);
 f('node-human', 'workflows', 'workflows/nodes/human', 'Human node', [g('factory_engine_node_human'), e('factoryHumanTimeout'), e('factoryApproverKinds'), '^code:(approver_missing|fork_pr_needs_human)$']);
 f('node-output', 'workflows', 'workflows/nodes/output', 'Output node', [g('factory_engine_node_output'), e('factoryOutputKinds'), e('factoryAttach'), e('factoryNoBranch'), e('factoryPRStates'), e('factoryTeaWhen'), e('factoryReviewers'), '^code:invalid_base$']);
 f('node-state', 'workflows', 'workflows/nodes/state', 'State node', [g('factory_engine_node_common'), e('factoryStateKinds')]);
-f('triggers', 'workflows', 'workflows/triggers', 'Triggers and webhook conditions', [gp('factory_trigger'), g('factory_triggers_store'), '^model:FactoryTrigger$', e('factoryConditionKeys'), e('factoryDraftModes'), e('factoryAlertSeverities'), '^webhook-event:', e('factoryConclusions'), e('factoryConclusionEvents'), e('factoryAuthorTypes'), e('factoryReviewStates'), e('factorySeverities'), e('factoryPackageTypes'), e('factoryWebhookRefs'), e('factoryOriginModes'), e('factorySubjectModes'), e('factoryAttach'), e('factoryDeployStates'), '^code:(unknown_condition|paths_need_push|invalid_glob|conclusion_unsupported_event|environment_unsupported_event|review_state_unsupported_event|severity_unsupported_event|package_type_unsupported_event)$', r('webhooks/github')]);
+f('triggers', 'workflows', 'workflows/triggers', 'Triggers and webhook conditions', [gp('factory_trigger'), g('factory_triggers_store'), '^model:FactoryTrigger$', e('factoryConditionKeys'), e('factoryDraftModes'), e('factoryAlertSeverities'), '^webhook-event:', e('factoryConclusions'), e('factoryConclusionEvents'), e('factoryAuthorTypes'), e('factoryReviewStates'), e('factorySeverities'), e('factoryPackageTypes'), e('factoryWebhookRefs'), e('factoryOriginModes'), e('factorySubjectModes'), e('factoryDeployStates'), '^code:(unknown_condition|paths_need_push|invalid_glob|conclusion_unsupported_event|environment_unsupported_event|review_state_unsupported_event|severity_unsupported_event|package_type_unsupported_event)$', r('webhooks/github')]);
 f('source-events', 'workflows', 'workflows/source-events', 'Source events and firewall triggers', [gp('factory_sources'), '^model:(FactorySourceEvent|FactorySourceCursor)$', e('factorySourceEventTypes'), '^code:firewall_condition_unsupported_source$']);
 f('label-dispatch', 'workflows', 'workflows/labels-and-commands', 'sf: labels and /sf commands', [g('factory_label_dispatch'), g('factory_labels'), r('factory/labels'), '^sf-label:']);
-f('schedules', 'workflows', 'workflows/schedules', 'Schedules', [r('factory/schedules'), g('factory_cron'), g('factory_scheduler'), gp('factory_schedules'), e('factoryOverlaps'), '^code:tz_invalid$']);
+f('schedules', 'workflows', 'workflows/schedules', 'Schedules', [r('factory/schedules'), e('factoryRunsOnValues'), g('factory_cron'), g('factory_scheduler'), gp('factory_schedules'), e('factoryOverlaps'), '^code:tz_invalid$']);
 f('internal-fire', 'workflows', 'workflows/schedules', 'How schedulers fire runs (internal endpoints)', [r('factory/internal'), r('internal/factory'), g('factory_internal')]);
 f('templates', 'workflows', 'workflows/templates', 'Templates', [r('factory/templates'), g('factory_templates'), '^template:', con('factory-templates'), '^model:FactoryTemplateDismissal$']);
 f('template-search', 'workflows', 'workflows/templates', 'Event templates, variants and ranking', [gp('factory_templates_'), e('fwAxis\\w+')], { foundIn: '2026-10-28' });
@@ -188,7 +188,10 @@ f('belai-docs-tooling', 'belai', 'belai/contributing', 'Developing Belai', [pkg(
 // was re-read against the code at the commit in its `checked` list).
 const STATUS = {
   drafted: ['overview', 'concepts', 'quickstart', 'never-does', 'glossary', 'architecture',
-    'managed-scope', 'repo-profiles', 'issue-mirroring', 'autonomy', 'kill-switch', 'holds', 'settings-document'],
+    'managed-scope', 'repo-profiles', 'issue-mirroring', 'autonomy', 'kill-switch', 'holds', 'settings-document',
+    'workflow-graphs', 'builder-palette', 'node-trigger', 'node-scan', 'node-decision', 'node-crew', 'node-gate', 'node-human',
+    'node-output', 'node-state', 'triggers', 'source-events', 'label-dispatch', 'schedules', 'internal-fire', 'templates',
+    'template-search', 'defaults', 'graph-limits', 'validation-codes', 'settings-reference'],
   verified: [],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

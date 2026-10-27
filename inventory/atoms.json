@@ -1,8 +1,8 @@
 {
- "generatedAt": "2026-10-27T13:24:58.417Z",
+ "generatedAt": "2026-10-27T13:32:19.350Z",
  "repos": {
-  "vdb-site": "c29ffeb0c29fe6504e2f5a923cdef17f55448bff",
-  "website": "9f13169d0a3ba074f99d9004b937280e04815301",
+  "vdb-site": "739b6960d1e2a68bad68fd480fdfd863c490022d",
+  "website": "d1948eaceff9ffe017812ddc33b8dbff8aa6f9ef",
   "belai": "b5d33b62b9af7144805bbaaab7082f3d3cc030f4",
   "saas": "aa6c2b46d08710a89f05fdd478bc14e1ae7abe6c"
  },
@@ -20,7 +20,7 @@
   "gofile": 272,
   "model": 42,
   "route": 327,
-  "setting": 118,
+  "setting": 125,
   "sf-label": 21,
   "template": 37,
   "tsfile": 66,
@@ -23100,16 +23100,128 @@
    }
   },
   {
+   "id": "setting:defaults.approve-ready.enabled",
+   "kind": "setting",
+   "value": "defaults.approve-ready.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_defaults.go",
+    "vdb-site/docs/factory.md"
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
+  },
+  {
+   "id": "setting:defaults.ci-fix.enabled",
+   "kind": "setting",
+   "value": "defaults.ci-fix.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_defaults.go",
+    "vdb-site/docs/factory.md"
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
+  },
+  {
+   "id": "setting:defaults.conflict-fix.enabled",
+   "kind": "setting",
+   "value": "defaults.conflict-fix.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_defaults.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "store": "factory"
+   }
+  },
+  {
    "id": "setting:defaults.enabled",
    "kind": "setting",
    "value": "defaults.enabled",
    "sources": [
+    "vdb-site/api/internal/handler/factory_defaults.go",
     "vdb-site/docs/factory.md"
    ],
    "detail": {
     "doc": "bool: master switch",
     "docDefault": "true",
-    "store": "factory"
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
+  },
+  {
+   "id": "setting:defaults.issue-to-pr.enabled",
+   "kind": "setting",
+   "value": "defaults.issue-to-pr.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_defaults.go",
+    "vdb-site/docs/factory.md"
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
+  },
+  {
+   "id": "setting:defaults.lint-sweep.enabled",
+   "kind": "setting",
+   "value": "defaults.lint-sweep.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_defaults.go",
+    "vdb-site/docs/factory.md"
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
+  },
+  {
+   "id": "setting:defaults.pr-review.enabled",
+   "kind": "setting",
+   "value": "defaults.pr-review.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_defaults.go",
+    "vdb-site/docs/factory.md"
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
+  },
+  {
+   "id": "setting:defaults.test-sweep.enabled",
+   "kind": "setting",
+   "value": "defaults.test-sweep.enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_defaults.go",
+    "vdb-site/docs/factory.md"
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
    }
   },
   {
@@ -23117,12 +23229,15 @@
    "kind": "setting",
    "value": "delivery.companyDomain",
    "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go",
     "vdb-site/docs/factory.md"
    ],
    "detail": {
     "doc": "str: an email domain such as `acme.example`, or empty",
     "docDefault": "empty",
-    "store": "factory"
+    "store": "factory",
+    "type": "str",
+    "default": ""
    }
   },
   {
@@ -23130,12 +23245,15 @@
    "kind": "setting",
    "value": "delivery.compare",
    "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go",
     "vdb-site/docs/factory.md"
    ],
    "detail": {
     "doc": "bool: the hand-worked comparison, which adds the refinement and hand-off overhead",
     "docDefault": "true",
-    "store": "factory"
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
    }
   },
   {
@@ -23143,12 +23261,15 @@
    "kind": "setting",
    "value": "delivery.decisions",
    "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go",
     "vdb-site/docs/factory.md"
    ],
    "detail": {
     "doc": "bool: price the decisions System One scored",
     "docDefault": "true",
-    "store": "factory"
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
    }
   },
   {
@@ -23156,12 +23277,15 @@
    "kind": "setting",
    "value": "delivery.enabled",
    "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go",
     "vdb-site/docs/factory.md"
    ],
    "detail": {
     "doc": "bool: master switch. Off, every `/delivery` read answers `{\"enabled\":false}` and nothing is computed",
     "docDefault": "true",
-    "store": "factory"
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
    }
   },
   {
@@ -23182,12 +23306,17 @@
    "kind": "setting",
    "value": "delivery.idleGapMin",
    "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go",
     "vdb-site/docs/factory.md"
    ],
    "detail": {
     "doc": "int 1 to 120: minutes without an action that end a sitting",
     "docDefault": "5",
-    "store": "factory"
+    "store": "factory",
+    "type": "int",
+    "min": "1",
+    "max": "120",
+    "default": "5"
    }
   },
   {
@@ -23260,12 +23389,15 @@
    "kind": "setting",
    "value": "delivery.overheadPct",
    "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go",
     "vdb-site/docs/factory.md"
    ],
    "detail": {
     "doc": "pct: refinement and hand-off overhead as a share of build and decision hours",
     "docDefault": "20",
-    "store": "factory"
+    "store": "factory",
+    "type": "pct",
+    "default": "20"
    }
   },
   {
@@ -23286,12 +23418,15 @@
    "kind": "setting",
    "value": "delivery.people",
    "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go",
     "vdb-site/docs/factory.md"
    ],
    "detail": {
     "doc": "bool: the People and Contributors pages",
     "docDefault": "true",
-    "store": "factory"
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
    }
   },
   {
@@ -23338,12 +23473,15 @@
    "kind": "setting",
    "value": "delivery.value",
    "sources": [
+    "vdb-site/api/internal/handler/factory_delivery_settings.go",
     "vdb-site/docs/factory.md"
    ],
    "detail": {
     "doc": "bool: price agent work by role",
     "docDefault": "true",
-    "store": "factory"
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
    }
   },
   {

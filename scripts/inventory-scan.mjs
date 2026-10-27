@@ -118,10 +118,14 @@ function scanGoFiles() {
 // vdb-site: settings schema, enum literals, validation codes, templates, defaults.
 function scanGoSemantics() {
   const dir = join(repoPath('vdb-site'), 'api', 'internal', 'handler');
-  const settings = join(dir, 'factory_settings_store.go');
-  if (existsSync(settings)) {
-    const src = read(settings);
-    const file = 'api/internal/handler/factory_settings_store.go';
+  // Settings: the schema is factory_settings_store.go, and some sections are
+  // built by helpers in other files (agents, defaults, delivery), so every
+  // factory file is read for spec literals.
+  for (const sf of ls(dir, /^factory_.*\.go$/)) {
+    const src = read(join(dir, sf));
+    const file = `api/internal/handler/${sf}`;
+    const isStore = sf === 'factory_settings_store.go';
+    if (!isStore && !/fcSetSpec|fc(?:Enum|Bool|Dur)Spec\(/.test(src)) continue;
     for (const line of src.split('\n')) {
       let m;
       if ((m = line.match(/fcEnumSpec\("([\w.]+)", "([^"]*)", "(\w+)"((?:, "[^"]*")*)\)/))) {
@@ -137,7 +141,13 @@ function scanGoSemantics() {
         if (min) d.min = min[1]; if (max) d.max = max[1]; if (def) d.default = def[1].replace(/^"|"$/g, '').replace(/^\[\]any\{\}$/, '[]').replace(/^(\d+(?:_\d+)+)$/, (x) => x.replace(/_/g, ''));
         if (/Locked: true/.test(m[3])) d.locked = true; if (st) d.store = st[1];
         atom('setting', m[1], 'vdb-site', file, { detail: d });
-      } else {
+      } else if (isStore && /fdSettingSpecs\(\)/.test(line)) {
+        // The defaults' switches are built in a loop: defaults.<key>.enabled.
+        const dsrc = read(join(dir, 'factory_defaults.go'));
+        const keys = dsrc.match(/factoryDefaultKeys = \[\]string\{([^}]*)\}/);
+        atom('setting', 'defaults.enabled', 'vdb-site', 'api/internal/handler/factory_defaults.go', { detail: { type: 'bool', default: 'true', store: 'factory' } });
+        for (const k of keys ? keys[1].matchAll(/"([a-z-]+)"/g) : []) atom('setting', `defaults.${k[1]}.enabled`, 'vdb-site', 'api/internal/handler/factory_defaults.go', { detail: { type: 'bool', default: 'true', store: 'factory' } });
+      } else if (isStore) {
         for (const k of line.matchAll(/(?:\bKey:\s*|\bfc\w*Spec\()"([a-zA-Z][\w]*(?:\.[\w]+)+)"/g)) atom('setting', k[1], 'vdb-site', file);
       }
     }
@@ -186,7 +196,7 @@ function scanContract() {
     const src = read(md);
     const s = src.indexOf('### 2.15');
     const e = src.indexOf('### 2.16');
-    if (s > 0 && e > s) for (const m of src.slice(s, e).matchAll(/^\| `([a-zA-Z][\w]*(?:\.[\w]+)+)` \| (.*?) \| (.*?) \| (\w+) \|$/gm)) atom('setting', m[1], 'vdb-site', 'docs/factory.md', { detail: { doc: m[2], docDefault: m[3], store: m[4] } });
+    if (s > 0 && e > s) for (const m of src.slice(s, e).matchAll(/^\| `([a-zA-Z][\w]*(?:\.[\w-]+)+)` \| (.*?) \| (.*?) \| (\w+) \|$/gm)) atom('setting', m[1], 'vdb-site', 'docs/factory.md', { detail: { doc: m[2], docDefault: m[3], store: m[4] } });
   }
   for (const f of ls(docs, /^(factory|belai|pix|signing).*\.md$/)) atom('doc', `vdb-site/${f}`, 'vdb-site', `docs/${f}`);
 }
