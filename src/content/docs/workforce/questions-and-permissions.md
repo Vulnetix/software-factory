@@ -4,7 +4,7 @@ nav: Questions and permissions
 description: When an agent stops to ask, the four kinds of question, answering from the console, the TUI or a call, permission rules, and the AI Firewall rules Belai offers when you state a permission.
 order: 16
 sources: [belai/docs/fleet.md, belai/docs/firewall-permissions.md, vdb-site/api/internal/handler/belai_answers.go, vdb-site/api/internal/handler/belai_open_asks.go, vdb-site/api/internal/handler/belai_permission_offers.go]
-checked: [belai@b5d33b6, vdb-site@c29ffeb]
+checked: [belai@35506b9, vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -26,7 +26,7 @@ An agent stops to ask when it needs a person. Its session waits, the question sh
 - **A Pix call**: Pix reads it to you and answers with `answer_agent_question`. By voice, a permission is allow once or deny, never allow always.
 - **A notification** can carry buttons that answer it.
 
-Questions that nobody answered show in the Events page's unanswered view.
+The first answer wins: once one is applied or in flight, a second is refused.
 
 ## When agents do not ask
 
@@ -44,6 +44,8 @@ When a prompt states a permission the AI Firewall can enforce, for example "don'
 
 | Method | Path |
 |---|---|
-| POST, GET | `/v1/belai/answers`, `/v1/belai/answers/{aid}` |
+| POST | `/v1/belai/sessions/{id}/answers` (answer an open ask) |
+| DELETE | `/v1/belai/answers/{aid}` (withdraw an answer the host has not claimed) |
+| POST | `/v1/belai/answers/{aid}/ack` (the host's outcome) |
 | GET | `/v1/belai/sandboxes/{id}/permission-offers` |
-| GET | `/v1/factory/events/unanswered` |
+| GET | `/v1/factory/events/unanswered` (GitHub deliveries that started no run, not agent questions) |

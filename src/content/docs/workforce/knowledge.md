@@ -3,7 +3,7 @@ title: Knowledge
 description: How agents search reference material by meaning alongside their file tools. Profile knowledge, project knowledge from Vulnetix scans, and keeping the indexes current.
 order: 24
 sources: [belai/docs/knowledge.md, vdb-site/api/internal/handler/belai_rc_knowledge.go]
-checked: [belai@b5d33b6, vdb-site@c29ffeb]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -20,7 +20,7 @@ Everything runs inside Belai: no embedding model to download and no service to c
 
 ```sh
 belai agent knowledge                 # the indexes and what they hold
-belai agent knowledge -index NAME     # bring a profile's index up to date first
+belai agent knowledge -index NAME     # bring the project's and NAME's indexes up to date first
 belai agent knowledge -json
 ```
 

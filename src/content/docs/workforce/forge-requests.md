@@ -3,7 +3,7 @@ title: Forge requests
 description: How a worker that cannot push its own work hands the job to a coordinator, which pushes the branch and opens the draft pull request with the GitHub App, and what each outcome means.
 order: 14
 sources: [vdb-site/docs/belai-forge-requests.md, FORGE-COORDINATOR-CONTRACT.md, vdb-site/api/internal/handler/belai_forge.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -21,7 +21,7 @@ Only harness facts cross: ids, commit hashes, enums, counts, timestamps and the 
 |---|---|
 | `push` | Push the branch |
 | `pull_request` | Push and find or open the draft pull request |
-| `commit` | Commit |
+| `commit` | Push the branch (treated the same as `push`) |
 | `issue_sync` | Sync the card's issue |
 
 ## Why a worker asks
@@ -41,7 +41,7 @@ Only harness facts cross: ids, commit hashes, enums, counts, timestamps and the 
 | `app_not_installed` | The GitHub App is not installed on the repository |
 | `token_denied` | GitHub refused the installation token |
 | `rate_limited`, `server` | GitHub limited or failed the request. It can be tried again. |
-| `expired` | Nobody handled it in time |
+| `expired` | Nobody handled it within 24 hours |
 
 The worker reads the outcome and carries on: it records the pull request on its card, or blocks the card with the reason. While the coordinator works, the worker is told it `took_over` the job, that it is `waiting`, or that it `failed`.
 

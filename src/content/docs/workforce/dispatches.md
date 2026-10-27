@@ -4,7 +4,7 @@ nav: Dispatches
 description: A dispatch is a request to a host to start a session or workers. What a dispatch carries, its modes, how a host takes it, and how to start sessions on a host from the console.
 order: 17
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, belai/docs/remote-control.md]
-checked: [vdb-site@c29ffeb, belai@b5d33b6]
+checked: [vdb-site@284f1d6, belai@35506b9, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -18,7 +18,7 @@ A host picks up dispatches over its open connection, acknowledges each, and star
 |---|---|
 | What to start | A session, a worker of a profile, or a crew |
 | Directory | Where to run. For a self-hosted machine that can clone, a repository to clone instead. |
-| Mode | `goal`, `agent`, `plan` or `code` |
+| Mode | `agent`, `plan`, `goal` or `code` |
 | Model | Provider and model, or a built-in label |
 | Brief | The task |
 | Budget | Per-card limits that override the profile's |
@@ -27,7 +27,7 @@ A host picks up dispatches over its open connection, acknowledges each, and star
 | Trigger | What started it: a workflow run, a Pix call, the console, a finding, a pull request or the fleet view |
 | Replicas | How many workers to start for one profile |
 
-A host that is full refuses with its worker cap, and the factory tries the next host. See [Waiting for a machine](/runs/waiting-for-a-machine/).
+A host that is full refuses with its worker cap, and the crew step waits for room instead of failing, asking again every 10 minutes. See [Waiting for a machine](/runs/waiting-for-a-machine/).
 
 ## From the console
 

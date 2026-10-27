@@ -4,7 +4,7 @@ nav: Memory
 description: Notes agents keep about a repository and lessons each worker keeps, shared across every host of your organisation, and the Memory page where people read and edit them.
 order: 12
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/belai_memory.go, belai/internal/repomemory]
-checked: [vdb-site@c29ffeb, belai@b5d33b6]
+checked: [vdb-site@284f1d6, belai@35506b9, website@a31d470]
 updated: 28 Oct 2026
 ---
 

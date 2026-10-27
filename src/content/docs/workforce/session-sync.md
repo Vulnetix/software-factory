@@ -4,7 +4,7 @@ nav: Session sync
 description: How every Belai session is mirrored to the console, why the host stays the source of truth, prompting a running session from the web, and the settings that switch each part off.
 order: 23
 sources: [belai/docs/session-sync.md, vdb-site/api/internal/handler/belai_sync.go, vdb-site/api/internal/handler/belai_objectstore.go]
-checked: [belai@b5d33b6, vdb-site@c29ffeb]
+checked: [belai@35506b9, vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -30,7 +30,7 @@ A prompt typed on the session page runs on the host as if it were typed there. W
 
 The library's own switches (`sync.skills` and the rest) are on [Library](/workforce/library/).
 
-`/sync` in the TUI shows the sync state for the session.
+`/sync` in the TUI shows or changes session sync.
 
 ## API
 

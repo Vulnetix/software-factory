@@ -4,7 +4,7 @@ nav: Teleport
 description: Continue a session from another host, a Pix Sandbox or the web on the machine in front of you, with its conversation and its uncommitted changes.
 order: 20
 sources: [belai/docs/teleport.md, vdb-site/api/internal/handler/belai_teleport.go, vdb-site/api/internal/handler/belai_teleport_code.go]
-checked: [belai@b5d33b6, vdb-site@c29ffeb]
+checked: [belai@35506b9, vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -31,7 +31,7 @@ A session card on the website, and the session page, copy this command with one 
 | Default | A patch, replayed on this machine |
 | `-teleport-push` | The origin host pushes them as one `belai/teleport/<id>` branch, which this machine fetches |
 
-`-teleport-push` only works if you agree to it on the command line, or set `teleport.push: allow` in your own settings. `-teleport-ref` chooses the ref to start from.
+Whether the origin host pushes is its own `teleport.push` setting: `ask` (the default) pushes only when you passed `-teleport-push`, `allow` pushes whenever a teleport asks, and `never` always sends a patch. `-teleport-ref` checks out a ref or commit other than the one the session was at.
 
 > [!CAREFUL] Teleport copies, it does not move
 > Both sessions keep running. If you meant to hand the work over, stop the original once the copy is going, or the two will work over each other.

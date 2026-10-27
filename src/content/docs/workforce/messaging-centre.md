@@ -4,7 +4,7 @@ nav: Messaging centre
 description: How factory events reach Slack, Teams, Discord, Google Chat, Jira, GitHub Issues and signed webhooks. Connections, routes, tiers and digests, templates, delivery outcomes, and the factory's notification settings.
 order: 26
 sources: [vdb-site/docs/messaging.md, vdb-site/api/internal/handler/messaging_handlers.go, vdb-site/api/internal/handler/messaging_dispatcher.go, vdb-site/api/internal/handler/messaging_slack_thread.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -79,7 +79,8 @@ A factory notice always carries a one-line headline and detail, links to the pag
 | GET, POST | `/v1/messaging/routes` |
 | PATCH, DELETE | `/v1/messaging/routes/{id}` |
 | POST | `/v1/messaging/routes/{id}/test`, `/dry-run` |
-| GET, POST | `/v1/messaging/templates`, `/templates/{id}`, `/templates/{id}/versions/{v}` |
+| GET, POST | `/v1/messaging/templates` |
+| GET | `/v1/messaging/templates/{id}`, `/templates/{id}/versions/{v}` |
 | POST | `/v1/messaging/templates/preview`, `/templates/{id}/restore/{v}` |
 | PATCH, DELETE | `/v1/messaging/templates/{id}` |
 | GET | `/v1/messaging/identities` |

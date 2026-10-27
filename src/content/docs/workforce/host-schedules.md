@@ -3,7 +3,7 @@ title: Host schedules
 description: Schedules a host keeps for its own workers, managed from the console. What a schedule can start, how it syncs, and what each run outcome means.
 order: 22
 sources: [belai/docs/remote-control.md, vdb-site/api/internal/handler/belai_schedules.go, vdb-site/api/internal/handler/belai_schedules_store.go, belai/internal/schedule, belai/internal/cron]
-checked: [belai@b5d33b6, vdb-site@c29ffeb]
+checked: [belai@35506b9, vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 

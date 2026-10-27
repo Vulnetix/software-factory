@@ -4,7 +4,7 @@ nav: Remote control
 description: Connect your own machine with belai rc so the console and the factory can start sessions and workers on it. What it needs, every flag, cloning for the factory, session controls and slash commands from the web, project settings from the web, and the per-session flags the daemon sets.
 order: 19
 sources: [belai/docs/remote-control.md, belai/docs/session-controls.md, belai/cmd/belai/rccmd.go, vdb-site/api/internal/handler/belai_rc.go, vdb-site/api/internal/handler/belai_commands.go]
-checked: [belai@b5d33b6, vdb-site@c29ffeb]
+checked: [belai@35506b9, vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -23,7 +23,7 @@ belai rc --stop
 | Check | Needs |
 |---|---|
 | Vulnetix CLI | `vulnetix` on your `PATH` |
-| Vulnetix login | A browser login, `vulnetix auth login`. An API-token login is refused, because the website does not accept it for session sync. |
+| Vulnetix login | A browser login, `vulnetix auth login`. An API-token login is refused, because the website does not accept it for remote control. |
 | Session sync | `sync.enabled` on (the default) |
 | Guardrails | On. Remote control never runs a session nobody is watching without them. |
 | Directories | At least one directory to offer |
@@ -38,9 +38,9 @@ Run it signed in as the member whose workflows should use this machine. The fact
 | Flag | Default | Meaning |
 |---|---|---|
 | `--dir PATH` | | Offer this directory, and trust it. Repeatable. |
-| `--max N` | | Sessions to run at once. Without `--max-workers`, also the worker cap. |
+| `--max N` | `3` | Sessions to run at once. Without `--max-workers`, also the worker cap. |
 | `--max-workers N` | `agents.max_workers` | Fleet workers to run at once |
-| `--idle DURATION` | | End a session after this long without a prompt |
+| `--idle DURATION` | `30m` | End a session after this long without a prompt |
 | `--detach` | | Run in the background. Logs go to `~/.vulnetix/belai/rc/rc.log`. |
 | `--status`, `--stop` | | Show whether it is running; stop it and its sessions |
 | `--web-controls` | off | Let web sessions change their own mode, model and switches. See below. |

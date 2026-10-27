@@ -194,12 +194,11 @@ const STATUS = {
     'systemone', 'approvals', 'checkpoints', 'merge-conflicts', 'signing', 'pix-call', 'voice-tools',
     'call-history', 'pix-ask', 'stops', 'agents', 'agent-builder', 'agent-import', 'avatars', 'crews',
     'role-manager', 'hosts', 'host-attention', 'sandboxes', 'builtin-models', 'board', 'assignment',
-    'ticket-standard', 'github-sync', 'memory', 'a2a', 'forge', 'providers', 'asks', 'dispatches', 'library',
-    'web-controls', 'messaging', 'notifications', 'remote-control', 'teleport', 'host-shell', 'host-schedules',
-    'session-sync', 'knowledge', 'belai-install', 'belai-modes', 'belai-sessions', 'belai-models', 'belai-tools',
-    'belai-safety', 'belai-mcp', 'belai-hooks', 'belai-plugins', 'belai-acp', 'belai-lsp', 'belai-voice',
-    'belai-git', 'belai-budgets', 'belai-quality', 'belai-vulnetix', 'belai-telemetry', 'belai-tui',
-    'belai-headless', 'belai-agent-loop', 'belai-resilience', 'belai-repo-memory', 'belai-docs-tooling',
+    'ticket-standard', 'github-sync', 'belai-install', 'belai-modes', 'belai-sessions', 'belai-models',
+    'belai-tools', 'belai-safety', 'belai-mcp', 'belai-hooks', 'belai-plugins', 'belai-acp', 'belai-lsp',
+    'belai-voice', 'belai-git', 'belai-budgets', 'belai-quality', 'belai-vulnetix', 'belai-telemetry',
+    'belai-tui', 'belai-headless', 'belai-agent-loop', 'belai-resilience', 'belai-repo-memory',
+    'belai-docs-tooling',
   ],
   verified: [
     'settings-reference', 'triggers', 'source-events', 'label-dispatch', 'schedules', 'internal-fire',
@@ -209,7 +208,9 @@ const STATUS = {
     'agent-budgets', 'model-routing', 'usage', 'github-quota', 'cockpit', 'trust', 'firewalls', 'audit', 'events',
     'facts', 'lifecycle', 'delivery', 'sightings', 'attribution', 'vex', 'overview', 'concepts', 'quickstart',
     'never-does', 'glossary', 'architecture', 'managed-scope', 'repo-profiles', 'issue-mirroring', 'autonomy',
-    'kill-switch', 'holds', 'settings-document',
+    'kill-switch', 'holds', 'settings-document', 'memory', 'a2a', 'forge', 'library', 'providers', 'asks',
+    'web-controls', 'messaging', 'dispatches', 'notifications', 'remote-control', 'teleport', 'host-shell',
+    'host-schedules', 'session-sync', 'knowledge',
   ],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

@@ -4,7 +4,7 @@ nav: Library
 description: Everything worth keeping when a machine is wiped, kept in your account and installed on any connected host. The kinds of item, their documents, how items travel between hosts and the library, the sync switches, and the commands that read and write them.
 order: 18
 sources: [belai/docs/library-items.md, belai/docs/skills.md, vdb-site/docs/belai-library-items.md, vdb-site/docs/belai-library-settings.md, vdb-site/api/internal/handler/belai_items.go, vdb-site/api/internal/handler/belai_library.go]
-checked: [belai@b5d33b6, vdb-site@c29ffeb]
+checked: [belai@35506b9, vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -86,5 +86,5 @@ belai skill export [-force] NAME [FILE]
 |---|---|
 | | Items: `/v1/belai/library/items/...` (list, versions, install, backup, delete) |
 | | Profiles and crews: `/v1/belai/library/profiles/...`, `/v1/belai/library/crews/...` |
-| | Settings and catalogue: `/v1/belai/library/settings`, `/v1/belai/library/catalogue` |
-| | Prompts for web sessions: `/v1/belai/prompts` |
+| | Settings and catalogue: `/v1/belai/library/settings`, `/v1/belai/library/repositories/catalogue` |
+| | Prompts for web sessions: `/v1/belai/sessions/{id}/prompts`, `/v1/belai/prompts/{pid}` |
