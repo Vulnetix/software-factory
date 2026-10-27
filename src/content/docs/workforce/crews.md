@@ -38,7 +38,7 @@ belai agent start -crew belai:delivery -dir ~/src/api:3 -dir ~/src/web -dir ~/sr
 
 ### The provider pool
 
-`-pool` is a ring of providers and models. Workers start on the first. After `-switch-after` outages in a row (3 by default) a worker moves to the next target this host can run. When the whole pool has failed, the crew sleeps `-final-retry` seconds (900 by default) before one last try.
+`-pool` is a ring of providers and models. Workers start on the first. After `-switch-after` outages in a row (3 by default) a worker moves to the next target this host can run. When the whole pool has failed, the crew is `sleeping` for `-final-retry` seconds (900 by default), then in its `final_retry` phase makes one last try.
 
 ### Live controls
 

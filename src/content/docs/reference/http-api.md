@@ -13,16 +13,16 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/admin/pix-sandboxes/` |  |
-| GET | `/v1/admin/pix-sandboxes/{id}` |  |
-| PATCH | `/v1/admin/pix-sandboxes/{id}/egress/{host}` |  |
-| GET | `/v1/admin/pix-sandboxes/{id}/events` |  |
-| PUT | `/v1/admin/pix-sandboxes/{id}/launch-config` |  |
-| GET | `/v1/admin/pix-sandboxes/builtin-models/performance` |  |
-| PUT | `/v1/admin/pix-sandboxes/builtin-quota/{tenant}` |  |
-| GET | `/v1/admin/pix-sandboxes/builtin-usage` |  |
-| GET | `/v1/admin/pix-sandboxes/defaults` |  |
-| PUT | `/v1/admin/pix-sandboxes/defaults` |  |
+| GET | `/v1/admin/pix-sandboxes/` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/admin/pix-sandboxes/{id}` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PATCH | `/v1/admin/pix-sandboxes/{id}/egress/{host}` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/admin/pix-sandboxes/{id}/events` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PUT | `/v1/admin/pix-sandboxes/{id}/launch-config` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/admin/pix-sandboxes/builtin-models/performance` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PUT | `/v1/admin/pix-sandboxes/builtin-quota/{tenant}` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/admin/pix-sandboxes/builtin-usage` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/admin/pix-sandboxes/defaults` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PUT | `/v1/admin/pix-sandboxes/defaults` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
 
 ## /v1/ai-firewall/capabilities
 
@@ -105,7 +105,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/belai/attention/{id}/decide` |  |
+| POST | `/v1/belai/attention/{id}/decide` | [Host attention](/workforce/hosts-and-placement/) |
 
 ## /v1/belai/audit
 
@@ -135,54 +135,54 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/hosts` |  |
-| PUT | `/v1/belai/hosts/{hostId}` |  |
-| POST | `/v1/belai/hosts/{hostId}/a2a` |  |
-| GET | `/v1/belai/hosts/{hostId}/agent-creators/{id}` |  |
-| POST | `/v1/belai/hosts/{hostId}/agent-creators/{id}/avatar` |  |
-| POST | `/v1/belai/hosts/{hostId}/audit/{streamId}` |  |
-| PUT | `/v1/belai/hosts/{hostId}/audit/{streamId}` |  |
-| GET | `/v1/belai/hosts/{hostId}/dispatch` |  |
-| POST | `/v1/belai/hosts/{hostId}/dispatches` |  |
-| POST | `/v1/belai/hosts/{hostId}/forge-requests` |  |
-| GET | `/v1/belai/hosts/{hostId}/forge-requests/{requestId}` |  |
-| GET | `/v1/belai/hosts/{hostId}/inbox` |  |
-| POST | `/v1/belai/hosts/{hostId}/library/backups` |  |
-| POST | `/v1/belai/hosts/{hostId}/library/crew-backups` |  |
-| GET | `/v1/belai/hosts/{hostId}/library/crews/{id}/versions/{v}` |  |
-| GET | `/v1/belai/hosts/{hostId}/library/files/{sha}` |  |
-| PUT | `/v1/belai/hosts/{hostId}/library/files/{sha}` |  |
-| POST | `/v1/belai/hosts/{hostId}/library/imports` |  |
-| POST | `/v1/belai/hosts/{hostId}/library/item-backups` |  |
-| GET | `/v1/belai/hosts/{hostId}/library/items/{kind}/{id}/versions/{v}` |  |
-| GET | `/v1/belai/hosts/{hostId}/library/mcp-secrets` |  |
-| GET | `/v1/belai/hosts/{hostId}/library/profiles/{id}/versions/{v}` |  |
-| GET | `/v1/belai/hosts/{hostId}/library/provider-keys` |  |
-| POST | `/v1/belai/hosts/{hostId}/library/registry/plan` |  |
-| POST | `/v1/belai/hosts/{hostId}/library/scans` |  |
-| POST | `/v1/belai/hosts/{hostId}/library/sync` |  |
-| PUT | `/v1/belai/hosts/{hostId}/library/sync/crews/{id}` |  |
-| PUT | `/v1/belai/hosts/{hostId}/library/sync/items` |  |
-| PUT | `/v1/belai/hosts/{hostId}/library/sync/profiles/{id}` |  |
-| POST | `/v1/belai/hosts/{hostId}/memory` |  |
-| POST | `/v1/belai/hosts/{hostId}/rc/heartbeat` |  |
-| POST | `/v1/belai/hosts/{hostId}/rc/offline` |  |
-| GET | `/v1/belai/hosts/{hostId}/schedules` |  |
-| POST | `/v1/belai/hosts/{hostId}/schedules` |  |
-| PUT | `/v1/belai/hosts/{hostId}/schedules` |  |
-| DELETE | `/v1/belai/hosts/{hostId}/schedules/{sid}` |  |
-| PATCH | `/v1/belai/hosts/{hostId}/schedules/{sid}` |  |
-| POST | `/v1/belai/hosts/{hostId}/teleports` |  |
-| GET | `/v1/belai/hosts/{hostId}/teleports/{tid}` |  |
-| POST | `/v1/belai/hosts/{hostId}/teleports/{tid}/ack` |  |
-| PUT | `/v1/belai/hosts/{hostId}/teleports/{tid}/code` |  |
-| GET | `/v1/belai/hosts/{hostId}/teleports/{tid}/crews/{id}/versions/{v}` |  |
-| GET | `/v1/belai/hosts/{hostId}/teleports/{tid}/entries` |  |
-| GET | `/v1/belai/hosts/{hostId}/teleports/{tid}/files/{sha}` |  |
-| GET | `/v1/belai/hosts/{hostId}/teleports/{tid}/profiles/{id}/versions/{v}` |  |
-| POST | `/v1/belai/hosts/{hostId}/teleports/{tid}/replay` |  |
-| GET | `/v1/belai/hosts/{hostId}/vault/env` |  |
-| POST | `/v1/belai/hosts/{hostId}/vault/scrub` |  |
+| GET | `/v1/belai/hosts` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| PUT | `/v1/belai/hosts/{hostId}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/a2a` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/agent-creators/{id}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/agent-creators/{id}/avatar` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/audit/{streamId}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| PUT | `/v1/belai/hosts/{hostId}/audit/{streamId}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/dispatch` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/dispatches` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/forge-requests` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/forge-requests/{requestId}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/inbox` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/library/backups` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/library/crew-backups` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/library/crews/{id}/versions/{v}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/library/files/{sha}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| PUT | `/v1/belai/hosts/{hostId}/library/files/{sha}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/library/imports` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/library/item-backups` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/library/items/{kind}/{id}/versions/{v}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/library/mcp-secrets` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/library/profiles/{id}/versions/{v}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/library/provider-keys` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/library/registry/plan` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/library/scans` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/library/sync` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| PUT | `/v1/belai/hosts/{hostId}/library/sync/crews/{id}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| PUT | `/v1/belai/hosts/{hostId}/library/sync/items` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| PUT | `/v1/belai/hosts/{hostId}/library/sync/profiles/{id}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/memory` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/rc/heartbeat` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/rc/offline` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/schedules` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/schedules` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| PUT | `/v1/belai/hosts/{hostId}/schedules` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| DELETE | `/v1/belai/hosts/{hostId}/schedules/{sid}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| PATCH | `/v1/belai/hosts/{hostId}/schedules/{sid}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/teleports` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/teleports/{tid}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/teleports/{tid}/ack` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| PUT | `/v1/belai/hosts/{hostId}/teleports/{tid}/code` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/teleports/{tid}/crews/{id}/versions/{v}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/teleports/{tid}/entries` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/teleports/{tid}/files/{sha}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/teleports/{tid}/profiles/{id}/versions/{v}` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/teleports/{tid}/replay` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| GET | `/v1/belai/hosts/{hostId}/vault/env` | [Hosts and placement](/workforce/hosts-and-placement/) |
+| POST | `/v1/belai/hosts/{hostId}/vault/scrub` | [Hosts and placement](/workforce/hosts-and-placement/) |
 
 ## /v1/belai/kanban
 
@@ -268,36 +268,36 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/repo-hosts` |  |
+| GET | `/v1/belai/repo-hosts` | [Hosts and placement](/workforce/hosts-and-placement/) |
 
 ## /v1/belai/sandboxes
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/sandboxes/` |  |
-| GET | `/v1/belai/sandboxes/{id}` |  |
-| PATCH | `/v1/belai/sandboxes/{id}` |  |
-| GET | `/v1/belai/sandboxes/{id}/egress` |  |
-| PATCH | `/v1/belai/sandboxes/{id}/egress/{host}` |  |
-| GET | `/v1/belai/sandboxes/{id}/events` |  |
-| GET | `/v1/belai/sandboxes/{id}/launch-config` |  |
-| PUT | `/v1/belai/sandboxes/{id}/launch-config` |  |
-| PUT | `/v1/belai/sandboxes/{id}/maintenance-window` |  |
-| GET | `/v1/belai/sandboxes/{id}/permission-offers` |  |
-| PUT | `/v1/belai/sandboxes/{id}/providers` |  |
-| POST | `/v1/belai/sandboxes/{id}/repos` |  |
-| DELETE | `/v1/belai/sandboxes/{id}/repos/{repoId}` |  |
-| PATCH | `/v1/belai/sandboxes/{id}/repos/{repoId}` |  |
-| GET | `/v1/belai/sandboxes/{id}/safe-harbour` |  |
-| POST | `/v1/belai/sandboxes/{id}/safe-harbour` |  |
-| PUT | `/v1/belai/sandboxes/{id}/telemetry` |  |
-| GET | `/v1/belai/sandboxes/{id}/teleports` |  |
-| GET | `/v1/belai/sandboxes/builtin-usage` |  |
-| GET | `/v1/belai/sandboxes/lookup/owners` |  |
-| GET | `/v1/belai/sandboxes/lookup/repositories` |  |
-| GET | `/v1/belai/sandboxes/repositories` |  |
-| GET | `/v1/belai/sandboxes/usage` |  |
-| GET | `/v1/belai/sandboxes/usage/stats` |  |
+| GET | `/v1/belai/sandboxes/` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/{id}` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PATCH | `/v1/belai/sandboxes/{id}` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/{id}/egress` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PATCH | `/v1/belai/sandboxes/{id}/egress/{host}` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/{id}/events` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/{id}/launch-config` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PUT | `/v1/belai/sandboxes/{id}/launch-config` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PUT | `/v1/belai/sandboxes/{id}/maintenance-window` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/{id}/permission-offers` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PUT | `/v1/belai/sandboxes/{id}/providers` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| POST | `/v1/belai/sandboxes/{id}/repos` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| DELETE | `/v1/belai/sandboxes/{id}/repos/{repoId}` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PATCH | `/v1/belai/sandboxes/{id}/repos/{repoId}` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/{id}/safe-harbour` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| POST | `/v1/belai/sandboxes/{id}/safe-harbour` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| PUT | `/v1/belai/sandboxes/{id}/telemetry` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/{id}/teleports` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/builtin-usage` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/lookup/owners` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/lookup/repositories` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/repositories` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/usage` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| GET | `/v1/belai/sandboxes/usage/stats` | [Pix Sandboxes](/workforce/pix-sandboxes/) |
 
 ## /v1/belai/schedules
 
@@ -429,7 +429,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/fleet` |  |
+| GET | `/v1/factory/fleet` | [Hosts and placement](/workforce/hosts-and-placement/) |
 
 ## /v1/factory/flow
 
@@ -448,7 +448,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/hosts/eligibility` |  |
+| GET | `/v1/factory/hosts/eligibility` | [Hosts and placement](/workforce/hosts-and-placement/) |
 
 ## /v1/factory/internal
 

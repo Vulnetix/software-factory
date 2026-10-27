@@ -149,7 +149,7 @@ Defined in `api/internal/handler/belai_items_validate_hook.go`.
 
 ### belaiInstanceFields
 
-Defined in `api/internal/handler/belai_items_validate_provider.go`.
+Explained in [Package and AI firewalls on factory work](/evidence/firewalls/). Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 `adapter`, `header`, `mode`, `providers`, `url`
 
@@ -167,37 +167,37 @@ Defined in `api/internal/handler/belai_kanban_store.go`.
 
 ### belaiLaunchEgressModes
 
-Defined in `api/internal/handler/belai_items_validate_launch.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/belai_items_validate_launch.go`.
 
 `allow_all_logged`, `deny_except_allow`, `inherit`
 
 ### belaiLaunchFields
 
-Defined in `api/internal/handler/belai_items_validate_launch.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/belai_items_validate_launch.go`.
 
 `description`, `items`, `keys`, `machine`, `name`
 
 ### belaiLaunchItemFields
 
-Defined in `api/internal/handler/belai_items_validate_launch.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/belai_items_validate_launch.go`.
 
 `id`, `kind`, `name`, `source`, `version`
 
 ### belaiLaunchItemKinds
 
-Defined in `api/internal/handler/belai_items_validate_launch.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/belai_items_validate_launch.go`.
 
 `budget`, `command`, `crew`, `hook`, `mcp`, `process`, `profile`, `prompt`, `provider`, `repo`, `rewrite`, `skill`
 
 ### belaiLaunchMachineFields
 
-Defined in `api/internal/handler/belai_items_validate_launch.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/belai_items_validate_launch.go`.
 
 `egress_allow`, `egress_mode`, `extensions`, `packs`, `version_policy`
 
 ### belaiLaunchRegistryKinds
 
-Defined in `api/internal/handler/belai_items_validate_launch.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/belai_items_validate_launch.go`.
 
 `agent`, `command`, `crew`, `hook`, `profile`, `prompt`, `skill`
 
@@ -215,7 +215,7 @@ Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 ### belaiPoolPhases
 
-Defined in `api/internal/handler/belai_rc_crewruns.go`.
+Explained in [Crews](/workforce/crews/). Defined in `api/internal/handler/belai_rc_crewruns.go`.
 
 `final_retry`, `sleeping`
 
@@ -335,7 +335,7 @@ Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 ### belaiWorkerStates
 
-Defined in `api/internal/handler/belai_rc_fleet.go`.
+Explained in [Hosts and placement](/workforce/hosts-and-placement/). Defined in `api/internal/handler/belai_rc_fleet.go`.
 
 `failed`, `idle`, `paused`, `starting`, `stopped`, `stopping`, `working`
 
@@ -383,7 +383,7 @@ Explained in [Agents and agent profiles](/workforce/agents/). Defined in `api/in
 
 ### factoryCapabilityKinds
 
-Defined in `api/internal/handler/factory_trigger_validate.go`.
+Explained in [Source events and firewall triggers](/workflows/source-events/). Defined in `api/internal/handler/factory_trigger_validate.go`.
 
 `client`, `mcp_server`, `skill`, `tool`
 
@@ -851,7 +851,7 @@ Explained in [Runs and steps](/runs/runs-and-steps/). Defined in `api/internal/h
 
 ### pixClassifiers
 
-Defined in `api/internal/handler/pix_sandbox_store.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_store.go`.
 
 `clef`, `jev`, `tev1`
 
@@ -863,66 +863,66 @@ Explained in [Calling Pix](/pix/calling-pix/). Defined in `api/internal/handler/
 
 ### pixDefaultClassifiers
 
-Defined in `api/internal/handler/pix_sandbox_store.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_store.go`.
 
 `clef`, `jev`
 
 ### pixEgressDecision
 
-Defined in `api/internal/handler/pix_sandbox_store.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_store.go`.
 
 `allow`, `deny`, `unset`
 
 ### pixEgressModes
 
-Defined in `api/internal/handler/pix_sandbox_store.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_store.go`.
 
 `allow_all_logged`, `deny_except_allow`
 
 ### pixEventAudiences
 
-Defined in `api/internal/handler/pix_sandbox_store.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_store.go`.
 
 `admin`, `user`
 
 ### pixExtensionModes
 
-Defined in `api/internal/handler/pix_sandbox_store.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_store.go`.
 
 `any_indexed`, `packs_only`
 
 ### pixForbiddenHeaders
 
-Defined in `api/internal/handler/pix_sandbox_telemetry.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_telemetry.go`.
 
 `connection`, `content-length`, `content-type`, `expect`, `host`, `te`, `trailer`, `transfer-encoding`, `upgrade`
 
 ### pixItemKinds
 
-Defined in `api/internal/handler/pix_sandbox_provisioning.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_provisioning.go`.
 
 `command`, `hook`, `mcp`, `prompt`, `skill`
 
 ### pixRepoSources
 
-Defined in `api/internal/handler/pix_sandbox_store.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_store.go`.
 
 `app`, `public`
 
 ### pixTelemetrySignals
 
-Defined in `api/internal/handler/pix_sandbox_telemetry.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_telemetry.go`.
 
 `logs`, `metrics`
 
 ### pixUsageStatuses
 
-Defined in `api/internal/handler/pix_sandbox_usage.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_usage.go`.
 
 `ended`, `lost`, `running`, `stopped`, `stopping`
 
 ### pixVersionStrategies
 
-Defined in `api/internal/handler/pix_sandbox_version_policy.go`.
+Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/internal/handler/pix_sandbox_version_policy.go`.
 
 `latest`, `pinned`, `rolling`, `safest`, `stable`

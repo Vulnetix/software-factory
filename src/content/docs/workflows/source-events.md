@@ -48,7 +48,7 @@ More than 10 first sightings from one source and repository within 10 minutes ar
 | `events` | Which of the source's events fire it. Optional. |
 | `newTo` | `org` (the default) or `repo`. Packages only. |
 | `decision`, `ecosystems` | Package filters |
-| `kinds` | AI capability filter, such as `mcp_server` |
+| `kinds` | AI capability filter: `client`, `mcp_server`, `tool` or `skill` |
 | `sandboxes` | Egress filter |
 | `ticketRepo` | Where review cards go, as `owner/name` |
 

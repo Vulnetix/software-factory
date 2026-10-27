@@ -188,8 +188,8 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="hosts.runOn"></span>`hosts.runOn` | str. string `auto`, `pix_sandbox`, `self_hosted`, `host:<uuid>` or `label:<name>`, the crew node's `runOn` grammar (`factoryRunOnValid`): where a crew node, a default or a scan that names no `runOn` runs, and the preference that orders the hosts a node's own `runOn` admits (12.5) | `auto` | factory |  |
-| <span id="hosts.runOnFallback"></span>`hosts.runOnFallback` | enum: `none`, `auto` | `auto` | factory |  |
+| <span id="hosts.runOn"></span>`hosts.runOn` | str. string `auto`, `pix_sandbox`, `self_hosted`, `host:<uuid>` or `label:<name>`, the crew node's `runOn` grammar (`factoryRunOnValid`): where a crew node, a default or a scan that names no `runOn` runs, and the preference that orders the hosts a node's own `runOn` admits (12.5) | `auto` | factory | [Hosts and placement](/workforce/hosts-and-placement/) |
+| <span id="hosts.runOnFallback"></span>`hosts.runOnFallback` | enum: `none`, `auto` | `auto` | factory | [Hosts and placement](/workforce/hosts-and-placement/) |
 
 ## jail
 
@@ -224,14 +224,14 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="pix.classifier"></span>`pix.classifier` | enum: `clef`, `jev`, `tev1` | `clef` | sandbox |  |
-| <span id="pix.egressMode"></span>`pix.egressMode` | enum. enum `deny_except_allow`, `allow_all_logged` | `deny_except_allow` | sandbox |  |
-| <span id="pix.extensionMode"></span>`pix.extensionMode` | enum: `packs_only`, `any_indexed` | `packs_only` | sandbox |  |
-| <span id="pix.jevDailyCap"></span>`pix.jevDailyCap` | int 0 to 100_000_000. int, calls per day, shared with the sandbox | `2000` | sandbox |  |
+| <span id="pix.classifier"></span>`pix.classifier` | enum: `clef`, `jev`, `tev1` | `clef` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| <span id="pix.egressMode"></span>`pix.egressMode` | enum. enum `deny_except_allow`, `allow_all_logged` | `deny_except_allow` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| <span id="pix.extensionMode"></span>`pix.extensionMode` | enum: `packs_only`, `any_indexed` | `packs_only` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| <span id="pix.jevDailyCap"></span>`pix.jevDailyCap` | int 0 to 100_000_000. int, calls per day, shared with the sandbox | `2000` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
 | <span id="pix.maintenance"></span>`pix.maintenance` | list. list of `{days:["sun"],start:"02:00",end:"04:00",tz:"Australia/Melbourne"}`, same value as `PUT /v1/belai/sandboxes/{id}/maintenance-window` | `[]any{` | sandbox | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
-| <span id="pix.reservePercent"></span>`pix.reservePercent` | pct. pct (same value as budgets `reserveInteractivePct`) | `20` | sandbox |  |
-| <span id="pix.size"></span>`pix.size` | enum. enum `small`, `medium`, `large` | `medium` | sandbox |  |
-| <span id="pix.versionPolicy"></span>`pix.versionPolicy` | enum. enum `safest`, `stable`, `latest`, `rolling`, `pinned` (the first four are the Safe Harbour picks, see `pix-sandbox-safe-harbour.md`) | `safest` | sandbox |  |
+| <span id="pix.reservePercent"></span>`pix.reservePercent` | pct. pct (same value as budgets `reserveInteractivePct`) | `20` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| <span id="pix.size"></span>`pix.size` | enum. enum `small`, `medium`, `large` | `medium` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
+| <span id="pix.versionPolicy"></span>`pix.versionPolicy` | enum. enum `safest`, `stable`, `latest`, `rolling`, `pinned` (the first four are the Safe Harbour picks, see `pix-sandbox-safe-harbour.md`) | `safest` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
 
 ## providers
 
