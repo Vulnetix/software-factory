@@ -27,8 +27,9 @@ const out = process.argv.includes('--out') ? process.argv[process.argv.indexOf('
 const atoms = new Map();
 function atom(kind, value, repo, file, extra = {}) {
   const id = `${kind}:${value}`;
-  if (!atoms.has(id)) atoms.set(id, { id, kind, value, sources: [], ...extra });
+  if (!atoms.has(id)) { const { detail, ...rest } = extra; atoms.set(id, { id, kind, value, sources: [], ...rest }); }
   const a = atoms.get(id);
+  if (extra.detail) a.detail = { ...extra.detail, ...(a.detail ?? {}) };
   const src = `${repo}/${file}`;
   if (!a.sources.includes(src)) a.sources.push(src);
 }
@@ -120,14 +121,33 @@ function scanGoSemantics() {
   const settings = join(dir, 'factory_settings_store.go');
   if (existsSync(settings)) {
     const src = read(settings);
-    for (const m of src.matchAll(/(?:\bKey:\s*|\bfc\w*Spec\()"([a-zA-Z][\w]*(?:\.[\w]+)+)"/g)) atom('setting', m[1], 'vdb-site', 'api/internal/handler/factory_settings_store.go');
+    const file = 'api/internal/handler/factory_settings_store.go';
+    for (const line of src.split('\n')) {
+      let m;
+      if ((m = line.match(/fcEnumSpec\("([\w.]+)", "([^"]*)", "(\w+)"((?:, "[^"]*")*)\)/))) {
+        atom('setting', m[1], 'vdb-site', file, { detail: { type: 'enum', default: m[2], store: m[3], values: [...m[4].matchAll(/"([^"]*)"/g)].map((x) => x[1]) } });
+      } else if ((m = line.match(/fcBoolSpec\("([\w.]+)", (true|false)\)/))) {
+        atom('setting', m[1], 'vdb-site', file, { detail: { type: 'bool', default: m[2], store: 'factory' } });
+      } else if ((m = line.match(/fcDurSpec\("([\w.]+)", "([^"]*)"\)/))) {
+        atom('setting', m[1], 'vdb-site', file, { detail: { type: 'duration', default: m[2], store: 'factory' } });
+      } else if ((m = line.match(/\{Key: "([\w.]+)", Kind: fcK(\w+)(.*)\}/))) {
+        const d = { type: m[2].toLowerCase() };
+        const min = m[3].match(/Min: (-?[\d._e+]+)/); const max = m[3].match(/Max: (-?[\d._e+]+)/);
+        const def = m[3].match(/Default: ("[^"]*"|[^,}]+)/); const st = m[3].match(/Store: "(\w+)"/);
+        if (min) d.min = min[1]; if (max) d.max = max[1]; if (def) d.default = def[1].replace(/^"|"$/g, '').replace(/^\[\]any\{\}$/, '[]').replace(/^(\d+(?:_\d+)+)$/, (x) => x.replace(/_/g, ''));
+        if (/Locked: true/.test(m[3])) d.locked = true; if (st) d.store = st[1];
+        atom('setting', m[1], 'vdb-site', file, { detail: d });
+      } else {
+        for (const k of line.matchAll(/(?:\bKey:\s*|\bfc\w*Spec\()"([a-zA-Z][\w]*(?:\.[\w]+)+)"/g)) atom('setting', k[1], 'vdb-site', file);
+      }
+    }
   }
   for (const f of ls(dir, /^(factory|belai|pix)_.*\.go$/)) {
     const rel = `api/internal/handler/${f}`;
     const src = read(join(dir, f));
     // Validation and API error codes: v.add(path, "code", ...) and Code: "code".
-    for (const m of src.matchAll(/\bv\.add\([^,]+,\s*"([a-z][a-z0-9_]+)"/g)) atom('code', m[1], 'vdb-site', rel);
-    for (const m of src.matchAll(/\bCode:\s*"([a-z][a-z0-9_]+)"/g)) atom('code', m[1], 'vdb-site', rel);
+    for (const m of src.matchAll(/\bv\.add\([^,]+,\s*"([a-z][a-z0-9_]+)"(?:,\s*(?:fmt\.Sprintf\()?(?:"((?:[^"\\]|\\.)*)"|`([^`]*)`))?/g)) atom('code', m[1], 'vdb-site', rel, { detail: (m[2] ?? m[3]) ? { message: (m[2] ?? m[3]).replace(/\\"/g, '"') } : undefined });
+    for (const m of src.matchAll(/\bCode:\s*"([a-z][a-z0-9_]+)"(?:,\s*Message:\s*"((?:[^"\\]|\\.)*)")?/g)) atom('code', m[1], 'vdb-site', rel, { detail: m[2] ? { message: m[2].replace(/\\"/g, '"') } : undefined });
     // Named string sets: var factoryX = []string{...} / map[string]bool{...}.
     for (const m of src.matchAll(/\b(?:var\s+)?((?:factory|belai|fw|fc|pix)\w*)\s*=\s*(?:\[\]string|map\[string\](?:bool|struct\{\}|string))\{([^}]*)\}/g)) {
       const values = [...m[2].matchAll(/"([a-z][a-z0-9_:.\-]*)"\s*(?::|,|$)/g)].map((x) => x[1]);
@@ -135,10 +155,11 @@ function scanGoSemantics() {
       for (const v of values) atom('enum', `${m[1]}=${v}`, 'vdb-site', rel, { set: m[1] });
     }
   }
-  const tpl = join(dir, 'factory_templates.go');
-  if (existsSync(tpl)) for (const m of read(tpl).matchAll(/\bID:\s*"([a-z0-9-]+)"/g)) atom('template', m[1], 'vdb-site', 'api/internal/handler/factory_templates.go');
+  // Templates: every factory_templates*.go. A template literal names its
+  // Category right after its ID, which keeps node IDs inside graphs out.
+  for (const tf of ls(dir, /^factory_templates.*\.go$/)) for (const m of read(join(dir, tf)).matchAll(/\bID:\s*"([a-z0-9-]+)",\s*Category:\s*"([^"]*)"(?:,\s*Name:\s*"([^"]*)")?/g)) atom('template', m[1], 'vdb-site', `api/internal/handler/${tf}`, { detail: { category: m[2], name: m[3] } });
   for (const f of ls(dir, /^factory_defaults.*\.go$/)) {
-    for (const m of read(join(dir, f)).matchAll(/\b(?:Slug|ID|Key):\s*"([a-z0-9-]+)"/g)) atom('default', m[1], 'vdb-site', `api/internal/handler/${f}`);
+    for (const m of read(join(dir, f)).matchAll(/\b(?:Slug|ID|Key):\s*"([a-z0-9-]+)"(?:,\s*Name:\s*"([^"]*)")?(?:,\s*Rev:\s*\d+)?(?:,\s*MinAutonomy:\s*"([^"]*)")?/g)) atom('default', m[1], 'vdb-site', `api/internal/handler/${f}`, { detail: { name: m[2], minAutonomy: m[3] } });
   }
 }
 
@@ -151,7 +172,7 @@ function scanContract() {
     const src = read(md);
     const s = src.indexOf('### 2.15');
     const e = src.indexOf('### 2.16');
-    if (s > 0 && e > s) for (const m of src.slice(s, e).matchAll(/^\| `([a-zA-Z][\w]*(?:\.[\w]+)+)` \|/gm)) atom('setting', m[1], 'vdb-site', 'docs/factory.md');
+    if (s > 0 && e > s) for (const m of src.slice(s, e).matchAll(/^\| `([a-zA-Z][\w]*(?:\.[\w]+)+)` \| (.*?) \| (.*?) \| (\w+) \|$/gm)) atom('setting', m[1], 'vdb-site', 'docs/factory.md', { detail: { doc: m[2], docDefault: m[3], store: m[4] } });
   }
   for (const f of ls(docs, /^(factory|belai|pix|signing).*\.md$/)) atom('doc', `vdb-site/${f}`, 'vdb-site', `docs/${f}`);
 }
@@ -162,7 +183,7 @@ function scanWebsite() {
   for (const f of ls(join(w, 'src', 'pages', 'resolve'), /^(factory|belai)-.*\.vue$/)) atom('console', `/resolve/${f.replace(/\.vue$/, '')}`, 'website', `src/pages/resolve/${f}`);
   if (existsSync(join(w, 'src', 'pages', 'call.vue'))) atom('console', '/call', 'website', 'src/pages/call.vue');
   const tools = join(w, 'src', 'worker', 'call', 'tools.ts');
-  if (existsSync(tools)) for (const m of read(tools).matchAll(/spec:\s*fn\(`([a-z_]+)`/g)) atom('voice-tool', m[1], 'website', 'src/worker/call/tools.ts');
+  if (existsSync(tools)) for (const m of read(tools).matchAll(/spec:\s*fn\(`([a-z_]+)`(?:,\s*`([^`]*)`)?/g)) atom('voice-tool', m[1], 'website', 'src/worker/call/tools.ts', { detail: m[2] ? { description: m[2] } : undefined });
   for (const f of ls(join(w, '.repo'), /^(software-factory|factory|pix|a2a|conflict|commit-signing|session-trigger|tenant-model|belai).*\.md$/)) atom('doc', `website/${f}`, 'website', `.repo/${f}`);
   for (const f of ls(join(w, 'sandbox-worker', 'docs'), /\.md$/)) atom('doc', `website/sandbox-worker/${f}`, 'website', `sandbox-worker/docs/${f}`);
   for (const f of ls(join(w, 'src', 'worker', 'call'), /\.ts$/)) atom('tsfile', `call/${f.replace(/\.ts$/, '')}`, 'website', `src/worker/call/${f}`);
@@ -198,6 +219,9 @@ function scanBelai() {
       const fs = line.match(/flag\.NewFlagSet\("([^"]+)"/);
       if (fs) set = fs[1];
       if (/^func main\(\)/.test(line)) set = 'belai';
+      for (const m of line.matchAll(/\b\w+\.(?:String|Bool|Int|Int64|Uint|Float64|Duration|StringVar|BoolVar|IntVar|Int64Var|DurationVar|Float64Var|Var|Func|BoolFunc|TextVar)\((?:&?[\w.]+,\s*)?"([a-z][a-z0-9-]*)",\s*(?:("(?:[^"\\]|\\.)*"|[^,]+),\s*)?"((?:[^"\\]|\\.)*)"/g)) {
+        atom('cli-flag', `${set} -${m[1]}`, 'belai', `cmd/belai/${f}`, { detail: { default: m[2]?.replace(/^"|"$/g, ''), usage: m[3]?.replace(/\\"/g, '"') } });
+      }
       for (const m of line.matchAll(/\b\w+\.(?:String|Bool|Int|Int64|Uint|Float64|Duration|StringVar|BoolVar|IntVar|Int64Var|DurationVar|Float64Var|Var|Func|BoolFunc|TextVar)\((?:&?[\w.]+,\s*)?"([a-z][a-z0-9-]*)"/g)) {
         atom('cli-flag', `${set} -${m[1]}`, 'belai', `cmd/belai/${f}`);
       }
@@ -206,7 +230,7 @@ function scanBelai() {
   const tui = join(b, 'internal', 'tui');
   for (const f of ls(tui, /\.go$/)) {
     const src = read(join(tui, f));
-    for (const m of src.matchAll(/\br\.(?:Register|Alias|RegisterHidden)\("([a-z][a-z0-9-]*)"/g)) atom('tui-cmd', `/${m[1]}`, 'belai', `internal/tui/${f}`);
+    for (const m of src.matchAll(/\br\.(?:Register|Alias|RegisterHidden)\("([a-z][a-z0-9-]*)"(?:,\s*"((?:[^"\\]|\\.)*)")?/g)) atom('tui-cmd', `/${m[1]}`, 'belai', `internal/tui/${f}`, { detail: m[2] ? { description: m[2] } : undefined });
     for (const m of src.matchAll(/"((?:ctrl|alt|shift)\+[a-z0-9]+|f\d{1,2})"/g)) atom('tui-key', m[1], 'belai', `internal/tui/${f}`);
   }
   // Settings file keys: JSON tags on the config package's structs.

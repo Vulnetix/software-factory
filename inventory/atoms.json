@@ -1,8 +1,8 @@
 {
- "generatedAt": "2026-10-27T12:53:48.921Z",
+ "generatedAt": "2026-10-27T13:06:15.768Z",
  "repos": {
-  "vdb-site": "4f6d37bf3e968f7ec28b803ee9d5a41ece4adc5f",
-  "website": "70b05827fa3969018a2d0cd642bbbbfd92123597",
+  "vdb-site": "3d23e48c44e7dc10335b4086a91b980c1ec84d9d",
+  "website": "fe563eb658f156158c24190e96b3178ee7553da4",
   "belai": "b5d33b62b9af7144805bbaaab7082f3d3cc030f4",
   "saas": "aa6c2b46d08710a89f05fdd478bc14e1ae7abe6c"
  },
@@ -16,12 +16,12 @@
   "console": 25,
   "default": 7,
   "doc": 114,
-  "enum": 958,
-  "gofile": 266,
+  "enum": 1016,
+  "gofile": 270,
   "model": 42,
-  "route": 322,
-  "setting": 117,
-  "template": 14,
+  "route": 325,
+  "setting": 118,
+  "template": 37,
   "tsfile": 66,
   "tui-cmd": 49,
   "tui-key": 36,
@@ -3786,7 +3786,11 @@
    "value": "acp -model",
    "sources": [
     "belai/cmd/belai/acp.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "model id (default: the provider's)"
+   }
   },
   {
    "id": "cli-flag:acp -no-transcript",
@@ -3794,7 +3798,11 @@
    "value": "acp -no-transcript",
    "sources": [
     "belai/cmd/belai/acp.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "do not keep a session transcript of editor sessions"
+   }
   },
   {
    "id": "cli-flag:acp -provider",
@@ -3802,7 +3810,11 @@
    "value": "acp -provider",
    "sources": [
     "belai/cmd/belai/acp.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "provider (default: as for the TUI)"
+   }
   },
   {
    "id": "cli-flag:agent  -all",
@@ -3810,7 +3822,11 @@
    "value": "agent  -all",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "include ended crew runs"
+   }
   },
   {
    "id": "cli-flag:agent  -ask-off",
@@ -3818,7 +3834,11 @@
    "value": "agent  -ask-off",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "a call that would ask is allowed instead of blocking the item (set by `agent start -ask-off`)"
+   }
   },
   {
    "id": "cli-flag:agent  -clear",
@@ -3826,7 +3846,11 @@
    "value": "agent  -clear",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "delete the lessons"
+   }
   },
   {
    "id": "cli-flag:agent  -crew",
@@ -3834,7 +3858,11 @@
    "value": "agent  -crew",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "the crew this worker belongs to (set by `agent start`)"
+   }
   },
   {
    "id": "cli-flag:agent  -detached",
@@ -3842,7 +3870,11 @@
    "value": "agent  -detached",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "started by `agent start`"
+   }
   },
   {
    "id": "cli-flag:agent  -dir",
@@ -3850,7 +3882,10 @@
    "value": "agent  -dir",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "usage": "with -crew, a directory in the crew's scope, PATH or PATH:WEIGHT (repeatable; default this repository)"
+   }
   },
   {
    "id": "cli-flag:agent  -drain",
@@ -3858,7 +3893,11 @@
    "value": "agent  -drain",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "exit once nothing is left to claim even when the profile has a cron schedule"
+   }
   },
   {
    "id": "cli-flag:agent  -effort",
@@ -3866,7 +3905,11 @@
    "value": "agent  -effort",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "effort override (set by the crew supervisor)"
+   }
   },
   {
    "id": "cli-flag:agent  -f",
@@ -3874,7 +3917,11 @@
    "value": "agent  -f",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "follow"
+   }
   },
   {
    "id": "cli-flag:agent  -fill",
@@ -3882,7 +3929,11 @@
    "value": "agent  -fill",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "with -crew, confirm a crew already running over this directory instead of refusing (its supervisor keeps it full)"
+   }
   },
   {
    "id": "cli-flag:agent  -final-retry",
@@ -3890,7 +3941,11 @@
    "value": "agent  -final-retry",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "0",
+    "usage": "with -crew, seconds the crew sleeps once the whole pool failed, before its final retry (default 900)"
+   }
   },
   {
    "id": "cli-flag:agent  -force",
@@ -3898,7 +3953,11 @@
    "value": "agent  -force",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "replace an existing profile of the same name"
+   }
   },
   {
    "id": "cli-flag:agent  -from",
@@ -3906,7 +3965,11 @@
    "value": "agent  -from",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "the format of a definition written for another harness: claws, nemoclaw, hermes, mini-swe or auto"
+   }
   },
   {
    "id": "cli-flag:agent  -id",
@@ -3914,7 +3977,11 @@
    "value": "agent  -id",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "worker id (set by `agent start`)"
+   }
   },
   {
    "id": "cli-flag:agent  -item",
@@ -3922,7 +3989,11 @@
    "value": "agent  -item",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "work this item"
+   }
   },
   {
    "id": "cli-flag:agent  -json",
@@ -3930,7 +4001,11 @@
    "value": "agent  -json",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "print JSON"
+   }
   },
   {
    "id": "cli-flag:agent  -max-workers",
@@ -3938,7 +4013,11 @@
    "value": "agent  -max-workers",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "0",
+    "usage": "worker cap to reserve under in place of agents.max_workers (set by `agent start`)"
+   }
   },
   {
    "id": "cli-flag:agent  -model",
@@ -3946,7 +4025,11 @@
    "value": "agent  -model",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "model override"
+   }
   },
   {
    "id": "cli-flag:agent  -n",
@@ -3954,7 +4037,11 @@
    "value": "agent  -n",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "40",
+    "usage": "lines from the end"
+   }
   },
   {
    "id": "cli-flag:agent  -name",
@@ -3962,7 +4049,11 @@
    "value": "agent  -name",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "with -from: the profile name to use instead of the one in the source"
+   }
   },
   {
    "id": "cli-flag:agent  -once",
@@ -3970,7 +4061,11 @@
    "value": "agent  -once",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "work one item (or find none) and exit"
+   }
   },
   {
    "id": "cli-flag:agent  -pool",
@@ -3978,7 +4073,10 @@
    "value": "agent  -pool",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "usage": "with -crew, a provider/model in the crew's pool, which workers cycle when one keeps failing (repeatable)"
+   }
   },
   {
    "id": "cli-flag:agent  -provider",
@@ -3986,7 +4084,11 @@
    "value": "agent  -provider",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "provider override"
+   }
   },
   {
    "id": "cli-flag:agent  -replicas",
@@ -3994,7 +4096,11 @@
    "value": "agent  -replicas",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "1",
+    "usage": "workers of the profile"
+   }
   },
   {
    "id": "cli-flag:agent  -run",
@@ -4002,7 +4108,11 @@
    "value": "agent  -run",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "the crew run this worker belongs to (set by the crew supervisor)"
+   }
   },
   {
    "id": "cli-flag:agent  -stay",
@@ -4010,7 +4120,11 @@
    "value": "agent  -stay",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "keep waiting for work instead of exiting once nothing is left to claim"
+   }
   },
   {
    "id": "cli-flag:agent  -stay-idle-max",
@@ -4018,7 +4132,11 @@
    "value": "agent  -stay-idle-max",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "0",
+    "usage": "with -stay, exit after this long with nothing to claim (default 6h, at most 24h)"
+   }
   },
   {
    "id": "cli-flag:agent  -switch-after",
@@ -4026,7 +4144,11 @@
    "value": "agent  -switch-after",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "0",
+    "usage": "with -crew, outages in a row before a worker moves to the next target in the pool (default 3)"
+   }
   },
   {
    "id": "cli-flag:agent  -trust-dir",
@@ -4034,7 +4156,11 @@
    "value": "agent  -trust-dir",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "trust the repository first"
+   }
   },
   {
    "id": "cli-flag:agent  -web-allow-guardrails-off",
@@ -4042,7 +4168,11 @@
    "value": "agent  -web-allow-guardrails-off",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "with -web-controls, guardrails may be turned off from the website (set by `agent start`)"
+   }
   },
   {
    "id": "cli-flag:agent  -web-controls",
@@ -4050,7 +4180,11 @@
    "value": "agent  -web-controls",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "take session controls from the website (set by `agent start`)"
+   }
   },
   {
    "id": "cli-flag:agent  -yes",
@@ -4058,7 +4192,11 @@
    "value": "agent  -yes",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "with -from: save the profile and install its skills (without it the import is a preview)"
+   }
   },
   {
    "id": "cli-flag:belai -agent",
@@ -4066,7 +4204,11 @@
    "value": "belai -agent",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "start a background agent by name in foreground mode"
+   }
   },
   {
    "id": "cli-flag:belai -agent-create",
@@ -4074,7 +4216,11 @@
    "value": "belai -agent-create",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "create an agent profile from a description and save to disk"
+   }
   },
   {
    "id": "cli-flag:belai -allow-ask-without-tty",
@@ -4082,7 +4228,11 @@
    "value": "belai -allow-ask-without-tty",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "ignore ask-without-tty blocks"
+   }
   },
   {
    "id": "cli-flag:belai -allow-invalid-hooks",
@@ -4090,7 +4240,11 @@
    "value": "belai -allow-invalid-hooks",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "ignore invalid hook validation"
+   }
   },
   {
    "id": "cli-flag:belai -allow-invalid-skills",
@@ -4098,7 +4252,11 @@
    "value": "belai -allow-invalid-skills",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "ignore invalid skill validation"
+   }
   },
   {
    "id": "cli-flag:belai -allow-malformed-prompt",
@@ -4106,7 +4264,11 @@
    "value": "belai -allow-malformed-prompt",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "ignore malformed prompt classification"
+   }
   },
   {
    "id": "cli-flag:belai -allow-malformed-tool-result",
@@ -4114,7 +4276,11 @@
    "value": "belai -allow-malformed-tool-result",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "ignore malformed tool results"
+   }
   },
   {
    "id": "cli-flag:belai -allow-unpermitted-tools",
@@ -4122,7 +4288,11 @@
    "value": "belai -allow-unpermitted-tools",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "allow tool calls matching no permission rule (default)"
+   }
   },
   {
    "id": "cli-flag:belai -allow-unsafe-prompt",
@@ -4130,7 +4300,11 @@
    "value": "belai -allow-unsafe-prompt",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "ignore unsafe prompt classification"
+   }
   },
   {
    "id": "cli-flag:belai -allow-unsafe-tool-result",
@@ -4138,7 +4312,11 @@
    "value": "belai -allow-unsafe-tool-result",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "ignore unsafe tool results"
+   }
   },
   {
    "id": "cli-flag:belai -answers",
@@ -4146,7 +4324,11 @@
    "value": "belai -answers",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "with -prompt, answer the questions the run asks (a goal's clarification round, AskUserQuestion, a stuck goal) from this JSON file of your answers, in order; without it the run asks nothing"
+   }
   },
   {
    "id": "cli-flag:belai -as",
@@ -4154,7 +4336,11 @@
    "value": "belai -as",
    "sources": [
     "belai/cmd/belai/agentfilescmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "the path the profile lists for the file (default: the file's name)"
+   }
   },
   {
    "id": "cli-flag:belai -ask-permission",
@@ -4162,7 +4348,11 @@
    "value": "belai -ask-permission",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "true",
+    "usage": "enable the permission-ask gate; -ask-permission=false resolves asks to allow"
+   }
   },
   {
    "id": "cli-flag:belai -auto",
@@ -4170,7 +4360,11 @@
    "value": "belai -auto",
    "sources": [
     "belai/cmd/belai/crewruncmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "hand the model back to the crew's pool"
+   }
   },
   {
    "id": "cli-flag:belai -c",
@@ -4178,7 +4372,11 @@
    "value": "belai -c",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "shorthand for -continue"
+   }
   },
   {
    "id": "cli-flag:belai -caveman",
@@ -4186,7 +4384,11 @@
    "value": "belai -caveman",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "enable caveman voice rewrite for this run"
+   }
   },
   {
    "id": "cli-flag:belai -claim",
@@ -4194,7 +4396,11 @@
    "value": "belai -claim",
    "sources": [
     "belai/cmd/belai/adhoc.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "with -prompt, what to claim: LIST[:LABEL,LABEL] (default: backlog)"
+   }
   },
   {
    "id": "cli-flag:belai -classifier-effort",
@@ -4202,7 +4408,11 @@
    "value": "belai -classifier-effort",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "security-classifier thinking effort (default: none)"
+   }
   },
   {
    "id": "cli-flag:belai -classifier-kind",
@@ -4210,7 +4420,11 @@
    "value": "belai -classifier-kind",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "security-classifier stack: llm, models, openrouter-decisions or systemone (jev is read as systemone) (default: models when the binary embeds a model, else llm)"
+   }
   },
   {
    "id": "cli-flag:belai -classifier-model",
@@ -4218,7 +4432,11 @@
    "value": "belai -classifier-model",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "security-classifier model (default: the main model)"
+   }
   },
   {
    "id": "cli-flag:belai -classifier-phase1-model",
@@ -4226,7 +4444,11 @@
    "value": "belai -classifier-phase1-model",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "phase-1 prompt-saturation model id"
+   }
   },
   {
    "id": "cli-flag:belai -classifier-phase1-source",
@@ -4234,7 +4456,11 @@
    "value": "belai -classifier-phase1-source",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "phase-1 source: embedded or huggingface"
+   }
   },
   {
    "id": "cli-flag:belai -classifier-phase1-threshold",
@@ -4242,7 +4468,11 @@
    "value": "belai -classifier-phase1-threshold",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "0",
+    "usage": "phase-1 attack threshold (default 0.75)"
+   }
   },
   {
    "id": "cli-flag:belai -classifier-phase2-model",
@@ -4250,7 +4480,11 @@
    "value": "belai -classifier-phase2-model",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "phase-2 jailbreak model id"
+   }
   },
   {
    "id": "cli-flag:belai -classifier-phase2-source",
@@ -4258,7 +4492,11 @@
    "value": "belai -classifier-phase2-source",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "phase-2 source: embedded, huggingface, or disabled"
+   }
   },
   {
    "id": "cli-flag:belai -classifier-phase2-threshold",
@@ -4266,7 +4504,11 @@
    "value": "belai -classifier-phase2-threshold",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "0",
+    "usage": "phase-2 attack threshold (default 0.75)"
+   }
   },
   {
    "id": "cli-flag:belai -classifier-provider",
@@ -4274,7 +4516,11 @@
    "value": "belai -classifier-provider",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "security-classifier provider (default: the main provider)"
+   }
   },
   {
    "id": "cli-flag:belai -continue",
@@ -4282,7 +4528,11 @@
    "value": "belai -continue",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "continue the most recent session for this project"
+   }
   },
   {
    "id": "cli-flag:belai -dangerously-yolo-everything",
@@ -4290,7 +4540,11 @@
    "value": "belai -dangerously-yolo-everything",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "ignore every posture gate"
+   }
   },
   {
    "id": "cli-flag:belai -defer-tools",
@@ -4298,7 +4552,11 @@
    "value": "belai -defer-tools",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "true",
+    "usage": "advertise core tools in full and load the rest on demand with ToolSearch; -defer-tools=false sends every tool definition on every request"
+   }
   },
   {
    "id": "cli-flag:belai -detect-mode",
@@ -4306,7 +4564,11 @@
    "value": "belai -detect-mode",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "run the operating-mode classifier and report the decision"
+   }
   },
   {
    "id": "cli-flag:belai -drain",
@@ -4314,7 +4576,11 @@
    "value": "belai -drain",
    "sources": [
     "belai/cmd/belai/crewruncmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "finish the card in hand, then stop"
+   }
   },
   {
    "id": "cli-flag:belai -dry-run",
@@ -4322,7 +4588,11 @@
    "value": "belai -dry-run",
    "sources": [
     "belai/cmd/belai/agentfilescmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "say what would be attached without doing it"
+   }
   },
   {
    "id": "cli-flag:belai -effort",
@@ -4331,7 +4601,11 @@
    "sources": [
     "belai/cmd/belai/crewruncmd.go",
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "the effort of the next turn"
+   }
   },
   {
    "id": "cli-flag:belai -export",
@@ -4339,7 +4613,11 @@
    "value": "belai -export",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "export a session by id or unique id prefix as Markdown and exit"
+   }
   },
   {
    "id": "cli-flag:belai -firewall",
@@ -4347,7 +4625,11 @@
    "value": "belai -firewall",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "route LLM traffic through the active AI Firewall (see /firewall)"
+   }
   },
   {
    "id": "cli-flag:belai -force",
@@ -4356,7 +4638,11 @@
    "sources": [
     "belai/cmd/belai/agentfilescmd.go",
     "belai/cmd/belai/libcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "replace an existing crew of the same name"
+   }
   },
   {
    "id": "cli-flag:belai -guardrails",
@@ -4364,7 +4650,11 @@
    "value": "belai -guardrails",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "true",
+    "usage": "enable the posture guardrails; -guardrails=false is the guardrails-off half of YOLO"
+   }
   },
   {
    "id": "cli-flag:belai -index",
@@ -4372,7 +4662,11 @@
    "value": "belai -index",
    "sources": [
     "belai/cmd/belai/knowledgecmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "bring the indexes up to date first (classifies new text)"
+   }
   },
   {
    "id": "cli-flag:belai -json",
@@ -4380,7 +4674,11 @@
    "value": "belai -json",
    "sources": [
     "belai/cmd/belai/libcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "print JSON"
+   }
   },
   {
    "id": "cli-flag:belai -mode",
@@ -4388,7 +4686,11 @@
    "value": "belai -mode",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "operating mode for -prompt: agent, plan, goal or code (default: classified from the prompt)"
+   }
   },
   {
    "id": "cli-flag:belai -model",
@@ -4399,7 +4701,11 @@
     "belai/cmd/belai/crewruncmd.go",
     "belai/cmd/belai/knowledgecmd.go",
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "model override"
+   }
   },
   {
    "id": "cli-flag:belai -no-git-sync",
@@ -4407,7 +4713,11 @@
    "value": "belai -no-git-sync",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "do not rebase the branch onto origin's default branch before a turn (git.sync in settings; /gitsync in the TUI)"
+   }
   },
   {
    "id": "cli-flag:belai -no-prune",
@@ -4415,7 +4725,11 @@
    "value": "belai -no-prune",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "never prune idle sessions"
+   }
   },
   {
    "id": "cli-flag:belai -no-transcript",
@@ -4423,7 +4737,11 @@
    "value": "belai -no-transcript",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "with -prompt, do not keep a session transcript of the run"
+   }
   },
   {
    "id": "cli-flag:belai -o",
@@ -4431,7 +4749,11 @@
    "value": "belai -o",
    "sources": [
     "belai/cmd/belai/agentdraftcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "write the markdown to FILE instead of stdout"
+   }
   },
   {
    "id": "cli-flag:belai -plan",
@@ -4439,7 +4761,11 @@
    "value": "belai -plan",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "start in plan mode (read-only)"
+   }
   },
   {
    "id": "cli-flag:belai -prompt",
@@ -4448,7 +4774,11 @@
    "sources": [
     "belai/cmd/belai/adhoc.go",
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "run a worker made from this prompt instead of a stored profile"
+   }
   },
   {
    "id": "cli-flag:belai -provider",
@@ -4458,7 +4788,11 @@
     "belai/cmd/belai/agentdraftcmd.go",
     "belai/cmd/belai/knowledgecmd.go",
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "provider override"
+   }
   },
   {
    "id": "cli-flag:belai -publish",
@@ -4466,7 +4800,11 @@
    "value": "belai -publish",
    "sources": [
     "belai/cmd/belai/adhoc.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "with -prompt, none, draft_pr or agent (default: agent)"
+   }
   },
   {
    "id": "cli-flag:belai -r",
@@ -4474,7 +4812,11 @@
    "value": "belai -r",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "shorthand for -resume"
+   }
   },
   {
    "id": "cli-flag:belai -read-only",
@@ -4482,7 +4824,11 @@
    "value": "belai -read-only",
    "sources": [
     "belai/cmd/belai/adhoc.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "with -prompt, run checks in a throwaway worktree and change nothing"
+   }
   },
   {
    "id": "cli-flag:belai -resume",
@@ -4490,7 +4836,11 @@
    "value": "belai -resume",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "resume a session by id or unique id prefix"
+   }
   },
   {
    "id": "cli-flag:belai -run",
@@ -4498,7 +4848,11 @@
    "value": "belai -run",
    "sources": [
     "belai/cmd/belai/crewruncmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "the crew run to supervise"
+   }
   },
   {
    "id": "cli-flag:belai -session-retention-days",
@@ -4506,7 +4860,11 @@
    "value": "belai -session-retention-days",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "0",
+    "usage": "idle session retention in days (default 28)"
+   }
   },
   {
    "id": "cli-flag:belai -teleport",
@@ -4514,7 +4872,11 @@
    "value": "belai -teleport",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "continue a session of your account from another host, sandbox or the web: its transcript and any agent profile it needs are fetched, and the session opens here under a new id (the original carries on)"
+   }
   },
   {
    "id": "cli-flag:belai -teleport-push",
@@ -4522,7 +4884,11 @@
    "value": "belai -teleport-push",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "with -teleport, agree that the origin host may push the session's uncommitted and unpushed changes to the forge as one belai/teleport/<id> branch, which this host then fetches; without it they are sent as a patch and replayed here"
+   }
   },
   {
    "id": "cli-flag:belai -teleport-ref",
@@ -4530,7 +4896,11 @@
    "value": "belai -teleport-ref",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "with -teleport, check out this ref or commit instead of the one the session was at"
+   }
   },
   {
    "id": "cli-flag:belai -to",
@@ -4538,7 +4908,11 @@
    "value": "belai -to",
    "sources": [
     "belai/cmd/belai/adhoc.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "with -prompt, the list a success goes to (default: review, or done for a worker that only decides)"
+   }
   },
   {
    "id": "cli-flag:belai -tool-call-mismatch",
@@ -4546,7 +4920,11 @@
    "value": "belai -tool-call-mismatch",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "abort|strip|ignore tool-call mismatches"
+   }
   },
   {
    "id": "cli-flag:belai -tools",
@@ -4555,7 +4933,11 @@
    "sources": [
     "belai/cmd/belai/adhoc.go",
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "with -prompt, the tools the worker may use, comma separated (default: all)"
+   }
   },
   {
    "id": "cli-flag:belai -trust-dir",
@@ -4565,7 +4947,11 @@
     "belai/cmd/belai/agentdraftcmd.go",
     "belai/cmd/belai/knowledgecmd.go",
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "trust the repository first"
+   }
   },
   {
    "id": "cli-flag:belai -usage-json",
@@ -4573,7 +4959,11 @@
    "value": "belai -usage-json",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "with -prompt, write a JSON summary of the run's token usage (per role, per model, request composition) to this path on exit"
+   }
   },
   {
    "id": "cli-flag:belai -verbose",
@@ -4581,7 +4971,11 @@
    "value": "belai -verbose",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "print role-manager decisions to stderr"
+   }
   },
   {
    "id": "cli-flag:belai -version",
@@ -4589,7 +4983,11 @@
    "value": "belai -version",
    "sources": [
     "belai/cmd/belai/main.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "print version and exit"
+   }
   },
   {
    "id": "cli-flag:crew log -audit",
@@ -4597,7 +4995,11 @@
    "value": "crew log -audit",
    "sources": [
     "belai/cmd/belai/crewcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "print audit entries instead of faults"
+   }
   },
   {
    "id": "cli-flag:crew log -class",
@@ -4605,7 +5007,11 @@
    "value": "crew log -class",
    "sources": [
     "belai/cmd/belai/crewcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "only faults of this class"
+   }
   },
   {
    "id": "cli-flag:crew log -crew",
@@ -4613,7 +5019,11 @@
    "value": "crew log -crew",
    "sources": [
     "belai/cmd/belai/crewcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "the newest run of this crew"
+   }
   },
   {
    "id": "cli-flag:crew log -follow",
@@ -4621,7 +5031,11 @@
    "value": "crew log -follow",
    "sources": [
     "belai/cmd/belai/crewcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "keep printing new lines"
+   }
   },
   {
    "id": "cli-flag:crew log -json",
@@ -4629,7 +5043,11 @@
    "value": "crew log -json",
    "sources": [
     "belai/cmd/belai/crewcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "print JSON lines"
+   }
   },
   {
    "id": "cli-flag:crew log -limit",
@@ -4637,7 +5055,11 @@
    "value": "crew log -limit",
    "sources": [
     "belai/cmd/belai/crewcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "0",
+    "usage": "print at most the newest N lines"
+   }
   },
   {
    "id": "cli-flag:crew log -run",
@@ -4645,7 +5067,11 @@
    "value": "crew log -run",
    "sources": [
     "belai/cmd/belai/crewcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "the run to read"
+   }
   },
   {
    "id": "cli-flag:crew log -verify",
@@ -4653,7 +5079,11 @@
    "value": "crew log -verify",
    "sources": [
     "belai/cmd/belai/crewcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "check the audit hash chain"
+   }
   },
   {
    "id": "cli-flag:crew log -worker",
@@ -4661,7 +5091,11 @@
    "value": "crew log -worker",
    "sources": [
     "belai/cmd/belai/crewcmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "only this worker's lines"
+   }
   },
   {
    "id": "cli-flag:kanban  -assignee",
@@ -4669,7 +5103,11 @@
    "value": "kanban  -assignee",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "agent profile to route to"
+   }
   },
   {
    "id": "cli-flag:kanban  -body",
@@ -4677,7 +5115,11 @@
    "value": "kanban  -body",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "details"
+   }
   },
   {
    "id": "cli-flag:kanban  -body-file",
@@ -4685,7 +5127,11 @@
    "value": "kanban  -body-file",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "read the details from a file"
+   }
   },
   {
    "id": "cli-flag:kanban  -crew",
@@ -4693,7 +5139,11 @@
    "value": "kanban  -crew",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "route to a crew's entry profile"
+   }
   },
   {
    "id": "cli-flag:kanban  -depends",
@@ -4701,7 +5151,10 @@
    "value": "kanban  -depends",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "usage": "item that must be done first (repeatable)"
+   }
   },
   {
    "id": "cli-flag:kanban  -flow",
@@ -4709,7 +5162,11 @@
    "value": "kanban  -flow",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "feature, bug or ui: file it for that flow crew's first stage"
+   }
   },
   {
    "id": "cli-flag:kanban  -host",
@@ -4717,7 +5174,11 @@
    "value": "kanban  -host",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "this, a sync host id, or none"
+   }
   },
   {
    "id": "cli-flag:kanban  -json",
@@ -4725,7 +5186,11 @@
    "value": "kanban  -json",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "print JSON"
+   }
   },
   {
    "id": "cli-flag:kanban  -label",
@@ -4733,7 +5198,10 @@
    "value": "kanban  -label",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "usage": "routing label (repeatable)"
+   }
   },
   {
    "id": "cli-flag:kanban  -limit",
@@ -4741,7 +5209,11 @@
    "value": "kanban  -limit",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "50",
+    "usage": "at most this many"
+   }
   },
   {
    "id": "cli-flag:kanban  -list",
@@ -4749,7 +5221,11 @@
    "value": "kanban  -list",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "backlog",
+    "usage": "backlog or review"
+   }
   },
   {
    "id": "cli-flag:kanban  -note",
@@ -4757,7 +5233,11 @@
    "value": "kanban  -note",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "why"
+   }
   },
   {
    "id": "cli-flag:kanban  -priority",
@@ -4765,7 +5245,11 @@
    "value": "kanban  -priority",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "0",
+    "usage": "-2 to 3"
+   }
   },
   {
    "id": "cli-flag:kanban  -project",
@@ -4773,7 +5257,11 @@
    "value": "kanban  -project",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "project name (default: this directory's)"
+   }
   },
   {
    "id": "cli-flag:kanban  -start",
@@ -4781,7 +5269,11 @@
    "value": "kanban  -start",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "start the worker or crew in this directory"
+   }
   },
   {
    "id": "cli-flag:kanban  -to",
@@ -4789,7 +5281,11 @@
    "value": "kanban  -to",
    "sources": [
     "belai/cmd/belai/kanbancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "blocked",
+    "usage": "list a rejected card goes to"
+   }
   },
   {
    "id": "cli-flag:library scan -json",
@@ -4797,7 +5293,11 @@
    "value": "library scan -json",
    "sources": [
     "belai/cmd/belai/libscancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "print JSON"
+   }
   },
   {
    "id": "cli-flag:library scan -kind",
@@ -4805,7 +5305,11 @@
    "value": "library scan -kind",
    "sources": [
     "belai/cmd/belai/libscancmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "scan one kind of item"
+   }
   },
   {
    "id": "cli-flag:login kiro -api-region",
@@ -4813,7 +5317,11 @@
    "value": "login kiro -api-region",
    "sources": [
     "belai/cmd/belai/login.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "Kiro API region"
+   }
   },
   {
    "id": "cli-flag:login kiro -backend",
@@ -4821,7 +5329,11 @@
    "value": "login kiro -backend",
    "sources": [
     "belai/cmd/belai/login.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "keychain or user-file"
+   }
   },
   {
    "id": "cli-flag:login kiro -import",
@@ -4829,7 +5341,11 @@
    "value": "login kiro -import",
    "sources": [
     "belai/cmd/belai/login.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "import Kiro's own sign-in"
+   }
   },
   {
    "id": "cli-flag:login kiro -profile-arn",
@@ -4837,7 +5353,11 @@
    "value": "login kiro -profile-arn",
    "sources": [
     "belai/cmd/belai/login.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "CodeWhisperer profile ARN"
+   }
   },
   {
    "id": "cli-flag:login kiro -region",
@@ -4845,7 +5365,11 @@
    "value": "login kiro -region",
    "sources": [
     "belai/cmd/belai/login.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "SSO region"
+   }
   },
   {
    "id": "cli-flag:login kiro -start-url",
@@ -4853,7 +5377,11 @@
    "value": "login kiro -start-url",
    "sources": [
     "belai/cmd/belai/login.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "IAM Identity Center start URL"
+   }
   },
   {
    "id": "cli-flag:plugin  -yes",
@@ -4861,7 +5389,11 @@
    "value": "plugin  -yes",
    "sources": [
     "belai/cmd/belai/plugin.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "install without the interactive confirmation (the listing is still printed)"
+   }
   },
   {
    "id": "cli-flag:rc -allow-private-cidr",
@@ -4869,7 +5401,10 @@
    "value": "rc -allow-private-cidr",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "usage": "let WebFetch reach this private-use range (repeatable); loopback and link-local are never allowed, and every other private address stays refused"
+   }
   },
   {
    "id": "cli-flag:rc -detach",
@@ -4877,7 +5412,11 @@
    "value": "rc -detach",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "run in the background; logs go to ~/.vulnetix/belai/rc/rc.log"
+   }
   },
   {
    "id": "cli-flag:rc -dir",
@@ -4885,7 +5424,10 @@
    "value": "rc -dir",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "usage": "also offer this directory (repeatable); it is trusted, as with -trust-dir"
+   }
   },
   {
    "id": "cli-flag:rc -idle",
@@ -4893,7 +5435,11 @@
    "value": "rc -idle",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "rc.DefaultIdle",
+    "usage": "end a session after this long without a prompt"
+   }
   },
   {
    "id": "cli-flag:rc -max",
@@ -4901,7 +5447,11 @@
    "value": "rc -max",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "rc.DefaultMax",
+    "usage": "sessions to run at once; when given without --max-workers, also the fleet worker cap in place of agents.max_workers"
+   }
   },
   {
    "id": "cli-flag:rc -max-workers",
@@ -4909,7 +5459,11 @@
    "value": "rc -max-workers",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "0",
+    "usage": "fleet workers to run at once, in place of agents.max_workers; sessions stay capped by --max"
+   }
   },
   {
    "id": "cli-flag:rc -no-clone",
@@ -4917,7 +5471,11 @@
    "value": "rc -no-clone",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "never clone a repository a Software Factory request names and this machine does not offer, whatever agents.clone says"
+   }
   },
   {
    "id": "cli-flag:rc -status",
@@ -4925,7 +5483,11 @@
    "value": "rc -status",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "show whether remote control is running"
+   }
   },
   {
    "id": "cli-flag:rc -stop",
@@ -4933,7 +5495,11 @@
    "value": "rc -stop",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "stop the running remote control and its sessions"
+   }
   },
   {
    "id": "cli-flag:rc -web-allow-guardrails-off",
@@ -4941,7 +5507,11 @@
    "value": "rc -web-allow-guardrails-off",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "with --web-controls, let a web session turn its guardrails off"
+   }
   },
   {
    "id": "cli-flag:rc -web-controls",
@@ -4949,7 +5519,11 @@
    "value": "rc -web-controls",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "let web sessions change their mode, model, guardrails, ask and display with the TUI's slash commands and keys (that session only)"
+   }
   },
   {
    "id": "cli-flag:rc -web-project-settings",
@@ -4957,7 +5531,11 @@
    "value": "rc -web-project-settings",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "let the website read and edit each offered directory's project preferences on this host"
+   }
   },
   {
    "id": "cli-flag:rc -web-shell",
@@ -4965,7 +5543,11 @@
    "value": "rc -web-shell",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "let web sessions run a shell line on this host, under the TUI's `!cmd` permission rules and OS sandbox"
+   }
   },
   {
    "id": "cli-flag:rc-session -add-dir",
@@ -4973,7 +5555,10 @@
    "value": "rc-session -add-dir",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "usage": "an extra workspace directory for the session (repeatable; the daemon checked each is offered)"
+   }
   },
   {
    "id": "cli-flag:rc-session -allow-guardrails-off",
@@ -4981,7 +5566,11 @@
    "value": "rc-session -allow-guardrails-off",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "with -controls, a web session may turn guardrails off"
+   }
   },
   {
    "id": "cli-flag:rc-session -ask",
@@ -4989,7 +5578,11 @@
    "value": "rc-session -ask",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "on or off: the start request's permission-ask switch for this session (default: ask_permission in settings)"
+   }
   },
   {
    "id": "cli-flag:rc-session -controls",
@@ -4997,7 +5590,11 @@
    "value": "rc-session -controls",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "take session controls from the web (belai rc --web-controls)"
+   }
   },
   {
    "id": "cli-flag:rc-session -dispatch",
@@ -5005,7 +5602,11 @@
    "value": "rc-session -dispatch",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "the website request this session answers"
+   }
   },
   {
    "id": "cli-flag:rc-session -effort",
@@ -5013,7 +5614,11 @@
    "value": "rc-session -effort",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "effort for this session (default: the host's own)"
+   }
   },
   {
    "id": "cli-flag:rc-session -git-sync",
@@ -5021,7 +5626,11 @@
    "value": "rc-session -git-sync",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "on or off: sync the branch with origin's default branch before turns (default: git.sync in settings)"
+   }
   },
   {
    "id": "cli-flag:rc-session -idle",
@@ -5029,7 +5638,11 @@
    "value": "rc-session -idle",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "rc.DefaultIdle",
+    "usage": "end after this long without a prompt"
+   }
   },
   {
    "id": "cli-flag:rc-session -mode",
@@ -5037,7 +5650,11 @@
    "value": "rc-session -mode",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "agent, plan, goal, code or pix-assistant (default: classified)"
+   }
   },
   {
    "id": "cli-flag:rc-session -model",
@@ -5045,7 +5662,11 @@
    "value": "rc-session -model",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "model for this session (default: the host's own)"
+   }
   },
   {
    "id": "cli-flag:rc-session -profile",
@@ -5053,7 +5674,11 @@
    "value": "rc-session -profile",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "engage this agent profile for agent-mode turns (a web request's choice, with -mode agent), or the persona of a -mode pix-assistant session"
+   }
   },
   {
    "id": "cli-flag:rc-session -provider",
@@ -5061,7 +5686,11 @@
    "value": "rc-session -provider",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "provider for this session (default: the host's own)"
+   }
   },
   {
    "id": "cli-flag:rc-session -session-id",
@@ -5069,7 +5698,11 @@
    "value": "rc-session -session-id",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "",
+    "usage": "the session id the daemon minted"
+   }
   },
   {
    "id": "cli-flag:rc-session -shell",
@@ -5077,7 +5710,11 @@
    "value": "rc-session -shell",
    "sources": [
     "belai/cmd/belai/rccmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "run shell lines from the web (belai rc --web-shell)"
+   }
   },
   {
    "id": "cli-flag:repo  -json",
@@ -5085,7 +5722,11 @@
    "value": "repo  -json",
    "sources": [
     "belai/cmd/belai/repocmd.go"
-   ]
+   ],
+   "detail": {
+    "default": "false",
+    "usage": "print JSON"
+   }
   },
   {
    "id": "cli-sub:agent control",
@@ -5509,7 +6150,10 @@
    "value": "action_conflict",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, the event already names the action \""
+   }
   },
   {
    "id": "code:adapter_unavailable",
@@ -5517,7 +6161,10 @@
    "value": "adapter_unavailable",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, that model is not one this workflow can use. Choose clef-flash, clef, jev, tev1, pix-fast or a model from your vault."
+   }
   },
   {
    "id": "code:already_decided",
@@ -5533,7 +6180,10 @@
    "value": "approver_missing",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "Name who can approve in {node}. Add a team, a member, a role or the repository admins."
+   }
   },
   {
    "id": "code:autonomy_above_max",
@@ -5541,7 +6191,10 @@
    "value": "autonomy_above_max",
    "sources": [
     "vdb-site/api/internal/handler/factory_repos.go"
-   ]
+   ],
+   "detail": {
+    "message": "autonomy is above autonomy.max ("
+   }
   },
   {
    "id": "code:bad_request",
@@ -5567,7 +6220,10 @@
    "value": "budget_exceeds_parent",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "The run budget is larger than the month budget. Lower the run budget or raise the month budget."
+   }
   },
   {
    "id": "code:conclusion_unsupported_event",
@@ -5575,7 +6231,10 @@
    "value": "conclusion_unsupported_event",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, the conclusion condition only applies to check runs, check suites, workflow runs and deployment statuses. Remove it or choose one of those events."
+   }
   },
   {
    "id": "code:crew_not_found",
@@ -5583,7 +6242,10 @@
    "value": "crew_not_found",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "Choose the crew or agent that {node} hands the work to."
+   }
   },
   {
    "id": "code:custom_required",
@@ -5591,7 +6253,10 @@
    "value": "custom_required",
    "sources": [
     "vdb-site/api/internal/handler/factory_state.go"
-   ]
+   ],
+   "detail": {
+    "message": "security.scanners custom needs security.scanners.custom"
+   }
   },
   {
    "id": "code:cycle",
@@ -5599,7 +6264,10 @@
    "value": "cycle",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "%s is connected to itself. Remove that connection."
+   }
   },
   {
    "id": "code:duplicate_edge",
@@ -5607,7 +6275,10 @@
    "value": "duplicate_edge",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "%s is connected to %s twice for the same outcome. Remove one of the connections."
+   }
   },
   {
    "id": "code:duplicate_id",
@@ -5615,7 +6286,10 @@
    "value": "duplicate_id",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "{node} has the id \""
+   }
   },
   {
    "id": "code:environment_unsupported_event",
@@ -5623,7 +6297,10 @@
    "value": "environment_unsupported_event",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, the environment condition only applies to deployment statuses. Remove it or choose the deployment status event."
+   }
   },
   {
    "id": "code:firewall_condition_unsupported_source",
@@ -5631,7 +6308,10 @@
    "value": "firewall_condition_unsupported_source",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, %s only applies to the %s source. Remove it or change the source."
+   }
   },
   {
    "id": "code:forbidden",
@@ -5647,7 +6327,10 @@
    "value": "fork_pr_needs_human",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, the trigger takes pull requests from forks, and a crew could start without a person approving first. Add an approval step before the crew, or set where the change comes from to the same repository only."
+   }
   },
   {
    "id": "code:github_calls_exceed_run_cap",
@@ -5655,7 +6338,10 @@
    "value": "github_calls_exceed_run_cap",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "The steps can make %d GitHub calls in one run, more than the cap of %d. Lower the call limit of a step or raise the cap."
+   }
   },
   {
    "id": "code:github_rate_limited",
@@ -5681,7 +6367,10 @@
     "vdb-site/api/internal/handler/factory_budgets.go",
     "vdb-site/api/internal/handler/factory_repos.go",
     "vdb-site/api/internal/handler/factory_state.go"
-   ]
+   ],
+   "detail": {
+    "message": "unknown route"
+   }
   },
   {
    "id": "code:invalid_base",
@@ -5689,7 +6378,10 @@
    "value": "invalid_base",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, the base branch must be default, pr_head or the name of a branch."
+   }
   },
   {
    "id": "code:invalid_enum",
@@ -5697,7 +6389,10 @@
    "value": "invalid_enum",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, the choice for %s is not accepted. Choose one of: %s."
+   }
   },
   {
    "id": "code:invalid_glob",
@@ -5705,7 +6400,10 @@
    "value": "invalid_glob",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, %s has a blank entry. Fill it in or remove it."
+   }
   },
   {
    "id": "code:invalid_id",
@@ -5713,7 +6411,10 @@
    "value": "invalid_id",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "The id of {node} cannot be used. An id is 1 to 40 letters, digits, dashes or underscores."
+   }
   },
   {
    "id": "code:invalid_loop",
@@ -5721,7 +6422,10 @@
    "value": "invalid_loop",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "Only a gate or a decision can send work back to a crew. The connection from %s to %s is not one of those, so it cannot be a loop."
+   }
   },
   {
    "id": "code:invalid_outcome",
@@ -5730,7 +6434,10 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_approvals.go",
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "\""
+   }
   },
   {
    "id": "code:invalid_repo",
@@ -5738,7 +6445,10 @@
    "value": "invalid_repo",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, the repository for review tickets must be owner/name."
+   }
   },
   {
    "id": "code:invalid_type",
@@ -5748,7 +6458,10 @@
     "vdb-site/api/internal/handler/factory_schedules.go",
     "vdb-site/api/internal/handler/factory_trigger_validate.go",
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, %s must be a list of patterns."
+   }
   },
   {
    "id": "code:new_to_package_only",
@@ -5756,7 +6469,10 @@
    "value": "new_to_package_only",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, \"new to the repository\" applies to packages only. Set it to the organisation or remove it."
+   }
   },
   {
    "id": "code:no_trigger",
@@ -5764,7 +6480,10 @@
    "value": "no_trigger",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "Add a trigger. A workflow needs something to start it."
+   }
   },
   {
    "id": "code:not_found",
@@ -5772,7 +6491,10 @@
    "value": "not_found",
    "sources": [
     "vdb-site/api/internal/handler/factory_schedules.go"
-   ]
+   ],
+   "detail": {
+    "message": "the trigger's node is no longer in the workflow"
+   }
   },
   {
    "id": "code:out_of_range",
@@ -5782,7 +6504,10 @@
     "vdb-site/api/internal/handler/factory_agent_budget.go",
     "vdb-site/api/internal/handler/factory_state.go",
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, %s must be %s from %g to %g (0 keeps the agent's own)."
+   }
   },
   {
    "id": "code:package_type_unsupported_event",
@@ -5790,7 +6515,10 @@
    "value": "package_type_unsupported_event",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, the package type condition only applies to published packages. Remove it or choose the registry package event."
+   }
   },
   {
    "id": "code:paths_need_push",
@@ -5798,7 +6526,10 @@
    "value": "paths_need_push",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, changed paths can only be checked on a push, because GitHub sends the file list with pushes only. Use the push event or remove the path condition."
+   }
   },
   {
    "id": "code:permission_missing",
@@ -5806,7 +6537,10 @@
    "value": "permission_missing",
    "sources": [
     "vdb-site/api/internal/handler/factory_orgs.go"
-   ]
+   ],
+   "detail": {
+    "message": "github.check_runs needs the App permission checks: write on every managed installation"
+   }
   },
   {
    "id": "code:provider_not_allowed",
@@ -5822,7 +6556,10 @@
    "value": "required",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, choose a value for %s."
+   }
   },
   {
    "id": "code:review_state_unsupported_event",
@@ -5830,7 +6567,10 @@
    "value": "review_state_unsupported_event",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, the review state condition only applies to pull request reviews. Remove it or choose the pull request review event."
+   }
   },
   {
    "id": "code:revision_conflict",
@@ -5848,7 +6588,10 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go",
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, where the step runs is not set up correctly. Choose Any host, Pix Sandbox, Self-hosted, a host or a host label."
+   }
   },
   {
    "id": "code:scope_unmanaged_repo",
@@ -5864,7 +6607,10 @@
    "value": "severity_unsupported_event",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, the severity condition only applies to Dependabot and code scanning alerts. Remove it or choose one of those events."
+   }
   },
   {
    "id": "code:slug_taken",
@@ -5880,7 +6626,10 @@
    "value": "threshold_adapter_missing",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, say which model the minimum confidence was set for. Confidence from one model is not comparable with another."
+   }
   },
   {
    "id": "code:threshold_required",
@@ -5888,7 +6637,10 @@
    "value": "threshold_required",
    "sources": [
     "vdb-site/api/internal/handler/factory_state.go"
-   ]
+   ],
+   "detail": {
+    "message": "changing systemone.model needs systemone.min_confidence in the same request"
+   }
   },
   {
    "id": "code:too_long",
@@ -5896,7 +6648,10 @@
    "value": "too_long",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "The title of {node} is too long. Use at most 200 characters."
+   }
   },
   {
    "id": "code:too_many",
@@ -5904,7 +6659,10 @@
    "value": "too_many",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, %s has too many entries. Use at most %d."
+   }
   },
   {
    "id": "code:too_many_edges",
@@ -5912,7 +6670,10 @@
    "value": "too_many_edges",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "A workflow holds at most %d connections between steps. Remove some connections or split the work into two workflows."
+   }
   },
   {
    "id": "code:too_many_nodes",
@@ -5920,7 +6681,10 @@
    "value": "too_many_nodes",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "A workflow holds at most %d steps. Remove some steps or split the work into two workflows."
+   }
   },
   {
    "id": "code:tz_invalid",
@@ -5928,7 +6692,10 @@
    "value": "tz_invalid",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, that is not a timezone name. Use a name such as UTC or Australia/Melbourne."
+   }
   },
   {
    "id": "code:unknown_condition",
@@ -5936,7 +6703,10 @@
    "value": "unknown_condition",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
-   ]
+   ],
+   "detail": {
+    "message": "In {node}, \"%s\" is not a setting of %s. Use only: %s."
+   }
   },
   {
    "id": "code:unknown_node",
@@ -5944,7 +6714,10 @@
    "value": "unknown_node",
    "sources": [
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
-   ]
+   ],
+   "detail": {
+    "message": "A connection starts at a step that is not in the workflow (\"%s\"). Remove the connection."
+   }
   },
   {
    "id": "code:version_conflict",
@@ -5960,7 +6733,10 @@
    "value": "workflows_published",
    "sources": [
     "vdb-site/api/internal/handler/factory_state.go"
-   ]
+   ],
+   "detail": {
+    "message": "persistence.postgres can be off only while no workflow is published"
+   }
   },
   {
    "id": "code:write_failed",
@@ -5969,7 +6745,10 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_budgets_store.go",
     "vdb-site/api/internal/handler/factory_orgs.go"
-   ]
+   ],
+   "detail": {
+    "message": "could not update the Factory budget"
+   }
   },
   {
    "id": "console:/call",
@@ -6177,7 +6956,10 @@
    "value": "approve-ready",
    "sources": [
     "vdb-site/api/internal/handler/factory_defaults.go"
-   ]
+   ],
+   "detail": {
+    "name": "Default: approve when ready"
+   }
   },
   {
    "id": "default:ci-fix",
@@ -6185,7 +6967,11 @@
    "value": "ci-fix",
    "sources": [
     "vdb-site/api/internal/handler/factory_defaults.go"
-   ]
+   ],
+   "detail": {
+    "name": "Default: failing check fixes",
+    "minAutonomy": "draft_pr"
+   }
   },
   {
    "id": "default:conflict-fix",
@@ -6193,7 +6979,11 @@
    "value": "conflict-fix",
    "sources": [
     "vdb-site/api/internal/handler/factory_defaults.go"
-   ]
+   ],
+   "detail": {
+    "name": "Default: merge conflict fixes",
+    "minAutonomy": "draft_pr"
+   }
   },
   {
    "id": "default:issue-to-pr",
@@ -6201,7 +6991,11 @@
    "value": "issue-to-pr",
    "sources": [
     "vdb-site/api/internal/handler/factory_defaults.go"
-   ]
+   ],
+   "detail": {
+    "name": "Default: issue to pull request",
+    "minAutonomy": "draft_pr"
+   }
   },
   {
    "id": "default:lint-sweep",
@@ -6209,7 +7003,11 @@
    "value": "lint-sweep",
    "sources": [
     "vdb-site/api/internal/handler/factory_defaults.go"
-   ]
+   ],
+   "detail": {
+    "name": "Default: lint sweep",
+    "minAutonomy": "draft_pr"
+   }
   },
   {
    "id": "default:pr-review",
@@ -6217,7 +7015,11 @@
    "value": "pr-review",
    "sources": [
     "vdb-site/api/internal/handler/factory_defaults.go"
-   ]
+   ],
+   "detail": {
+    "name": "Default: pull request review",
+    "minAutonomy": "suggest"
+   }
   },
   {
    "id": "default:test-sweep",
@@ -6225,7 +7027,11 @@
    "value": "test-sweep",
    "sources": [
     "vdb-site/api/internal/handler/factory_defaults.go"
-   ]
+   ],
+   "detail": {
+    "name": "Default: test sweep",
+    "minAutonomy": "draft_pr"
+   }
   },
   {
    "id": "doc:belai/a2a.md",
@@ -10668,6 +11474,24 @@
    "set": "factoryBelowThreshold"
   },
   {
+   "id": "enum:factoryBuiltinProfiles=ai-capability-reviewer",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=ai-capability-reviewer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
+   "id": "enum:factoryBuiltinProfiles=alert-triager",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=alert-triager",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
    "id": "enum:factoryBuiltinProfiles=builder",
    "kind": "enum",
    "value": "factoryBuiltinProfiles=builder",
@@ -10677,9 +11501,36 @@
    "set": "factoryBuiltinProfiles"
   },
   {
+   "id": "enum:factoryBuiltinProfiles=ci-explainer",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=ci-explainer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
    "id": "enum:factoryBuiltinProfiles=debug",
    "kind": "enum",
    "value": "factoryBuiltinProfiles=debug",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
+   "id": "enum:factoryBuiltinProfiles=dep-scope",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=dep-scope",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
+   "id": "enum:factoryBuiltinProfiles=dep-strategist",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=dep-strategist",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
    ],
@@ -10803,6 +11654,15 @@
    "set": "factoryBuiltinProfiles"
   },
   {
+   "id": "enum:factoryBuiltinProfiles=egress-reviewer",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=egress-reviewer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
    "id": "enum:factoryBuiltinProfiles=fanout",
    "kind": "enum",
    "value": "factoryBuiltinProfiles=fanout",
@@ -10812,9 +11672,27 @@
    "set": "factoryBuiltinProfiles"
   },
   {
+   "id": "enum:factoryBuiltinProfiles=flaky-hunter",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=flaky-hunter",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
    "id": "enum:factoryBuiltinProfiles=lint-fixer",
    "kind": "enum",
    "value": "factoryBuiltinProfiles=lint-fixer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
+   "id": "enum:factoryBuiltinProfiles=package-reviewer",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=package-reviewer",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
    ],
@@ -10857,6 +11735,33 @@
    "set": "factoryBuiltinProfiles"
   },
   {
+   "id": "enum:factoryBuiltinProfiles=pr-steward",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=pr-steward",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
+   "id": "enum:factoryBuiltinProfiles=release-steward",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=release-steward",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
+   "id": "enum:factoryBuiltinProfiles=repo-onboarder",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=repo-onboarder",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
    "id": "enum:factoryBuiltinProfiles=repro",
    "kind": "enum",
    "value": "factoryBuiltinProfiles=repro",
@@ -10884,9 +11789,36 @@
    "set": "factoryBuiltinProfiles"
   },
   {
+   "id": "enum:factoryBuiltinProfiles=secret-triager",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=secret-triager",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
+   "id": "enum:factoryBuiltinProfiles=tea-publisher",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=tea-publisher",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
    "id": "enum:factoryBuiltinProfiles=test-fixer",
    "kind": "enum",
    "value": "factoryBuiltinProfiles=test-fixer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
+   "id": "enum:factoryBuiltinProfiles=ticket-writer",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=ticket-writer",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
    ],
@@ -10932,6 +11864,15 @@
    "id": "enum:factoryBuiltinProfiles=vulnetix-scanner",
    "kind": "enum",
    "value": "factoryBuiltinProfiles=vulnetix-scanner",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
+   "id": "enum:factoryBuiltinProfiles=workflow-hardener",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=workflow-hardener",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
    ],
@@ -13701,9 +14642,54 @@
    "set": "factoryWebhookRefs"
   },
   {
+   "id": "enum:factoryWorkerProfiles=belai:ai-capability-reviewer",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:ai-capability-reviewer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:alert-triager",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:alert-triager",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
    "id": "enum:factoryWorkerProfiles=belai:builder",
    "kind": "enum",
    "value": "factoryWorkerProfiles=belai:builder",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:ci-explainer",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:ci-explainer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:dep-scope",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:dep-scope",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:dep-strategist",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:dep-strategist",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
    ],
@@ -13719,9 +14705,36 @@
    "set": "factoryWorkerProfiles"
   },
   {
+   "id": "enum:factoryWorkerProfiles=belai:egress-reviewer",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:egress-reviewer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:flaky-hunter",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:flaky-hunter",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
    "id": "enum:factoryWorkerProfiles=belai:lint-fixer",
    "kind": "enum",
    "value": "factoryWorkerProfiles=belai:lint-fixer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:package-reviewer",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:package-reviewer",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
    ],
@@ -13755,6 +14768,33 @@
    "set": "factoryWorkerProfiles"
   },
   {
+   "id": "enum:factoryWorkerProfiles=belai:pr-steward",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:pr-steward",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:release-steward",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:release-steward",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:repo-onboarder",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:repo-onboarder",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
    "id": "enum:factoryWorkerProfiles=belai:repro",
    "kind": "enum",
    "value": "factoryWorkerProfiles=belai:repro",
@@ -13782,9 +14822,36 @@
    "set": "factoryWorkerProfiles"
   },
   {
+   "id": "enum:factoryWorkerProfiles=belai:secret-triager",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:secret-triager",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:tea-publisher",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:tea-publisher",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
    "id": "enum:factoryWorkerProfiles=belai:test-fixer",
    "kind": "enum",
    "value": "factoryWorkerProfiles=belai:test-fixer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:ticket-writer",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:ticket-writer",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
    ],
@@ -13803,6 +14870,15 @@
    "id": "enum:factoryWorkerProfiles=belai:vuln-scout",
    "kind": "enum",
    "value": "factoryWorkerProfiles=belai:vuln-scout",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:workflow-hardener",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:workflow-hardener",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
    ],
@@ -15193,6 +16269,258 @@
     "vdb-site/api/internal/handler/factory_approvals.go"
    ],
    "set": "fwApprovalDecidedStates"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=bundler",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=bundler",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=cargo",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=cargo",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=composer",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=composer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=go",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=go",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=gradle",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=gradle",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=maven",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=maven",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=npm",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=npm",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=pip-tools",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=pip-tools",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=pnpm",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=pnpm",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=poetry",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=poetry",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=uv",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=uv",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisPkgMgr=yarn",
+   "kind": "enum",
+   "value": "fwAxisPkgMgr=yarn",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisPkgMgr"
+  },
+  {
+   "id": "enum:fwAxisRunner=jest",
+   "kind": "enum",
+   "value": "fwAxisRunner=jest",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisRunner"
+  },
+  {
+   "id": "enum:fwAxisRunner=junit",
+   "kind": "enum",
+   "value": "fwAxisRunner=junit",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisRunner"
+  },
+  {
+   "id": "enum:fwAxisRunner=phpunit",
+   "kind": "enum",
+   "value": "fwAxisRunner=phpunit",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisRunner"
+  },
+  {
+   "id": "enum:fwAxisRunner=pytest",
+   "kind": "enum",
+   "value": "fwAxisRunner=pytest",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisRunner"
+  },
+  {
+   "id": "enum:fwAxisRunner=rspec",
+   "kind": "enum",
+   "value": "fwAxisRunner=rspec",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisRunner"
+  },
+  {
+   "id": "enum:fwAxisRunner=vitest",
+   "kind": "enum",
+   "value": "fwAxisRunner=vitest",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisRunner"
+  },
+  {
+   "id": "enum:fwAxisSecret=aws",
+   "kind": "enum",
+   "value": "fwAxisSecret=aws",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisSecret"
+  },
+  {
+   "id": "enum:fwAxisSecret=generic",
+   "kind": "enum",
+   "value": "fwAxisSecret=generic",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisSecret"
+  },
+  {
+   "id": "enum:fwAxisSecret=github",
+   "kind": "enum",
+   "value": "fwAxisSecret=github",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisSecret"
+  },
+  {
+   "id": "enum:fwAxisSecret=slack",
+   "kind": "enum",
+   "value": "fwAxisSecret=slack",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisSecret"
+  },
+  {
+   "id": "enum:fwAxisSecret=stripe",
+   "kind": "enum",
+   "value": "fwAxisSecret=stripe",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisSecret"
+  },
+  {
+   "id": "enum:fwAxisTEA=container",
+   "kind": "enum",
+   "value": "fwAxisTEA=container",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisTEA"
+  },
+  {
+   "id": "enum:fwAxisTEA=cyclonedx",
+   "kind": "enum",
+   "value": "fwAxisTEA=cyclonedx",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisTEA"
+  },
+  {
+   "id": "enum:fwAxisTEA=jar",
+   "kind": "enum",
+   "value": "fwAxisTEA=jar",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisTEA"
+  },
+  {
+   "id": "enum:fwAxisTEA=spdx",
+   "kind": "enum",
+   "value": "fwAxisTEA=spdx",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisTEA"
+  },
+  {
+   "id": "enum:fwAxisTEA=wheel",
+   "kind": "enum",
+   "value": "fwAxisTEA=wheel",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "set": "fwAxisTEA"
   },
   {
    "id": "enum:fwCancelFrom=held",
@@ -17250,6 +18578,14 @@
    ]
   },
   {
+   "id": "gofile:factory_repo_profile",
+   "kind": "gofile",
+   "value": "factory_repo_profile",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_repo_profile.go"
+   ]
+  },
+  {
    "id": "gofile:factory_repos",
    "kind": "gofile",
    "value": "factory_repos",
@@ -17471,6 +18807,30 @@
    "value": "factory_templates",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
+   ]
+  },
+  {
+   "id": "gofile:factory_templates_events",
+   "kind": "gofile",
+   "value": "factory_templates_events",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ]
+  },
+  {
+   "id": "gofile:factory_templates_signals",
+   "kind": "gofile",
+   "value": "factory_templates_signals",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_signals.go"
+   ]
+  },
+  {
+   "id": "gofile:factory_ticket",
+   "kind": "gofile",
+   "value": "factory_ticket",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_ticket.go"
    ]
   },
   {
@@ -18413,6 +19773,15 @@
     "vdb-site/api/internal/handler/factory_workflows.go"
    ],
    "handler": "FactoryScheduleDelete"
+  },
+  {
+   "id": "route:DELETE /v1/factory/templates/{id}/dismiss",
+   "kind": "route",
+   "value": "DELETE /v1/factory/templates/{id}/dismiss",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_workflows.go"
+   ],
+   "handler": "FactoryTemplateDismiss"
   },
   {
    "id": "route:DELETE /v1/factory/workflows/{id}",
@@ -19765,6 +21134,15 @@
    "handler": "FactoryTemplateGet"
   },
   {
+   "id": "route:GET /v1/factory/templates/signals",
+   "kind": "route",
+   "value": "GET /v1/factory/templates/signals",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_workflows.go"
+   ],
+   "handler": "FactoryTemplatesSignals"
+  },
+  {
    "id": "route:GET /v1/factory/trust",
    "kind": "route",
    "value": "GET /v1/factory/trust",
@@ -20710,6 +22088,15 @@
    "handler": "FactoryStop"
   },
   {
+   "id": "route:POST /v1/factory/templates/{id}/dismiss",
+   "kind": "route",
+   "value": "POST /v1/factory/templates/{id}/dismiss",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_workflows.go"
+   ],
+   "handler": "FactoryTemplateDismiss"
+  },
+  {
    "id": "route:POST /v1/factory/templates/{id}/use",
    "kind": "route",
    "value": "POST /v1/factory/templates/{id}/use",
@@ -21129,7 +22516,12 @@
    "value": "agents.finalize_at",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 0.95: share of any per-card limit at which the worker is told to wrap up (commit, record findings, publish a draft pull request); a value under 0.5 is raised to 0.5 (0 keeps the agent's own, 0.85 for the built-ins)",
+    "docDefault": "0",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:agents.max_attempts",
@@ -21137,7 +22529,12 @@
    "value": "agents.max_attempts",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 0 to 10: failed attempts at one stage before Belai blocks the card (0 keeps the agent's own). Not `autonomy.max_attempts`, which retries a workflow step",
+    "docDefault": "0",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:agents.max_continuations",
@@ -21145,7 +22542,12 @@
    "value": "agents.max_continuations",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 0 to 50: times a card may go back to be resumed after its budget ran out with progress made, before it is blocked for a person (0 keeps the agent's own, 5 by default)",
+    "docDefault": "0",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:agents.max_cost_usd_per_item",
@@ -21153,7 +22555,12 @@
    "value": "agents.max_cost_usd_per_item",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 10000: estimated cost in US dollars at which a worker's claim on one card ends (0 keeps each agent's own; the built-in agents allow $8 to $25)",
+    "docDefault": "0",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:agents.max_iterations",
@@ -21161,7 +22568,12 @@
    "value": "agents.max_iterations",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 0 to 400: tool rounds per pass (0 keeps the agent's own)",
+    "docDefault": "0",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:agents.max_passes_per_item",
@@ -21169,7 +22581,12 @@
    "value": "agents.max_passes_per_item",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 0 to 1000: goal passes per card, a safety rail beside the cost limit (0 keeps the agent's own)",
+    "docDefault": "0",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:agents.max_wall_minutes",
@@ -21177,7 +22594,12 @@
    "value": "agents.max_wall_minutes",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 0 to 10080: minutes per card, a safety rail (0 keeps the agent's own)",
+    "docDefault": "0",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:approve.sensitive_paths",
@@ -21186,7 +22608,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "list of path globs (feGlobMatch dialect) that stop an approval, besides the built-in list",
+    "docDefault": "none",
+    "store": "factory",
+    "type": "list",
+    "default": "[]any{"
+   }
   },
   {
    "id": "setting:audit.calls",
@@ -21195,7 +22624,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: log every model call with its input hash",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:audit.sign",
@@ -21204,7 +22640,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: sign the decision ledger",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:audit.weekly_report",
@@ -21213,7 +22656,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:autonomy.claim_ttl_minutes",
@@ -21222,7 +22672,16 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 1 to 1440: minutes a started crew or worker dispatch may go without a session before the attempt fails `card_unclaimed` and retries",
+    "docDefault": "60",
+    "store": "factory",
+    "type": "int",
+    "min": "1",
+    "max": "1440",
+    "default": "60"
+   }
   },
   {
    "id": "setting:autonomy.concurrency",
@@ -21231,7 +22690,16 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 1 to 64",
+    "docDefault": "4",
+    "store": "factory",
+    "type": "int",
+    "min": "1",
+    "max": "64",
+    "default": "4"
+   }
   },
   {
    "id": "setting:autonomy.default",
@@ -21240,7 +22708,20 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `observe`, `suggest`, `draft_pr`, `auto_merge_low_risk` (\"approve when ready\"): autonomy of a repository of a managed organisation that has no settings row (13.2)",
+    "docDefault": "`draft_pr`",
+    "store": "factory",
+    "type": "enum",
+    "default": "draft_pr",
+    "values": [
+     "observe",
+     "suggest",
+     "draft_pr",
+     "auto_merge_low_risk"
+    ]
+   }
   },
   {
    "id": "setting:autonomy.max",
@@ -21249,7 +22730,20 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `observe`, `suggest`, `draft_pr`, `auto_merge_low_risk`",
+    "docDefault": "`draft_pr`",
+    "store": "factory",
+    "type": "enum",
+    "default": "draft_pr",
+    "values": [
+     "observe",
+     "suggest",
+     "draft_pr",
+     "auto_merge_low_risk"
+    ]
+   }
   },
   {
    "id": "setting:autonomy.max_attempts",
@@ -21258,7 +22752,16 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 1 to 10",
+    "docDefault": "3",
+    "store": "factory",
+    "type": "int",
+    "min": "1",
+    "max": "10",
+    "default": "3"
+   }
   },
   {
    "id": "setting:autonomy.no_host_ttl_hours",
@@ -21267,7 +22770,16 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 1 to 168: hours a crew step may wait for a machine before the run ends `no_host_timeout`",
+    "docDefault": "6",
+    "store": "factory",
+    "type": "int",
+    "min": "1",
+    "max": "168",
+    "default": "6"
+   }
   },
   {
    "id": "setting:autonomy.parked_concurrency",
@@ -21276,7 +22788,16 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 1 to 1000: runs of the tenant that may wait for a machine at once; they do not count against `autonomy.concurrency`",
+    "docDefault": "50",
+    "store": "factory",
+    "type": "int",
+    "min": "1",
+    "max": "1000",
+    "default": "50"
+   }
   },
   {
    "id": "setting:autonomy.plan_approval",
@@ -21285,7 +22806,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool (plan approval for `belai:feature`)",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:belai.a2a.show",
@@ -21294,7 +22822,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: transcripts show A2A rows (broadcasts, messages, replies, acks) by default; a viewer can override it locally",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:belai.ask_permission",
@@ -21303,7 +22838,12 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: whether the workers and crews a workflow or schedule starts stop at permission asks (sent as the dispatch's `ask`; docs/factory-engine.md, \"Stay and replicas\")",
+    "docDefault": "false",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:belai.auto_commit_per_task",
@@ -21312,7 +22852,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:belai.guardrails",
@@ -21321,7 +22868,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `on`, `strict`, `off` (`off` is refused for worker crews)",
+    "docDefault": "`on`",
+    "store": "factory",
+    "type": "enum",
+    "default": "on",
+    "values": [
+     "on",
+     "strict",
+     "off"
+    ]
+   }
   },
   {
    "id": "setting:belai.mode",
@@ -21330,7 +22889,20 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `goal`, `agent`, `plan`, `auto` (default mode for crews the factory starts)",
+    "docDefault": "`goal`",
+    "store": "factory",
+    "type": "enum",
+    "default": "goal",
+    "values": [
+     "goal",
+     "agent",
+     "plan",
+     "auto"
+    ]
+   }
   },
   {
    "id": "setting:belai.show_internal_work",
@@ -21339,7 +22911,20 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `decisions`, `security`, `all`, `hidden`",
+    "docDefault": "`decisions`",
+    "store": "factory",
+    "type": "enum",
+    "default": "decisions",
+    "values": [
+     "decisions",
+     "security",
+     "all",
+     "hidden"
+    ]
+   }
   },
   {
    "id": "setting:belai.tests.on_fail",
@@ -21348,7 +22933,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `fix`, `diagnose`, `off`",
+    "docDefault": "`fix`",
+    "store": "factory",
+    "type": "enum",
+    "default": "fix",
+    "values": [
+     "fix",
+     "diagnose",
+     "off"
+    ]
+   }
   },
   {
    "id": "setting:belai.tests.post_end",
@@ -21357,7 +22954,20 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `goal`, `goal_plan`, `session`, `off`",
+    "docDefault": "`goal`",
+    "store": "factory",
+    "type": "enum",
+    "default": "goal",
+    "values": [
+     "goal",
+     "goal_plan",
+     "session",
+     "off"
+    ]
+   }
   },
   {
    "id": "setting:budget.alerts",
@@ -21366,7 +22976,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "list of int 1 to 100, ascending",
+    "docDefault": "`[50,80,100]`",
+    "store": "factory",
+    "type": "list",
+    "default": "[]any{50"
+   }
   },
   {
    "id": "setting:budget.factory_share",
@@ -21375,7 +22992,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "pct of the Pix allowance",
+    "docDefault": "75",
+    "store": "factory",
+    "type": "pct",
+    "default": "75"
+   }
   },
   {
    "id": "setting:budget.month",
@@ -21384,7 +23008,16 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int tokens, all providers",
+    "docDefault": "30000000",
+    "store": "factory",
+    "type": "int",
+    "min": "0",
+    "max": "1e15",
+    "default": "30000000"
+   }
   },
   {
    "id": "setting:budget.on_exceed",
@@ -21393,7 +23026,21 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `pause_run`, `downgrade_to_fast`, `switch_to_pix_allocation`, `escalate_human`, `hard_stop`",
+    "docDefault": "`switch_to_pix_allocation`",
+    "store": "factory",
+    "type": "enum",
+    "default": "switch_to_pix_allocation",
+    "values": [
+     "pause_run",
+     "downgrade_to_fast",
+     "switch_to_pix_allocation",
+     "escalate_human",
+     "hard_stop"
+    ]
+   }
   },
   {
    "id": "setting:crews.lease",
@@ -21402,7 +23049,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `15m`, `30m`, `2h` (handoff lease)",
+    "docDefault": "`30m`",
+    "store": "factory",
+    "type": "enum",
+    "default": "30m",
+    "values": [
+     "15m",
+     "30m",
+     "2h"
+    ]
+   }
   },
   {
    "id": "setting:defaults.enabled",
@@ -21410,7 +23069,12 @@
    "value": "defaults.enabled",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: master switch",
+    "docDefault": "true",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.companyDomain",
@@ -21418,7 +23082,12 @@
    "value": "delivery.companyDomain",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "str: an email domain such as `acme.example`, or empty",
+    "docDefault": "empty",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.compare",
@@ -21426,7 +23095,12 @@
    "value": "delivery.compare",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: the hand-worked comparison, which adds the refinement and hand-off overhead",
+    "docDefault": "true",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.decisions",
@@ -21434,7 +23108,12 @@
    "value": "delivery.decisions",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: price the decisions System One scored",
+    "docDefault": "true",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.enabled",
@@ -21442,7 +23121,12 @@
    "value": "delivery.enabled",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: master switch. Off, every `/delivery` read answers `{\"enabled\":false}` and nothing is computed",
+    "docDefault": "true",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.hoursPerMonth",
@@ -21450,7 +23134,12 @@
    "value": "delivery.hoursPerMonth",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 1 to 400: productive hours per person-month",
+    "docDefault": "150",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.idleGapMin",
@@ -21458,7 +23147,12 @@
    "value": "delivery.idleGapMin",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 1 to 120: minutes without an action that end a sitting",
+    "docDefault": "5",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.manualCardDays",
@@ -21466,7 +23160,12 @@
    "value": "delivery.manualCardDays",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 365: days a team takes per card",
+    "docDefault": "5",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.manualCycleDays",
@@ -21474,7 +23173,12 @@
    "value": "delivery.manualCycleDays",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 365: days a team takes per pull request",
+    "docDefault": "4.5",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.manualDecisionWait",
@@ -21482,7 +23186,12 @@
    "value": "delivery.manualDecisionWait",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 720: hours a team waits to decide, compared with the measured time",
+    "docDefault": "6",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.manualIssueDays",
@@ -21490,7 +23199,12 @@
    "value": "delivery.manualIssueDays",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 365: days a team takes per issue",
+    "docDefault": "3",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.multiplier",
@@ -21498,7 +23212,12 @@
    "value": "delivery.multiplier",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0.5 to 10: multiplier for agent work no role covers",
+    "docDefault": "2.4",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.overheadPct",
@@ -21506,7 +23225,12 @@
    "value": "delivery.overheadPct",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "pct: refinement and hand-off overhead as a share of build and decision hours",
+    "docDefault": "20",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.overheadRate",
@@ -21514,7 +23238,12 @@
    "value": "delivery.overheadRate",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 10000: USD per hour for the overhead",
+    "docDefault": "105",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.people",
@@ -21522,7 +23251,12 @@
    "value": "delivery.people",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: the People and Contributors pages",
+    "docDefault": "true",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.peopleRate",
@@ -21530,7 +23264,12 @@
    "value": "delivery.peopleRate",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 10000: USD per hour for the hours people spent in the factory (the cost side)",
+    "docDefault": "110",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.rate",
@@ -21538,7 +23277,12 @@
    "value": "delivery.rate",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 10000: USD per hour for agent work no role covers",
+    "docDefault": "95",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.reviewMinPer100",
@@ -21546,7 +23290,12 @@
    "value": "delivery.reviewMinPer100",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 60: minutes of reading per 100 changed lines of a review",
+    "docDefault": "4",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:delivery.value",
@@ -21554,7 +23303,26 @@
    "value": "delivery.value",
    "sources": [
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: price agent work by role",
+    "docDefault": "true",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:firewall_enabled",
+   "kind": "setting",
+   "value": "firewall_enabled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "detail": {
+    "type": "bool",
+    "default": "true",
+    "locked": true,
+    "store": "factory"
+   }
   },
   {
    "id": "setting:github.branch_prefix",
@@ -21563,7 +23331,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "str, 1 to 40 chars, `[A-Za-z0-9/_.-]`",
+    "docDefault": "`belai/K-`",
+    "store": "factory",
+    "type": "str",
+    "default": "belai/K-"
+   }
   },
   {
    "id": "setting:github.check_runs",
@@ -21572,7 +23347,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: publish gate results as check runs (needs `checks: write`)",
+    "docDefault": "false",
+    "store": "factory",
+    "type": "bool",
+    "default": "false"
+   }
   },
   {
    "id": "setting:github.etag",
@@ -21581,7 +23363,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: send `If-None-Match` on every live read",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:github.poll.fallback",
@@ -21590,7 +23379,18 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `conditional_poll_10m`, `none` (bindings with no webhook)",
+    "docDefault": "`conditional_poll_10m`",
+    "store": "factory",
+    "type": "enum",
+    "default": "conditional_poll_10m",
+    "values": [
+     "conditional_poll_10m",
+     "none"
+    ]
+   }
   },
   {
    "id": "setting:github.polling.forbidden",
@@ -21599,7 +23399,15 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool, locked `true`",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true",
+    "locked": true
+   }
   },
   {
    "id": "setting:github.pr_state",
@@ -21608,7 +23416,18 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `draft`, `ready`",
+    "docDefault": "`draft`",
+    "store": "factory",
+    "type": "enum",
+    "default": "draft",
+    "values": [
+     "draft",
+     "ready"
+    ]
+   }
   },
   {
    "id": "setting:github.protected",
@@ -21617,7 +23436,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: never push to protected branches",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:github.quota.factory_share",
@@ -21626,7 +23452,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "pct",
+    "docDefault": "10",
+    "store": "factory",
+    "type": "pct",
+    "default": "10"
+   }
   },
   {
    "id": "setting:github.quota.on_exhausted",
@@ -21635,7 +23468,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `onExhausted`",
+    "docDefault": "`pause_live_reads`",
+    "store": "factory",
+    "type": "enum",
+    "default": "pause_live_reads",
+    "values": [
+     "pause_live_reads",
+     "defer_to_next_window",
+     "escalate"
+    ]
+   }
   },
   {
    "id": "setting:github.quota.proactive_writes_per_hour",
@@ -21644,7 +23489,16 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int 0 to 5000: most calls an installation makes in a clock hour for default workflows (13.4)",
+    "docDefault": "60",
+    "store": "factory",
+    "type": "int",
+    "min": "0",
+    "max": "5000",
+    "default": "60"
+   }
   },
   {
    "id": "setting:github.quota.reserve",
@@ -21653,7 +23507,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "pct",
+    "docDefault": "20",
+    "store": "factory",
+    "type": "pct",
+    "default": "20"
+   }
   },
   {
    "id": "setting:github.read.default",
@@ -21662,7 +23523,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `posture_mirror`, `s3_raw`, `live_api`",
+    "docDefault": "`posture_mirror`",
+    "store": "factory",
+    "type": "enum",
+    "default": "posture_mirror",
+    "values": [
+     "posture_mirror",
+     "s3_raw",
+     "live_api"
+    ]
+   }
   },
   {
    "id": "setting:github.stale.alerts",
@@ -21671,7 +23544,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "dur",
+    "docDefault": "`1h`",
+    "store": "factory",
+    "type": "duration",
+    "default": "1h"
+   }
   },
   {
    "id": "setting:github.stale.checks",
@@ -21680,7 +23560,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "dur",
+    "docDefault": "`2m`",
+    "store": "factory",
+    "type": "duration",
+    "default": "2m"
+   }
   },
   {
    "id": "setting:github.stale.pulls",
@@ -21689,7 +23576,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "dur",
+    "docDefault": "`5m`",
+    "store": "factory",
+    "type": "duration",
+    "default": "5m"
+   }
   },
   {
    "id": "setting:github.stale.repo",
@@ -21698,7 +23592,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "dur",
+    "docDefault": "`6h`",
+    "store": "factory",
+    "type": "duration",
+    "default": "6h"
+   }
   },
   {
    "id": "setting:hosts.runOn",
@@ -21707,7 +23608,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "string `auto`, `pix_sandbox`, `self_hosted`, `host:<uuid>` or `label:<name>`, the crew node's `runOn` grammar (`factoryRunOnValid`): where a crew node, a default or a scan that names no `runOn` runs, and the preference that orders the hosts a node's own `runOn` admits (12.5)",
+    "docDefault": "`auto`",
+    "store": "factory",
+    "type": "str",
+    "default": "auto"
+   }
   },
   {
    "id": "setting:hosts.runOnFallback",
@@ -21716,7 +23624,18 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `none`, `auto`: the fallback that goes with `hosts.runOn`; a node that writes its own `runOnFallback` keeps it",
+    "docDefault": "`auto`",
+    "store": "factory",
+    "type": "enum",
+    "default": "auto",
+    "values": [
+     "none",
+     "auto"
+    ]
+   }
   },
   {
    "id": "setting:jail.enforcementMode",
@@ -21725,7 +23644,18 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `enforce`, `warn`",
+    "docDefault": "`enforce`",
+    "store": "jail",
+    "type": "enum",
+    "default": "enforce",
+    "values": [
+     "enforce",
+     "warn"
+    ]
+   }
   },
   {
    "id": "setting:kanban.conflict_comment",
@@ -21734,7 +23664,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:kanban.mode",
@@ -21743,7 +23680,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `kanbanMode`: default binding mode",
+    "docDefault": "`all`",
+    "store": "factory",
+    "type": "enum",
+    "default": "all",
+    "values": [
+     "all",
+     "skip_review",
+     "off"
+    ]
+   }
   },
   {
    "id": "setting:kanban.opt_out_label",
@@ -21752,7 +23701,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "str",
+    "docDefault": "`no-github`",
+    "store": "factory",
+    "type": "str",
+    "default": "no-github"
+   }
   },
   {
    "id": "setting:notify.connector",
@@ -21761,7 +23717,22 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `slack`, `teams`, `discord`, `google_chat`, `webhook`, `jira`",
+    "docDefault": "`slack`",
+    "store": "factory",
+    "type": "enum",
+    "default": "slack",
+    "values": [
+     "slack",
+     "teams",
+     "discord",
+     "google_chat",
+     "webhook",
+     "jira"
+    ]
+   }
   },
   {
    "id": "setting:notify.events",
@@ -21770,7 +23741,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `escalations_holds_budget`, `everything`, `escalations_only`",
+    "docDefault": "`escalations_holds_budget`",
+    "store": "factory",
+    "type": "enum",
+    "default": "escalations_holds_budget",
+    "values": [
+     "escalations_holds_budget",
+     "everything",
+     "escalations_only"
+    ]
+   }
   },
   {
    "id": "setting:persistence.export",
@@ -21779,7 +23762,18 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `daily_jsonl_s3`, `manual`",
+    "docDefault": "`manual`",
+    "store": "factory",
+    "type": "enum",
+    "default": "manual",
+    "values": [
+     "daily_jsonl_s3",
+     "manual"
+    ]
+   }
   },
   {
    "id": "setting:persistence.postgres",
@@ -21788,7 +23782,18 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `on`, `off`",
+    "docDefault": "`on`",
+    "store": "factory",
+    "type": "enum",
+    "default": "on",
+    "values": [
+     "on",
+     "off"
+    ]
+   }
   },
   {
    "id": "setting:persistence.retention",
@@ -21797,7 +23802,20 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `400d`, `90d`, `30d`, `forever`",
+    "docDefault": "`400d`",
+    "store": "factory",
+    "type": "enum",
+    "default": "400d",
+    "values": [
+     "400d",
+     "90d",
+     "30d",
+     "forever"
+    ]
+   }
   },
   {
    "id": "setting:pix.classifier",
@@ -21806,7 +23824,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `clef`, `jev`, `tev1` (the sandbox's own classifier)",
+    "docDefault": "`clef`",
+    "store": "sandbox",
+    "type": "enum",
+    "default": "clef",
+    "values": [
+     "clef",
+     "jev",
+     "tev1"
+    ]
+   }
   },
   {
    "id": "setting:pix.egressMode",
@@ -21815,7 +23845,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `deny_except_allow`, `allow_all_logged`",
+    "docDefault": "`deny_except_allow`",
+    "store": "sandbox",
+    "type": "enum",
+    "default": "deny_except_allow"
+   }
   },
   {
    "id": "setting:pix.extensionMode",
@@ -21824,7 +23861,18 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `packs_only`, `any_indexed`",
+    "docDefault": "`packs_only`",
+    "store": "sandbox",
+    "type": "enum",
+    "default": "packs_only",
+    "values": [
+     "packs_only",
+     "any_indexed"
+    ]
+   }
   },
   {
    "id": "setting:pix.jevDailyCap",
@@ -21833,7 +23881,16 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "int, calls per day, shared with the sandbox",
+    "docDefault": "2000",
+    "store": "sandbox",
+    "type": "int",
+    "min": "0",
+    "max": "100_000_000",
+    "default": "2000"
+   }
   },
   {
    "id": "setting:pix.maintenance",
@@ -21842,7 +23899,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "list of `{days:[\"sun\"],start:\"02:00\",end:\"04:00\",tz:\"Australia/Melbourne\"}`, same value as `PUT /v1/belai/sandboxes/{id}/maintenance-window`",
+    "docDefault": "none",
+    "store": "sandbox",
+    "type": "list",
+    "default": "[]any{"
+   }
   },
   {
    "id": "setting:pix.reservePercent",
@@ -21851,7 +23915,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "pct (same value as budgets `reserveInteractivePct`)",
+    "docDefault": "20",
+    "store": "sandbox",
+    "type": "pct",
+    "default": "20"
+   }
   },
   {
    "id": "setting:pix.size",
@@ -21860,7 +23931,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `small`, `medium`, `large`",
+    "docDefault": "`medium`",
+    "store": "sandbox",
+    "type": "enum",
+    "default": "medium"
+   }
   },
   {
    "id": "setting:pix.versionPolicy",
@@ -21869,7 +23947,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `safest`, `stable`, `latest`, `rolling`, `pinned` (the first four are the Safe Harbour picks, see `pix-sandbox-safe-harbour.md`)",
+    "docDefault": "`safest`",
+    "store": "sandbox",
+    "type": "enum",
+    "default": "safest"
+   }
   },
   {
    "id": "setting:providers.ai_gateway",
@@ -21878,7 +23963,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: route calls through Cloudflare AI Gateway",
+    "docDefault": "false",
+    "store": "factory",
+    "type": "bool",
+    "default": "false"
+   }
   },
   {
    "id": "setting:providers.code",
@@ -21887,7 +23979,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "`pix-smart`, `pix-fast` or `vault:<entryId>`",
+    "docDefault": "`pix-smart`",
+    "store": "factory",
+    "type": "str",
+    "default": "pix-smart"
+   }
   },
   {
    "id": "setting:schedules.blackout",
@@ -21896,7 +23995,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "list of `{from:{day,time},to:{day,time},label}`; `day` is `mon` to `sun`, `time` `HH:MM`",
+    "docDefault": "none",
+    "store": "factory",
+    "type": "list",
+    "default": "[]any{"
+   }
   },
   {
    "id": "setting:schedules.missed",
@@ -21905,7 +24011,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `run_once`, `skip`, `run_all`",
+    "docDefault": "`run_once`",
+    "store": "factory",
+    "type": "enum",
+    "default": "run_once",
+    "values": [
+     "run_once",
+     "skip",
+     "run_all"
+    ]
+   }
   },
   {
    "id": "setting:schedules.tz",
@@ -21914,7 +24032,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "IANA zone",
+    "docDefault": "tenant zone",
+    "store": "factory",
+    "type": "tz",
+    "default": "UTC"
+   }
   },
   {
    "id": "setting:scope.archived",
@@ -21923,7 +24048,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "false",
+    "store": "factory",
+    "type": "bool",
+    "default": "false"
+   }
   },
   {
    "id": "setting:scope.dependencies",
@@ -21932,7 +24064,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool",
+    "docDefault": "false",
+    "store": "factory",
+    "type": "bool",
+    "default": "false"
+   }
   },
   {
    "id": "setting:scope.interest",
@@ -21941,7 +24080,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `any_signal`, `scanned_or_pix`, `watched_only`",
+    "docDefault": "`any_signal`",
+    "store": "factory",
+    "type": "enum",
+    "default": "any_signal",
+    "values": [
+     "any_signal",
+     "scanned_or_pix",
+     "watched_only"
+    ]
+   }
   },
   {
    "id": "setting:scope.orgs",
@@ -21950,7 +24101,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "`\"all_active\"` or list of installation logins; same write as `PUT /orgs/{id}`",
+    "docDefault": "managed orgs",
+    "store": "factory",
+    "type": "list",
+    "default": "[]any{"
+   }
   },
   {
    "id": "setting:scope.sync",
@@ -21959,7 +24117,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `6h`, `1h`, `webhook_only`: cadence of the existing installation metadata sweep",
+    "docDefault": "`6h`",
+    "store": "factory",
+    "type": "enum",
+    "default": "6h",
+    "values": [
+     "6h",
+     "1h",
+     "webhook_only"
+    ]
+   }
   },
   {
    "id": "setting:security.evidence",
@@ -21968,7 +24138,18 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `cdx_slsa`, `sbom_only`",
+    "docDefault": "`cdx_slsa`",
+    "store": "factory",
+    "type": "enum",
+    "default": "cdx_slsa",
+    "values": [
+     "cdx_slsa",
+     "sbom_only"
+    ]
+   }
   },
   {
    "id": "setting:security.scanners",
@@ -21977,7 +24158,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `minimum` (sca, malscan, secrets), `all`, `custom`; `custom` needs `security.scanners.custom` (list of scanner ids)",
+    "docDefault": "`minimum`",
+    "store": "factory",
+    "type": "enum",
+    "default": "minimum",
+    "values": [
+     "minimum",
+     "all",
+     "custom"
+    ]
+   }
   },
   {
    "id": "setting:security.scanners.custom",
@@ -21985,7 +24178,12 @@
    "value": "security.scanners.custom",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go"
-   ]
+   ],
+   "detail": {
+    "type": "list",
+    "default": "[]any{",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:security.slsa_min",
@@ -21994,7 +24192,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `L1`, `L2`, `L3`",
+    "docDefault": "`L3`",
+    "store": "factory",
+    "type": "enum",
+    "default": "L3",
+    "values": [
+     "L1",
+     "L2",
+     "L3"
+    ]
+   }
   },
   {
    "id": "setting:signing.auto_add",
@@ -22003,7 +24213,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: add a new key's public key to the person's GitHub account",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:signing.email",
@@ -22012,7 +24229,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `primary`, `noreply`, `ask`: the address on the commit",
+    "docDefault": "`primary`",
+    "store": "factory",
+    "type": "enum",
+    "default": "primary",
+    "values": [
+     "primary",
+     "noreply",
+     "ask"
+    ]
+   }
   },
   {
    "id": "setting:signing.mode",
@@ -22021,7 +24250,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `required`, `preferred`, `off`",
+    "docDefault": "`preferred`",
+    "store": "factory",
+    "type": "enum",
+    "default": "preferred",
+    "values": [
+     "required",
+     "preferred",
+     "off"
+    ]
+   }
   },
   {
    "id": "setting:signing.on_missing",
@@ -22030,7 +24271,18 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `readd`, `ask`: what to do when GitHub no longer lists a key",
+    "docDefault": "`readd`",
+    "store": "factory",
+    "type": "enum",
+    "default": "readd",
+    "values": [
+     "readd",
+     "ask"
+    ]
+   }
   },
   {
    "id": "setting:signing.retire_days",
@@ -22039,7 +24291,20 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `30`, `7`, `0` (right away), `-1` (leave it on GitHub): how long a replaced key stays on GitHub",
+    "docDefault": "`30`",
+    "store": "factory",
+    "type": "enum",
+    "default": "30",
+    "values": [
+     "30",
+     "7",
+     "0",
+     "-1"
+    ]
+   }
   },
   {
    "id": "setting:signing.rotate_days",
@@ -22048,7 +24313,20 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `365`, `180`, `90`, `0` (never)",
+    "docDefault": "`365`",
+    "store": "factory",
+    "type": "enum",
+    "default": "365",
+    "values": [
+     "365",
+     "180",
+     "90",
+     "0"
+    ]
+   }
   },
   {
    "id": "setting:systemone.below_threshold",
@@ -22057,7 +24335,20 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `belowThreshold`",
+    "docDefault": "`escalate_human`",
+    "store": "factory",
+    "type": "enum",
+    "default": "escalate_human",
+    "values": [
+     "escalate_human",
+     "route_to_fallback_model",
+     "take_safest_outcome",
+     "end_run"
+    ]
+   }
   },
   {
    "id": "setting:systemone.fallback",
@@ -22066,7 +24357,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `jev`, `pix-fast`, `none`",
+    "docDefault": "`jev`",
+    "store": "factory",
+    "type": "enum",
+    "default": "jev",
+    "values": [
+     "jev",
+     "pix-fast",
+     "none"
+    ]
+   }
   },
   {
    "id": "setting:systemone.min_confidence",
@@ -22075,7 +24378,16 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "num 0 to 1",
+    "docDefault": "0.80",
+    "store": "factory",
+    "type": "num",
+    "min": "0",
+    "max": "1",
+    "default": "0.8"
+   }
   },
   {
    "id": "setting:systemone.min_confidence.adapter",
@@ -22084,7 +24396,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "str, read-only, identity the threshold was set for",
+    "docDefault": "`clef-flash`",
+    "store": "factory",
+    "type": "str",
+    "default": "clef-flash"
+   }
   },
   {
    "id": "setting:systemone.model",
@@ -22093,7 +24412,12 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum adapter name: `clef-flash`, `clef`, `jev`, `tev1`",
+    "docDefault": "`clef-flash`",
+    "store": "factory"
+   }
   },
   {
    "id": "setting:systemone.on_abstain",
@@ -22102,7 +24426,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `onAbstain`",
+    "docDefault": "`escalate_human`",
+    "store": "factory",
+    "type": "enum",
+    "default": "escalate_human",
+    "values": [
+     "escalate_human",
+     "retry_once_then_escalate",
+     "end_run"
+    ]
+   }
   },
   {
    "id": "setting:systemone.override",
@@ -22111,7 +24447,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "bool: a person may override any decision",
+    "docDefault": "true",
+    "store": "factory",
+    "type": "bool",
+    "default": "true"
+   }
   },
   {
    "id": "setting:systemone.retention",
@@ -22120,7 +24463,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `full_400d`, `hash_only`, `days_30`",
+    "docDefault": "`full_400d`",
+    "store": "factory",
+    "type": "enum",
+    "default": "full_400d",
+    "values": [
+     "full_400d",
+     "hash_only",
+     "days_30"
+    ]
+   }
   },
   {
    "id": "setting:tea.publish",
@@ -22129,7 +24484,19 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `on_release_tag`, `on_merge_main`, `never`",
+    "docDefault": "`on_release_tag`",
+    "store": "factory",
+    "type": "enum",
+    "default": "on_release_tag",
+    "values": [
+     "on_release_tag",
+     "on_merge_main",
+     "never"
+    ]
+   }
   },
   {
    "id": "setting:vault.grant",
@@ -22138,7 +24505,14 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "`{\"mode\":\"specific\",\"entries\":[\"ve_1\"]}` for the `pix_sandbox` surface; `mode` is `specific`, `all` or `all_except`",
+    "docDefault": "`all`",
+    "store": "vault",
+    "type": "object",
+    "default": "map[string]any{\"mode\": \"all"
+   }
   },
   {
    "id": "setting:vault.on_error",
@@ -22147,7 +24521,42 @@
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
-   ]
+   ],
+   "detail": {
+    "doc": "enum `pause_affected_workflows`, `fall_back_to_pix`",
+    "docDefault": "`pause_affected_workflows`",
+    "store": "factory",
+    "type": "enum",
+    "default": "pause_affected_workflows",
+    "values": [
+     "pause_affected_workflows",
+     "fall_back_to_pix"
+    ]
+   }
+  },
+  {
+   "id": "template:actions-workflow-hardening",
+   "kind": "template",
+   "value": "actions-workflow-hardening",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Actions workflow hardening"
+   }
+  },
+  {
+   "id": "template:ai-capability-review",
+   "kind": "template",
+   "value": "ai-capability-review",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "New AI capability review"
+   }
   },
   {
    "id": "template:bug-repro-to-fix",
@@ -22155,7 +24564,23 @@
    "value": "bug-repro-to-fix",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Delivery",
+    "name": "Bug repro to fix"
+   }
+  },
+  {
+   "id": "template:build-artifacts-to-tea",
+   "kind": "template",
+   "value": "build-artifacts-to-tea",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Provenance",
+    "name": "Sign build artifacts into TEA"
+   }
   },
   {
    "id": "template:ci-failure-fixer",
@@ -22163,7 +24588,47 @@
    "value": "ci-failure-fixer",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Delivery",
+    "name": "CI failure fixer"
+   }
+  },
+  {
+   "id": "template:code-scanning-triage",
+   "kind": "template",
+   "value": "code-scanning-triage",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Code scanning alert triage"
+   }
+  },
+  {
+   "id": "template:container-published-to-tea",
+   "kind": "template",
+   "value": "container-published-to-tea",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Provenance",
+    "name": "Container published to TEA"
+   }
+  },
+  {
+   "id": "template:default-branch-broke",
+   "kind": "template",
+   "value": "default-branch-broke",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Testing",
+    "name": "Default branch broke"
+   }
   },
   {
    "id": "template:delivery-sweep",
@@ -22171,7 +24636,35 @@
    "value": "delivery-sweep",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Operations",
+    "name": "Delivery sweep"
+   }
+  },
+  {
+   "id": "template:dependabot-alert-triage",
+   "kind": "template",
+   "value": "dependabot-alert-triage",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Dependabot alert triage"
+   }
+  },
+  {
+   "id": "template:dependabot-strategy-check",
+   "kind": "template",
+   "value": "dependabot-strategy-check",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Hygiene",
+    "name": "Dependabot strategy check"
+   }
   },
   {
    "id": "template:dependabot-triage",
@@ -22179,7 +24672,11 @@
    "value": "dependabot-triage",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Hygiene",
+    "name": "Dependabot triage"
+   }
   },
   {
    "id": "template:dependency-hygiene",
@@ -22187,7 +24684,59 @@
    "value": "dependency-hygiene",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Hygiene",
+    "name": "Dependency hygiene"
+   }
+  },
+  {
+   "id": "template:dependency-scope-fix",
+   "kind": "template",
+   "value": "dependency-scope-fix",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Hygiene",
+    "name": "Test dependency declared as runtime"
+   }
+  },
+  {
+   "id": "template:deploy-failed-card",
+   "kind": "template",
+   "value": "deploy-failed-card",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Operations",
+    "name": "Deploy failed card"
+   }
+  },
+  {
+   "id": "template:egress-decision",
+   "kind": "template",
+   "value": "egress-decision",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Egress decision"
+   }
+  },
+  {
+   "id": "template:failure-explainer",
+   "kind": "template",
+   "value": "failure-explainer",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Testing",
+    "name": "Failure explainer comment"
+   }
   },
   {
    "id": "template:feature-from-issue",
@@ -22195,7 +24744,35 @@
    "value": "feature-from-issue",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Delivery",
+    "name": "Feature from issue"
+   }
+  },
+  {
+   "id": "template:flaky-test-quarantine",
+   "kind": "template",
+   "value": "flaky-test-quarantine",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Testing",
+    "name": "Flaky test card"
+   }
+  },
+  {
+   "id": "template:issue-to-ticket",
+   "kind": "template",
+   "value": "issue-to-ticket",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Operations",
+    "name": "Issue to ticket"
+   }
   },
   {
    "id": "template:kanban-triage-autopilot",
@@ -22203,7 +24780,59 @@
    "value": "kanban-triage-autopilot",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Operations",
+    "name": "Kanban triage autopilot"
+   }
+  },
+  {
+   "id": "template:label-fix-tests",
+   "kind": "template",
+   "value": "label-fix-tests",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Testing",
+    "name": "Label sf:fix-tests"
+   }
+  },
+  {
+   "id": "template:label-repro",
+   "kind": "template",
+   "value": "label-repro",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Delivery",
+    "name": "Label sf:repro"
+   }
+  },
+  {
+   "id": "template:label-review",
+   "kind": "template",
+   "value": "label-review",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Delivery",
+    "name": "Label sf:review"
+   }
+  },
+  {
+   "id": "template:low-quality-pr-comment",
+   "kind": "template",
+   "value": "low-quality-pr-comment",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Delivery",
+    "name": "Low quality PR comment"
+   }
   },
   {
    "id": "template:malware-response",
@@ -22211,7 +24840,23 @@
    "value": "malware-response",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Malware response"
+   }
+  },
+  {
+   "id": "template:new-package-review",
+   "kind": "template",
+   "value": "new-package-review",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "New package review"
+   }
   },
   {
    "id": "template:nightly-blackbox",
@@ -22219,7 +24864,11 @@
    "value": "nightly-blackbox",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Testing",
+    "name": "Nightly blackbox regression"
+   }
   },
   {
    "id": "template:pr-reviewer",
@@ -22227,7 +24876,11 @@
    "value": "pr-reviewer",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Delivery",
+    "name": "Pull request reviewer"
+   }
   },
   {
    "id": "template:release-provenance",
@@ -22235,7 +24888,59 @@
    "value": "release-provenance",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Provenance",
+    "name": "Release provenance"
+   }
+  },
+  {
+   "id": "template:release-steward",
+   "kind": "template",
+   "value": "release-steward",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Provenance",
+    "name": "Release steward"
+   }
+  },
+  {
+   "id": "template:repo-onboarding",
+   "kind": "template",
+   "value": "repo-onboarding",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Operations",
+    "name": "Repository onboarding"
+   }
+  },
+  {
+   "id": "template:sbom-to-tea",
+   "kind": "template",
+   "value": "sbom-to-tea",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Provenance",
+    "name": "SBOM to TEA"
+   }
+  },
+  {
+   "id": "template:secret-alert-triage",
+   "kind": "template",
+   "value": "secret-alert-triage",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Secret alert: fixture or real"
+   }
   },
   {
    "id": "template:secret-leak-response",
@@ -22243,7 +24948,11 @@
    "value": "secret-leak-response",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Secret leak response"
+   }
   },
   {
    "id": "template:security-patch-train",
@@ -22251,7 +24960,11 @@
    "value": "security-patch-train",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Security patch train"
+   }
   },
   {
    "id": "template:ui-polish-pass",
@@ -22259,7 +24972,11 @@
    "value": "ui-polish-pass",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
-   ]
+   ],
+   "detail": {
+    "category": "Delivery",
+    "name": "UI polish pass"
+   }
   },
   {
    "id": "tsfile:call/admin-test",
@@ -22795,7 +25512,10 @@
    "value": "/add-dir",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "add a directory to the current workspace"
+   }
   },
   {
    "id": "tui-cmd:/agent",
@@ -22803,7 +25523,10 @@
    "value": "/agent",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "pick an agent profile or manage background agents"
+   }
   },
   {
    "id": "tui-cmd:/agents",
@@ -22811,7 +25534,10 @@
    "value": "/agents",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "live agents, workers, profiles and the audit trail"
+   }
   },
   {
    "id": "tui-cmd:/budgets",
@@ -22819,7 +25545,10 @@
    "value": "/budgets",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "manage token budgets per provider and model"
+   }
   },
   {
    "id": "tui-cmd:/clear",
@@ -22827,7 +25556,10 @@
    "value": "/clear",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "start a new session"
+   }
   },
   {
    "id": "tui-cmd:/commands",
@@ -22835,7 +25567,10 @@
    "value": "/commands",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "list custom slash commands; /<name> runs one"
+   }
   },
   {
    "id": "tui-cmd:/compact",
@@ -22843,7 +25578,10 @@
    "value": "/compact",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "summarise the session into a new one"
+   }
   },
   {
    "id": "tui-cmd:/crew",
@@ -22851,7 +25589,10 @@
    "value": "/crew",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "the crew control room: a crew run's workers, cards, providers, scope, faults and audit"
+   }
   },
   {
    "id": "tui-cmd:/diff",
@@ -22859,7 +25600,10 @@
    "value": "/diff",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "read-only pane of the working tree's changes: staged, unstaged and untracked, per-file hunks"
+   }
   },
   {
    "id": "tui-cmd:/execute",
@@ -22867,7 +25611,10 @@
    "value": "/execute",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "leave plan mode and execute the plan"
+   }
   },
   {
    "id": "tui-cmd:/exit",
@@ -22875,7 +25622,10 @@
    "value": "/exit",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "quit and print the resume card"
+   }
   },
   {
    "id": "tui-cmd:/export",
@@ -22883,7 +25633,10 @@
    "value": "/export",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "export this session (or one by id) as Markdown"
+   }
   },
   {
    "id": "tui-cmd:/firewall",
@@ -22891,7 +25644,10 @@
    "value": "/firewall",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "configure the AI Firewall"
+   }
   },
   {
    "id": "tui-cmd:/fleet",
@@ -22899,7 +25655,10 @@
    "value": "/fleet",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "kanban worker agents: start, stop and watch them"
+   }
   },
   {
    "id": "tui-cmd:/gitsync",
@@ -22907,7 +25666,10 @@
    "value": "/gitsync",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "rebase the branch onto origin's default branch before turns: on, off, or global on|off"
+   }
   },
   {
    "id": "tui-cmd:/handoff",
@@ -22915,7 +25677,10 @@
    "value": "/handoff",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "execute a plan file directly: /handoff <plan file path> [extra direction]"
+   }
   },
   {
    "id": "tui-cmd:/help",
@@ -22923,7 +25688,10 @@
    "value": "/help",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "browse commands and keyboard shortcuts in a scrollable screen"
+   }
   },
   {
    "id": "tui-cmd:/inbox",
@@ -22931,7 +25699,10 @@
    "value": "/inbox",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "cards waiting on you: flow checkpoints, cards assigned to a person, blocked cards"
+   }
   },
   {
    "id": "tui-cmd:/intel",
@@ -22939,7 +25710,10 @@
    "value": "/intel",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "session intelligence: plan limits, pace, trend, runway and usage over time (f12 opens the pane)"
+   }
   },
   {
    "id": "tui-cmd:/kanban",
@@ -22947,7 +25721,10 @@
    "value": "/kanban",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "view and manage the global kanban board; /kanban K-xxxxxx opens on one item"
+   }
   },
   {
    "id": "tui-cmd:/knowledge",
@@ -22955,7 +25732,10 @@
    "value": "/knowledge",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "browse and search indexed knowledge: this project, every project, the agents"
+   }
   },
   {
    "id": "tui-cmd:/locate",
@@ -22963,7 +25743,10 @@
    "value": "/locate",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "list the files explore locate may look at and where it would send its questions (/locate --dry-run)"
+   }
   },
   {
    "id": "tui-cmd:/lsp",
@@ -22971,7 +25754,10 @@
    "value": "/lsp",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "manage language-server diagnostics; /lsp on|off [language] switches this session"
+   }
   },
   {
    "id": "tui-cmd:/mcp",
@@ -22979,7 +25765,10 @@
    "value": "/mcp",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "manage MCP servers (built-in switches, local and remote servers, secrets); /mcp list, /mcp restart <name>"
+   }
   },
   {
    "id": "tui-cmd:/mode",
@@ -22987,7 +25776,10 @@
    "value": "/mode",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "show or set operating mode"
+   }
   },
   {
    "id": "tui-cmd:/model",
@@ -22995,7 +25787,10 @@
    "value": "/model",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "pick provider and model for each role; /model <provider> <model> [effort] switches this session"
+   }
   },
   {
    "id": "tui-cmd:/paste-image",
@@ -23003,7 +25798,10 @@
    "value": "/paste-image",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "attach the image on the clipboard"
+   }
   },
   {
    "id": "tui-cmd:/permissions",
@@ -23011,7 +25809,10 @@
    "value": "/permissions",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "edit tool permissions"
+   }
   },
   {
    "id": "tui-cmd:/plugin",
@@ -23019,7 +25820,10 @@
    "value": "/plugin",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "list, enable, disable or remove plugins (install with belai plugin install)"
+   }
   },
   {
    "id": "tui-cmd:/processes",
@@ -23027,7 +25831,10 @@
    "value": "/processes",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "manage the process library"
+   }
   },
   {
    "id": "tui-cmd:/profile",
@@ -23035,7 +25842,10 @@
    "value": "/profile",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "switch agent profile"
+   }
   },
   {
    "id": "tui-cmd:/prompts",
@@ -23043,7 +25853,10 @@
    "value": "/prompts",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "manage the prompt library"
+   }
   },
   {
    "id": "tui-cmd:/providers",
@@ -23051,7 +25864,10 @@
    "value": "/providers",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "manage providers, credentials and local models"
+   }
   },
   {
    "id": "tui-cmd:/rc",
@@ -23059,7 +25875,10 @@
    "value": "/rc",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "remote control: let the Vulnetix website start and drive Belai sessions on this machine"
+   }
   },
   {
    "id": "tui-cmd:/refine",
@@ -23067,7 +25886,10 @@
    "value": "/refine",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "refine the extracted plan"
+   }
   },
   {
    "id": "tui-cmd:/rename",
@@ -23075,7 +25897,10 @@
    "value": "/rename",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "rename this session"
+   }
   },
   {
    "id": "tui-cmd:/resume",
@@ -23083,7 +25908,10 @@
    "value": "/resume",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "resume a session by id or browse sessions on disk"
+   }
   },
   {
    "id": "tui-cmd:/sandbox",
@@ -23091,7 +25919,10 @@
    "value": "/sandbox",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "show the OS sandbox status and policy for commands"
+   }
   },
   {
    "id": "tui-cmd:/settings",
@@ -23099,7 +25930,10 @@
    "value": "/settings",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "view and edit settings"
+   }
   },
   {
    "id": "tui-cmd:/skills",
@@ -23107,7 +25941,10 @@
    "value": "/skills",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "list installed skills"
+   }
   },
   {
    "id": "tui-cmd:/sync",
@@ -23115,7 +25952,10 @@
    "value": "/sync",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "show or change session sync to the Vulnetix website"
+   }
   },
   {
    "id": "tui-cmd:/todos",
@@ -23123,7 +25963,10 @@
    "value": "/todos",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "show plan progress"
+   }
   },
   {
    "id": "tui-cmd:/tree",
@@ -23131,7 +25974,10 @@
    "value": "/tree",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "browse the session as a tree, continue from an earlier point or fork a branch"
+   }
   },
   {
    "id": "tui-cmd:/trusted",
@@ -23139,7 +25985,10 @@
    "value": "/trusted",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "manage trusted directories, the ones remote control offers"
+   }
   },
   {
    "id": "tui-cmd:/tts",
@@ -23147,7 +25996,10 @@
    "value": "/tts",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "read replies aloud: on, off, stop, voice, speed, cache"
+   }
   },
   {
    "id": "tui-cmd:/voice",
@@ -23155,7 +26007,10 @@
    "value": "/voice",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "speech input: dictate into the composer with a hold-to-talk key or always listening"
+   }
   },
   {
    "id": "tui-cmd:/vulnetix",
@@ -23163,7 +26018,10 @@
    "value": "/vulnetix",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "Vulnetix code review and firewall"
+   }
   },
   {
    "id": "tui-cmd:/welcome",
@@ -23171,7 +26029,10 @@
    "value": "/welcome",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "reopen the Getting started guide"
+   }
   },
   {
    "id": "tui-cmd:/yolo",
@@ -23179,7 +26040,10 @@
    "value": "/yolo",
    "sources": [
     "belai/internal/tui/commands.go"
-   ]
+   ],
+   "detail": {
+    "description": "toggle guardrails and ask together"
+   }
   },
   {
    "id": "tui-key:ctrl+b",
@@ -23540,7 +26404,10 @@
    "value": "answer_agent_question",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Answer the question a session is waiting on: a permission (allow_once or deny) or a clarifying question (answer text)."
+   }
   },
   {
    "id": "voice-tool:delivery_decisions",
@@ -23548,7 +26415,10 @@
    "value": "delivery_decisions",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Decisions the factory made: how many, how many went to a person and how fast people answered, how many a rule handled."
+   }
   },
   {
    "id": "voice-tool:delivery_people",
@@ -23556,7 +26426,10 @@
    "value": "delivery_people",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Who took part in the factory's work: people, their actions and time, and contributors on record."
+   }
   },
   {
    "id": "voice-tool:delivery_value",
@@ -23564,7 +26437,10 @@
    "value": "delivery_value",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "What the factory's delivery is worth. focus benefit: what it delivered and what a team would have needed (default today). fte_hours: the hours, and people for a month, a team would need. by_hand_cost: what the same work would cost with agile teams by hand (default this month). return: the return on model use. By-hand figures are estimates from Settings."
+   }
   },
   {
    "id": "voice-tool:factory_spend",
@@ -23572,7 +26448,10 @@
    "value": "factory_spend",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "What model use cost: spend and tokens today or over a range, the budget pace, and cost by model on screen. Use for \"what was my spend\"."
+   }
   },
   {
    "id": "voice-tool:factory_stats",
@@ -23580,7 +26459,10 @@
    "value": "factory_stats",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Software Factory headline numbers: agents working, cards done, draft PRs, gates holding, tokens and spend, what needs the caller."
+   }
   },
   {
    "id": "voice-tool:find_repo",
@@ -23588,7 +26470,10 @@
    "value": "find_repo",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Match a repository the caller said out loud to one they can use, and the hosts that can take it. Pass their words as spoken."
+   }
   },
   {
    "id": "voice-tool:forget",
@@ -23596,7 +26481,10 @@
    "value": "forget",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Delete a note, when the caller asks you to forget it. Find its id with recall first and say which note it is."
+   }
   },
   {
    "id": "voice-tool:friction",
@@ -23604,7 +26492,10 @@
    "value": "friction",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Where sessions hit trouble: tool errors, failed or interrupted turns and denied permissions, by tool, model and host, and hosts on an older belai."
+   }
   },
   {
    "id": "voice-tool:hold_music",
@@ -23612,7 +26503,10 @@
    "value": "hold_music",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Turn hold music on while waiting on a session, or off."
+   }
   },
   {
    "id": "voice-tool:host_workload",
@@ -23620,7 +26514,10 @@
    "value": "host_workload",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "The workload on the caller's hosts: online hosts, sessions against slots, full and offline hosts, budget used per host, and how often hosts went offline."
+   }
   },
   {
    "id": "voice-tool:lifecycle_coverage",
@@ -23628,7 +26525,10 @@
    "value": "lifecycle_coverage",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Whether the factory's figures can be trusted: for each lifecycle stage, whether its record matches the source, has a gap, or is not captured yet."
+   }
   },
   {
    "id": "voice-tool:list_hosts",
@@ -23636,7 +26536,10 @@
    "value": "list_hosts",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "The caller's Pix Sandboxes and self-managed hosts, whether they are online, and which repositories they offer."
+   }
   },
   {
    "id": "voice-tool:list_runs",
@@ -23644,7 +26547,10 @@
    "value": "list_runs",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Software Factory workflow runs, newest first."
+   }
   },
   {
    "id": "voice-tool:list_sessions",
@@ -23652,7 +26558,10 @@
    "value": "list_sessions",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Coding-agent sessions, newest first, with optional filters."
+   }
   },
   {
    "id": "voice-tool:needs_attention",
@@ -23660,7 +26569,10 @@
    "value": "needs_attention",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "What is waiting on the caller: approvals, agent questions, offline hosts."
+   }
   },
   {
    "id": "voice-tool:oldest_checkpoints",
@@ -23668,7 +26580,10 @@
    "value": "oldest_checkpoints",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "The oldest open checkpoints (things waiting on a person or an outside party), oldest first, with how long each has waited and the count by kind."
+   }
   },
   {
    "id": "voice-tool:outcomes_trend",
@@ -23676,7 +26591,10 @@
    "value": "outcomes_trend",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "The trend of outcomes: what the factory delivered and abandoned in a window against the same length before, and decisions made and escalated."
+   }
   },
   {
    "id": "voice-tool:propose_asks_off",
@@ -23684,7 +26602,10 @@
    "value": "propose_asks_off",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Prepare to turn permission asks off on a running session, so it stops waiting for approvals, and get the read-back. Only when the caller asks for it."
+   }
   },
   {
    "id": "voice-tool:propose_session",
@@ -23692,7 +26613,10 @@
    "value": "propose_session",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Prepare to start a coding-agent session and get the read-back to say. For several sessions, call it once per session in the same reply: they join one read-back (up to 5). Nothing starts until start_session after the caller says yes."
+   }
   },
   {
    "id": "voice-tool:propose_stop",
@@ -23700,7 +26624,10 @@
    "value": "propose_stop",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Prepare to stop a running session and get the read-back."
+   }
   },
   {
    "id": "voice-tool:queue_flow",
@@ -23708,7 +26635,10 @@
    "value": "queue_flow",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Whether a queue is growing: open now, the server's trend against the start of the window, work in against work done, typical wait and the oldest item. stage \"queue\" is every checkpoint plus queued runs and sessions."
+   }
   },
   {
    "id": "voice-tool:recall",
@@ -23716,7 +26646,10 @@
    "value": "recall",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Search the notes kept from earlier calls."
+   }
   },
   {
    "id": "voice-tool:remember",
@@ -23724,7 +26657,10 @@
    "value": "remember",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Keep a note for future calls: a preference, a standing instruction or a fact the caller wants kept (\"always use plan mode on vdb-site\"). Only when they ask you to remember, or state a lasting preference."
+   }
   },
   {
    "id": "voice-tool:repo_activity",
@@ -23732,7 +26668,10 @@
    "value": "repo_activity",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Everything recent on one repository: session totals, factory runs, open findings, SLSA level."
+   }
   },
   {
    "id": "voice-tool:run_facts",
@@ -23740,7 +26679,10 @@
    "value": "run_facts",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "One factory run: its steps and their status, and its PR."
+   }
   },
   {
    "id": "voice-tool:send_followup",
@@ -23748,7 +26690,10 @@
    "value": "send_followup",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Send a message to a running session's agent, after reading it back to the caller."
+   }
   },
   {
    "id": "voice-tool:session_facts",
@@ -23756,7 +26701,10 @@
    "value": "session_facts",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "One session in detail: state, repository, branch and PR, what it last said, and any question it is waiting on."
+   }
   },
   {
    "id": "voice-tool:sessions_aggregate",
@@ -23764,7 +26712,10 @@
    "value": "sessions_aggregate",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Totals across recent sessions: how many, live, failed, stopped, tokens, typical length. Optionally for one repository and grouped. Use this for any \"how many sessions\" question; never add numbers up yourself."
+   }
   },
   {
    "id": "voice-tool:start_session",
@@ -23772,7 +26723,10 @@
    "value": "start_session",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Start every session in the read-back. Only after the caller said yes to it, in their very last reply."
+   }
   },
   {
    "id": "voice-tool:stop_session",
@@ -23780,7 +26734,10 @@
    "value": "stop_session",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Stop the session after the caller said yes to the stop read-back."
+   }
   },
   {
    "id": "voice-tool:turn_asks_off",
@@ -23788,7 +26745,10 @@
    "value": "turn_asks_off",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Turn permission asks off on the session, after the caller said yes to the asks-off read-back."
+   }
   },
   {
    "id": "voice-tool:turn_asks_on",
@@ -23796,7 +26756,10 @@
    "value": "turn_asks_on",
    "sources": [
     "website/src/worker/call/tools.ts"
-   ]
+   ],
+   "detail": {
+    "description": "Turn permission asks back on for a running session, when the caller asks. No read-back needed."
+   }
   }
  ]
 }
