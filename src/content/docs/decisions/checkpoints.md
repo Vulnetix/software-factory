@@ -1,7 +1,7 @@
 ---
 title: Checkpoints and Needs you
 nav: Checkpoints
-description: One queue of everything that waits on a person. The ten kinds of checkpoint, how rows are merged and ordered, what you can do from the page, and the cockpit's Needs you panel.
+description: One queue of everything that waits on a person. The eleven kinds of checkpoint, how rows are merged and ordered, what you can do from the page, and the cockpit's Needs you panel.
 order: 4
 sources: [vdb-site/docs/factory.md, website/.repo/factory-checkpoints.md, website/src/shared/factory-checkpoint-kinds.ts, vdb-site/api/internal/handler/factory_checkpoints.go]
 checked: [vdb-site@284f1d6, website@a31d470]
@@ -12,12 +12,13 @@ The Checkpoints page (`/resolve/factory-checkpoints`) is one queue of everything
 
 ![The Checkpoints page with its kind filter, the queue and an open row](/img/sf-checkpoints-dark.webp)
 
-## The ten kinds
+## The eleven kinds
 
 | Kind | Shown as | What is waiting |
 |---|---|---|
 | `approval` | Waiting for your decision | An [approval](/decisions/human-approval/) |
 | `question` | Question for you | An agent asked something and is waiting for the answer |
+| `firewall_review` | Capability held for review | An AI capability (an MCP server, tool, skill or client) the AI Firewall holds for review while a caller waits. **Review** opens it on the AI Firewall page. |
 | `card_held` | Card held for you | A card with a `checkpoint:<reason>` label that no agent will claim until a person clears it |
 | `card_blocked` | Blocked card | A card in the blocked list |
 | `card_confirm` | Card to confirm | A card an agent filed that a person should confirm |
@@ -29,7 +30,7 @@ The Checkpoints page (`/resolve/factory-checkpoints`) is one queue of everything
 
 ## How rows are merged
 
-A pull request or issue linked to a card is shown as one row for the card, with the pull request or issue folded in. A row that is several kinds at once shows its most urgent kind, in this order: `approval`, `question`, `card_held`, `card_blocked`, `card_confirm`, `pr_ready`, `pr_draft`, `issue_external`, `claim_lapsed`, `host_offline`. Within a kind, the newest rows come first.
+A pull request or issue linked to a card is shown as one row for the card, with the pull request or issue folded in. A row that is several kinds at once shows its most urgent kind, in this order: `approval`, `question`, `firewall_review`, `card_held`, `card_blocked`, `card_confirm`, `pr_ready`, `pr_draft`, `issue_external`, `claim_lapsed`, `host_offline`. Within a kind, the newest rows come first.
 
 It covers the repositories your GitHub App installations reach, those attached to your Pix Sandboxes, and those your boards are bound to.
 

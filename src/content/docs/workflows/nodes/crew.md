@@ -72,6 +72,12 @@ Belai has no callback, so the step reads the card:
 | is untouched when the dispatch is refused, expires or is stopped, or the session ends | fails |
 | is never claimed within `autonomy.claim_ttl_minutes` | fails with `card_unclaimed` |
 
+### When the work is handed on
+
+A worker can hand its work to another card instead of finishing it: `belai:repro` finds the cause and files a builder card for the fix, then moves its own card to `done`. The step does not end there. It follows the cards handed off from its card, up to 5 handoffs deep, and waits while any of them is unfinished. When they are all in `review` or `done`, the step takes the pull request from the newest finished handoff that has one, or else the newest one's branch.
+
+A handoff nobody finishes within `autonomy.no_host_ttl_hours` (6 by default) fails the attempt with `handoff_stalled`, naming the card.
+
 A failed attempt is retried with a backoff, up to `maxAttempts`. Then the line stops and the run fails.
 
 Below autonomy `suggest` (that is, at `observe`), the crew step is skipped.

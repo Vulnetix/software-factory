@@ -78,6 +78,10 @@ On the Schedules tab you can add, change, pause and delete schedules.
 - **Deleting** publishes a version without the trigger node and removes it from the scheduler.
 - **Agent schedules** cannot be changed here: `PATCH` and `DELETE` refuse a `host_` id and point to the host's own routes.
 
+## Fan-out is staggered
+
+A cron trigger that reaches many repositories, such as the weekly test and lint sweeps over every managed repository, does not start every run at the tick. Each repository's run starts at a fixed offset inside a 6-hour window, worked out from a hash of the repository's name, so the same repository runs at the same time each week and hosts receive the sweep a few runs at a time. A cron that reaches one repository starts at once. A run waiting for its offset holds no concurrency slot.
+
 ## Holds and missed fires
 
 The factory never polls a clock to decide what is due. The scheduler calls the factory's internal trigger endpoint with a signed request. If the factory is paused or stopped, the fire is answered as held and no run starts. During a maintenance window or blackout the fire's runs are created and wait as `held` until the window ends. The `schedules.missed` setting names what to do with fires held by a pause or stop: one run (`run_once`, the default), none (`skip`), or one per held fire (`run_all`). This build keeps no held-fire count, so `POST /v1/factory/resume` reports `heldFires: 0` and no held fire is replayed yet. See [Holds and blackouts](/control/holds-and-blackouts/).
