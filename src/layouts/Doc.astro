@@ -189,13 +189,24 @@ const isRef = section === 'reference';
         h.appendChild(a);
       });
 
-      // Wrap tables so wide ones scroll inside a box, not the page.
+      // Wrap tables so wide ones scroll inside a box, not the page. Tables of
+      // three or more columns also label each cell with its header, so on a
+      // phone every row can stack into a card instead of scrolling sideways.
       document.querySelectorAll<HTMLTableElement>('.prose table').forEach((t) => {
         if (t.parentElement?.classList.contains('table-wrap')) return;
         const w = document.createElement('div');
         w.className = 'table-wrap';
         t.replaceWith(w);
         w.appendChild(t);
+        const heads = [...t.querySelectorAll('thead th')].map((th) => th.textContent?.trim() ?? '');
+        if (heads.length < 3) return;
+        w.classList.add('table-stack');
+        t.querySelectorAll('tbody tr').forEach((tr) => {
+          [...tr.children].forEach((td, i) => {
+            if (heads[i]) td.setAttribute('data-label', heads[i]);
+            if (!td.textContent?.trim() && !td.querySelector('img')) td.classList.add('empty');
+          });
+        });
       });
 
       // Highlight the section in view in "On this page".
