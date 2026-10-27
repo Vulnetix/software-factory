@@ -15,13 +15,13 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="agents.finalize_at"></span>`agents.finalize_at` | num 0 to 0.95: share of any per-card limit at which the worker is told to wrap up (commit, record findings, publish a draft pull request); a value under 0.5 is raised to 0.5 (0 keeps the agent's own, 0.85 for the built-ins) | `0` | factory |  |
-| <span id="agents.max_attempts"></span>`agents.max_attempts` | int 0 to 10: failed attempts at one stage before Belai blocks the card (0 keeps the agent's own). Not `autonomy.max_attempts`, which retries a workflow step | `0` | factory |  |
-| <span id="agents.max_continuations"></span>`agents.max_continuations` | int 0 to 50: times a card may go back to be resumed after its budget ran out with progress made, before it is blocked for a person (0 keeps the agent's own, 5 by default) | `0` | factory |  |
-| <span id="agents.max_cost_usd_per_item"></span>`agents.max_cost_usd_per_item` | num 0 to 10000: estimated cost in US dollars at which a worker's claim on one card ends (0 keeps each agent's own; the built-in agents allow $8 to $25) | `0` | factory |  |
-| <span id="agents.max_iterations"></span>`agents.max_iterations` | int 0 to 400: tool rounds per pass (0 keeps the agent's own) | `0` | factory |  |
-| <span id="agents.max_passes_per_item"></span>`agents.max_passes_per_item` | int 0 to 1000: goal passes per card, a safety rail beside the cost limit (0 keeps the agent's own) | `0` | factory |  |
-| <span id="agents.max_wall_minutes"></span>`agents.max_wall_minutes` | int 0 to 10080: minutes per card, a safety rail (0 keeps the agent's own) | `0` | factory |  |
+| <span id="agents.finalize_at"></span>`agents.finalize_at` | num 0 to 0.95: share of any per-card limit at which the worker is told to wrap up (commit, record findings, publish a draft pull request); a value under 0.5 is raised to 0.5 (0 keeps the agent's own, 0.85 for the built-ins) | `0` | factory | [Per-agent and per-card limits](/cost/budgets/) |
+| <span id="agents.max_attempts"></span>`agents.max_attempts` | int 0 to 10: failed attempts at one stage before Belai blocks the card (0 keeps the agent's own). Not `autonomy.max_attempts`, which retries a workflow step | `0` | factory | [Per-agent and per-card limits](/cost/budgets/) |
+| <span id="agents.max_continuations"></span>`agents.max_continuations` | int 0 to 50: times a card may go back to be resumed after its budget ran out with progress made, before it is blocked for a person (0 keeps the agent's own, 5 by default) | `0` | factory | [Per-agent and per-card limits](/cost/budgets/) |
+| <span id="agents.max_cost_usd_per_item"></span>`agents.max_cost_usd_per_item` | num 0 to 10000: estimated cost in US dollars at which a worker's claim on one card ends (0 keeps each agent's own; the built-in agents allow $8 to $25) | `0` | factory | [Per-agent and per-card limits](/cost/budgets/) |
+| <span id="agents.max_iterations"></span>`agents.max_iterations` | int 0 to 400: tool rounds per pass (0 keeps the agent's own) | `0` | factory | [Per-agent and per-card limits](/cost/budgets/) |
+| <span id="agents.max_passes_per_item"></span>`agents.max_passes_per_item` | int 0 to 1000: goal passes per card, a safety rail beside the cost limit (0 keeps the agent's own) | `0` | factory | [Per-agent and per-card limits](/cost/budgets/) |
+| <span id="agents.max_wall_minutes"></span>`agents.max_wall_minutes` | int 0 to 10080: minutes per card, a safety rail (0 keeps the agent's own) | `0` | factory | [Per-agent and per-card limits](/cost/budgets/) |
 
 ## approve
 
@@ -67,10 +67,10 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="budget.alerts"></span>`budget.alerts` | list. list of int 1 to 100, ascending | `[]any{50` | factory |  |
-| <span id="budget.factory_share"></span>`budget.factory_share` | pct. pct of the Pix allowance | `75` | factory |  |
-| <span id="budget.month"></span>`budget.month` | int 0 to 1e15. int tokens, all providers | `30000000` | factory |  |
-| <span id="budget.on_exceed"></span>`budget.on_exceed` | enum: `pause_run`, `downgrade_to_fast`, `switch_to_pix_allocation`, `escalate_human`, `hard_stop` | `switch_to_pix_allocation` | factory |  |
+| <span id="budget.alerts"></span>`budget.alerts` | list. list of int 1 to 100, ascending | `[]any{50` | factory | [Budgets](/cost/budgets/) |
+| <span id="budget.factory_share"></span>`budget.factory_share` | pct. pct of the Pix allowance | `75` | factory | [Budgets](/cost/budgets/) |
+| <span id="budget.month"></span>`budget.month` | int 0 to 1e15. int tokens, all providers | `30000000` | factory | [Budgets](/cost/budgets/) |
+| <span id="budget.on_exceed"></span>`budget.on_exceed` | enum: `pause_run`, `downgrade_to_fast`, `switch_to_pix_allocation`, `escalate_human`, `hard_stop` | `switch_to_pix_allocation` | factory | [Budgets](/cost/budgets/) |
 
 ## crews
 
@@ -124,22 +124,22 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="github.branch_prefix"></span>`github.branch_prefix` | str. str, 1 to 40 chars, `[A-Za-z0-9/_.-]` | `belai/K-` | factory |  |
-| <span id="github.check_runs"></span>`github.check_runs` | bool. bool: publish gate results as check runs (needs `checks: write`) | `false` | factory |  |
-| <span id="github.etag"></span>`github.etag` | bool. bool: send `If-None-Match` on every live read | `true` | factory |  |
-| <span id="github.poll.fallback"></span>`github.poll.fallback` | enum: `conditional_poll_10m`, `none` | `conditional_poll_10m` | factory |  |
-| <span id="github.polling.forbidden"></span>`github.polling.forbidden` | bool. bool, locked `true` | `true` | factory, locked |  |
-| <span id="github.pr_state"></span>`github.pr_state` | enum: `draft`, `ready` | `draft` | factory |  |
-| <span id="github.protected"></span>`github.protected` | bool. bool: never push to protected branches | `true` | factory |  |
-| <span id="github.quota.factory_share"></span>`github.quota.factory_share` | pct | `10` | factory |  |
-| <span id="github.quota.on_exhausted"></span>`github.quota.on_exhausted` | enum: `pause_live_reads`, `defer_to_next_window`, `escalate` | `pause_live_reads` | factory |  |
-| <span id="github.quota.proactive_writes_per_hour"></span>`github.quota.proactive_writes_per_hour` | int 0 to 5000. int 0 to 5000: most calls an installation makes in a clock hour for default workflows (13.4) | `60` | factory |  |
-| <span id="github.quota.reserve"></span>`github.quota.reserve` | pct | `20` | factory |  |
-| <span id="github.read.default"></span>`github.read.default` | enum: `posture_mirror`, `s3_raw`, `live_api` | `posture_mirror` | factory |  |
-| <span id="github.stale.alerts"></span>`github.stale.alerts` | duration. dur | `1h` | factory |  |
-| <span id="github.stale.checks"></span>`github.stale.checks` | duration. dur | `2m` | factory |  |
-| <span id="github.stale.pulls"></span>`github.stale.pulls` | duration. dur | `5m` | factory |  |
-| <span id="github.stale.repo"></span>`github.stale.repo` | duration. dur | `6h` | factory |  |
+| <span id="github.branch_prefix"></span>`github.branch_prefix` | str. str, 1 to 40 chars, `[A-Za-z0-9/_.-]` | `belai/K-` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.check_runs"></span>`github.check_runs` | bool. bool: publish gate results as check runs (needs `checks: write`) | `false` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.etag"></span>`github.etag` | bool. bool: send `If-None-Match` on every live read | `true` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.poll.fallback"></span>`github.poll.fallback` | enum: `conditional_poll_10m`, `none` | `conditional_poll_10m` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.polling.forbidden"></span>`github.polling.forbidden` | bool. bool, locked `true` | `true` | factory, locked | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.pr_state"></span>`github.pr_state` | enum: `draft`, `ready` | `draft` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.protected"></span>`github.protected` | bool. bool: never push to protected branches | `true` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.quota.factory_share"></span>`github.quota.factory_share` | pct | `10` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.quota.on_exhausted"></span>`github.quota.on_exhausted` | enum: `pause_live_reads`, `defer_to_next_window`, `escalate` | `pause_live_reads` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.quota.proactive_writes_per_hour"></span>`github.quota.proactive_writes_per_hour` | int 0 to 5000. int 0 to 5000: most calls an installation makes in a clock hour for default workflows (13.4) | `60` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.quota.reserve"></span>`github.quota.reserve` | pct | `20` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.read.default"></span>`github.read.default` | enum: `posture_mirror`, `s3_raw`, `live_api` | `posture_mirror` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.stale.alerts"></span>`github.stale.alerts` | duration. dur | `1h` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.stale.checks"></span>`github.stale.checks` | duration. dur | `2m` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.stale.pulls"></span>`github.stale.pulls` | duration. dur | `5m` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
+| <span id="github.stale.repo"></span>`github.stale.repo` | duration. dur | `6h` | factory | [GitHub quota and the data plane](/cost/github-quota/) |
 
 ## hosts
 
@@ -194,8 +194,8 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="providers.ai_gateway"></span>`providers.ai_gateway` | bool. bool: route calls through Cloudflare AI Gateway | `false` | factory |  |
-| <span id="providers.code"></span>`providers.code` | str. `pix-smart`, `pix-fast` or `vault:<entryId>` | `pix-smart` | factory |  |
+| <span id="providers.ai_gateway"></span>`providers.ai_gateway` | bool. bool: route calls through Cloudflare AI Gateway | `false` | factory | [Model routing and the Pix allowance](/cost/model-routing/) |
+| <span id="providers.code"></span>`providers.code` | str. `pix-smart`, `pix-fast` or `vault:<entryId>` | `pix-smart` | factory | [Model routing and the Pix allowance](/cost/model-routing/) |
 
 ## schedules
 

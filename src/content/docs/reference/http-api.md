@@ -359,15 +359,15 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/budgets` |  |
-| POST | `/v1/factory/budgets` |  |
-| DELETE | `/v1/factory/budgets/{id}` |  |
-| PUT | `/v1/factory/budgets/{id}` |  |
-| GET | `/v1/factory/budgets/{id}/ledger` |  |
-| GET | `/v1/factory/budgets/hosts` |  |
-| PUT | `/v1/factory/budgets/providers/{id}` |  |
-| PUT | `/v1/factory/budgets/routing` |  |
-| GET | `/v1/factory/budgets/usage` |  |
+| GET | `/v1/factory/budgets` | [Budgets](/cost/budgets/) |
+| POST | `/v1/factory/budgets` | [Budgets](/cost/budgets/) |
+| DELETE | `/v1/factory/budgets/{id}` | [Budgets](/cost/budgets/) |
+| PUT | `/v1/factory/budgets/{id}` | [Budgets](/cost/budgets/) |
+| GET | `/v1/factory/budgets/{id}/ledger` | [Budgets](/cost/budgets/) |
+| GET | `/v1/factory/budgets/hosts` | [Budgets](/cost/budgets/) |
+| PUT | `/v1/factory/budgets/providers/{id}` | [Budgets](/cost/budgets/) |
+| PUT | `/v1/factory/budgets/routing` | [Budgets](/cost/budgets/) |
+| GET | `/v1/factory/budgets/usage` | [Budgets](/cost/budgets/) |
 
 ## /v1/factory/call-log
 
@@ -500,9 +500,9 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/quota` |  |
-| GET | `/v1/factory/quota/rules` |  |
-| PUT | `/v1/factory/quota/rules` |  |
+| GET | `/v1/factory/quota` | [GitHub quota and the data plane](/cost/github-quota/) |
+| GET | `/v1/factory/quota/rules` | [GitHub quota and the data plane](/cost/github-quota/) |
+| PUT | `/v1/factory/quota/rules` | [GitHub quota and the data plane](/cost/github-quota/) |
 
 ## /v1/factory/repos
 
@@ -638,7 +638,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/workforce/usage` |  |
+| GET | `/v1/factory/workforce/usage` | [Usage and spend](/cost/usage/) |
 
 ## /v1/internal/decisions
 

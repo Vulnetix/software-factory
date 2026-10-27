@@ -545,7 +545,7 @@ Explained in [Decision node](/workflows/nodes/decision/). Defined in `api/intern
 
 ### factoryOnQuotaLow
 
-Defined in `api/internal/handler/factory_workflow_graph.go`.
+Explained in [GitHub quota and the data plane](/cost/github-quota/). Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 `defer`, `escalate`, `use_cached`
 
@@ -737,7 +737,7 @@ Defined in `api/internal/handler/factory_audit_store.go`.
 
 ### fcBudgetActions
 
-Defined in `api/internal/handler/factory_budgets_store.go`.
+Explained in [Budgets](/cost/budgets/). Defined in `api/internal/handler/factory_budgets_store.go`.
 
 `alert_only`, `downgrade_to_fast`, `escalate_human`, `hard_stop`, `pause_run`, `switch_to_pix_allocation`
 
@@ -755,13 +755,13 @@ Explained in [Checkpoints and Needs you](/decisions/checkpoints/). Defined in `a
 
 ### fcRouteDefaults
 
-Defined in `api/internal/handler/factory_budgets_store.go`.
+Explained in [Model routing and the Pix allowance](/cost/model-routing/). Defined in `api/internal/handler/factory_budgets_store.go`.
 
 `clef-flash`, `code_fast`, `code_smart`, `images`, `pix-fast`, `pix-smart`, `planner_reviewer`, `systemone_decisions`
 
 ### fcRouteKeys
 
-Defined in `api/internal/handler/factory_budgets_store.go`.
+Explained in [Model routing and the Pix allowance](/cost/model-routing/). Defined in `api/internal/handler/factory_budgets_store.go`.
 
 `code_fast`, `code_smart`, `images`, `planner_reviewer`, `systemone_decisions`
 

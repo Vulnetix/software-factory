@@ -19,7 +19,7 @@ Codes the API returns in `issues[].code` when it refuses a request, and the code
 | <span id="autonomy_above_max"></span>`autonomy_above_max` | autonomy is above autonomy.max ( | [Autonomy levels](/control/autonomy/) |
 | <span id="bad_request"></span>`bad_request` |  |  |
 | <span id="bad_state"></span>`bad_state` |  | [Runs and steps](/runs/runs-and-steps/) |
-| <span id="budget_exceeds_parent"></span>`budget_exceeds_parent` | The run budget is larger than the month budget. Lower the run budget or raise the month budget. |  |
+| <span id="budget_exceeds_parent"></span>`budget_exceeds_parent` | The run budget is larger than the month budget. Lower the run budget or raise the month budget. | [Budgets](/cost/budgets/) |
 | <span id="conclusion_unsupported_event"></span>`conclusion_unsupported_event` | In {node}, the conclusion condition only applies to check runs, check suites, workflow runs and deployment statuses. Remove it or choose one of those events. | [Triggers and webhook conditions](/workflows/triggers/) |
 | <span id="crew_not_found"></span>`crew_not_found` | Choose the crew or agent that {node} hands the work to. | [Crew node](/workflows/nodes/crew/) |
 | <span id="custom_required"></span>`custom_required` | security.scanners custom needs security.scanners.custom | [Graph limits](/workflows/graphs/) |
@@ -31,7 +31,7 @@ Codes the API returns in `issues[].code` when it refuses a request, and the code
 | <span id="forbidden"></span>`forbidden` |  |  |
 | <span id="fork_pr_needs_human"></span>`fork_pr_needs_human` | In {node}, the trigger takes pull requests from forks, and a crew could start without a person approving first. Add an approval step before the crew, or set where the change comes from to the same repository only. | [Human node](/workflows/nodes/human/) |
 | <span id="github_calls_exceed_run_cap"></span>`github_calls_exceed_run_cap` | The steps can make %d GitHub calls in one run, more than the cap of %d. Lower the call limit of a step or raise the cap. | [Graph limits](/workflows/graphs/) |
-| <span id="github_rate_limited"></span>`github_rate_limited` |  |  |
+| <span id="github_rate_limited"></span>`github_rate_limited` |  | [GitHub quota and the data plane](/cost/github-quota/) |
 | <span id="grant_missing"></span>`grant_missing` |  |  |
 | <span id="invalid"></span>`invalid` | unknown route |  |
 | <span id="invalid_base"></span>`invalid_base` | In {node}, the base branch must be default, pr_head or the name of a branch. | [Output node](/workflows/nodes/output/) |

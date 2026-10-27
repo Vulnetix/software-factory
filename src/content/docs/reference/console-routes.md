@@ -17,7 +17,7 @@ Pages in the Vulnetix console that belong to Software Factory. All are under `ht
 | [`/resolve/factory-agent`](https://www.vulnetix.com/resolve/factory-agent) |  |
 | [`/resolve/factory-audit`](https://www.vulnetix.com/resolve/factory-audit) |  |
 | [`/resolve/factory-board`](https://www.vulnetix.com/resolve/factory-board) |  |
-| [`/resolve/factory-budgets`](https://www.vulnetix.com/resolve/factory-budgets) |  |
+| [`/resolve/factory-budgets`](https://www.vulnetix.com/resolve/factory-budgets) | [Budgets](/cost/budgets/) |
 | [`/resolve/factory-checkpoints`](https://www.vulnetix.com/resolve/factory-checkpoints) | [Checkpoints and Needs you](/decisions/checkpoints/) |
 | [`/resolve/factory-conflicts`](https://www.vulnetix.com/resolve/factory-conflicts) | [Merge conflicts](/decisions/merge-conflicts/) |
 | [`/resolve/factory-contributor`](https://www.vulnetix.com/resolve/factory-contributor) |  |

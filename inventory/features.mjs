@@ -131,7 +131,7 @@ f('analytics', 'evidence', 'evidence/analytics', 'Analytics', [r('belai/analytic
 f('knowledge', 'workforce', 'workforce/knowledge', 'Knowledge', [pkg('knowledge'), doc('belai/knowledge\\.md'), tui('knowledge'), cfg('knowledge')]);
 
 // ── Cost ───────────────────────────────────────────────────────────────────
-f('budgets', 'cost', 'cost/budgets', 'Budgets', [r('factory/budgets'), gp('factory_budgets'), g('factory_engine_budget'), con('factory-budgets'), '^model:(FactoryBudget|FactoryBudgetLedger)$', set('budget.'), e('fcBudgetActions'), '^code:budget_exceeds_parent$', pkg('budget'), doc('belai/token-budgets\\.md'), tui('budgets'), cfg('budgets')]);
+f('budgets', 'cost', 'cost/budgets', 'Budgets', [r('factory/budgets'), gp('factory_budgets'), g('factory_engine_budget'), con('factory-budgets'), '^model:(FactoryBudget|FactoryBudgetLedger)$', set('budget.'), e('fcBudgetActions'), '^code:budget_exceeds_parent$']);
 f('agent-budgets', 'cost', 'cost/budgets', 'Per-agent and per-card limits', [g('factory_agent_budget'), set('agents.')]);
 f('model-routing', 'cost', 'cost/model-routing', 'Model routing and the Pix allowance', [r('factory/budgets/routing'), '^gofile:tenantmodel/', e('fcRouteKeys'), e('fcRouteDefaults'), ts('sandbox/model-routing'), doc('website/tenant-model-labels\\.md'), set('providers.')]);
 f('usage', 'cost', 'cost/usage', 'Usage and spend', [r('factory/budgets/usage'), r('factory/workforce/usage'), g('factory_summary_usage')]);
@@ -161,7 +161,7 @@ f('stops', 'pix', 'pix/stopping-work', 'Stopping work: the five stops', []);
 f('belai-install', 'belai', 'belai/install-and-sign-in', 'Install, update and sign in', ['^cli-cmd:login$', flags('login'), sub('login'), pkg('selfupdate', 'version', 'vulnetixcreds', 'vulnetixenroll', 'config', 'desktop'), cfg('paths', 'fleetpaths')]);
 f('belai-session-flags', 'belai', 'belai/cli-reference', 'Top-level flags', [flags('belai'), '^cli-cmd:belai$']);
 f('belai-modes', 'belai', 'belai/modes-and-plans', 'Modes, plan mode and goals', [pkg('modes', 'plans', 'planest', 'goals'), doc('belai/plan-mode-tuning\\.md'), tui('mode', 'handoff', 'execute', 'refine', 'yolo')]);
-f('belai-sessions', 'belai', 'belai/sessions', 'Sessions: resume, export, compact and rename', [pkg('session', 'sessionctl', 'sessionmeasure', 'transcript', 'turnlog', 'inputhistory', 'offload'), doc('belai/session-controls\\.md', 'belai/session-measures\\.md', 'belai/session-assessment\\.md', 'belai/context-offload\\.md'), tui('resume', 'export', 'compact', 'rename', 'clear', 'exit', 'tree', 'intel'), cfg('offload')]);
+f('belai-sessions', 'belai', 'belai/sessions', 'Sessions: resume, export, compact and rename', [pkg('session', 'sessionctl', 'sessionmeasure', 'transcript', 'turnlog', 'inputhistory', 'offload'), doc('belai/session-controls\\.md', 'belai/session-measures\\.md', 'belai/session-assessment\\.md', 'belai/context-offload\\.md'), tui('resume', 'export', 'compact', 'rename', 'clear', 'exit', 'tree'), cfg('offload')]);
 f('belai-models', 'belai', 'belai/models', 'Choosing providers and models', [pkg('models', 'modelfetch', 'modelinfo', 'modelselect', 'modeltest', 'localinfer'), tui('model')]);
 f('belai-tools', 'belai', 'belai/tools', 'Built-in tools', [pkg('tools', 'codemode', 'explore', 'locate', 'repomap', 'readindex', 'repoindex', 'proc', 'bgproc', 'httpclient', 'workdiff', 'filediff', 'imageguard', 'svgguard', 'clipboard'), doc('belai/code-mode\\.md', 'belai/web-fetch\\.md', 'belai/diff\\.md', 'belai/image-attachments\\.md', 'belai/bash-rewrite\\.md'), tui('locate', 'diff', 'paste-image', 'add-dir'), cfg('codemode', 'bashrewrite')]);
 f('belai-safety', 'belai', 'belai/guardrails', 'Guardrails, classifier, sandbox and trust', [pkg('sanitize', 'mlclassify', 'shellsafe', 'trustgate', 'posture', 'sandbox', 'delimiters', 'nonce', 'deciderserver', 'decisionserver', 'decisions', 'clefmcp'), doc('belai/sanitization\\.md', 'belai/sandbox\\.md', 'belai/nonce-endpoint-spec\\.md', 'belai/jev-jobs\\.md'), tui('trusted'), cfg('jev', 'jevthresholds')]);
@@ -172,6 +172,7 @@ f('belai-acp', 'belai', 'belai/editors-acp', 'Editors over ACP', [pkg('acp', 'js
 f('belai-lsp', 'belai', 'belai/lsp', 'Language servers', [pkg('lsp'), doc('belai/lsp\\.md'), tui('lsp'), cfg('lsp')]);
 f('belai-voice', 'belai', 'belai/voice-and-tts', 'Voice input and speech', [pkg('voice', 'voicecmd', 'tts'), doc('belai/voice\\.md', 'belai/tts\\.md'), tui('voice', 'tts')]);
 f('belai-git', 'belai', 'belai/git', 'Git sync and repository info', [pkg('gitsync', 'gitinfo', 'repos', 'projectregistry'), doc('belai/git-sync\\.md'), tui('gitsync'), cfg('projectprefs', 'projectprefs_keys')]);
+f('belai-budgets', 'belai', 'belai/token-budgets', 'Token budgets and session intelligence', [pkg('budget'), doc('belai/token-budgets\\.md'), tui('budgets', 'intel'), cfg('budgets'), sub('budget')], { foundIn: '2026-10-28' });
 f('belai-quality', 'belai', 'belai/tests-and-lint', 'Tests, lint and build detection', [pkg('testdetect', 'testrun', 'testpass', 'lintdetect', 'builddetect', 'quality', 'proserules', 'depwatch'), doc('belai/lint\\.md', 'belai/testing\\.md')]);
 f('belai-vulnetix', 'belai', 'belai/vulnetix', 'Vulnetix scanning inside sessions', [pkg('vulnetixcli', 'vulnid', 'scanartifacts'), doc('belai/vulnetix\\.md', 'belai/vulnetix-review\\.md', 'belai/vuln-row\\.md'), tui('vulnetix')]);
 f('belai-telemetry', 'belai', 'belai/telemetry', 'Telemetry and tracing', [pkg('otel', 'trace', 'calltrace', 'activity'), doc('belai/telemetry\\.md')]);
@@ -194,7 +195,8 @@ const STATUS = {
     'node-output', 'node-state', 'triggers', 'source-events', 'label-dispatch', 'schedules', 'internal-fire', 'templates',
     'template-search', 'defaults', 'graph-limits', 'validation-codes', 'settings-reference',
     'runs', 'run-artifacts', 'engine', 'no-host', 'sessions', 'session-trigger', 'handoffs', 'pr-checker',
-    'systemone', 'approvals', 'checkpoints', 'merge-conflicts', 'signing'],
+    'systemone', 'approvals', 'checkpoints', 'merge-conflicts', 'signing',
+    'budgets', 'agent-budgets', 'model-routing', 'usage', 'github-quota'],
   verified: [],
 };
 for (const [status, ids] of Object.entries(STATUS)) {
