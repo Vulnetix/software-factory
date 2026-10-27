@@ -22,7 +22,7 @@ An agent stops to ask when it needs a person. Its session waits, the question sh
 ## Answering
 
 - **The session page** shows the question beside the transcript, with the answers it accepts.
-- **The TUI**: the question appears in the session.
+- **The TUI**: the question appears in the session, and `/inbox` lists every card waiting on you: held at a checkpoint, assigned to you, or blocked.
 - **A Pix call**: Pix reads it to you and answers with `answer_agent_question`. By voice, a permission is allow once or deny, never allow always.
 - **A notification** can carry buttons that answer it.
 
