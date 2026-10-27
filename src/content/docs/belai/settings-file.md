@@ -58,6 +58,8 @@ Explained in [Package and AI firewalls on factory work](/evidence/firewalls/).
 
 ### permissions
 
+Explained in [Agent questions, answers and permission offers](/workforce/questions-and-permissions/).
+
 `allow`, `ask`, `block`, `deny`
 
 ### projectprefs

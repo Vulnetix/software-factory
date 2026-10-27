@@ -24,7 +24,7 @@ Pages in the Vulnetix console that belong to Software Factory. All are under `ht
 | [`/resolve/factory-contributors`](https://www.vulnetix.com/resolve/factory-contributors) | [Delivery](/evidence/delivery/) |
 | [`/resolve/factory-delivery-decisions`](https://www.vulnetix.com/resolve/factory-delivery-decisions) | [Delivery](/evidence/delivery/) |
 | [`/resolve/factory-events`](https://www.vulnetix.com/resolve/factory-events) | [The event stream](/evidence/event-stream/) |
-| [`/resolve/factory-memory`](https://www.vulnetix.com/resolve/factory-memory) |  |
+| [`/resolve/factory-memory`](https://www.vulnetix.com/resolve/factory-memory) | [Agent and repository memory](/workforce/memory/) |
 | [`/resolve/factory-outcome`](https://www.vulnetix.com/resolve/factory-outcome) | [Delivery](/evidence/delivery/) |
 | [`/resolve/factory-people`](https://www.vulnetix.com/resolve/factory-people) | [Delivery](/evidence/delivery/) |
 | [`/resolve/factory-repos`](https://www.vulnetix.com/resolve/factory-repos) | [Managed orgs and repositories](/control/managed-scope/) |

@@ -29,7 +29,7 @@ Slash commands you type in the Belai terminal UI. Type `/` to see them with comp
 | <span id="gitsync"></span>`/gitsync` | rebase the branch onto origin's default branch before turns: on, off, or global on\|off |  |
 | <span id="handoff"></span>`/handoff` | execute a plan file directly: /handoff <plan file path> [extra direction] |  |
 | <span id="help"></span>`/help` | browse commands and keyboard shortcuts in a scrollable screen |  |
-| <span id="inbox"></span>`/inbox` | cards waiting on you: flow checkpoints, cards assigned to a person, blocked cards |  |
+| <span id="inbox"></span>`/inbox` | cards waiting on you: flow checkpoints, cards assigned to a person, blocked cards | [Agent questions, answers and permission offers](/workforce/questions-and-permissions/) |
 | <span id="intel"></span>`/intel` | session intelligence: plan limits, pace, trend, runway and usage over time (f12 opens the pane) |  |
 | <span id="kanban"></span>`/kanban` | view and manage the global kanban board; /kanban K-xxxxxx opens on one item | [The board](/workforce/board/) |
 | <span id="knowledge"></span>`/knowledge` | browse and search indexed knowledge: this project, every project, the agents |  |
@@ -39,12 +39,12 @@ Slash commands you type in the Belai terminal UI. Type `/` to see them with comp
 | <span id="mode"></span>`/mode` | show or set operating mode |  |
 | <span id="model"></span>`/model` | pick provider and model for each role; /model <provider> <model> [effort] switches this session |  |
 | <span id="paste-image"></span>`/paste-image` | attach the image on the clipboard |  |
-| <span id="permissions"></span>`/permissions` | edit tool permissions |  |
+| <span id="permissions"></span>`/permissions` | edit tool permissions | [Agent questions, answers and permission offers](/workforce/questions-and-permissions/) |
 | <span id="plugin"></span>`/plugin` | list, enable, disable or remove plugins (install with belai plugin install) |  |
 | <span id="processes"></span>`/processes` | manage the process library |  |
 | <span id="profile"></span>`/profile` | switch agent profile | [Agents and agent profiles](/workforce/agents/) |
 | <span id="prompts"></span>`/prompts` | manage the prompt library |  |
-| <span id="providers"></span>`/providers` | manage providers, credentials and local models |  |
+| <span id="providers"></span>`/providers` | manage providers, credentials and local models | [Providers, keys and secrets](/workforce/providers-and-keys/) |
 | <span id="rc"></span>`/rc` | remote control: let the Vulnetix website start and drive Belai sessions on this machine |  |
 | <span id="refine"></span>`/refine` | refine the extracted plan |  |
 | <span id="rename"></span>`/rename` | rename this session |  |

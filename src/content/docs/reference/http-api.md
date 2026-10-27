@@ -41,7 +41,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/a2a/{messageId}` |  |
+| GET | `/v1/belai/a2a/{messageId}` | [A2A messaging and blackout](/workforce/a2a-messaging/) |
 
 ## /v1/belai/agent-creators
 
@@ -92,8 +92,8 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| DELETE | `/v1/belai/answers/{aid}` |  |
-| POST | `/v1/belai/answers/{aid}/ack` |  |
+| DELETE | `/v1/belai/answers/{aid}` | [Agent questions, answers and permission offers](/workforce/questions-and-permissions/) |
+| POST | `/v1/belai/answers/{aid}/ack` | [Agent questions, answers and permission offers](/workforce/questions-and-permissions/) |
 
 ## /v1/belai/assignees
 
@@ -127,9 +127,9 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| DELETE | `/v1/belai/dispatches/{did}` |  |
-| GET | `/v1/belai/dispatches/{did}` |  |
-| POST | `/v1/belai/dispatches/{did}/ack` |  |
+| DELETE | `/v1/belai/dispatches/{did}` | [Dispatching work to hosts](/workforce/dispatches/) |
+| GET | `/v1/belai/dispatches/{did}` | [Dispatching work to hosts](/workforce/dispatches/) |
+| POST | `/v1/belai/dispatches/{did}/ack` | [Dispatching work to hosts](/workforce/dispatches/) |
 
 ## /v1/belai/hosts
 
@@ -255,7 +255,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/memory` |  |
+| GET | `/v1/belai/memory` | [Agent and repository memory](/workforce/memory/) |
 
 ## /v1/belai/prompts
 
@@ -331,8 +331,8 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/a2a` |  |
-| POST | `/v1/factory/a2a/blackout` |  |
+| GET | `/v1/factory/a2a` | [A2A messaging and blackout](/workforce/a2a-messaging/) |
+| POST | `/v1/factory/a2a/blackout` | [A2A messaging and blackout](/workforce/a2a-messaging/) |
 
 ## /v1/factory/agents
 
@@ -475,12 +475,12 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/memory` |  |
-| POST | `/v1/factory/memory` |  |
-| DELETE | `/v1/factory/memory/{noteId}` |  |
-| PATCH | `/v1/factory/memory/{noteId}` |  |
-| POST | `/v1/factory/memory/clear` |  |
-| GET | `/v1/factory/memory/scopes` |  |
+| GET | `/v1/factory/memory` | [Agent and repository memory](/workforce/memory/) |
+| POST | `/v1/factory/memory` | [Agent and repository memory](/workforce/memory/) |
+| DELETE | `/v1/factory/memory/{noteId}` | [Agent and repository memory](/workforce/memory/) |
+| PATCH | `/v1/factory/memory/{noteId}` | [Agent and repository memory](/workforce/memory/) |
+| POST | `/v1/factory/memory/clear` | [Agent and repository memory](/workforce/memory/) |
+| GET | `/v1/factory/memory/scopes` | [Agent and repository memory](/workforce/memory/) |
 
 ## /v1/factory/needs
 

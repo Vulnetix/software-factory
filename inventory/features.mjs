@@ -200,7 +200,8 @@ const STATUS = {
     'cockpit', 'trust', 'firewalls', 'audit', 'events', 'facts', 'lifecycle', 'delivery', 'sightings', 'attribution', 'vex', 'analytics',
     'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops',
     'agents', 'agent-builder', 'agent-import', 'avatars', 'crews', 'role-manager',
-    'hosts', 'host-attention', 'sandboxes', 'builtin-models', 'board', 'assignment', 'ticket-standard', 'github-sync'],
+    'hosts', 'host-attention', 'sandboxes', 'builtin-models', 'board', 'assignment', 'ticket-standard', 'github-sync',
+    'memory', 'a2a', 'forge', 'providers', 'asks', 'dispatches'],
   verified: [],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

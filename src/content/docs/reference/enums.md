@@ -11,13 +11,13 @@ Every closed list of values in the factory API: node types, trigger kinds, statu
 
 ### belaiAnswerKinds
 
-Defined in `api/internal/handler/belai_answers.go`.
+Explained in [Agent questions, answers and permission offers](/workforce/questions-and-permissions/). Defined in `api/internal/handler/belai_answers.go`.
 
 `clarify`, `mode_choice`, `permission`, `plan_review`
 
 ### belaiAskKindText
 
-Defined in `api/internal/handler/belai_timeline.go`.
+Explained in [Agent questions, answers and permission offers](/workforce/questions-and-permissions/). Defined in `api/internal/handler/belai_timeline.go`.
 
 `clarify`, `mode_choice`, `permission`, `plan_review`
 
@@ -53,7 +53,7 @@ Defined in `api/internal/handler/belai_items_validate_budget.go`.
 
 ### belaiBuiltinProviders
 
-Defined in `api/internal/handler/belai_items_validate_provider.go`.
+Explained in [Providers, keys and secrets](/workforce/providers-and-keys/). Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 `alibaba`, `anthropic`, `cloudflare-ai-gateway`, `cloudflare-workers-ai`, `deepseek`, `fireworks`, `github-copilot`, `google-gemini`, `groq`, `huggingface`, `kiro`, `llama-server`, `minimax`, `mistral`, `moonshot`, `ollama`, `openai`, `openai-compatible`, `openrouter`, `strands-decider`, `together`, `typesafe`, `xai`
 
@@ -83,7 +83,7 @@ Explained in [Crews](/workforce/crews/). Defined in `api/internal/handler/belai_
 
 ### belaiDispatchModes
 
-Defined in `api/internal/handler/belai_rc.go`.
+Explained in [Dispatching work to hosts](/workforce/dispatches/). Defined in `api/internal/handler/belai_rc.go`.
 
 `agent`, `code`, `goal`, `plan`
 
@@ -101,25 +101,25 @@ Explained in [Package and AI firewalls on factory work](/evidence/firewalls/). D
 
 ### belaiForbiddenFirewallHeaders
 
-Defined in `api/internal/handler/belai_items_validate_provider.go`.
+Explained in [Providers, keys and secrets](/workforce/providers-and-keys/). Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 `accept`, `accept-encoding`, `connection`, `content-encoding`, `content-length`, `content-type`, `cookie`, `host`, `keep-alive`, `proxy-authorization`, `proxy-connection`, `te`, `traceparent`, `trailer`, `transfer-encoding`, `upgrade`, `user-agent`
 
 ### belaiForgeFailures
 
-Defined in `api/internal/handler/belai_forge.go`.
+Explained in [Forge requests](/workforce/forge-requests/). Defined in `api/internal/handler/belai_forge.go`.
 
 `auth`, `no_gh`, `push_credentials`, `rate_limited`, `server`
 
 ### belaiForgeKinds
 
-Defined in `api/internal/handler/belai_forge.go`.
+Explained in [Forge requests](/workforce/forge-requests/). Defined in `api/internal/handler/belai_forge.go`.
 
 `commit`, `issue_sync`, `pull_request`, `push`
 
 ### belaiForgeReasons
 
-Defined in `api/internal/handler/belai_forge.go`.
+Explained in [Forge requests](/workforce/forge-requests/). Defined in `api/internal/handler/belai_forge.go`.
 
 `app_not_installed`, `branch_mismatch`, `bundle_missing`, `empty_bundle`, `expired`, `non_fast_forward`, `pr_found`, `pr_opened`, `pushed`, `rate_limited`, `repo_not_attached`, `server`, `token_denied`
 
@@ -209,7 +209,7 @@ Defined in `api/internal/handler/belai_items_validate_mcp.go`.
 
 ### belaiModelFields
 
-Defined in `api/internal/handler/belai_items_validate_provider.go`.
+Explained in [Providers, keys and secrets](/workforce/providers-and-keys/). Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 `context_window`, `id`, `images`, `max_tokens`, `name`
 
@@ -233,7 +233,7 @@ Defined in `api/internal/handler/belai_items_validate_process.go`.
 
 ### belaiProfileFields
 
-Defined in `api/internal/handler/belai_items_validate_provider.go`.
+Explained in [Providers, keys and secrets](/workforce/providers-and-keys/). Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 `api`, `api_key_env`, `auth`, `base_url`, `decision_path`, `host`, `kind`, `models`, `port`, `protocol`
 
@@ -245,19 +245,19 @@ Defined in `api/internal/handler/belai_items_validate.go`.
 
 ### belaiProviderAuths
 
-Defined in `api/internal/handler/belai_items_validate_provider.go`.
+Explained in [Providers, keys and secrets](/workforce/providers-and-keys/). Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 `bearer`, `cf-aig`, `x-api-key`
 
 ### belaiProviderFields
 
-Defined in `api/internal/handler/belai_items_validate_provider.go`.
+Explained in [Providers, keys and secrets](/workforce/providers-and-keys/). Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 `firewall`, `name`, `providers`
 
 ### belaiProviderKinds
 
-Defined in `api/internal/handler/belai_items_validate_provider.go`.
+Explained in [Providers, keys and secrets](/workforce/providers-and-keys/). Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 `jev`, `llama-server`, `ollama`, `openai-compatible`, `systemone`
 
