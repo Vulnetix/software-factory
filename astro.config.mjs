@@ -1,11 +1,17 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import { satteri } from '@astrojs/markdown-satteri';
+import { callouts } from './src/plugins/docs-markdown.mjs';
 
 export default defineConfig({
   // Keep in sync with public/CNAME and terraform/dns.tf.
   site: 'https://software-factory.vulnetix.com',
   base: '/',
   trailingSlash: 'always',
+  markdown: {
+    processor: satteri({ hastPlugins: [callouts] }),
+    shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' }, wrap: false },
+  },
   vite: { plugins: [tailwindcss()] },
 });

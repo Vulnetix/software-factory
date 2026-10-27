@@ -29,7 +29,7 @@ const pagePath = (page) => join(root, 'src', 'content', 'docs', `${page}.md`);
 const USER_FACING = new Set(['setting', 'code', 'enum', 'route', 'cli-flag', 'cli-sub', 'cli-cmd', 'tui-cmd', 'voice-tool', 'template', 'default', 'console', 'belai-config']);
 // Generated reference pages list whole atom kinds, so an atom named there
 // counts as documented wherever its feature page is.
-const REFERENCE_PAGES = ['reference/settings', 'reference/validation-codes', 'reference/enums', 'reference/http-api', 'reference/console-routes', 'belai/cli-reference', 'belai/tui-commands', 'belai/settings-file', 'pix/voice-tools'];
+const REFERENCE_PAGES = ['reference/settings', 'reference/validation-codes', 'reference/enums', 'reference/http-api', 'reference/console-routes', 'reference/templates', 'reference/voice-tools', 'belai/cli-reference', 'belai/tui-commands', 'belai/settings-file'];
 
 const problems = [];
 const ids = new Set();

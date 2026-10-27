@@ -3018,6 +3018,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "software-factory-docs@workspace:."
   dependencies:
+    "@astrojs/markdown-satteri": "npm:0.4.1"
     "@tailwindcss/vite": "npm:^4.3.3"
     astro: "npm:^7.3.3"
     pagefind: "npm:^1.5.2"

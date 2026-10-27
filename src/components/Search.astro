@@ -1,0 +1,113 @@
+---
+// Search over the Pagefind index built into dist/pagefind at build time. It
+// runs entirely in the browser: nothing typed here leaves the page.
+import { SECTIONS } from '../lib/nav';
+const filters = ['All', ...SECTIONS.map((s) => s.title)];
+---
+<dialog class="search-dialog" aria-label="Search the docs" data-search>
+  <div class="search-input-row">
+    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="5" /><path d="M11 11l3.5 3.5" /></svg>
+    <label for="search-q" class="sr-only">Search</label>
+    <input id="search-q" type="search" autocomplete="off" spellcheck="false" placeholder="Search docs, settings keys, error codes, flags" role="combobox" aria-controls="search-results" aria-expanded="true" />
+    <kbd>esc</kbd>
+  </div>
+  <div class="search-filters" role="group" aria-label="Filter by section">
+    {filters.map((f, i) => <button type="button" data-filter={f} aria-pressed={i === 0 ? 'true' : 'false'}>{f}</button>)}
+  </div>
+  <div class="search-results" id="search-results" role="listbox" aria-label="Results"></div>
+  <div class="search-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span>Searches in your browser. A key like <code>autonomy.max</code> or a code like <code>threshold_required</code> jumps straight to it.</span></div>
+</dialog>
+
+<script>
+  type Sub = { title: string; url: string; excerpt: string };
+  type Data = { url: string; excerpt: string; meta: { title: string }; filters: Record<string, string[]>; sub_results: Sub[] };
+  type PF = { search: (q: string, o?: object) => Promise<{ results: { data: () => Promise<Data> }[] }>; options: (o: object) => Promise<void> };
+
+  const dlg = document.querySelector<HTMLDialogElement>('[data-search]')!;
+  const input = dlg.querySelector<HTMLInputElement>('input')!;
+  const out = dlg.querySelector<HTMLDivElement>('#search-results')!;
+  const chips = [...dlg.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  let pf: PF | null = null;
+  let filter = 'All';
+  let seq = 0;
+
+  async function load(): Promise<PF | null> {
+    if (pf) return pf;
+    try {
+      const url = '/pagefind/pagefind.js';
+      pf = (await import(/* @vite-ignore */ url)) as PF;
+      await pf.options({ excerptLength: 22 });
+    } catch {
+      out.innerHTML = '<p class="search-empty">Search is built when the site is built. Run <code>yarn build</code> and <code>yarn preview</code> to use it locally.</p>';
+    }
+    return pf;
+  }
+
+  function open() {
+    if (!dlg.open) dlg.showModal();
+    input.select();
+    load().then(() => run());
+  }
+  document.querySelectorAll('[data-search-open]').forEach((b) => b.addEventListener('click', open));
+  document.addEventListener('keydown', (e) => {
+    const t = e.target as HTMLElement;
+    const typing = t.closest('input, textarea, [contenteditable="true"]');
+    if ((e.key === '/' && !typing) || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
+      e.preventDefault();
+      open();
+    }
+  });
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+
+  chips.forEach((c) => c.addEventListener('click', () => {
+    filter = c.dataset.filter!;
+    chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+    run();
+  }));
+
+  const esc = (s: string) => s.replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[ch]!);
+
+  async function run() {
+    const q = input.value.trim();
+    const my = ++seq;
+    if (!q) { out.innerHTML = '<p class="search-empty">Type to search every page, setting, code, flag and command.</p>'; return; }
+    const p = await load();
+    if (!p) return;
+    const res = await p.search(q, filter === 'All' ? {} : { filters: { section: filter } });
+    const data = await Promise.all(res.results.slice(0, 12).map((r) => r.data()));
+    if (my !== seq) return;
+    if (!data.length) { out.innerHTML = `<p class="search-empty">No results for “${esc(q)}”.</p>`; return; }
+    const groups = new Map<string, string[]>();
+    for (const d of data) {
+      const sec = d.filters.section?.[0] ?? 'Docs';
+      const rows = groups.get(sec) ?? [];
+      const subs = (d.sub_results ?? []).filter((s) => s.url !== d.url).slice(0, 3);
+      if (subs.length) {
+        for (const s of subs) rows.push(`<li><a href="${s.url}" role="option"><span class="r-title"><span>${esc(s.title)}</span><span class="r-where">${esc(d.meta.title)}</span></span><span class="r-excerpt">${s.excerpt}</span></a></li>`);
+      } else {
+        rows.push(`<li><a href="${d.url}" role="option"><span class="r-title"><span>${esc(d.meta.title)}</span></span><span class="r-excerpt">${d.excerpt}</span></a></li>`);
+      }
+      groups.set(sec, rows);
+    }
+    out.innerHTML = [...groups].map(([g, rows]) => `<h3>${esc(g)}</h3><ul>${rows.join('')}</ul>`).join('');
+    select(0);
+  }
+
+  let timer = 0;
+  input.addEventListener('input', () => { clearTimeout(timer); timer = window.setTimeout(run, 80); });
+
+  function items() { return [...out.querySelectorAll<HTMLAnchorElement>('a[role="option"]')]; }
+  function select(n: number) {
+    const all = items();
+    all.forEach((a, i) => a.setAttribute('aria-selected', String(i === n)));
+    all[n]?.scrollIntoView({ block: 'nearest' });
+  }
+  input.addEventListener('keydown', (e) => {
+    const all = items();
+    const cur = all.findIndex((a) => a.getAttribute('aria-selected') === 'true');
+    if (e.key === 'ArrowDown') { e.preventDefault(); select(Math.min(cur + 1, all.length - 1)); }
+    if (e.key === 'ArrowUp') { e.preventDefault(); select(Math.max(cur - 1, 0)); }
+    if (e.key === 'Enter' && all[cur]) { e.preventDefault(); window.location.href = all[cur].href; }
+  });
+  out.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) dlg.close(); });
+</script>
