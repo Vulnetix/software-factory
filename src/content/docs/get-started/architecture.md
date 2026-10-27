@@ -4,7 +4,7 @@ nav: How the pieces fit
 description: Where each part of Software Factory runs and how they talk to each other. Read this before you connect your own machines or debug a run that does not start.
 order: 5
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/docs/factory-operations.md, belai/docs/architecture.md, website/.repo/pix-call.md]
-checked: [vdb-site@3d23e48, belai@b5d33b6, website@70b0582]
+checked: [vdb-site@284f1d6, belai@35506b9, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -34,7 +34,7 @@ The engine has no timer that scans for work. A run moves only when something tel
 ## Triggers
 
 - **GitHub events** arrive as webhooks at `POST /v1/webhooks/github`, signed by GitHub. The factory updates its mirror, then wakes matching triggers and waiting steps.
-- **Schedules** are fired by AWS EventBridge Scheduler (`runsOn: aws`), Cloudflare (`cloudflare`) or a host (`host`). A fire is a signed request to the factory's internal trigger endpoint. A fire that arrives while work is held is counted, not run.
+- **Schedules** are fired by AWS EventBridge Scheduler (`runsOn: aws`), Cloudflare (`cloudflare`) or a host (`host`). A fire is a signed request to the factory's internal trigger endpoint. A fire that arrives while the factory is paused or stopped is answered `held` and starts no run; one during a maintenance window or blackout starts a run that waits as `held`.
 - **Scanner results** uploaded by the Vulnetix CLI wake scan steps.
 - **Labels and comments** (`sf:<name>`, `/sf <name>`) on issues and pull requests start a run of the named workflow.
 - **The board**: a card moving list can start a run.
@@ -44,7 +44,7 @@ The engine has no timer that scans for work. A run moves only when something tel
 
 A host is any machine running Belai in remote control mode. It keeps a long-poll open to the API, advertises the repositories and directories it has, and takes **dispatches**: requests to start a session with a given agent, brief and limits. The host acknowledges the dispatch, runs the session, streams its transcript back and reports when it ends.
 
-- A **Pix Sandbox** is a container Vulnetix runs for you, with Belai, the repositories you added, an egress policy and its own budget. A sandbox that is asleep is woken for factory work, up to 3 times an hour.
+- A **Pix Sandbox** is a container Vulnetix runs for you, with Belai, the repositories you added, an egress policy and its own budget. A sandbox that is asleep is woken for factory work, with at most 6 wake requests an hour per sandbox.
 - **Your own machine** joins with `belai rc`. It runs only what its operator allows. See [Remote control](/workforce/remote-control/).
 
 Hosts on one tenant can message each other through the [A2A relay](/workforce/a2a-messaging/) and share [agent memory](/workforce/memory/).

@@ -4,7 +4,7 @@ nav: Managed scope
 description: Which GitHub organisations and repositories the factory may act on, how a repository gets listed, and the per-repository settings that override the tenant's.
 order: 1
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_orgs.go, vdb-site/api/internal/handler/factory_repos_store.go, website/src/shared/factory-settings.ts]
-checked: [vdb-site@3d23e48, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -100,10 +100,10 @@ Select repositories in the list to get the **With selected** bar. Up to 100 repo
 | Action | GitHub calls | Effect |
 |---|---|---|
 | Attach workflow | 0 | Adds the repositories to a workflow's scope as a new draft version. Publish it to take effect. |
-| Bind board | 0 to 1 per repository | Sets the board mode and, if no binding exists, creates one. That checks once that the sign-in can write issues. |
-| Run scanners | 0 to 1 per repository | Runs `vulnetix` SCA, malware and secrets scans in the Pix Sandbox. Needs the repository to be ready in a sandbox. |
+| Bind kanban | 0 to 1 per repository | Sets the board mode and, if no binding exists, creates one. That checks once that the sign-in can write issues. |
+| Run scanners now | 0 to 1 per repository | Not available yet: the button is disabled, and the API answers each repository with an error (`pix sandbox not ready`, or that scanner dispatch is not available yet). |
 | Stop watching | 0 | Removes your `watched` signal. Other signals stay. |
-| Add to Pix Sandbox | | Clones the repositories into a sandbox. See [Pix Sandboxes](/workforce/pix-sandboxes/). |
+| Add to Pix Sandbox | 0 | Clones the repositories into a sandbox. See [Pix Sandboxes](/workforce/pix-sandboxes/). |
 
 Each repository gets its own result, so one failure does not undo the others.
 

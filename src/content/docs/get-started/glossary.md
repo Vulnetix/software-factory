@@ -2,7 +2,7 @@
 title: Glossary
 description: Short definitions of the words these docs use, each with a link to the page that explains it in full.
 order: 6
-checked: [vdb-site@3d23e48, belai@b5d33b6]
+checked: [vdb-site@284f1d6, belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -22,7 +22,7 @@ updated: 28 Oct 2026
 
 **Belai.** The agent harness that runs every session, and the CLI and TUI you use by hand. See [Belai CLI and TUI](/belai/install-and-sign-in/).
 
-**Blackout.** A recurring window, set in `schedules.blackout`, during which schedule fires are held. Separate from the A2A blackout.
+**Blackout.** A recurring window, set in `schedules.blackout`, during which the factory starts no new work: runs started in it wait as `held`. Separate from the A2A blackout.
 
 **Board.** The kanban board of cards. See [The board](/workforce/board/).
 

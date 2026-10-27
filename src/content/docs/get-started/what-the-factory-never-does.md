@@ -4,7 +4,7 @@ nav: What it never does
 description: The hard limits. These are built into the code and the GitHub App's permissions, not settings you might change by accident.
 order: 4
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_settings_store.go, website/src/shared/pix-pocket.ts]
-checked: [vdb-site@3d23e48, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -28,7 +28,7 @@ An installation that is not managed is read-only to the factory. A managed org t
 
 ## It never drops a held run
 
-Pauses, stops, maintenance windows and schedule blackouts hold work. Held runs show up and start when the hold lifts. `schedules.missed` decides what happens to held schedule fires: `run_once` by default.
+Pauses, stops, maintenance windows and schedule blackouts hold work. Held runs show up and start when the hold lifts. A schedule fire that arrives while the factory is paused or stopped starts no run. `schedules.missed` (`run_once` by default) is the policy for those fires, but no held-fire count is stored yet, so none is replayed on resume.
 
 ## It never runs a model decision you cannot see
 

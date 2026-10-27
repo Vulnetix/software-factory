@@ -3,7 +3,7 @@ title: Concepts
 description: The model behind Software Factory in one page. It covers scope and autonomy, workflows and runs, the four kinds of step, hosts and crews, and how people stay in the loop.
 order: 2
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_core_common.go]
-checked: [vdb-site@3d23e48]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -58,7 +58,7 @@ Work items are **cards** on a kanban [board](/workforce/board/). A card is the s
 
 ## People in the loop
 
-Anything that waits on a person is a **checkpoint**: an approval, an agent's question, a card held or blocked, a draft pull request ready for review. The [Checkpoints](/decisions/checkpoints/) page lists them oldest first, and the cockpit's Needs you panel shows the head of that queue. You can answer most of them by voice on a [Pix call](/pix/calling-pix/).
+Anything that waits on a person is a **checkpoint**: an approval, an agent's question, a card held or blocked, a draft pull request ready for review. The [Checkpoints](/decisions/checkpoints/) page lists them most urgent kind first and newest first within a kind, and the cockpit's Needs you panel shows the head of that queue. You can answer most of them by voice on a [Pix call](/pix/calling-pix/).
 
 ## Limits and money
 

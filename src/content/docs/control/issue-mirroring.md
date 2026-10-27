@@ -3,7 +3,7 @@ title: Issue mirroring
 description: How a board card and a GitHub issue are kept as one record, what each binding's status means, how clashes are settled, and where to change it.
 order: 3
 sources: [vdb-site/docs/factory.md, vdb-site/docs/belai-github-sync.md, vdb-site/api/internal/handler/factory_repos.go]
-checked: [vdb-site@3d23e48]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -37,7 +37,7 @@ Each binding row shows a status and how changes reach it:
 | Status | Meaning |
 |---|---|
 | `live` | Changes arrive by webhook. |
-| `degraded` | No webhook has been seen, so the sync polls every 10 minutes. An issue edit can take up to 10 minutes to reach its card. |
+| `degraded` | No webhook is set up for it (a token binding with no repository webhook, or no GitHub App webhook configured), so the sync polls every 10 minutes. An issue edit can take up to 10 minutes to reach its card. |
 | `lost_access` | GitHub refused the sign-in (401, 403 or 404). Nothing syncs until access is restored. |
 | `off` | The binding's mode is `off`. |
 
@@ -54,9 +54,9 @@ A repository checked out on two machines or in two worktrees has two project key
 
 | Card list | Issue |
 |---|---|
-| review, backlog, in_progress, blocked | open, with label `belai:<list>` |
-| done (verified) | closed as completed |
-| done (obsolete) | closed as not planned |
+| review, backlog, in_progress, blocked | open, with label `belai:review`, `belai:backlog`, `belai:in-progress` or `belai:blocked` |
+| done | closed as completed |
+| done, with the `not-planned` label | closed as not planned |
 
 ## Which cards never get an issue
 

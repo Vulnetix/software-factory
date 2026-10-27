@@ -4,7 +4,7 @@ nav: Quickstart
 description: From an empty tenant to a first run. Install the GitHub App, make an organisation managed, give the factory a machine to work on, watch a default workflow run, then publish a workflow of your own.
 order: 3
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_defaults.go, vdb-site/api/internal/handler/factory_orgs.go]
-checked: [vdb-site@3d23e48]
+checked: [vdb-site@284f1d6, website@a31d470, belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -46,10 +46,10 @@ Managing an organisation does two things:
 
 ## 3. Check the autonomy
 
-Open **Settings › Autonomy**. Two keys decide how far the factory goes:
+Open **Settings**. Two keys decide how far the factory goes:
 
-- `autonomy.max` caps every repository. The default is `draft_pr`.
-- `autonomy.default` applies to repositories that have no settings of their own. The default is `draft_pr`.
+- `autonomy.max` (Autonomy section) caps every repository. The default is `draft_pr`.
+- `autonomy.default` (Defaults section) applies to repositories that have no settings of their own. The default is `draft_pr`.
 
 To let one repository go further or less far, open it on the Repos page and set its own autonomy. See [Autonomy levels](/control/autonomy/).
 
@@ -75,7 +75,7 @@ When the run finishes, the review is on the pull request in GitHub.
 ## 6. Publish a workflow of your own
 
 1. Open **Templates** (`/resolve/factory-templates`) and pick one, for example **Security patch train**.
-2. Choose **Use**. This creates the workflow as draft version 1. Nothing runs yet.
+2. Choose **Use template**. This creates the workflow as draft version 1. Nothing runs yet.
 3. In the builder, check the trigger, the scope (empty means the repository that triggered the run) and the limits.
 4. Choose **Dry run** to validate the graph and see which path a sample event would take.
 5. Choose **Publish**. From now on, matching events start runs.

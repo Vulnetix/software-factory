@@ -3,7 +3,7 @@ title: Overview
 description: Software Factory runs workflows of agents against the GitHub repositories you mark as managed, and writes the results back to GitHub as draft pull requests, reviews, comments, issues and VEX.
 order: 1
 sources: [vdb-site/docs/factory.md, website/.repo/software-factory.md]
-checked: [vdb-site@3d23e48, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -12,7 +12,7 @@ Software Factory turns events in your repositories into work done by agents. A p
 Everything the factory does is recorded. Every step lands in the [event stream](/evidence/event-stream/), every change of state in the hash-chained [audit ledger](/evidence/audit-ledger/), and every outcome in [Delivery](/evidence/delivery/).
 
 > [!CAREFUL] The factory never merges
-> Its GitHub App has no `contents: write` permission on your repositories. The highest [autonomy level](/control/autonomy/), `auto_merge_low_risk` (shown as "approve when ready"), marks a pull request ready and approves it. A person, or your branch protection and merge queue, still merges it.
+> Its GitHub App has no `contents: write` permission on your repositories. The highest [autonomy level](/control/autonomy/), `auto_merge_low_risk` (shown as "approve when ready"), waits until a pull request is ready, then submits an APPROVE review. A person, or your branch protection and merge queue, still merges it.
 
 ## Core objects
 
@@ -27,7 +27,7 @@ Most pages in these docs describe one of these. The console column is the page y
 | Crew | Agents dispatched together to one machine for one step. | `factory-workforce` |
 | Card | A unit of work on the board. A card and its GitHub issue are one record. | `factory-board` |
 | Checkpoint | Anything waiting on a person: an approval, an agent's question, a held or blocked card. | `factory-checkpoints` |
-| Budget | A token, call or USD limit on the month, day, workflow, run, step, repository or org. | `factory-budgets` |
+| Budget | A token or call limit on the whole tenant, a workflow, a step or a repository, per run, day, week or month. USD budgets are refused as not supported yet. | `factory-budgets` |
 | Audit entry | A hash-chained record written in the same transaction as the change it describes. | `factory-audit` |
 
 ## What happens in a run
@@ -39,7 +39,7 @@ Most pages in these docs describe one of these. The console column is the page y
 5. **[Output](/workflows/nodes/output/) nodes write to GitHub**: a draft pull request, a review, a comment, a VEX statement or a TEA release.
 
 > [!WHY] Why runs are held, not dropped
-> A dropped run means a fix you expected never arrives, and nothing says so. A held run shows up, waits, and starts when the hold lifts. `schedules.missed` decides what happens to schedule fires that arrived while work was held.
+> A dropped run means a fix you expected never arrives, and nothing says so. A held run shows up, waits, and starts when the hold lifts. `schedules.missed` is the policy for schedule fires that arrived while the factory was paused or stopped, though no held-fire count is stored yet.
 
 ## Where the work runs
 

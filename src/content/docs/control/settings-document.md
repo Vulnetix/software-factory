@@ -4,7 +4,7 @@ nav: Settings document
 description: How factory settings are stored, saved and exported. One revisioned document per tenant, sections on the Settings page, keys that take effect later, locked keys, and per-host project overrides.
 order: 7
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_settings_store.go, website/src/shared/factory-settings.ts]
-checked: [vdb-site@3d23e48, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470, belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -62,10 +62,10 @@ Two keys cannot be changed:
 
 | Key | Locked to |
 |---|---|
-| `github.polling.forbidden` | `true`. The factory never polls GitHub. |
+| `github.polling.forbidden` | `true`. The factory never polls GitHub on a timer; it listens for webhooks and reads stored data. |
 | `firewall_enabled` | `true`. The AI Firewall stays on for factory sessions. |
 
-Trying to save one is refused with `locked`.
+Trying to save one is refused with `403 locked`. So is the read-only `systemone.min_confidence.adapter`, which the server sets itself.
 
 ## Export
 
@@ -75,9 +75,9 @@ Trying to save one is refused with `locked`.
 
 The **Project overrides** section is different: it edits settings that Belai sessions read on one host for one directory. These are not part of the tenant document. The page asks the host for its current values and where each one comes from, and saving sends the change to the host and waits for its answer.
 
-The keys are `mode`, `guardrails`, `ask_permission`, `firewall_enabled` (locked by the factory), `caveman`, `auto_commit_per_task`, `show_reasoning`, `show_tool_calls`, `show_edits`, `show_internal_work`, `tests.post_end`, `tests.on_fail`, `lsp.enabled`, `lsp.go`, `lsp.typescript`, `jev.jobs.tools`, `jev.jobs.edits`, `jev.thresholds.block` (0.90 by default) and `jev.thresholds.flag` (0.60 by default).
+The page offers `mode`, `guardrails`, `ask_permission`, `firewall_enabled` (locked by the factory), `caveman`, `auto_commit_per_task`, `show_reasoning`, `show_tool_calls`, `show_edits`, `show_internal_work`, `tests.post_end`, `tests.on_fail`, `lsp.enabled`, `jev.jobs.tools`, `jev.jobs.edits`, `jev.thresholds.block` and `jev.thresholds.flag`. The host checks every key against its own list and refuses the rest: it also accepts `layout` and per-language `lsp.languages.<id>` (for example `lsp.languages.go`, `lsp.languages.ts`), and it names System One keys by its own jobs and cut-offs (`jev.jobs.<job>`, `jev.thresholds.<cut-off>` such as `deny_at`), so the four `jev.` keys the page offers are refused by current hosts. The host must run `belai rc --web-project-settings` for the page to edit anything.
 
-The line under each value says where it comes from: `project`, `global`, `default`, `env`, `repository`, `last_used` or `locked`.
+The line under each value says where it comes from: `project`, `global`, `default`, `env`, `flag`, `repository`, `last_used` or `locked`.
 
 ## API
 
