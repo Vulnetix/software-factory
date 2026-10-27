@@ -1,0 +1,28 @@
+{
+  "name": "software-factory-docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@4.14.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "check-links": "node scripts/check-links.mjs dist"
+  },
+  "resolutions": {
+    "sharp": "0.35.5",
+    "smol-toml": "1.9.0"
+  },
+  "dependencies": {
+    "astro": "^7.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "pagefind": "^1.5.2",
+    "tailwindcss": "^4.3.3"
+  }
+}
