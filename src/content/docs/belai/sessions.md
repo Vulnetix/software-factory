@@ -4,7 +4,7 @@ nav: Sessions
 description: Manage Belai sessions in the TUI. Resume, branch from an earlier point, compact, export, rename, and keep tool output from filling the context window.
 order: 5
 sources: [belai/docs/session-controls.md, belai/docs/session-measures.md, belai/docs/session-assessment.md, belai/docs/context-offload.md, belai/internal/session]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 

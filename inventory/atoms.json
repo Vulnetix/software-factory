@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-27T14:19:28.873Z",
+ "generatedAt": "2026-10-27T21:29:34.530Z",
  "repos": {
-  "vdb-site": "284f1d61aec218418a334e1ba10a063b9b7b9174",
-  "website": "a31d470ddfcf5431a7a9731d36404cb663a91c3f",
-  "belai": "35506b96377611a6fd92f256ac4e79dbfe74ba5b",
+  "vdb-site": "79e503724bda281bf63c8b30c73605f429fc728d",
+  "website": "3f90fa20884e9b2ffbfc1384a022d18d011c3708",
+  "belai": "7c256b9b2951282931e42e9c7ef56a1b1c8abbbb",
   "saas": "aa6c2b46d08710a89f05fdd478bc14e1ae7abe6c"
  },
  "counts": {
@@ -11,16 +11,16 @@
   "belai-pkg": 146,
   "cli-cmd": 18,
   "cli-flag": 162,
-  "cli-sub": 52,
+  "cli-sub": 48,
   "code": 57,
   "console": 25,
   "default": 7,
-  "doc": 114,
-  "enum": 1016,
-  "gofile": 289,
+  "doc": 115,
+  "enum": 1018,
+  "gofile": 291,
   "model": 42,
   "route": 380,
-  "setting": 168,
+  "setting": 169,
   "sf-label": 21,
   "template": 37,
   "tsfile": 66,
@@ -6051,22 +6051,6 @@
    ]
   },
   {
-   "id": "cli-sub:login keychain",
-   "kind": "cli-sub",
-   "value": "login keychain",
-   "sources": [
-    "belai/cmd/belai/login.go"
-   ]
-  },
-  {
-   "id": "cli-sub:login user-file",
-   "kind": "cli-sub",
-   "value": "login user-file",
-   "sources": [
-    "belai/cmd/belai/login.go"
-   ]
-  },
-  {
    "id": "cli-sub:plugin disable",
    "kind": "cli-sub",
    "value": "plugin disable",
@@ -6112,22 +6096,6 @@
    "value": "plugin update",
    "sources": [
     "belai/cmd/belai/plugin.go"
-   ]
-  },
-  {
-   "id": "cli-sub:rc off",
-   "kind": "cli-sub",
-   "value": "rc off",
-   "sources": [
-    "belai/cmd/belai/rccmd.go"
-   ]
-  },
-  {
-   "id": "cli-sub:rc on",
-   "kind": "cli-sub",
-   "value": "rc on",
-   "sources": [
-    "belai/cmd/belai/rccmd.go"
    ]
   },
   {
@@ -7849,6 +7817,14 @@
    "value": "website/factory-delivery.md",
    "sources": [
     "website/.repo/factory-delivery.md"
+   ]
+  },
+  {
+   "id": "doc:website/factory-firewall-sources.md",
+   "kind": "doc",
+   "value": "website/factory-firewall-sources.md",
+   "sources": [
+    "website/.repo/factory-firewall-sources.md"
    ]
   },
   {
@@ -15588,6 +15564,15 @@
    "set": "fcNeedKinds"
   },
   {
+   "id": "enum:fcNeedKinds=firewall_review",
+   "kind": "enum",
+   "value": "fcNeedKinds=firewall_review",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_summary_store.go"
+   ],
+   "set": "fcNeedKinds"
+  },
+  {
    "id": "enum:fcNeedKinds=host_offline",
    "kind": "enum",
    "value": "fcNeedKinds=host_offline",
@@ -15672,6 +15657,15 @@
    "id": "enum:fcpKindOrder=claim_lapsed",
    "kind": "enum",
    "value": "fcpKindOrder=claim_lapsed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_checkpoints.go"
+   ],
+   "set": "fcpKindOrder"
+  },
+  {
+   "id": "enum:fcpKindOrder=firewall_review",
+   "kind": "enum",
+   "value": "fcpKindOrder=firewall_review",
    "sources": [
     "vdb-site/api/internal/handler/factory_checkpoints.go"
    ],
@@ -17908,6 +17902,14 @@
    ]
   },
   {
+   "id": "gofile:factory_cron_stagger",
+   "kind": "gofile",
+   "value": "factory_cron_stagger",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_cron_stagger.go"
+   ]
+  },
+  {
    "id": "gofile:factory_decisions_store",
    "kind": "gofile",
    "value": "factory_decisions_store",
@@ -18273,6 +18275,14 @@
    "value": "factory_engine_exec",
    "sources": [
     "vdb-site/api/internal/handler/factory_engine_exec.go"
+   ]
+  },
+  {
+   "id": "gofile:factory_engine_handoff",
+   "kind": "gofile",
+   "value": "factory_engine_handoff",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_engine_handoff.go"
    ]
   },
   {
@@ -24704,6 +24714,24 @@
     "store": "factory",
     "type": "bool",
     "default": "true"
+   }
+  },
+  {
+   "id": "setting:factory.fanoutCap",
+   "kind": "setting",
+   "value": "factory.fanoutCap",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go",
+    "vdb-site/docs/factory.md"
+   ],
+   "detail": {
+    "doc": "int 1 to 50: runs one delivery or sighting may start; triggers past it, by priority, are skipped as `fanout_cap`",
+    "docDefault": "6",
+    "store": "factory",
+    "type": "int",
+    "min": "1",
+    "max": "50",
+    "default": "feDefaultFanoutCap"
    }
   },
   {

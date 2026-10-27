@@ -4,7 +4,7 @@ nav: Contributing
 description: Build Belai from source, run its tests, and how its documentation is kept in step with the code.
 order: 22
 sources: [belai/docs/development.md, belai/README.md, belai/docs/site.md]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -17,7 +17,7 @@ go build -o belai ./cmd/belai
 ./belai -version
 ```
 
-A binary built this way reports its version as `dev`. With [just](https://just.systems) installed, `just build` stamps the real version and uses the release build flags.
+A binary built this way reports its version as `dev`. With [just](https://just.systems) installed, `just build` stamps the real version, commit and build date.
 
 | Tool | Why |
 |---|---|

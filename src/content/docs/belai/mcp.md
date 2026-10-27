@@ -3,7 +3,7 @@ title: MCP servers
 description: Connect Model Context Protocol servers, how their tools appear, the two built-in servers, and why every result is treated as untrusted.
 order: 10
 sources: [belai/docs/mcp.md, belai/cmd/belai/mcp_builtin.go]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -11,7 +11,7 @@ Belai connects to Model Context Protocol servers and offers their tools to the m
 
 ## Configuring servers
 
-Servers live under `mcp.servers` in your global settings. Each has a `name`, a `transport` (a local `command` with `args`, or a remote `url` with `headers`), `env`, `secrets`, the `tools` to offer, `timeout_ms`, whether to run it in the `sandbox`, and `disabled`. Secrets are kept in the credentials store, never in settings. A repository's settings cannot add a server.
+Servers live under `mcp.servers` in your global settings. Each entry is keyed by its name and has a `transport` (`stdio`, the default, with a `command` and `args`, or `http` with a `url` and `headers`), `env`, `secrets`, the `tools` to offer, `timeout_ms` (60000 by default, at most 600000), whether to run it in the `sandbox`, and `disabled`. Secret values are kept in the credentials store, never in settings: `secrets` holds only names. A repository's settings cannot add a server.
 
 `/mcp` manages servers: built-in switches, local and remote servers, and secrets. `belai mcp list`, `validate`, `import` and `export` do the same from the command line, and an MCP server can be kept in your [library](/workforce/library/).
 

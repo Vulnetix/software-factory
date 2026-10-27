@@ -256,6 +256,9 @@ function scanBelai() {
     // Subcommands are switch cases on the first argument: case "add":.
     if (f !== 'main.go') {
       for (const m of src.matchAll(/^\tcase ("[a-z][a-z0-9-]*"(?:, "[a-z][a-z0-9-]*")*):/gm)) {
+        // A switch on a flag's value (switch *backend) lists flag values, not subcommands.
+        const sw = [...src.slice(0, m.index).matchAll(/^\tswitch (.*) \{$/gm)].pop();
+        if (sw && /\*[a-zA-Z]/.test(sw[1])) continue;
         for (const v of m[1].matchAll(/"([^"]+)"/g)) atom('cli-sub', `${f.replace(/(cmd)?\.go$/, '')} ${v[1]}`, 'belai', `cmd/belai/${f}`);
       }
     }

@@ -4,7 +4,7 @@ nav: Editors (ACP)
 description: Use Belai as the agent in Zed, JetBrains IDEs, Neovim, Emacs and VS Code through the Agent Client Protocol, with the same safety as the TUI.
 order: 13
 sources: [belai/docs/acp.md, belai/docs/acp-zed.md, belai/docs/acp-jetbrains.md, belai/docs/acp-neovim.md, belai/docs/acp-emacs.md, belai/docs/acp-vscode.md]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -26,7 +26,7 @@ updated: 28 Oct 2026
 | Emacs | An ACP client package, pointed at `belai acp` |
 | VS Code | An ACP extension, pointed at `belai acp` |
 
-Sessions from an editor show in the console's Sessions list with the source `acp`.
+Editor sessions are named after the editor and, when session sync is on, are mirrored to the console's Sessions list. The website cannot send prompts or answers to them: the editor owns the conversation.
 
 ## Related
 

@@ -3,7 +3,7 @@ title: Language servers
 description: Diagnostics on the same turn as an edit, so the model can fix a syntax error at once. Supported languages, their servers and fallbacks, and the switches.
 order: 14
 sources: [belai/docs/lsp.md]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -20,12 +20,15 @@ After a `Write` or `Edit`, Belai checks the edited file with a language server a
 | Java | `jdtls` | none |
 | Dart, Flutter | `dart language-server` | `dart analyze` |
 | Swift | `sourcekit-lsp` | `swiftc -parse` |
+| Ruby | `ruby-lsp` or `solargraph` | `ruby -c` |
+| Shell | `bash-language-server` | `bash -n` |
+| Zig | `zls` | `zig ast-check` |
 
-A server must already be installed; Belai never installs one. When none is found, the fallback runs.
+A server must already be installed. Belai never installs one on its own; the `/lsp` screen shows a missing server's install command and runs it only when you press `i`. When no server is found, the fallback runs.
 
 ## Switches
 
-`/lsp on|off [language]` switches diagnostics for this session. In settings, `lsp.enabled` switches them overall and each language has its own key, such as `lsp.go` and `lsp.typescript`.
+`/lsp on|off [language]` switches diagnostics for this session. In settings, `lsp.enabled` switches them overall and `lsp.languages` switches each language by its id, such as `go` and `ts`.
 
 ## Related
 

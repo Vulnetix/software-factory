@@ -3,7 +3,7 @@ title: Plugins
 description: Bundle skills, hooks, prompts and agent profiles into one plugin, and install it from a git repository or a directory.
 order: 12
 sources: [belai/docs/plugins.md, belai/cmd/belai/plugin.go]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 

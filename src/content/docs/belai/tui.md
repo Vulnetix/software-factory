@@ -3,7 +3,7 @@ title: The terminal UI
 description: Find your way around Belai's terminal UI. The composer, the footer and its safety switches, slash commands, the keys, the screen switcher, settings and help.
 order: 2
 sources: [belai/README.md, belai/docs/tui-design.md, belai/docs/session-controls.md, belai/docs/settings.md, belai/internal/tui]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 

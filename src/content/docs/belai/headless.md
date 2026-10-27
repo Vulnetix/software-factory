@@ -4,7 +4,7 @@ nav: Headless runs
 description: Run Belai without the TUI. One prompt and its answer, plan mode from a script, usage as JSON, answers for questions, and the flags that matter in CI.
 order: 3
 sources: [belai/README.md, belai/cmd/belai/main.go, belai/cmd/belai/help.go, belai/internal/headless]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -23,13 +23,13 @@ belai -plan -mode plan -prompt "plan the migration to the new API"
 | Flag | Meaning |
 |---|---|
 | `-prompt TEXT` | One turn, then exit |
-| `-mode` | `agent`, `plan`, `goal`, `code` or `auto` |
+| `-mode` | `agent`, `plan`, `goal` or `code`; left out, the mode is classified from the prompt (the TUI's `auto`) |
 | `-plan` | Start in read-only plan mode |
 | `-provider`, `-model`, `-effort` | The model |
-| `-agent NAME` | Engage an agent profile |
-| `-tools T,T` | Limit the tools |
-| `-answers FILE` | Answers to give questions the agent asks, since nobody is there to type them |
-| `-usage-json` | Print token usage as JSON when done |
+| `-agent NAME` | Run an agent profile by name in the foreground |
+| `-tools` | Tool execution, on by default; `-tools=false` turns it off |
+| `-answers FILE` | A JSON file of answers, given in order to the questions the run asks, since nobody is there to type them |
+| `-usage-json PATH` | Write a JSON summary of token usage to this path on exit |
 | `-no-transcript` | Keep no session transcript |
 | `-detect-mode` | Print the mode the classifier would pick, and exit |
 | `-no-git-sync` | Do not sync the branch before turns |
@@ -46,7 +46,7 @@ With nobody at the terminal, an ask that cannot be answered is refused unless yo
 | Flag | Meaning |
 |---|---|
 | `-resume ID` (or `-r`) | Resume a session by id or prefix |
-| `-continue` | Continue the most recent session here |
+| `-continue` (or `-c`) | Continue the most recent session here |
 | `-teleport ID` | Continue a session from another host. See [Teleport](/workforce/teleport/). |
 | `-export ID` | Write a session as Markdown |
 

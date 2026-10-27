@@ -4,11 +4,11 @@ nav: Models
 description: Pick the model for each role, switch models mid-session, use local models, and test what a model can do.
 order: 7
 sources: [belai/docs/session-controls.md, belai/README.md, belai/internal/models, belai/internal/modelselect, belai/internal/localinfer]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
-Belai uses more than one model. The **main model** does the work. The **fast tier** handles quick jobs: drafting a goal contract, tidying dictated text, classifying. Code mode can have its own model.
+Belai uses more than one model. The **main model** does the work. The **fast tier** handles quick jobs: picking the mode, naming the session, the goal and plan evaluators' verdicts, tidying dictated text. Code mode can have its own model.
 
 ## Picking models
 

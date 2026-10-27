@@ -4,7 +4,7 @@ nav: Modes and plans
 description: Belai's five modes and when to use each, how auto mode chooses, plan files and what you can do with one, and how goal mode keeps working until a goal is met.
 order: 4
 sources: [belai/docs/architecture.md, belai/docs/session-controls.md, belai/docs/plan-mode-tuning.md, belai/docs/code-mode.md, belai/docs/role-manager.md]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -36,7 +36,7 @@ A goal prompt runs a **pass loop**. When a pass uses its iterations, an evaluato
 
 When the classifier sends a prompt to goal mode, Belai drafts a **goal contract**: your prompt word for word as the objective, then how to verify it (only the test commands the repository really has), constraints, boundaries and when to stop. A goal you saved earlier is used as you wrote it.
 
-A finished goal shows `goal_done`; one that stopped early, `goal_stalled`.
+A finished goal raises the `goal_done` notification; one that stalled, `goal_stalled`.
 
 ## Guardrails and ask, together
 

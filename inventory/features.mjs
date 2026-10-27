@@ -64,15 +64,15 @@ f('builder-palette', 'workflows', 'workflows/builder', 'The workflow builder', [
 f('node-trigger', 'workflows', 'workflows/nodes/trigger', 'Trigger node', [e('factoryTriggerKinds')]);
 f('node-scan', 'workflows', 'workflows/nodes/scan', 'Scan node', [g('factory_engine_node_scan'), e('factoryScanSources'), e('factoryFailOn'), e('factorySBOMFormats'), e('factoryNewToScopes'), '^code:new_to_package_only$']);
 f('node-decision', 'workflows', 'workflows/nodes/decision', 'Decision node', [g('factory_engine_node_decision'), e('factoryBelowThreshold'), e('factoryOnAbstain'), '^code:(threshold_required|threshold_adapter_missing|invalid_outcome|adapter_unavailable)$']);
-f('node-crew', 'workflows', 'workflows/nodes/crew', 'Crew node', [g('factory_engine_node_crew'), e('factoryCrewModes'), e('factoryShowInternal'), e('factoryRunOnKinds'), e('factoryRunOnFall'), e('factoryTestsOnFail'), e('factoryTestsPostEnd'), '^code:(crew_not_found|runs_on_invalid)$']);
+f('node-crew', 'workflows', 'workflows/nodes/crew', 'Crew node', [g('factory_engine_node_crew'), g('factory_engine_handoff'), e('factoryCrewModes'), e('factoryShowInternal'), e('factoryRunOnKinds'), e('factoryRunOnFall'), e('factoryTestsOnFail'), e('factoryTestsPostEnd'), '^code:(crew_not_found|runs_on_invalid)$']);
 f('node-gate', 'workflows', 'workflows/nodes/gate', 'Gate node', [g('factory_engine_node_gate'), e('factoryGateProfiles'), e('factoryGateOnFail'), e('factoryReleaseJail')]);
 f('node-human', 'workflows', 'workflows/nodes/human', 'Human node', [g('factory_engine_node_human'), e('factoryHumanTimeout'), e('factoryApproverKinds'), '^code:(approver_missing|fork_pr_needs_human)$']);
 f('node-output', 'workflows', 'workflows/nodes/output', 'Output node', [g('factory_engine_node_output'), e('factoryOutputKinds'), e('factoryAttach'), e('factoryNoBranch'), e('factoryPRStates'), e('factoryTeaWhen'), e('factoryReviewers'), '^code:invalid_base$']);
 f('node-state', 'workflows', 'workflows/nodes/state', 'State node', [g('factory_engine_node_common'), e('factoryStateKinds')]);
 f('triggers', 'workflows', 'workflows/triggers', 'Triggers and webhook conditions', [gp('factory_trigger'), g('factory_triggers_store'), '^model:FactoryTrigger$', e('factoryConditionKeys'), e('factoryDraftModes'), e('factoryAlertSeverities'), '^webhook-event:', e('factoryConclusions'), e('factoryConclusionEvents'), e('factoryAuthorTypes'), e('factoryReviewStates'), e('factorySeverities'), e('factoryPackageTypes'), e('factoryWebhookRefs'), e('factoryOriginModes'), e('factorySubjectModes'), e('factoryDeployStates'), '^code:(action_conflict|unknown_condition|paths_need_push|invalid_glob|conclusion_unsupported_event|environment_unsupported_event|review_state_unsupported_event|severity_unsupported_event|package_type_unsupported_event)$', r('webhooks/github')]);
-f('source-events', 'workflows', 'workflows/source-events', 'Source events and firewall triggers', [gp('factory_sources'), '^model:(FactorySourceEvent|FactorySourceCursor)$', e('factorySourceEventTypes'), e('factoryCapabilityKinds'), '^code:firewall_condition_unsupported_source$']);
+f('source-events', 'workflows', 'workflows/source-events', 'Source events and firewall triggers', [gp('factory_sources'), doc('website/factory-firewall-sources\\.md'), '^model:(FactorySourceEvent|FactorySourceCursor)$', e('factorySourceEventTypes'), e('factoryCapabilityKinds'), '^code:firewall_condition_unsupported_source$']);
 f('label-dispatch', 'workflows', 'workflows/labels-and-commands', 'sf: labels and /sf commands', [g('factory_label_dispatch'), g('factory_labels'), r('factory/labels'), '^sf-label:']);
-f('schedules', 'workflows', 'workflows/schedules', 'Schedules', [r('factory/schedules'), e('factoryRunsOnValues'), g('factory_cron'), g('factory_scheduler'), gp('factory_schedules'), e('factoryOverlaps'), '^code:tz_invalid$']);
+f('schedules', 'workflows', 'workflows/schedules', 'Schedules', [r('factory/schedules'), e('factoryRunsOnValues'), g('factory_cron'), g('factory_cron_stagger'), g('factory_scheduler'), gp('factory_schedules'), e('factoryOverlaps'), '^code:tz_invalid$']);
 f('internal-fire', 'workflows', 'workflows/schedules', 'How schedulers fire runs (internal endpoints)', [r('factory/internal'), r('internal/factory'), g('factory_internal')]);
 f('templates', 'workflows', 'workflows/templates', 'Templates', [r('factory/templates'), g('factory_templates'), '^template:', con('factory-templates'), '^model:FactoryTemplateDismissal$']);
 f('template-search', 'workflows', 'workflows/templates', 'Event templates, variants and ranking', [gp('factory_templates_'), e('fwAxis\\w+')], { foundIn: '2026-10-28' });
@@ -192,11 +192,7 @@ const STATUS = {
   drafted: [
     'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops', 'agents', 'agent-builder', 'agent-import',
     'avatars', 'crews', 'role-manager', 'hosts', 'host-attention', 'sandboxes', 'builtin-models', 'board',
-    'assignment', 'ticket-standard', 'github-sync', 'belai-install', 'belai-modes', 'belai-sessions',
-    'belai-models', 'belai-tools', 'belai-safety', 'belai-mcp', 'belai-hooks', 'belai-plugins', 'belai-acp',
-    'belai-lsp', 'belai-voice', 'belai-git', 'belai-budgets', 'belai-quality', 'belai-vulnetix',
-    'belai-telemetry', 'belai-tui', 'belai-headless', 'belai-agent-loop', 'belai-resilience', 'belai-repo-memory',
-    'belai-docs-tooling',
+    'assignment', 'ticket-standard', 'github-sync',
   ],
   verified: [
     'settings-reference', 'triggers', 'source-events', 'label-dispatch', 'schedules', 'internal-fire',
@@ -210,7 +206,10 @@ const STATUS = {
     'web-controls', 'messaging', 'dispatches', 'notifications', 'remote-control', 'teleport', 'host-shell',
     'host-schedules', 'session-sync', 'knowledge', 'runs', 'run-artifacts', 'engine', 'no-host', 'sessions',
     'session-trigger', 'handoffs', 'pr-checker', 'systemone', 'approvals', 'checkpoints', 'merge-conflicts',
-    'signing',
+    'signing', 'belai-install', 'belai-modes', 'belai-sessions', 'belai-models', 'belai-tools', 'belai-safety',
+    'belai-mcp', 'belai-hooks', 'belai-plugins', 'belai-acp', 'belai-lsp', 'belai-voice', 'belai-git',
+    'belai-budgets', 'belai-quality', 'belai-vulnetix', 'belai-telemetry', 'belai-tui', 'belai-headless',
+    'belai-agent-loop', 'belai-resilience', 'belai-repo-memory', 'belai-docs-tooling',
   ],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

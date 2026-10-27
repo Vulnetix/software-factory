@@ -4,7 +4,7 @@ nav: Tests and lint
 description: How Belai finds a repository's tests, linters and build, runs tests when work ends, sweeps for lint drift, and never edits a rule file.
 order: 18
 sources: [belai/docs/testing.md, belai/docs/lint.md, belai/internal/testdetect, belai/internal/lintdetect, belai/internal/builddetect]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 

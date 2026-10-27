@@ -3,7 +3,7 @@ title: Built-in tools
 description: The tools a Belai agent works with, how code mode batches them into one script, how the workspace is bounded, attachments, diffs and the Bash rewrite table.
 order: 8
 sources: [belai/docs/agent-profiles.md, belai/docs/code-mode.md, belai/docs/web-fetch.md, belai/docs/diff.md, belai/docs/image-attachments.md, belai/docs/bash-rewrite.md, belai/internal/tools]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -15,10 +15,10 @@ updated: 28 Oct 2026
 | `Edit`, `Write` | Change files. [Language-server diagnostics](/belai/lsp/) come back on the same result. |
 | `Bash` | Run a command, in the [sandbox](/belai/guardrails/) |
 | `Cd` | Change directory, inside the workspace |
-| `WebFetch` | Fetch a page. Only the part relevant to the question comes back. |
+| `WebFetch` | Fetch a page. With a `prompt`, only the part relevant to it comes back. |
 | `AskUserQuestion` | Ask you something |
 | `ExitPlanMode` | Offer the plan, in plan mode |
-| `ReadSession`, `SearchMemory` | Read an earlier session; search notes |
+| `ReadSession`, `SearchMemory` | Read a turn range of another agent's session; search memory and rules files (`AGENTS.md`, `CLAUDE.md` and the like) |
 | `ReadResult` | Read the rest of a large result that was stored aside |
 | `Code` | Code mode's script tool |
 | Kanban tools | Workers claim, update, hand off and record verdicts on cards |

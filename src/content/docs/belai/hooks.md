@@ -3,7 +3,7 @@ title: Hooks
 description: Run your own command at fixed points in a Belai session to log, lint, veto a tool call, or hand the model a note. Events, hook files and bundles, and what a hook may return.
 order: 11
 sources: [belai/docs/hooks.md]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 

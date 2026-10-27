@@ -4,7 +4,7 @@ nav: Guardrails
 description: How Belai keeps a model from acting on text it should not trust. Sealed delimiters, sanitisation, the security classifier, permission rules, the OS sandbox, trusted directories, and the switches that loosen each on purpose.
 order: 9
 sources: [belai/README.md, belai/docs/role-manager.md, belai/docs/sanitization.md, belai/docs/sandbox.md, belai/docs/nonce-endpoint-spec.md, belai/docs/jev-jobs.md, belai/cmd/belai/help.go]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -12,7 +12,7 @@ Belai is built so that a model cannot be steered by text it reads: a web page, a
 
 ## Sealed delimiters
 
-Every block Belai sends a model (its instructions, the agent profile, the tools, your prompt, a tool result) is fenced with a delimiter that carries a nonce and an integrity hash. Untrusted text can never enter the instruction blocks, and text that tries to forge a delimiter is refused.
+Every block Belai sends a model (its instructions, the agent profile, the tools, your prompt, a tool result) is fenced with a delimiter that carries a nonce and an integrity hash. Untrusted text can never enter the instruction blocks, and a block that fails its check (an unknown nonce, a bad hash, a forged delimiter) is stripped before anything leaves for the provider.
 
 ## Sanitisation
 
@@ -32,7 +32,7 @@ Every tool call goes through your permission rules: allow, ask or deny by tool a
 
 ## Guardrails
 
-**Guardrails** (`f3`) are the posture gates on prompts and results. Each gate can enforce, warn or be ignored. A worker can never run with guardrails off, and neither can remote control.
+**Guardrails** (`f3`) are the posture gates on prompts and results. Each gate can enforce, warn or be ignored. A fleet worker or a remote control session starts with guardrails on, and the website can turn them off only when the host passed `--web-allow-guardrails-off`.
 
 ## The OS sandbox
 
@@ -48,23 +48,23 @@ Some flags turn a gate off for one run. Each is named for what it does:
 
 | Flag | Allows |
 |---|---|
-| `-dangerously-yolo-everything` | Everything below, at once |
+| `-dangerously-yolo-everything` | Every posture gate set to ignore (except the boundary-source gate), with guardrails and ask off |
 | `-allow-unsafe-prompt`, `-allow-malformed-prompt` | A prompt the classifier or parser refused |
 | `-allow-unsafe-tool-result`, `-allow-malformed-tool-result` | A tool result the classifier or parser refused |
-| `-allow-unpermitted-tools` | Tool calls the permission rules deny |
+| `-allow-unpermitted-tools` | Tool calls that match no permission rule |
 | `-allow-ask-without-tty` | Asks when nobody is at the terminal |
 | `-allow-invalid-skills`, `-allow-invalid-hooks` | Skills or hooks that failed validation |
-| `-tool-call-mismatch` | What to do when a model calls a tool it was not offered |
-| `-guardrails`, `-ask-permission` | Start with guardrails or ask set |
+| `-tool-call-mismatch` | What to do when a model calls a tool it was not offered: `abort`, `strip` or `ignore` |
+| `-guardrails`, `-ask-permission` | Both default to true; `-guardrails=false` or `-ask-permission=false` turns one off for the run |
 
 `/yolo` turns guardrails and ask off together in the TUI.
 
 > [!CAREFUL] These flags remove protections
-> Use them only in a throwaway sandbox. A factory worker can never turn guardrails off, and a web session can only do so if its host allowed it with `--web-allow-guardrails-off`.
+> Use them only in a throwaway sandbox. A factory worker or a web session can have guardrails turned off only if its host allowed it with `--web-allow-guardrails-off`.
 
 ## Jev jobs
 
-Jev can also judge tool calls and edits as they happen (`jev.jobs.tools`, `jev.jobs.edits`), blocking above `jev.thresholds.block` (0.90 by default) and flagging above `jev.thresholds.flag` (0.60).
+Jev can also be the security gate's decision model: a score at or below `jev.thresholds.allow_at` (0.10 by default) lets a call or content through, one at or above `jev.thresholds.deny_at` (0.90) blocks it, and the band between goes to the agent model or a person. `jev.jobs` turns individual Jev jobs on or off.
 
 ## Related
 

@@ -4,7 +4,7 @@ nav: Token budgets
 description: Belai's own token budgets per provider and model, which inform but never block, and session intelligence on plan limits, pace and runway.
 order: 17
 sources: [belai/docs/token-budgets.md, belai/internal/budget]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 

@@ -4,7 +4,7 @@ nav: Telemetry
 description: Send Belai's traces and metrics to your own OpenTelemetry collector. What is exported, and what never is.
 order: 20
 sources: [belai/docs/telemetry.md, belai/internal/otel]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 

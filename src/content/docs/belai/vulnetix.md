@@ -4,7 +4,7 @@ nav: Vulnetix scanning
 description: Run Vulnetix reviews from Belai, read their results safely, and switch the AI Firewall, with /vulnetix.
 order: 19
 sources: [belai/docs/vulnetix.md, belai/docs/vulnetix-review.md, belai/docs/vuln-row.md]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -20,7 +20,7 @@ The results also become [project knowledge](/workforce/knowledge/), so later ses
 
 ## The AI Firewall
 
-`/vulnetix firewall` sets up the Vulnetix AI Firewall for your organisation, and `f10` switches it for this project. See [Firewalls](/evidence/firewalls/).
+`/vulnetix firewall` makes the Vulnetix AI Firewall the active firewall (or switches it on or off when it already is), and `f10` switches the active firewall for this project. See [Firewalls](/evidence/firewalls/).
 
 ## In the factory
 

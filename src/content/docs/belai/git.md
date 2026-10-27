@@ -4,7 +4,7 @@ nav: Git
 description: How Belai keeps a session's branch up to date with the default branch, what it tells the model about the repository, and per-project preferences.
 order: 16
 sources: [belai/docs/git-sync.md, belai/internal/gitinfo, belai/internal/projectregistry, belai/internal/config]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -29,8 +29,8 @@ Belai reads the repository's remotes, branch and recent state and tells the mode
 
 ## Project preferences
 
-Each directory has its own preferences: mode, guardrails, ask, the display switches, tests after a turn, language servers and Jev. They live in `.vulnetix/settings.json` and Belai's project registry, and a remote control host can let the console edit them. See [Remote control](/workforce/remote-control/).
+Each directory has its own preferences: mode, guardrails, ask, the display switches, tests after a turn, language servers and Jev. They live under your global Belai directory, keyed by the project directory (`~/.vulnetix/belai/projectprefs/`), so a repository can never supply them, and a remote control host can let the console edit them. See [Remote control](/workforce/remote-control/).
 
 ## Auto-commit
 
-With `auto_commit_per_task` on, the TUI commits each completed goal's changed files as one conventional commit. It is off by default, works only in the interactive TUI, and can be set only in your global settings: a cloned repository's settings can never make Belai commit.
+With `auto_commit_per_task` on, the TUI commits each completed goal's changed files as one conventional commit. It is off by default, works only in the interactive TUI, and can be set only in your global settings or your own per-project preferences: a cloned repository's `.vulnetix/settings.json` can never make Belai commit.

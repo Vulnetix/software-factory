@@ -4,7 +4,7 @@ nav: Voice and speech
 description: Dictate into the composer with a model that runs inside Belai, and have replies read aloud.
 order: 15
 sources: [belai/docs/voice.md, belai/docs/tts.md]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 

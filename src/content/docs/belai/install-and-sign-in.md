@@ -4,7 +4,7 @@ nav: Install and sign in
 description: Install Belai on macOS, Linux or Windows, choose a build, keep it up to date, and sign in to Vulnetix and to model providers.
 order: 1
 sources: [belai/README.md, belai/install.sh, belai/docs/kiro.md, belai/cmd/belai/login.go]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -61,13 +61,13 @@ belai login kiro -import                                          # reuse Kiro's
 | Flag | Meaning |
 |---|---|
 | `-start-url` | IAM Identity Center start URL |
-| `-region` | SSO region |
+| `-region` | SSO region (default `us-east-1`) |
 | `-api-region` | Kiro API region |
 | `-profile-arn` | CodeWhisperer profile ARN |
 | `-import` | Import Kiro's own sign-in |
 | `-backend` | Where to keep the login: `keychain` or `user-file` |
 
-`belai login keychain` and `belai login user-file` choose where provider logins are kept. GitHub Copilot signs in with your GitHub account from `/providers`. See [Providers and keys](/workforce/providers-and-keys/).
+`belai login kiro` is the only `belai login` command; its `-backend keychain` or `-backend user-file` chooses where the login is kept (the keychain when one is available). GitHub Copilot signs in with your GitHub account from `/providers`. See [Providers and keys](/workforce/providers-and-keys/).
 
 ## Next
 
