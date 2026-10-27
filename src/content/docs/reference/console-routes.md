@@ -27,11 +27,11 @@ Pages in the Vulnetix console that belong to Software Factory. All are under `ht
 | [`/resolve/factory-memory`](https://www.vulnetix.com/resolve/factory-memory) |  |
 | [`/resolve/factory-outcome`](https://www.vulnetix.com/resolve/factory-outcome) |  |
 | [`/resolve/factory-people`](https://www.vulnetix.com/resolve/factory-people) |  |
-| [`/resolve/factory-repos`](https://www.vulnetix.com/resolve/factory-repos) |  |
+| [`/resolve/factory-repos`](https://www.vulnetix.com/resolve/factory-repos) | [Managed orgs and repositories](/control/managed-scope/) |
 | [`/resolve/factory-run`](https://www.vulnetix.com/resolve/factory-run) |  |
 | [`/resolve/factory-runs`](https://www.vulnetix.com/resolve/factory-runs) |  |
 | [`/resolve/factory-session`](https://www.vulnetix.com/resolve/factory-session) |  |
-| [`/resolve/factory-settings`](https://www.vulnetix.com/resolve/factory-settings) |  |
+| [`/resolve/factory-settings`](https://www.vulnetix.com/resolve/factory-settings) | [The settings document](/control/settings-document/) |
 | [`/resolve/factory-templates`](https://www.vulnetix.com/resolve/factory-templates) |  |
 | [`/resolve/factory-trust`](https://www.vulnetix.com/resolve/factory-trust) |  |
 | [`/resolve/factory-workflows`](https://www.vulnetix.com/resolve/factory-workflows) |  |

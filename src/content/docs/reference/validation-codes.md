@@ -16,7 +16,7 @@ Codes the API returns in `issues[].code` when it refuses a request, and the code
 | <span id="adapter_unavailable"></span>`adapter_unavailable` | In {node}, that model is not one this workflow can use. Choose clef-flash, clef, jev, tev1, pix-fast or a model from your vault. |  |
 | <span id="already_decided"></span>`already_decided` |  |  |
 | <span id="approver_missing"></span>`approver_missing` | Name who can approve in {node}. Add a team, a member, a role or the repository admins. |  |
-| <span id="autonomy_above_max"></span>`autonomy_above_max` | autonomy is above autonomy.max ( |  |
+| <span id="autonomy_above_max"></span>`autonomy_above_max` | autonomy is above autonomy.max ( | [Autonomy levels](/control/autonomy/) |
 | <span id="bad_request"></span>`bad_request` |  |  |
 | <span id="bad_state"></span>`bad_state` |  |  |
 | <span id="budget_exceeds_parent"></span>`budget_exceeds_parent` | The run budget is larger than the month budget. Lower the run budget or raise the month budget. |  |
@@ -52,7 +52,7 @@ Codes the API returns in `issues[].code` when it refuses a request, and the code
 | <span id="provider_not_allowed"></span>`provider_not_allowed` |  |  |
 | <span id="required"></span>`required` | In {node}, choose a value for %s. |  |
 | <span id="review_state_unsupported_event"></span>`review_state_unsupported_event` | In {node}, the review state condition only applies to pull request reviews. Remove it or choose the pull request review event. |  |
-| <span id="revision_conflict"></span>`revision_conflict` |  |  |
+| <span id="revision_conflict"></span>`revision_conflict` |  | [The settings document](/control/settings-document/) |
 | <span id="runs_on_invalid"></span>`runs_on_invalid` | In {node}, where the step runs is not set up correctly. Choose Any host, Pix Sandbox, Self-hosted, a host or a host label. |  |
 | <span id="scope_unmanaged_repo"></span>`scope_unmanaged_repo` |  |  |
 | <span id="severity_unsupported_event"></span>`severity_unsupported_event` | In {node}, the severity condition only applies to Dependabot and code scanning alerts. Remove it or choose one of those events. |  |
@@ -66,6 +66,6 @@ Codes the API returns in `issues[].code` when it refuses a request, and the code
 | <span id="tz_invalid"></span>`tz_invalid` | In {node}, that is not a timezone name. Use a name such as UTC or Australia/Melbourne. |  |
 | <span id="unknown_condition"></span>`unknown_condition` | In {node}, "%s" is not a setting of %s. Use only: %s. |  |
 | <span id="unknown_node"></span>`unknown_node` | A connection starts at a step that is not in the workflow ("%s"). Remove the connection. |  |
-| <span id="version_conflict"></span>`version_conflict` |  |  |
+| <span id="version_conflict"></span>`version_conflict` |  | [The settings document](/control/settings-document/) |
 | <span id="workflows_published"></span>`workflows_published` | persistence.postgres can be off only while no workflow is published |  |
 | <span id="write_failed"></span>`write_failed` | could not update the Factory budget |  |

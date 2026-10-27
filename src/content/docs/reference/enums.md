@@ -695,7 +695,7 @@ Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 ### factoryVisibility
 
-Defined in `api/internal/handler/factory_workflow_graph.go`.
+Explained in [Managed orgs and repositories](/control/managed-scope/). Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 `private`, `public`
 
@@ -827,13 +827,13 @@ Defined in `api/internal/handler/factory_templates_events.go`.
 
 ### fwCancelFrom
 
-Defined in `api/internal/handler/factory_runs_actions.go`.
+Explained in [Pause, stop and resume](/control/pause-and-stop/). Defined in `api/internal/handler/factory_runs_actions.go`.
 
 `held`, `paused`, `queued`, `running`, `waiting_approval`
 
 ### fwPauseFrom
 
-Defined in `api/internal/handler/factory_runs_actions.go`.
+Explained in [Pause, stop and resume](/control/pause-and-stop/). Defined in `api/internal/handler/factory_runs_actions.go`.
 
 `queued`, `running`, `waiting_approval`
 

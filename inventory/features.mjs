@@ -53,9 +53,9 @@ f('managed-scope', 'control', 'control/managed-scope', 'Managed orgs and reposit
 f('repo-profiles', 'control', 'control/repository-profiles', 'Repository profiles', [g('factory_repo_profile')], { foundIn: '2026-10-28' });
 f('issue-mirroring', 'control', 'control/issue-mirroring', 'Issue mirroring', [r('factory/repos/mirroring')]);
 f('autonomy', 'control', 'control/autonomy', 'Autonomy levels', [set('autonomy.'), '^code:autonomy_above_max$']);
-f('kill-switch', 'control', 'control/pause-and-stop', 'Pause, stop and resume', [r('factory/(state|stop|resume)'), g('factory_state'), e('factoryStateKinds'), e('fwPauseFrom'), e('fwCancelFrom')]);
+f('kill-switch', 'control', 'control/pause-and-stop', 'Pause, stop and resume', [r('factory/(state|stop|resume)'), g('factory_state'), e('fwPauseFrom'), e('fwCancelFrom')]);
 f('holds', 'control', 'control/holds-and-blackouts', 'Holds, maintenance windows and blackouts', [set('schedules.'), '^setting:pix\\.maintenance$']);
-f('settings-document', 'control', 'control/settings-document', 'The settings document', [r('factory/settings'), g('factory_settings_store'), con('factory-settings'), '^model:FactorySettings$', '^code:revision_conflict$', '^code:version_conflict$', e('factoryDefaultKeys'), e('factoryShowInternal')]);
+f('settings-document', 'control', 'control/settings-document', 'The settings document', [r('factory/settings'), g('factory_settings_store'), con('factory-settings'), '^model:FactorySettings$', '^code:revision_conflict$', '^code:version_conflict$']);
 f('settings-reference', 'reference', 'reference/settings', 'Settings reference', ['^setting:']);
 
 // ── Workflows ──────────────────────────────────────────────────────────────
@@ -64,11 +64,11 @@ f('builder-palette', 'workflows', 'workflows/builder', 'The workflow builder', [
 f('node-trigger', 'workflows', 'workflows/nodes/trigger', 'Trigger node', [e('factoryTriggerKinds')]);
 f('node-scan', 'workflows', 'workflows/nodes/scan', 'Scan node', [g('factory_engine_node_scan'), e('factoryScanSources'), e('factoryFailOn'), e('factorySBOMFormats'), e('factoryNewToScopes'), '^code:new_to_package_only$']);
 f('node-decision', 'workflows', 'workflows/nodes/decision', 'Decision node', [g('factory_engine_node_decision'), e('factoryBelowThreshold'), e('factoryOnAbstain'), '^code:(threshold_required|threshold_adapter_missing|invalid_outcome|adapter_unavailable)$']);
-f('node-crew', 'workflows', 'workflows/nodes/crew', 'Crew node', [g('factory_engine_node_crew'), e('factoryCrewModes'), e('factoryRunOnKinds'), e('factoryRunOnFall'), e('factoryRunsOnValues'), '^code:(crew_not_found|runs_on_invalid)$']);
+f('node-crew', 'workflows', 'workflows/nodes/crew', 'Crew node', [g('factory_engine_node_crew'), e('factoryCrewModes'), e('factoryShowInternal'), e('factoryRunOnKinds'), e('factoryRunOnFall'), e('factoryRunsOnValues'), '^code:(crew_not_found|runs_on_invalid)$']);
 f('node-gate', 'workflows', 'workflows/nodes/gate', 'Gate node', [g('factory_engine_node_gate'), e('factoryGateProfiles'), e('factoryGateOnFail'), e('factoryReleaseJail'), e('factoryTestsOnFail'), e('factoryTestsPostEnd')]);
 f('node-human', 'workflows', 'workflows/nodes/human', 'Human node', [g('factory_engine_node_human'), e('factoryHumanTimeout'), e('factoryApproverKinds'), '^code:(approver_missing|fork_pr_needs_human)$']);
 f('node-output', 'workflows', 'workflows/nodes/output', 'Output node', [g('factory_engine_node_output'), e('factoryOutputKinds'), e('factoryNoBranch'), e('factoryPRStates'), e('factoryTeaWhen'), e('factoryReviewers'), '^code:invalid_base$']);
-f('node-state', 'workflows', 'workflows/nodes/state', 'State node', [g('factory_engine_node_common')]);
+f('node-state', 'workflows', 'workflows/nodes/state', 'State node', [g('factory_engine_node_common'), e('factoryStateKinds')]);
 f('triggers', 'workflows', 'workflows/triggers', 'Triggers and webhook conditions', [gp('factory_trigger'), g('factory_triggers_store'), '^model:FactoryTrigger$', e('factoryConditionKeys'), e('factoryConclusions'), e('factoryConclusionEvents'), e('factoryAuthorTypes'), e('factoryReviewStates'), e('factorySeverities'), e('factoryPackageTypes'), e('factoryWebhookRefs'), e('factoryOriginModes'), e('factorySubjectModes'), e('factoryAttach'), e('factoryDeployStates'), '^code:(unknown_condition|paths_need_push|invalid_glob|conclusion_unsupported_event|environment_unsupported_event|review_state_unsupported_event|severity_unsupported_event|package_type_unsupported_event)$', r('webhooks/github')]);
 f('source-events', 'workflows', 'workflows/source-events', 'Source events and firewall triggers', [gp('factory_sources'), '^model:(FactorySourceEvent|FactorySourceCursor)$', e('factorySourceEventTypes'), '^code:firewall_condition_unsupported_source$']);
 f('label-dispatch', 'workflows', 'workflows/labels-and-commands', 'sf: labels and /sf commands', [g('factory_label_dispatch')]);
@@ -76,7 +76,7 @@ f('schedules', 'workflows', 'workflows/schedules', 'Schedules', [r('factory/sche
 f('internal-fire', 'workflows', 'workflows/schedules', 'How schedulers fire runs (internal endpoints)', [r('factory/internal'), r('internal/factory'), g('factory_internal')]);
 f('templates', 'workflows', 'workflows/templates', 'Templates', [r('factory/templates'), g('factory_templates'), '^template:', con('factory-templates'), '^model:FactoryTemplateDismissal$']);
 f('template-search', 'workflows', 'workflows/templates', 'Event templates, variants and ranking', [gp('factory_templates_'), e('fwAxis\\w+')], { foundIn: '2026-10-28' });
-f('defaults', 'workflows', 'workflows/default-workflows', 'Default workflows', [r('factory/defaults'), gp('factory_defaults'), '^default:', '^code:workflows_published$']);
+f('defaults', 'workflows', 'workflows/default-workflows', 'Default workflows', [r('factory/defaults'), gp('factory_defaults'), '^default:', e('factoryDefaultKeys'), '^code:workflows_published$']);
 f('validation-codes', 'reference', 'reference/validation-codes', 'Validation and API error codes', ['^code:', doc('vdb-site/factory-validation\\.md', 'website/software-factory-validation\\.md')]);
 f('graph-limits', 'workflows', 'workflows/graphs', 'Graph limits', ['^code:(too_many_nodes|too_many_edges|too_many|too_long|cycle|duplicate_edge|duplicate_id|unknown_node|no_trigger|invalid_loop|github_calls_exceed_run_cap|out_of_range|required|invalid_enum|invalid_type|invalid_id|invalid_repo|scope_unmanaged_repo|custom_required)$']);
 
@@ -187,7 +187,8 @@ f('belai-docs-tooling', 'belai', 'belai/contributing', 'Developing Belai', [pkg(
 // todo -> drafted (the page is written from the code) -> verified (the page
 // was re-read against the code at the commit in its `checked` list).
 const STATUS = {
-  drafted: ['overview', 'concepts', 'quickstart', 'never-does', 'glossary', 'architecture'],
+  drafted: ['overview', 'concepts', 'quickstart', 'never-does', 'glossary', 'architecture',
+    'managed-scope', 'repo-profiles', 'issue-mirroring', 'autonomy', 'kill-switch', 'holds', 'settings-document'],
   verified: [],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

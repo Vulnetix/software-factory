@@ -41,14 +41,14 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="autonomy.claim_ttl_minutes"></span>`autonomy.claim_ttl_minutes` | int 1 to 1440. int 1 to 1440: minutes a started crew or worker dispatch may go without a session before the attempt fails `card_unclaimed` and retries | `60` | factory |  |
-| <span id="autonomy.concurrency"></span>`autonomy.concurrency` | int 1 to 64 | `4` | factory |  |
-| <span id="autonomy.default"></span>`autonomy.default` | enum: `observe`, `suggest`, `draft_pr`, `auto_merge_low_risk` | `draft_pr` | factory |  |
-| <span id="autonomy.max"></span>`autonomy.max` | enum: `observe`, `suggest`, `draft_pr`, `auto_merge_low_risk` | `draft_pr` | factory |  |
-| <span id="autonomy.max_attempts"></span>`autonomy.max_attempts` | int 1 to 10 | `3` | factory |  |
-| <span id="autonomy.no_host_ttl_hours"></span>`autonomy.no_host_ttl_hours` | int 1 to 168. int 1 to 168: hours a crew step may wait for a machine before the run ends `no_host_timeout` | `6` | factory |  |
-| <span id="autonomy.parked_concurrency"></span>`autonomy.parked_concurrency` | int 1 to 1000. int 1 to 1000: runs of the tenant that may wait for a machine at once; they do not count against `autonomy.concurrency` | `50` | factory |  |
-| <span id="autonomy.plan_approval"></span>`autonomy.plan_approval` | bool. bool (plan approval for `belai:feature`) | `true` | factory |  |
+| <span id="autonomy.claim_ttl_minutes"></span>`autonomy.claim_ttl_minutes` | int 1 to 1440. int 1 to 1440: minutes a started crew or worker dispatch may go without a session before the attempt fails `card_unclaimed` and retries | `60` | factory | [Autonomy levels](/control/autonomy/) |
+| <span id="autonomy.concurrency"></span>`autonomy.concurrency` | int 1 to 64 | `4` | factory | [Autonomy levels](/control/autonomy/) |
+| <span id="autonomy.default"></span>`autonomy.default` | enum: `observe`, `suggest`, `draft_pr`, `auto_merge_low_risk` | `draft_pr` | factory | [Autonomy levels](/control/autonomy/) |
+| <span id="autonomy.max"></span>`autonomy.max` | enum: `observe`, `suggest`, `draft_pr`, `auto_merge_low_risk` | `draft_pr` | factory | [Autonomy levels](/control/autonomy/) |
+| <span id="autonomy.max_attempts"></span>`autonomy.max_attempts` | int 1 to 10 | `3` | factory | [Autonomy levels](/control/autonomy/) |
+| <span id="autonomy.no_host_ttl_hours"></span>`autonomy.no_host_ttl_hours` | int 1 to 168. int 1 to 168: hours a crew step may wait for a machine before the run ends `no_host_timeout` | `6` | factory | [Autonomy levels](/control/autonomy/) |
+| <span id="autonomy.parked_concurrency"></span>`autonomy.parked_concurrency` | int 1 to 1000. int 1 to 1000: runs of the tenant that may wait for a machine at once; they do not count against `autonomy.concurrency` | `50` | factory | [Autonomy levels](/control/autonomy/) |
+| <span id="autonomy.plan_approval"></span>`autonomy.plan_approval` | bool. bool (plan approval for `belai:feature`) | `true` | factory | [Autonomy levels](/control/autonomy/) |
 
 ## belai
 
@@ -178,7 +178,7 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 | <span id="pix.egressMode"></span>`pix.egressMode` | enum. enum `deny_except_allow`, `allow_all_logged` | `deny_except_allow` | sandbox |  |
 | <span id="pix.extensionMode"></span>`pix.extensionMode` | enum: `packs_only`, `any_indexed` | `packs_only` | sandbox |  |
 | <span id="pix.jevDailyCap"></span>`pix.jevDailyCap` | int 0 to 100_000_000. int, calls per day, shared with the sandbox | `2000` | sandbox |  |
-| <span id="pix.maintenance"></span>`pix.maintenance` | list. list of `{days:["sun"],start:"02:00",end:"04:00",tz:"Australia/Melbourne"}`, same value as `PUT /v1/belai/sandboxes/{id}/maintenance-window` | `[]any{` | sandbox |  |
+| <span id="pix.maintenance"></span>`pix.maintenance` | list. list of `{days:["sun"],start:"02:00",end:"04:00",tz:"Australia/Melbourne"}`, same value as `PUT /v1/belai/sandboxes/{id}/maintenance-window` | `[]any{` | sandbox | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
 | <span id="pix.reservePercent"></span>`pix.reservePercent` | pct. pct (same value as budgets `reserveInteractivePct`) | `20` | sandbox |  |
 | <span id="pix.size"></span>`pix.size` | enum. enum `small`, `medium`, `large` | `medium` | sandbox |  |
 | <span id="pix.versionPolicy"></span>`pix.versionPolicy` | enum. enum `safest`, `stable`, `latest`, `rolling`, `pinned` (the first four are the Safe Harbour picks, see `pix-sandbox-safe-harbour.md`) | `safest` | sandbox |  |
@@ -194,19 +194,19 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="schedules.blackout"></span>`schedules.blackout` | list. list of `{from:{day,time},to:{day,time},label}`; `day` is `mon` to `sun`, `time` `HH:MM` | `[]any{` | factory |  |
-| <span id="schedules.missed"></span>`schedules.missed` | enum: `run_once`, `skip`, `run_all` | `run_once` | factory |  |
-| <span id="schedules.tz"></span>`schedules.tz` | tz. IANA zone | `UTC` | factory |  |
+| <span id="schedules.blackout"></span>`schedules.blackout` | list. list of `{from:{day,time},to:{day,time},label}`; `day` is `mon` to `sun`, `time` `HH:MM` | `[]any{` | factory | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
+| <span id="schedules.missed"></span>`schedules.missed` | enum: `run_once`, `skip`, `run_all` | `run_once` | factory | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
+| <span id="schedules.tz"></span>`schedules.tz` | tz. IANA zone | `UTC` | factory | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
 
 ## scope
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="scope.archived"></span>`scope.archived` | bool | `false` | factory |  |
-| <span id="scope.dependencies"></span>`scope.dependencies` | bool | `false` | factory |  |
-| <span id="scope.interest"></span>`scope.interest` | enum: `any_signal`, `scanned_or_pix`, `watched_only` | `any_signal` | factory |  |
-| <span id="scope.orgs"></span>`scope.orgs` | list. `"all_active"` or list of installation logins; same write as `PUT /orgs/{id}` | `[]any{` | factory |  |
-| <span id="scope.sync"></span>`scope.sync` | enum: `6h`, `1h`, `webhook_only` | `6h` | factory |  |
+| <span id="scope.archived"></span>`scope.archived` | bool | `false` | factory | [Managed orgs and repositories](/control/managed-scope/) |
+| <span id="scope.dependencies"></span>`scope.dependencies` | bool | `false` | factory | [Managed orgs and repositories](/control/managed-scope/) |
+| <span id="scope.interest"></span>`scope.interest` | enum: `any_signal`, `scanned_or_pix`, `watched_only` | `any_signal` | factory | [Managed orgs and repositories](/control/managed-scope/) |
+| <span id="scope.orgs"></span>`scope.orgs` | list. `"all_active"` or list of installation logins; same write as `PUT /orgs/{id}` | `[]any{` | factory | [Managed orgs and repositories](/control/managed-scope/) |
+| <span id="scope.sync"></span>`scope.sync` | enum: `6h`, `1h`, `webhook_only` | `6h` | factory | [Managed orgs and repositories](/control/managed-scope/) |
 
 ## security
 

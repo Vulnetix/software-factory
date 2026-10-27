@@ -472,9 +472,9 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/orgs` |  |
-| PUT | `/v1/factory/orgs/{installationId}` |  |
-| POST | `/v1/factory/orgs/{installationId}/refresh` |  |
+| GET | `/v1/factory/orgs` | [Managed orgs and repositories](/control/managed-scope/) |
+| PUT | `/v1/factory/orgs/{installationId}` | [Managed orgs and repositories](/control/managed-scope/) |
+| POST | `/v1/factory/orgs/{installationId}/refresh` | [Managed orgs and repositories](/control/managed-scope/) |
 
 ## /v1/factory/quota
 
@@ -488,17 +488,17 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/repos` |  |
-| GET | `/v1/factory/repos/{owner}/{name}` |  |
-| PUT | `/v1/factory/repos/{owner}/{name}/settings` |  |
-| POST | `/v1/factory/repos/bulk` |  |
-| GET | `/v1/factory/repos/mirroring` |  |
+| GET | `/v1/factory/repos` | [Managed orgs and repositories](/control/managed-scope/) |
+| GET | `/v1/factory/repos/{owner}/{name}` | [Managed orgs and repositories](/control/managed-scope/) |
+| PUT | `/v1/factory/repos/{owner}/{name}/settings` | [Managed orgs and repositories](/control/managed-scope/) |
+| POST | `/v1/factory/repos/bulk` | [Managed orgs and repositories](/control/managed-scope/) |
+| GET | `/v1/factory/repos/mirroring` | [Issue mirroring](/control/issue-mirroring/) |
 
 ## /v1/factory/resume
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/factory/resume` |  |
+| POST | `/v1/factory/resume` | [Pause, stop and resume](/control/pause-and-stop/) |
 
 ## /v1/factory/runs
 
@@ -540,8 +540,8 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/settings` |  |
-| PUT | `/v1/factory/settings` |  |
+| GET | `/v1/factory/settings` | [The settings document](/control/settings-document/) |
+| PUT | `/v1/factory/settings` | [The settings document](/control/settings-document/) |
 
 ## /v1/factory/sightings
 
@@ -554,13 +554,13 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/state` |  |
+| GET | `/v1/factory/state` | [Pause, stop and resume](/control/pause-and-stop/) |
 
 ## /v1/factory/stop
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/factory/stop` |  |
+| POST | `/v1/factory/stop` | [Pause, stop and resume](/control/pause-and-stop/) |
 
 ## /v1/factory/summary
 
