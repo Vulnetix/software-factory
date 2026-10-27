@@ -1,8 +1,8 @@
 {
- "generatedAt": "2026-10-27T13:32:19.350Z",
+ "generatedAt": "2026-10-27T13:39:05.357Z",
  "repos": {
   "vdb-site": "739b6960d1e2a68bad68fd480fdfd863c490022d",
-  "website": "d1948eaceff9ffe017812ddc33b8dbff8aa6f9ef",
+  "website": "5c1e7cca3f889bdbee2cc350de0bb43efec8c870",
   "belai": "b5d33b62b9af7144805bbaaab7082f3d3cc030f4",
   "saas": "aa6c2b46d08710a89f05fdd478bc14e1ae7abe6c"
  },
@@ -17,9 +17,9 @@
   "default": 7,
   "doc": 114,
   "enum": 1016,
-  "gofile": 272,
+  "gofile": 289,
   "model": 42,
-  "route": 327,
+  "route": 380,
   "setting": 125,
   "sf-label": 21,
   "template": 37,
@@ -19044,6 +19044,102 @@
    ]
   },
   {
+   "id": "gofile:messaging_dispatcher",
+   "kind": "gofile",
+   "value": "messaging_dispatcher",
+   "sources": [
+    "vdb-site/api/internal/handler/messaging_dispatcher.go"
+   ]
+  },
+  {
+   "id": "gofile:messaging_emit",
+   "kind": "gofile",
+   "value": "messaging_emit",
+   "sources": [
+    "vdb-site/api/internal/handler/messaging_emit.go"
+   ]
+  },
+  {
+   "id": "gofile:messaging_enrich",
+   "kind": "gofile",
+   "value": "messaging_enrich",
+   "sources": [
+    "vdb-site/api/internal/handler/messaging_enrich.go"
+   ]
+  },
+  {
+   "id": "gofile:messaging_handlers",
+   "kind": "gofile",
+   "value": "messaging_handlers",
+   "sources": [
+    "vdb-site/api/internal/handler/messaging_handlers.go"
+   ]
+  },
+  {
+   "id": "gofile:messaging_send",
+   "kind": "gofile",
+   "value": "messaging_send",
+   "sources": [
+    "vdb-site/api/internal/handler/messaging_send.go"
+   ]
+  },
+  {
+   "id": "gofile:messaging_slack_thread",
+   "kind": "gofile",
+   "value": "messaging_slack_thread",
+   "sources": [
+    "vdb-site/api/internal/handler/messaging_slack_thread.go"
+   ]
+  },
+  {
+   "id": "gofile:messaging_store",
+   "kind": "gofile",
+   "value": "messaging_store",
+   "sources": [
+    "vdb-site/api/internal/handler/messaging_store.go"
+   ]
+  },
+  {
+   "id": "gofile:notify",
+   "kind": "gofile",
+   "value": "notify",
+   "sources": [
+    "vdb-site/api/internal/handler/notify.go"
+   ]
+  },
+  {
+   "id": "gofile:notify_actions",
+   "kind": "gofile",
+   "value": "notify_actions",
+   "sources": [
+    "vdb-site/api/internal/handler/notify_actions.go"
+   ]
+  },
+  {
+   "id": "gofile:notify_core",
+   "kind": "gofile",
+   "value": "notify_core",
+   "sources": [
+    "vdb-site/api/internal/handler/notify_core.go"
+   ]
+  },
+  {
+   "id": "gofile:notify_prefs",
+   "kind": "gofile",
+   "value": "notify_prefs",
+   "sources": [
+    "vdb-site/api/internal/handler/notify_prefs.go"
+   ]
+  },
+  {
+   "id": "gofile:notify_producers",
+   "kind": "gofile",
+   "value": "notify_producers",
+   "sources": [
+    "vdb-site/api/internal/handler/notify_producers.go"
+   ]
+  },
+  {
    "id": "gofile:pix_builtin_models",
    "kind": "gofile",
    "value": "pix_builtin_models",
@@ -19193,6 +19289,46 @@
    "value": "pix_sandbox_version_policy",
    "sources": [
     "vdb-site/api/internal/handler/pix_sandbox_version_policy.go"
+   ]
+  },
+  {
+   "id": "gofile:pulls_conflicts",
+   "kind": "gofile",
+   "value": "pulls_conflicts",
+   "sources": [
+    "vdb-site/api/internal/handler/pulls_conflicts.go"
+   ]
+  },
+  {
+   "id": "gofile:push_subscriptions",
+   "kind": "gofile",
+   "value": "push_subscriptions",
+   "sources": [
+    "vdb-site/api/internal/handler/push_subscriptions.go"
+   ]
+  },
+  {
+   "id": "gofile:signing_commit",
+   "kind": "gofile",
+   "value": "signing_commit",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_commit.go"
+   ]
+  },
+  {
+   "id": "gofile:signing_handlers",
+   "kind": "gofile",
+   "value": "signing_handlers",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ]
+  },
+  {
+   "id": "gofile:signing_service",
+   "kind": "gofile",
+   "value": "signing_service",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_service.go"
    ]
   },
   {
@@ -19820,6 +19956,42 @@
    "handler": "FactoryWorkflowDiscardDraft"
   },
   {
+   "id": "route:DELETE /v1/messaging/connections/{id}",
+   "kind": "route",
+   "value": "DELETE /v1/messaging/connections/{id}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingConnectionDelete"
+  },
+  {
+   "id": "route:DELETE /v1/messaging/identities/{principalUuid}/{provider}",
+   "kind": "route",
+   "value": "DELETE /v1/messaging/identities/{principalUuid}/{provider}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingIdentityDelete"
+  },
+  {
+   "id": "route:DELETE /v1/messaging/routes/{id}",
+   "kind": "route",
+   "value": "DELETE /v1/messaging/routes/{id}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingRouteDelete"
+  },
+  {
+   "id": "route:DELETE /v1/messaging/templates/{id}",
+   "kind": "route",
+   "value": "DELETE /v1/messaging/templates/{id}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingTemplateDelete"
+  },
+  {
    "id": "route:DELETE /v1/pix-call/history/{id}",
    "kind": "route",
    "value": "DELETE /v1/pix-call/history/{id}",
@@ -19836,6 +20008,24 @@
     "vdb-site/api/main.go"
    ],
    "handler": "PixCallMemoryDelete"
+  },
+  {
+   "id": "route:DELETE /v1/push/subscriptions",
+   "kind": "route",
+   "value": "DELETE /v1/push/subscriptions",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "PushSubscriptionDelete"
+  },
+  {
+   "id": "route:DELETE /v1/signing/keys/{id}",
+   "kind": "route",
+   "value": "DELETE /v1/signing/keys/{id}",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
   },
   {
    "id": "route:GET /v1/admin/pix-sandboxes/",
@@ -19890,6 +20080,15 @@
     "vdb-site/api/main.go"
    ],
    "handler": "AdminPixDefaultsGet"
+  },
+  {
+   "id": "route:GET /v1/ai-firewall/hold-policy",
+   "kind": "route",
+   "value": "GET /v1/ai-firewall/hold-policy",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "AiFirewallHoldPolicyGet"
   },
   {
    "id": "route:GET /v1/belai/a2a/{messageId}",
@@ -21269,6 +21468,123 @@
    "handler": "InternalPixCommanderModels"
   },
   {
+   "id": "route:GET /v1/messaging/catalogue",
+   "kind": "route",
+   "value": "GET /v1/messaging/catalogue",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingCatalogue"
+  },
+  {
+   "id": "route:GET /v1/messaging/connections",
+   "kind": "route",
+   "value": "GET /v1/messaging/connections",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingConnectionsList"
+  },
+  {
+   "id": "route:GET /v1/messaging/deliveries",
+   "kind": "route",
+   "value": "GET /v1/messaging/deliveries",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingDeliveriesList"
+  },
+  {
+   "id": "route:GET /v1/messaging/events",
+   "kind": "route",
+   "value": "GET /v1/messaging/events",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingEventsList"
+  },
+  {
+   "id": "route:GET /v1/messaging/identities",
+   "kind": "route",
+   "value": "GET /v1/messaging/identities",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingIdentitiesList"
+  },
+  {
+   "id": "route:GET /v1/messaging/routes",
+   "kind": "route",
+   "value": "GET /v1/messaging/routes",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingRoutesList"
+  },
+  {
+   "id": "route:GET /v1/messaging/templates",
+   "kind": "route",
+   "value": "GET /v1/messaging/templates",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingTemplatesList"
+  },
+  {
+   "id": "route:GET /v1/messaging/templates/{id}",
+   "kind": "route",
+   "value": "GET /v1/messaging/templates/{id}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingTemplateGet"
+  },
+  {
+   "id": "route:GET /v1/messaging/templates/{id}/versions/{v}",
+   "kind": "route",
+   "value": "GET /v1/messaging/templates/{id}/versions/{v}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingTemplateVersion"
+  },
+  {
+   "id": "route:GET /v1/notifications/actions/describe",
+   "kind": "route",
+   "value": "GET /v1/notifications/actions/describe",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "NotificationActionDescribe"
+  },
+  {
+   "id": "route:GET /v1/notifications/catalogue",
+   "kind": "route",
+   "value": "GET /v1/notifications/catalogue",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "NotificationsCatalogue"
+  },
+  {
+   "id": "route:GET /v1/notifications/preferences",
+   "kind": "route",
+   "value": "GET /v1/notifications/preferences",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "NotificationsPreferencesGet"
+  },
+  {
+   "id": "route:GET /v1/notifications/tenant-defaults",
+   "kind": "route",
+   "value": "GET /v1/notifications/tenant-defaults",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "NotificationsTenantDefaultsGet"
+  },
+  {
    "id": "route:GET /v1/pix-call/history",
    "kind": "route",
    "value": "GET /v1/pix-call/history",
@@ -21294,6 +21610,60 @@
     "vdb-site/api/main.go"
    ],
    "handler": "PixCallMemoryList"
+  },
+  {
+   "id": "route:GET /v1/pulls/{owner}/{name}/{number}/conflicts",
+   "kind": "route",
+   "value": "GET /v1/pulls/{owner}/{name}/{number}/conflicts",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
+  },
+  {
+   "id": "route:GET /v1/push/vapid-public-key",
+   "kind": "route",
+   "value": "GET /v1/push/vapid-public-key",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "PushVAPIDPublicKey"
+  },
+  {
+   "id": "route:GET /v1/signing/github/authorize",
+   "kind": "route",
+   "value": "GET /v1/signing/github/authorize",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
+  },
+  {
+   "id": "route:GET /v1/signing/github/callback",
+   "kind": "route",
+   "value": "GET /v1/signing/github/callback",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
+  },
+  {
+   "id": "route:GET /v1/signing/keys",
+   "kind": "route",
+   "value": "GET /v1/signing/keys",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
+  },
+  {
+   "id": "route:GET /v1/signing/state",
+   "kind": "route",
+   "value": "GET /v1/signing/state",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
   },
   {
    "id": "route:PATCH /v1/admin/pix-sandboxes/{id}/egress/{host}",
@@ -21357,6 +21727,42 @@
     "vdb-site/api/internal/handler/factory_workflows.go"
    ],
    "handler": "FactorySchedulePatch"
+  },
+  {
+   "id": "route:PATCH /v1/messaging/connections/{id}",
+   "kind": "route",
+   "value": "PATCH /v1/messaging/connections/{id}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingConnectionUpdate"
+  },
+  {
+   "id": "route:PATCH /v1/messaging/routes/{id}",
+   "kind": "route",
+   "value": "PATCH /v1/messaging/routes/{id}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingRouteUpdate"
+  },
+  {
+   "id": "route:PATCH /v1/messaging/templates/{id}",
+   "kind": "route",
+   "value": "PATCH /v1/messaging/templates/{id}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingTemplateUpdate"
+  },
+  {
+   "id": "route:POST /v1/ai-firewall/capabilities/review",
+   "kind": "route",
+   "value": "POST /v1/ai-firewall/capabilities/review",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "AiFirewallCapabilityReview"
   },
   {
    "id": "route:POST /v1/belai/agent-creators",
@@ -22223,6 +22629,114 @@
    "handler": "InternalDecisionsClaim"
   },
   {
+   "id": "route:POST /v1/messaging/connections",
+   "kind": "route",
+   "value": "POST /v1/messaging/connections",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingConnectionCreate"
+  },
+  {
+   "id": "route:POST /v1/messaging/connections/{id}/rotate-secret",
+   "kind": "route",
+   "value": "POST /v1/messaging/connections/{id}/rotate-secret",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingConnectionRotateSecret"
+  },
+  {
+   "id": "route:POST /v1/messaging/connections/{id}/test",
+   "kind": "route",
+   "value": "POST /v1/messaging/connections/{id}/test",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingConnectionTest"
+  },
+  {
+   "id": "route:POST /v1/messaging/deliveries/{id}/retry",
+   "kind": "route",
+   "value": "POST /v1/messaging/deliveries/{id}/retry",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingDeliveryRetry"
+  },
+  {
+   "id": "route:POST /v1/messaging/identities/auto-link",
+   "kind": "route",
+   "value": "POST /v1/messaging/identities/auto-link",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingIdentitiesAutoLink"
+  },
+  {
+   "id": "route:POST /v1/messaging/routes",
+   "kind": "route",
+   "value": "POST /v1/messaging/routes",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingRouteCreate"
+  },
+  {
+   "id": "route:POST /v1/messaging/routes/{id}/dry-run",
+   "kind": "route",
+   "value": "POST /v1/messaging/routes/{id}/dry-run",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingRouteDryRun"
+  },
+  {
+   "id": "route:POST /v1/messaging/routes/{id}/test",
+   "kind": "route",
+   "value": "POST /v1/messaging/routes/{id}/test",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingRouteTest"
+  },
+  {
+   "id": "route:POST /v1/messaging/templates",
+   "kind": "route",
+   "value": "POST /v1/messaging/templates",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingTemplateCreate"
+  },
+  {
+   "id": "route:POST /v1/messaging/templates/{id}/restore/{v}",
+   "kind": "route",
+   "value": "POST /v1/messaging/templates/{id}/restore/{v}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingTemplateRestore"
+  },
+  {
+   "id": "route:POST /v1/messaging/templates/preview",
+   "kind": "route",
+   "value": "POST /v1/messaging/templates/preview",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingTemplatePreview"
+  },
+  {
+   "id": "route:POST /v1/notifications/actions/execute",
+   "kind": "route",
+   "value": "POST /v1/notifications/actions/execute",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "NotificationActionExecute"
+  },
+  {
    "id": "route:POST /v1/pix-call/feedback",
    "kind": "route",
    "value": "POST /v1/pix-call/feedback",
@@ -22257,6 +22771,69 @@
     "vdb-site/api/main.go"
    ],
    "handler": "PixCallReview"
+  },
+  {
+   "id": "route:POST /v1/pulls/{owner}/{name}/{number}/resolve",
+   "kind": "route",
+   "value": "POST /v1/pulls/{owner}/{name}/{number}/resolve",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
+  },
+  {
+   "id": "route:POST /v1/push/subscriptions",
+   "kind": "route",
+   "value": "POST /v1/push/subscriptions",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "PushSubscriptionCreate"
+  },
+  {
+   "id": "route:POST /v1/push/test",
+   "kind": "route",
+   "value": "POST /v1/push/test",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "PushTest"
+  },
+  {
+   "id": "route:POST /v1/signing/keys",
+   "kind": "route",
+   "value": "POST /v1/signing/keys",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
+  },
+  {
+   "id": "route:POST /v1/signing/keys/{id}/check",
+   "kind": "route",
+   "value": "POST /v1/signing/keys/{id}/check",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
+  },
+  {
+   "id": "route:POST /v1/signing/keys/{id}/github",
+   "kind": "route",
+   "value": "POST /v1/signing/keys/{id}/github",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
+  },
+  {
+   "id": "route:POST /v1/signing/keys/{id}/rotate",
+   "kind": "route",
+   "value": "POST /v1/signing/keys/{id}/rotate",
+   "sources": [
+    "vdb-site/api/internal/handler/signing_handlers.go"
+   ],
+   "handler": "a"
   },
   {
    "id": "route:POST /v1/webhooks/github",
@@ -22302,6 +22879,15 @@
     "vdb-site/api/main.go"
    ],
    "handler": "AdminPixDefaultsPut"
+  },
+  {
+   "id": "route:PUT /v1/ai-firewall/hold-policy",
+   "kind": "route",
+   "value": "PUT /v1/ai-firewall/hold-policy",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "AiFirewallHoldPolicyPut"
   },
   {
    "id": "route:PUT /v1/belai/hosts/{hostId}",
@@ -22545,6 +23131,33 @@
     "vdb-site/api/internal/handler/factory_workflows.go"
    ],
    "handler": "FactoryWorkflowPut"
+  },
+  {
+   "id": "route:PUT /v1/messaging/identities/{principalUuid}/{provider}",
+   "kind": "route",
+   "value": "PUT /v1/messaging/identities/{principalUuid}/{provider}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "MessagingIdentityPut"
+  },
+  {
+   "id": "route:PUT /v1/notifications/preferences",
+   "kind": "route",
+   "value": "PUT /v1/notifications/preferences",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "NotificationsPreferencesPut"
+  },
+  {
+   "id": "route:PUT /v1/notifications/tenant-defaults",
+   "kind": "route",
+   "value": "PUT /v1/notifications/tenant-defaults",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "NotificationsTenantDefaultsPut"
   },
   {
    "id": "setting:agents.finalize_at",

@@ -1,6 +1,6 @@
 ---
 title: "HTTP API"
-description: "All 327 factory, Belai and Pix routes, grouped by resource, with the guide that explains each."
+description: "All 380 factory, Belai and Pix routes, grouped by resource, with the guide that explains each."
 order: 4
 generated: true
 checked: ["vdb-site@739b696"]
@@ -23,6 +23,19 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 | GET | `/v1/admin/pix-sandboxes/builtin-usage` |  |
 | GET | `/v1/admin/pix-sandboxes/defaults` |  |
 | PUT | `/v1/admin/pix-sandboxes/defaults` |  |
+
+## /v1/ai-firewall/capabilities
+
+| Method | Path | Explained in |
+|---|---|---|
+| POST | `/v1/ai-firewall/capabilities/review` |  |
+
+## /v1/ai-firewall/hold-policy
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/ai-firewall/hold-policy` |  |
+| PUT | `/v1/ai-firewall/hold-policy` |  |
 
 ## /v1/belai/a2a
 
@@ -640,6 +653,96 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 |---|---|---|
 | GET | `/v1/internal/pix-commander/models` |  |
 
+## /v1/messaging/catalogue
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/messaging/catalogue` |  |
+
+## /v1/messaging/connections
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/messaging/connections` |  |
+| POST | `/v1/messaging/connections` |  |
+| DELETE | `/v1/messaging/connections/{id}` |  |
+| PATCH | `/v1/messaging/connections/{id}` |  |
+| POST | `/v1/messaging/connections/{id}/rotate-secret` |  |
+| POST | `/v1/messaging/connections/{id}/test` |  |
+
+## /v1/messaging/deliveries
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/messaging/deliveries` |  |
+| POST | `/v1/messaging/deliveries/{id}/retry` |  |
+
+## /v1/messaging/events
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/messaging/events` |  |
+
+## /v1/messaging/identities
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/messaging/identities` |  |
+| DELETE | `/v1/messaging/identities/{principalUuid}/{provider}` |  |
+| PUT | `/v1/messaging/identities/{principalUuid}/{provider}` |  |
+| POST | `/v1/messaging/identities/auto-link` |  |
+
+## /v1/messaging/routes
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/messaging/routes` |  |
+| POST | `/v1/messaging/routes` |  |
+| DELETE | `/v1/messaging/routes/{id}` |  |
+| PATCH | `/v1/messaging/routes/{id}` |  |
+| POST | `/v1/messaging/routes/{id}/dry-run` |  |
+| POST | `/v1/messaging/routes/{id}/test` |  |
+
+## /v1/messaging/templates
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/messaging/templates` |  |
+| POST | `/v1/messaging/templates` |  |
+| DELETE | `/v1/messaging/templates/{id}` |  |
+| GET | `/v1/messaging/templates/{id}` |  |
+| PATCH | `/v1/messaging/templates/{id}` |  |
+| POST | `/v1/messaging/templates/{id}/restore/{v}` |  |
+| GET | `/v1/messaging/templates/{id}/versions/{v}` |  |
+| POST | `/v1/messaging/templates/preview` |  |
+
+## /v1/notifications/actions
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/notifications/actions/describe` |  |
+| POST | `/v1/notifications/actions/execute` |  |
+
+## /v1/notifications/catalogue
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/notifications/catalogue` |  |
+
+## /v1/notifications/preferences
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/notifications/preferences` |  |
+| PUT | `/v1/notifications/preferences` |  |
+
+## /v1/notifications/tenant-defaults
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/notifications/tenant-defaults` |  |
+| PUT | `/v1/notifications/tenant-defaults` |  |
+
 ## /v1/pix-call/feedback
 
 | Method | Path | Explained in |
@@ -668,6 +771,56 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 | Method | Path | Explained in |
 |---|---|---|
 | POST | `/v1/pix-call/review` |  |
+
+## /v1/pulls/{…}
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/pulls/{owner}/{name}/{number}/conflicts` |  |
+| POST | `/v1/pulls/{owner}/{name}/{number}/resolve` |  |
+
+## /v1/push/subscriptions
+
+| Method | Path | Explained in |
+|---|---|---|
+| DELETE | `/v1/push/subscriptions` |  |
+| POST | `/v1/push/subscriptions` |  |
+
+## /v1/push/test
+
+| Method | Path | Explained in |
+|---|---|---|
+| POST | `/v1/push/test` |  |
+
+## /v1/push/vapid-public-key
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/push/vapid-public-key` |  |
+
+## /v1/signing/github
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/signing/github/authorize` |  |
+| GET | `/v1/signing/github/callback` |  |
+
+## /v1/signing/keys
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/signing/keys` |  |
+| POST | `/v1/signing/keys` |  |
+| DELETE | `/v1/signing/keys/{id}` |  |
+| POST | `/v1/signing/keys/{id}/check` |  |
+| POST | `/v1/signing/keys/{id}/github` |  |
+| POST | `/v1/signing/keys/{id}/rotate` |  |
+
+## /v1/signing/state
+
+| Method | Path | Explained in |
+|---|---|---|
+| GET | `/v1/signing/state` |  |
 
 ## /v1/webhooks/github
 

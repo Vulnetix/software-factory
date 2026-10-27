@@ -59,7 +59,7 @@ function headSha(repo) {
 // functions; handler files declare Register* functions with relative routes.
 // Brace depth tracks which group a route sits in.
 const SF_HANDLER = /^(Factory|Belai|Pix|InternalPixCommander|Call|Sandbox)/;
-const SF_PATH = /^\/v1\/(factory|belai|internal\/(factory|pix-commander|decisions)|admin\/pix-sandboxes)(\/|$)/;
+const SF_PATH = /^\/v1\/(factory|belai|internal\/(factory|pix-commander|decisions)|admin\/pix-sandboxes|signing|pulls|push|notifications|messaging|pix-call|ai-firewall\/(hold|capabilities\/review))(\/|-|$)/;
 
 function scanGoRoutes() {
   const api = join(repoPath('vdb-site'), 'api');
@@ -75,14 +75,16 @@ function scanGoRoutes() {
     const stack = [];
     for (const raw of lines) {
       const line = raw.replace(/"(?:[^"\\]|\\.)*"|`[^`]*`|\/\/.*$/g, (m) => (m.startsWith('/') && m.startsWith('//') ? '' : m.replace(/[{}]/g, '')));
-      const fn = raw.match(/^func (Register\w+)\(r chi\.Router/);
-      if (fn) { ctx = { routes: [], calls: [] }; funcs.set(fn[1], ctx); ctxDepth = depth; stack.length = 0; }
+      const fn = raw.match(/^func (?:\([^)]*\) )?(\w+)\(r chi\.Router/);
+      if (fn) { ctx = { routes: [], calls: [] }; funcs.set(/^Register/.test(fn[1]) ? fn[1] : `${rel}:${fn[1]}`, ctx); ctxDepth = depth; stack.length = 0; }
       const prefix = stack.map((s) => s.p).join('');
       const route = raw.match(/\br\.Route\("([^"]+)"/);
       const m = raw.match(/\br\.(Get|Post|Put|Patch|Delete|Head|Options)\("([^"]+)",\s*(?:handler\.)?(\w+)/);
       const call = raw.match(/\b(?:handler\.)?(Register\w+)\(r,/);
+      const local = raw.match(/\.(\w+)\(r\)\s*$/);
       if (ctx && m) ctx.routes.push({ method: m[1].toUpperCase(), path: prefix + m[2], handler: m[3], file: rel });
       if (ctx && call && !raw.match(/^func /)) ctx.calls.push({ fn: call[1], prefix });
+      if (ctx && local && !raw.match(/^func /)) ctx.calls.push({ fn: `${rel}:${local[1]}`, prefix });
       const opens = (line.match(/{/g) || []).length;
       const closes = (line.match(/}/g) || []).length;
       if (route) stack.push({ p: route[1], d: depth + opens - closes });
@@ -108,7 +110,7 @@ function scanGoRoutes() {
 // vdb-site: every SF handler file, so a new file is never silently skipped.
 function scanGoFiles() {
   const dir = join(repoPath('vdb-site'), 'api', 'internal', 'handler');
-  for (const f of ls(dir, /^(factory|belai|pix)_.*\.go$/)) atom('gofile', f.replace(/\.go$/, ''), 'vdb-site', `api/internal/handler/${f}`);
+  for (const f of ls(dir, /^(factory|belai|pix|signing|pulls|notify|push|messaging|ai_firewall_hold)[_.].*\.go$|^notify\.go$/)) atom('gofile', f.replace(/\.go$/, ''), 'vdb-site', `api/internal/handler/${f}`);
   for (const pkg of ['systemone', 'facts', 'lifecycle', 'tenantmodel']) {
     const d = join(repoPath('vdb-site'), 'api', 'internal', pkg);
     for (const f of ls(d, /\.go$/)) atom('gofile', `${pkg}/${f.replace(/\.go$/, '')}`, 'vdb-site', `api/internal/${pkg}/${f}`);
