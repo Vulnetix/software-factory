@@ -251,6 +251,10 @@ function scanBelai() {
   if (existsSync(help)) {
     for (const m of read(help).matchAll(/^\s*\{"([a-z][a-z0-9-]*)", "[^"]*"\},/gm)) atom('cli-cmd', m[1], 'belai', 'cmd/belai/help.go');
   }
+  // A file's subcommands belong to the command that dispatches to it; most
+  // files are named for their command, a few are not.
+  const SUB_PARENT = { agentfiles: 'agent crew' };
+  const subParent = (f) => { const n = f.replace(/(cmd)?\.go$/, ''); return SUB_PARENT[n] ?? n; };
   for (const f of ls(cmd, /\.go$/)) {
     const src = read(join(cmd, f));
     // Subcommands are switch cases on the first argument: case "add":.
@@ -259,7 +263,7 @@ function scanBelai() {
         // A switch on a flag's value (switch *backend) lists flag values, not subcommands.
         const sw = [...src.slice(0, m.index).matchAll(/^\tswitch (.*) \{$/gm)].pop();
         if (sw && /\*[a-zA-Z]/.test(sw[1])) continue;
-        for (const v of m[1].matchAll(/"([^"]+)"/g)) atom('cli-sub', `${f.replace(/(cmd)?\.go$/, '')} ${v[1]}`, 'belai', `cmd/belai/${f}`);
+        for (const v of m[1].matchAll(/"([^"]+)"/g)) atom('cli-sub', `${subParent(f)} ${v[1]}`, 'belai', `cmd/belai/${f}`);
       }
     }
     let set = 'belai';

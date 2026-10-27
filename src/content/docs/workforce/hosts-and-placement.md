@@ -3,7 +3,7 @@ title: Hosts and placement
 description: The machines factory work runs on, how the factory chooses one for each step, the tenant's placement settings, eligibility, worker states, and how a host asks a person for something.
 order: 6
 sources: [vdb-site/docs/factory.md, vdb-site/docs/belai-host-attention.md, belai/docs/fleet.md, vdb-site/api/internal/handler/factory_host_select.go, vdb-site/api/internal/handler/factory_hosts_eligibility.go]
-checked: [vdb-site@c29ffeb, belai@b5d33b6]
+checked: [vdb-site@284f1d6, belai@35506b9, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -31,7 +31,7 @@ A crew step says where it may run with `runOn`, and the tenant sets a default:
 | `pix_sandbox` | Only a Pix Sandbox |
 | `self_hosted` | Only your own machines |
 | `host:<uuid>` | Exactly that host |
-| `label:<name>` | The host whose name, or whose sandbox label, is `<name>`. Name a sandbox by its label: every sandbox's hostname is the same. |
+| `label:<name>` | The host whose hostname, or whose sandbox name, is `<name>`. Name a sandbox by its sandbox name: every sandbox's hostname is the same. |
 
 A step that names no `runOn` (every default workflow, for example) takes `hosts.runOn`. The tenant's setting also orders the hosts a step's own `runOn` allows.
 
@@ -73,6 +73,7 @@ Every host you have, with its state for a step on that repository, eligible host
 | `no_profile` | Does not offer the agent or crew |
 | `offline` | Not running |
 | `full` | No free worker slots |
+| `draining` | A Pix Sandbox draining for an update in its maintenance window: online, but takes no new step |
 
 ## Workers on a host
 
@@ -102,4 +103,4 @@ The reason comes from this fixed list; a host cannot put its own words in front 
 | GET | `/v1/factory/hosts/eligibility` |
 | GET | `/v1/factory/fleet` |
 | GET | `/v1/belai/repo-hosts` (which hosts have a repository) |
-| GET | `/v1/belai/attention` (host requests waiting on you) |
+| POST | `/v1/belai/attention/{id}/decide` (decide a host request; the waiting ones are listed under `attention` in `GET /v1/belai/hosts`) |

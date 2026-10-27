@@ -189,11 +189,7 @@ f('belai-docs-tooling', 'belai', 'belai/contributing', 'Developing Belai', [pkg(
 // todo -> drafted (the page is written from the code) -> verified (the page
 // was re-read against the code at the commit in its `checked` list).
 const STATUS = {
-  drafted: [
-    'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops', 'agents', 'agent-builder', 'agent-import',
-    'avatars', 'crews', 'role-manager', 'hosts', 'host-attention', 'sandboxes', 'builtin-models', 'board',
-    'assignment', 'ticket-standard', 'github-sync',
-  ],
+  drafted: [],
   verified: [
     'settings-reference', 'triggers', 'source-events', 'label-dispatch', 'schedules', 'internal-fire',
     'templates', 'template-search', 'defaults', 'validation-codes', 'belai-session-flags', 'belai-tui-commands',
@@ -209,7 +205,10 @@ const STATUS = {
     'signing', 'belai-install', 'belai-modes', 'belai-sessions', 'belai-models', 'belai-tools', 'belai-safety',
     'belai-mcp', 'belai-hooks', 'belai-plugins', 'belai-acp', 'belai-lsp', 'belai-voice', 'belai-git',
     'belai-budgets', 'belai-quality', 'belai-vulnetix', 'belai-telemetry', 'belai-tui', 'belai-headless',
-    'belai-agent-loop', 'belai-resilience', 'belai-repo-memory', 'belai-docs-tooling',
+    'belai-agent-loop', 'belai-resilience', 'belai-repo-memory', 'belai-docs-tooling', 'agents', 'agent-builder',
+    'agent-import', 'avatars', 'crews', 'role-manager', 'hosts', 'host-attention', 'sandboxes', 'builtin-models',
+    'board', 'ticket-standard', 'assignment', 'github-sync', 'pix-call', 'voice-tools', 'call-history', 'pix-ask',
+    'stops',
   ],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

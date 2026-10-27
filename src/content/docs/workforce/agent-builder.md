@@ -4,7 +4,7 @@ nav: Agent builder
 description: Build an agent in the console. Draft every field from a sentence, edit its handoffs, check it against your library and workflows, and give it an avatar.
 order: 2
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/belai_ai.go, vdb-site/api/internal/handler/belai_ai_draft.go, vdb-site/api/internal/handler/belai_drafts.go, belai/internal/agentdraft]
-checked: [vdb-site@c29ffeb, belai@b5d33b6]
+checked: [vdb-site@284f1d6, belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -16,7 +16,7 @@ Describe the agent in a sentence, for example "a worker that fixes failing Go te
 
 Drafts are made by a model Vulnetix runs, through `/v1/belai/ai-drafts`. `/v1/belai/ai/status` says whether that model is available for you. The same drafting runs on the command line as `belai agent draft PREMISE`, which writes the profile as Markdown.
 
-A draft can also come from a running session: an agent can propose a profile from what it learned, and you review it as a draft.
+A draft can also be made by one of your live Belai sessions with its host's own model: the builder sends the premise, the session posts its suggestions back, and you review them as a draft.
 
 ## Checks
 

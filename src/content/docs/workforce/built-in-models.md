@@ -4,7 +4,7 @@ nav: Built-in models
 description: Pix Smart and Pix Fast, the models your plan includes. How calls are routed across the models behind each, your allowance and its windows, and how hosts learn which models they can use.
 order: 8
 sources: [vdb-site/docs/pix-builtin-models.md, website/.repo/pix-builtin-routing.md, vdb-site/docs/belai-workers-ai.md, vdb-site/api/internal/handler/pix_builtin_quota.go, vdb-site/api/internal/handler/pix_builtin_window.go]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470, belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -19,13 +19,13 @@ You only ever see the label. Behind each, Vulnetix ranks up to five Workers AI m
 
 ## Allowance and windows
 
-Each tenant has an allowance of built-in tokens a month, and a rolling window that limits how fast it is spent. When the allowance runs out, the factory does what `onAllowanceExhausted` says: fall back to your own keys, pause, or buy a top-up. See [Model routing](/cost/model-routing/).
+Each tenant has an allowance of built-in tokens a month. The window is the UTC calendar month: it starts at 00:00 UTC on the 1st and resets at 00:00 UTC on the 1st of the next month. Refused and failed calls do not count. When the allowance runs out, the factory does what `onAllowanceExhausted` says: fall back to your own keys, pause, or buy a top-up. See [Model routing](/cost/model-routing/).
 
 The factory's share of the allowance is `budget.factory_share` (75%), and `pix.reservePercent` (20%) is kept for your own sessions.
 
 ## Hosts
 
-A host running `belai rc` is told which built-in models it may use, with each model's name, context window, maximum output and whether it takes images, so its sessions can pick Pix Smart or Pix Fast like any provider.
+The Belai build in a Pix Sandbox carries a built-in provider that offers Pix Smart and Pix Fast, so its sessions can pick either like any provider. Pix Smart takes image input; Pix Fast does not.
 
 ## Related
 

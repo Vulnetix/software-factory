@@ -3,7 +3,7 @@ title: Pix Sandboxes
 description: The machines Vulnetix runs for your factory. Sizes, repositories, egress, package versions and Safe Harbour, extensions, launch configurations, maintenance windows, wakes, telemetry and usage.
 order: 7
 sources: [belai/docs/pix-sandbox.md, website/sandbox-worker/docs/pricing.md, website/sandbox-worker/docs/factory-wake.md, vdb-site/docs/pix-sandbox-safe-harbour.md, vdb-site/api/internal/handler/pix_sandbox_store.go, vdb-site/api/internal/handler/pix_sandbox_provisioning.go]
-checked: [belai@b5d33b6, website@70b0582, vdb-site@c29ffeb]
+checked: [belai@35506b9, website@a31d470, vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -46,7 +46,7 @@ Each host the sandbox reached has a decision: `allow`, `deny` or `unset`. The sa
 | `rolling` | Every non-malware version from the release day of the highest version, vulnerable ones included |
 | `pinned` | The versions you pinned |
 
-The sandbox's Trust tab shows whether the versions the current launch installed are the ones to run. **Check again** asks again, at most once a minute.
+The sandbox's page shows, above its tabs, whether the versions the current launch installed are the ones to run (the Trust tab is the image's proof: checksums, SBOM and the evidence pack). **Check again** asks again, at most once a minute.
 
 ## Extensions and packs
 
@@ -58,7 +58,7 @@ A launch configuration is a named set of library items, each pinned to a version
 
 ```json
 { "name": "payments team", "description": "...",
-  "items": [ { "kind": "skill", "id": "...", "version": 3, "source": "library", "name": "release-notes" } ],
+  "items": [ { "kind": "skill", "id": "...", "version": "latest", "source": "library", "name": "release-notes" } ],
   "keys": ["anthropic-prod"],
   "machine": { "packs": ["node"], "extensions": [], "version_policy": "safest", "egress_mode": "inherit", "egress_allow": ["registry.npmjs.org"] } }
 ```

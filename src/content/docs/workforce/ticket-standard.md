@@ -4,7 +4,7 @@ nav: Ticket standard
 description: The one shape every card an agent files for a person follows, how agents are held to it, and how the board shows a card that falls short.
 order: 10
 sources: [vdb-site/api/internal/handler/factory_ticket.go, vdb-site/docs/factory.md]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 

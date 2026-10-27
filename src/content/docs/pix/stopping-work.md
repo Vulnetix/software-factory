@@ -4,7 +4,7 @@ nav: Stopping work
 description: The five ways to stop factory work, from one session to destroying a sandbox. What each stops and keeps, and where to find it.
 order: 5
 sources: [website/src/shared/pix-pocket.ts, vdb-site/docs/factory.md]
-checked: [website@70b0582, vdb-site@c29ffeb]
+checked: [website@a31d470, vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -15,7 +15,7 @@ When something looks wrong, there are five stops, from narrowest to widest reach
 | **Stop a session** | A Pix call (`propose_stop` then `stop_session`), or the session page | One session | Everything else |
 | **Pause all automations** | The cockpit | Every trigger. No new step starts. | Steps already running finish. |
 | **A2A blackout** | The cockpit and Settings | Messages relayed between your hosts | Coordination on each host, and every host's audit log |
-| **Stop the factory** | Settings | Running steps are cancelled, leases released, forge tokens revoked, wake schedules cancelled | Interactive sessions people started |
+| **Stop the factory** | Settings | Running steps are cancelled, leases released, forge tokens revoked, pending wakes cancelled | Interactive sessions people started |
 | **Stop machine** | Pix Sandboxes | Destroys the sandbox container | Work already pushed |
 
 > [!CAREFUL] Stopping a machine loses anything not pushed

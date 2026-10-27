@@ -36,11 +36,7 @@ Every `belai` command, subcommand and flag. Flags take one dash or two (`-json` 
 
 ### agent
 
-`control`, `crew`, `crews`, `draft`, `files`, `import`, `knowledge`, `list`, `logs`, `memory`, `pause`, `ps`, `resume`, `run`, `runs`, `show`, `start`, `status`, `stop`, `supervise`, `validate`
-
-### agentfiles
-
-`delete`, `export`, `import`
+`control`, `crew`, `crew delete`, `crew export`, `crew import`, `crews`, `draft`, `files`, `import`, `knowledge`, `list`, `logs`, `memory`, `pause`, `ps`, `resume`, `run`, `runs`, `show`, `start`, `status`, `stop`, `supervise`, `validate`
 
 ### kanban
 

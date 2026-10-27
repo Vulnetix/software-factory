@@ -3,7 +3,7 @@ title: Calling Pix
 description: Run the factory by voice. How to place a call, what you can ask, how starting and stopping work is confirmed, how Pix follows the sessions it starts, and what it remembers.
 order: 1
 sources: [website/.repo/pix-call.md, website/src/worker/call/tools.ts, website/src/shared/software-factory.ts, website/src/shared/pix-pocket.ts]
-checked: [website@70b0582]
+checked: [website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -13,7 +13,7 @@ Pix is the factory's coordinator, and you can call it. Ask how runs and sessions
 
 ## Placing a call
 
-The phone icon in the console header opens `/call`. It shows once you have somewhere to run sessions: a Pix Sandbox, or a host that has run `belai rc`. On a phone, or from the installed app's **Call Pix** shortcut, the call connects as the page opens. Tap the green button and talk.
+The phone icon in the console header opens `/call`. It shows once you have somewhere to run sessions: a Pix Sandbox, or a host that has run `belai rc`. On a phone, or from the installed app's **Call Pix** shortcut, the call connects as the page opens where the browser lets audio play unasked (the installed app always does); elsewhere it waits for the green button. Tap the green button and talk.
 
 `/call` is its own page. Moving into or out of it is always a full page load.
 
@@ -77,7 +77,7 @@ Pix uses your device's timezone, so "today" and "this month" start at your midni
 
 ## How Pix runs
 
-A call is handled by a Cloudflare Durable Object. Your speech is transcribed, **PixCommander**, the coordinator, chooses the tools and the reply, and the reply is spoken back. PixCommander runs on Workers AI models that Vulnetix ranks and tunes, each with a reasoning effort of `none`, `low` or `high`; if the first is unavailable, the next is used. Model ids are never shown on a call, in history, or in logs: the coordinator is always called PixCommander. Whether a reply to a read-back is a yes is judged by your organisation's System One decision model.
+A call is handled by a Cloudflare Durable Object. Your speech is transcribed, **PixCommander**, the coordinator, chooses the tools and the reply, and the reply is spoken back. PixCommander runs on Workers AI models that Vulnetix ranks and tunes, each with a reasoning effort of `none`, `low` or `high`; if the first is unavailable, the next is used. Model ids are never shown on a call, in history, or in logs: the coordinator is always called PixCommander. Whether a reply to a read-back is a yes is judged first by your organisation's SystemOne decision model, then by PixCommander, then by fixed word rules.
 
 ## What Pix will not do
 

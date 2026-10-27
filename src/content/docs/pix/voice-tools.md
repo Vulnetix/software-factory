@@ -3,7 +3,7 @@ title: Voice tools
 description: Every tool Pix uses on a call, grouped by what it does, with whether it only reads or changes something and what confirmation it needs.
 order: 2
 sources: [website/src/worker/call/tools.ts, website/.repo/pix-call.md, website/src/shared/pix-pocket.ts]
-checked: [website@70b0582]
+checked: [website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -69,7 +69,7 @@ Pix answers and acts through tools. Each one calls the console's own API as you,
 
 ## Rules every tool keeps
 
-- Arguments are checked. A range, a stage or a checkpoint kind that is not valid makes Pix ask again; it never guesses.
+- Arguments are checked. A stage or a checkpoint kind that is not valid makes Pix ask again; a range a tool does not know falls back to that tool's default.
 - A route an older server lacks is said as "not available from this server yet".
 - Spoken answers never name a model. Model names appear only in the tables on screen.
 - Each tool shows its full table on screen and speaks a short summary.

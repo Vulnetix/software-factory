@@ -3,7 +3,7 @@ title: The board
 description: The kanban board agents and people share. Its five lists, what a card records, claims and routing, human checkpoints, assigning cards, factory cards and why they wait, and the board in the console, the TUI and the command line.
 order: 9
 sources: [belai/docs/kanban.md, belai/docs/fleet.md, belai/cmd/belai/kanbancmd.go, vdb-site/docs/factory.md, vdb-site/docs/belai-assignment-mail.md]
-checked: [belai@b5d33b6, vdb-site@c29ffeb]
+checked: [belai@35506b9, vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -23,7 +23,7 @@ The board is where work waits, is claimed and moves on. Every Belai session on a
 
 ## A card
 
-A card has a short id such as `K-7f21`, a title, details, labels, a priority from -2 to 3, an assignee, dependencies, and a history of every move and note. It also records the session that filed it, its project and directory, and, for a git checkout, the repository as `owner/name`, which is what lets a worker on any machine claim it.
+A card has a short id such as `K-7f21a9` (`K-` and six hex characters), a title, details, labels, a priority from -2 to 3, an assignee, dependencies, and a history of every move and note. It also records the session that filed it, its project and directory, and, for a git checkout, the repository as `owner/name`, which is what lets a worker on any machine claim it.
 
 When [issue mirroring](/control/issue-mirroring/) is on, a card and its GitHub issue are one record.
 
@@ -31,7 +31,7 @@ When [issue mirroring](/control/issue-mirroring/) is on, a card and its GitHub i
 
 A [worker](/workforce/agents/) claims a card when the card is in a list it claims from, carries every label it asks for, and is assigned to it, its crew, or nobody. While it works, it holds a lease, which it renews. A lapsed lease frees the card and shows as a `claim_lapsed` checkpoint.
 
-**Assigning** routes a card: to one agent profile (`belai:builder`), to a crew (`crew:<name>`), to a person (`person:<handle>`), or to a worker (`worker:<id>`). Assigning to a profile also adds that profile's claim labels and moves the card to the list it claims from. A card can be **pinned** to one host.
+**Assigning** routes a card: to one agent profile (`belai:builder`), to a crew (`crew:<name>`), to a person (`person:<handle>`), or to a profile named explicitly (`worker:<profile>`, needed when a profile's own name starts with one of these prefixes). Assigning to a profile also adds that profile's claim labels and moves the card to the list it claims from. A card can be **pinned** to one host.
 
 When a member is assigned a card on the website, they get one short email naming the card, its project, who assigned it and a link. The card's title and details are never in the email, because models and other people write them. Assigning to yourself sends nothing.
 
@@ -51,9 +51,9 @@ One checkpoint belongs to the harness: `checkpoint:conflicts-unresolved`, when t
 
 Cards a workflow's crew step writes carry a factory summary on the Board: the run, the workflow and the step. While no machine can take the card, it shows **waiting** with the reason and a sentence, the same reasons as [Waiting for a machine](/runs/waiting-for-a-machine/).
 
-**Send to workflow** on selected cards starts a run of a workflow for them, one per repository.
+**Send to workflow** on selected cards starts a run of a published workflow for each card, sent as one request per repository. A card that does not say which repository it belongs to cannot be sent.
 
-A card's **GitHub** tab shows its issue, the sync history and **Sync now** (1 to 3 GitHub calls). The **Classify** action sorts a card by type with a fast model.
+A card's **GitHub** tab shows its issue and the sync history, and the drawer's **Sync now** syncs it (1 to 3 GitHub calls). **Classify** tags a finished card that has a pull request with the kind of change it made (a fix for a scanner finding of a given kind, or an ordinary defect), asked of Jev.
 
 ## Quality and duplicates
 

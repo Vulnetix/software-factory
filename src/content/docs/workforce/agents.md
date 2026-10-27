@@ -4,7 +4,7 @@ nav: Agents
 description: What an agent profile is, the five modes, worker profiles and the fields that govern how they claim and finish work, the built-in agents and which of them a workflow can dispatch, and managing agents from the console and the command line.
 order: 1
 sources: [belai/docs/agent-profiles.md, belai/docs/fleet.md, belai/cmd/belai/agentcmd.go, vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_workforce.go]
-checked: [belai@b5d33b6, vdb-site@c29ffeb]
+checked: [belai@35506b9, vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -84,15 +84,15 @@ Validation fails closed: a worker needs `on_success`, can only claim from backlo
 
 Belai ships these profiles. The **workers** can be dispatched by a workflow:
 
-`belai:builder`, `belai:designer`, `belai:patcher`, `belai:planner`, `belai:repro`, `belai:reviewer`, `belai:scout`, `belai:verifier`, `belai:vuln-scout`, `belai:test-fixer`, `belai:lint-fixer`, `belai:pr-reviewer`, and the event workflow agents `belai:ai-capability-reviewer`, `belai:alert-triager`, `belai:ci-explainer`, `belai:dep-scope`, `belai:dep-strategist`, `belai:egress-reviewer`, `belai:flaky-hunter`, `belai:package-reviewer`, `belai:pr-steward`, `belai:release-steward`, `belai:repo-onboarder`, `belai:secret-triager`, `belai:tea-publisher`, `belai:ticket-writer` and `belai:workflow-hardener`.
+`belai:builder`, `belai:conflict-resolver`, `belai:designer`, `belai:patcher`, `belai:planner`, `belai:repro`, `belai:reviewer`, `belai:scout`, `belai:verifier`, `belai:vuln-scout`, `belai:test-fixer`, `belai:lint-fixer`, `belai:pr-reviewer`, and the event workflow agents `belai:ai-capability-reviewer`, `belai:alert-triager`, `belai:ci-explainer`, `belai:dep-scope`, `belai:dep-strategist`, `belai:egress-reviewer`, `belai:flaky-hunter`, `belai:package-reviewer`, `belai:pr-steward`, `belai:release-steward`, `belai:repo-onboarder`, `belai:secret-triager`, `belai:tea-publisher`, `belai:ticket-writer` and `belai:workflow-hardener`.
 
-These run as **background agents** and cannot be dispatched: `debug`, `fanout`, `plan-handoff`, `triage`, `triage-vulns`, `vulnetix-scanner`, and the dependency agents `deps-apple`, `deps-ci`, `deps-containers`, `deps-dotnet`, `deps-go`, `deps-javascript`, `deps-jvm`, `deps-other`, `deps-php`, `deps-python`, `deps-ruby` and `deps-rust`.
+These run as **background agents** and cannot be dispatched: `belai:debug`, `belai:fanout`, `belai:plan-handoff`, `belai:triage`, `belai:triage-vulns`, `belai:vulnetix-scanner`, and the dependency agents `belai:deps-apple`, `belai:deps-ci`, `belai:deps-containers`, `belai:deps-dotnet`, `belai:deps-go`, `belai:deps-javascript`, `belai:deps-jvm`, `belai:deps-other`, `belai:deps-php`, `belai:deps-python`, `belai:deps-ruby` and `belai:deps-rust`.
 
 The workflow builder shows background agents greyed out with the reason. A graph may name a built-in bare (`scout`) or with its prefix (`belai:scout`).
 
 ## The Workforce page
 
-- **Agents** and **Crews** tabs list your library's agents and crews with the workers running for each.
+- **Agents** and **Crews and control center** tabs list your library's agents and crews with the workers running for each.
 - **Used by workflows** filters to the agents and crews your workflows use.
 - From a row you can start an agent on a host, pause it, pause all, message a crew, download a crew's definition, or open the [agent builder](/workforce/agent-builder/).
 

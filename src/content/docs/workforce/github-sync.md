@@ -4,7 +4,7 @@ nav: GitHub sync
 description: How a board card and a GitHub issue stay one record. Sign-in, how changes arrive, the merge that settles both sides, which cards get an issue, labels, and what happens on failure.
 order: 11
 sources: [vdb-site/docs/belai-github-sync.md, website/.repo/belai-github-sync.md, vdb-site/api/internal/handler/belai_github.go, vdb-site/api/internal/handler/belai_github_engine.go]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 

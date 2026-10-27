@@ -4,7 +4,7 @@ nav: Agent import
 description: Bring agents, commands, skills and prompts from other agent harnesses into Belai, and attach files an agent carries with it.
 order: 3
 sources: [belai/docs/agent-import.md, belai/docs/harnesses.md, belai/cmd/belai/agentcmd.go, belai/cmd/belai/agentfilescmd.go]
-checked: [belai@b5d33b6]
+checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -65,7 +65,7 @@ belai agent files rm NAME PATH
 belai agent files adopt DIR             # attach each DIR/<agent>.md to the agent of that name
 ```
 
-The same files can be imported, exported and deleted with the `agentfiles` commands: `import`, `export` and `delete`.
+Crew definitions have their own commands under `belai agent crew`: `import` FILE (`-force` replaces a crew of the same name), `export` NAME and `delete` NAME. See [Crews](/workforce/crews/).
 
 ## Related
 

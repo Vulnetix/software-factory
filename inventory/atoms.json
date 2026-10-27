@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-27T21:29:34.530Z",
+ "generatedAt": "2026-10-27T21:32:43.388Z",
  "repos": {
   "vdb-site": "79e503724bda281bf63c8b30c73605f429fc728d",
   "website": "3f90fa20884e9b2ffbfc1384a022d18d011c3708",
@@ -5755,6 +5755,30 @@
    ]
   },
   {
+   "id": "cli-sub:agent crew delete",
+   "kind": "cli-sub",
+   "value": "agent crew delete",
+   "sources": [
+    "belai/cmd/belai/agentfilescmd.go"
+   ]
+  },
+  {
+   "id": "cli-sub:agent crew export",
+   "kind": "cli-sub",
+   "value": "agent crew export",
+   "sources": [
+    "belai/cmd/belai/agentfilescmd.go"
+   ]
+  },
+  {
+   "id": "cli-sub:agent crew import",
+   "kind": "cli-sub",
+   "value": "agent crew import",
+   "sources": [
+    "belai/cmd/belai/agentfilescmd.go"
+   ]
+  },
+  {
    "id": "cli-sub:agent crews",
    "kind": "cli-sub",
    "value": "agent crews",
@@ -5904,30 +5928,6 @@
    "value": "agent validate",
    "sources": [
     "belai/cmd/belai/agentcmd.go"
-   ]
-  },
-  {
-   "id": "cli-sub:agentfiles delete",
-   "kind": "cli-sub",
-   "value": "agentfiles delete",
-   "sources": [
-    "belai/cmd/belai/agentfilescmd.go"
-   ]
-  },
-  {
-   "id": "cli-sub:agentfiles export",
-   "kind": "cli-sub",
-   "value": "agentfiles export",
-   "sources": [
-    "belai/cmd/belai/agentfilescmd.go"
-   ]
-  },
-  {
-   "id": "cli-sub:agentfiles import",
-   "kind": "cli-sub",
-   "value": "agentfiles import",
-   "sources": [
-    "belai/cmd/belai/agentfilescmd.go"
    ]
   },
   {
