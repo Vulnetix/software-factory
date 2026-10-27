@@ -3,7 +3,7 @@ title: Trigger node
 description: The step a run starts at. The seven kinds of trigger, the keys each one takes, and how one node can carry several triggers.
 order: 10
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_workflow_graph.go, vdb-site/api/internal/handler/factory_trigger_conditions.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -20,6 +20,8 @@ Every workflow needs at least one trigger node. When a run starts, the engine be
 | `kanban` | A card moves from one board list to another | `fromList`, `toList` |
 | `firewall` | The Package Firewall, AI Firewall or sandbox egress sees something new | `source`, `events`, `newTo`, filters, `ticketRepo` |
 | `manual` | A person starts the run, in the console or on a Pix call | none |
+
+`finding` and `kanban` triggers validate and publish, but the engine has no code path that fires them yet: GitHub deliveries match only `webhook` and `label` triggers.
 
 Each kind has its own page:
 
@@ -45,7 +47,7 @@ A trigger node can list more triggers under `also`. Each becomes its own trigger
 
 ## Priority
 
-When one GitHub delivery matches several triggers, they fire in `priority` order, 1 first to 5, default 3. At most 6 runs start per delivery by default. See [Labels and commands](/workflows/labels-and-commands/).
+When one GitHub delivery matches several triggers, they fire in `priority` order, 1 first to 5, default 3. At most 6 runs start per delivery by default (`factory.fanoutCap`, 1 to 50). See [Labels and commands](/workflows/labels-and-commands/).
 
 ## What a run keeps of its trigger
 

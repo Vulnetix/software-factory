@@ -78,7 +78,7 @@ f('templates', 'workflows', 'workflows/templates', 'Templates', [r('factory/temp
 f('template-search', 'workflows', 'workflows/templates', 'Event templates, variants and ranking', [gp('factory_templates_'), e('fwAxis\\w+')], { foundIn: '2026-10-28' });
 f('defaults', 'workflows', 'workflows/default-workflows', 'Default workflows', [r('factory/defaults'), gp('factory_defaults'), '^default:', e('factoryDefaultKeys')]);
 f('validation-codes', 'reference', 'reference/validation-codes', 'Validation and API error codes', ['^code:', doc('vdb-site/factory-validation\\.md', 'website/software-factory-validation\\.md')]);
-f('graph-limits', 'workflows', 'workflows/graphs', 'Graph limits', ['^code:(too_many_nodes|too_many_edges|too_many|too_long|cycle|duplicate_edge|duplicate_id|unknown_node|no_trigger|invalid_loop|github_calls_exceed_run_cap|out_of_range|required|invalid_enum|invalid_type|invalid_id|invalid_repo|scope_unmanaged_repo|custom_required)$']);
+f('graph-limits', 'workflows', 'workflows/graphs', 'Graph limits', ['^code:(too_many_nodes|too_many_edges|too_many|too_long|cycle|duplicate_edge|duplicate_id|unknown_node|no_trigger|invalid_loop|github_calls_exceed_run_cap|out_of_range|required|invalid_enum|invalid_type|invalid_id|invalid_repo|scope_unmanaged_repo)$']);
 
 // ── Runs ───────────────────────────────────────────────────────────────────
 f('runs', 'runs', 'runs/runs-and-steps', 'Runs and steps', [r('factory/runs'), g('factory_runs'), g('factory_runs_store'), g('factory_runs_actions'), g('factory_run_detail'), con('factory-runs', 'factory-run'), '^model:(FactoryRun|FactoryRunStep)$', e('fwRunStatuses'), e('factoryActiveRunStatuses'), e('fwRetryFrom'), '^code:bad_state$']);
@@ -139,7 +139,7 @@ f('github-quota', 'cost', 'cost/github-quota', 'GitHub quota and the data plane'
 
 // ── Evidence ───────────────────────────────────────────────────────────────
 f('cockpit', 'evidence', 'evidence/cockpit', 'The cockpit', [r('factory/summary'), g('factory_summary'), g('factory_summary_store'), '^console:/resolve/factory$', e('fcSignal\\w+')]);
-f('trust', 'evidence', 'evidence/trust-and-slsa', 'Trust and SLSA', [r('factory/trust'), gp('factory_trust'), con('factory-trust'), set('security.'), set('tea.'), set('jail.'), e('factoryScanners'), e('fcScanner\\w+'), e('factoryFirewallEcosystems')]);
+f('trust', 'evidence', 'evidence/trust-and-slsa', 'Trust and SLSA', [r('factory/trust'), gp('factory_trust'), con('factory-trust'), set('security.'), set('tea.'), set('jail.'), e('factoryScanners'), e('fcScanner\\w+'), e('factoryFirewallEcosystems'), '^code:custom_required$']);
 f('firewalls', 'evidence', 'evidence/firewalls', 'Package and AI firewalls on factory work', ['^setting:firewall_enabled$', '^model:(AiFirewallHold|AiFirewallHoldPolicy)$', r('ai-firewall/(hold|capabilities)'), g('ai_firewall_hold'), pkg('firewall', 'netguard'), doc('belai/firewall\\.md'), e('belaiFirewall\\w+'), e('belaiInstanceFields'), tui('firewall'), cfg('firewall'), '^cli-flag:belai -firewall']);
 f('audit', 'evidence', 'evidence/audit-ledger', 'The audit ledger', [r('factory/audit'), r('belai/audit'), gp('factory_audit'), gp('belai_audit'), con('factory-audit'), set('audit.'), '^model:(FactoryAuditEvent|FactoryAuditStream)$', e('fcAudit\\w+'), e('belaiAudit\\w+'), pkg('audit'), doc('belai/audit\\.md')]);
 f('events', 'evidence', 'evidence/event-stream', 'The event stream', [r('factory/events'), gp('factory_events'), g('factory_engine_events'), con('factory-events'), '^model:FactoryEvent$', e('factoryEvent\\w+'), doc('vdb-site/factory-events\\.md')]);
@@ -191,26 +191,25 @@ f('belai-docs-tooling', 'belai', 'belai/contributing', 'Developing Belai', [pkg(
 const STATUS = {
   drafted: [
     'overview', 'concepts', 'quickstart', 'never-does', 'glossary', 'architecture', 'managed-scope',
-    'repo-profiles', 'issue-mirroring', 'autonomy', 'kill-switch', 'holds', 'settings-document',
-    'workflow-graphs', 'builder-palette', 'node-trigger', 'node-scan', 'node-decision', 'node-crew', 'node-gate',
-    'node-human', 'node-output', 'node-state', 'graph-limits', 'runs', 'run-artifacts', 'engine', 'no-host',
-    'sessions', 'session-trigger', 'handoffs', 'pr-checker', 'systemone', 'approvals', 'checkpoints',
-    'merge-conflicts', 'signing', 'budgets', 'agent-budgets', 'model-routing', 'usage', 'github-quota', 'cockpit',
-    'trust', 'firewalls', 'audit', 'events', 'facts', 'lifecycle', 'delivery', 'sightings', 'attribution', 'vex',
-    'analytics', 'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops', 'agents', 'agent-builder',
-    'agent-import', 'avatars', 'crews', 'role-manager', 'hosts', 'host-attention', 'sandboxes', 'builtin-models',
-    'board', 'assignment', 'ticket-standard', 'github-sync', 'memory', 'a2a', 'forge', 'providers', 'asks',
-    'dispatches', 'library', 'web-controls', 'messaging', 'notifications', 'remote-control', 'teleport',
-    'host-shell', 'host-schedules', 'session-sync', 'knowledge', 'belai-install', 'belai-modes', 'belai-sessions',
-    'belai-models', 'belai-tools', 'belai-safety', 'belai-mcp', 'belai-hooks', 'belai-plugins', 'belai-acp',
-    'belai-lsp', 'belai-voice', 'belai-git', 'belai-budgets', 'belai-quality', 'belai-vulnetix',
-    'belai-telemetry', 'belai-tui', 'belai-headless', 'belai-agent-loop', 'belai-resilience', 'belai-repo-memory',
-    'belai-docs-tooling',
+    'repo-profiles', 'issue-mirroring', 'autonomy', 'kill-switch', 'holds', 'settings-document', 'runs',
+    'run-artifacts', 'engine', 'no-host', 'sessions', 'session-trigger', 'handoffs', 'pr-checker', 'systemone',
+    'approvals', 'checkpoints', 'merge-conflicts', 'signing', 'budgets', 'agent-budgets', 'model-routing',
+    'usage', 'github-quota', 'cockpit', 'trust', 'firewalls', 'audit', 'events', 'facts', 'lifecycle', 'delivery',
+    'sightings', 'attribution', 'vex', 'analytics', 'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops',
+    'agents', 'agent-builder', 'agent-import', 'avatars', 'crews', 'role-manager', 'hosts', 'host-attention',
+    'sandboxes', 'builtin-models', 'board', 'assignment', 'ticket-standard', 'github-sync', 'memory', 'a2a',
+    'forge', 'providers', 'asks', 'dispatches', 'library', 'web-controls', 'messaging', 'notifications',
+    'remote-control', 'teleport', 'host-shell', 'host-schedules', 'session-sync', 'knowledge', 'belai-install',
+    'belai-modes', 'belai-sessions', 'belai-models', 'belai-tools', 'belai-safety', 'belai-mcp', 'belai-hooks',
+    'belai-plugins', 'belai-acp', 'belai-lsp', 'belai-voice', 'belai-git', 'belai-budgets', 'belai-quality',
+    'belai-vulnetix', 'belai-telemetry', 'belai-tui', 'belai-headless', 'belai-agent-loop', 'belai-resilience',
+    'belai-repo-memory', 'belai-docs-tooling',
   ],
   verified: [
     'settings-reference', 'triggers', 'source-events', 'label-dispatch', 'schedules', 'internal-fire',
     'templates', 'template-search', 'defaults', 'validation-codes', 'belai-session-flags', 'belai-tui-commands',
-    'belai-config',
+    'belai-config', 'workflow-graphs', 'builder-palette', 'node-trigger', 'node-scan', 'node-decision',
+    'node-crew', 'node-gate', 'node-human', 'node-output', 'node-state', 'graph-limits',
   ],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

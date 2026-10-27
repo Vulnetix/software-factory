@@ -3,7 +3,7 @@ title: Decision node
 description: A step where a System One model picks one of the outcomes you listed. Covers every config key, what happens under the threshold or with no answer, and the special edges that let a graph route those cases itself.
 order: 12
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/docs/factory-systemone.md, vdb-site/api/internal/handler/factory_engine_node_decision.go, vdb-site/api/internal/systemone/decide.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -27,9 +27,9 @@ A decision step asks a fast classifier a closed question about the run, such as 
 
 | Key | Values | Notes |
 |---|---|---|
-| `adapter` | `clef-flash`, `clef`, `jev`, `jev-<version>`, `tev1`, `pix-fast`, `vault:<entry>` | Left out, the tenant's `systemone.model`. |
-| `question` | text | What the model is asked. |
-| `threshold` | `{value 0..1, adapter}` | The minimum confidence, and the adapter it was set for. Left out, `systemone.min_confidence`. |
+| `adapter` | `clef-flash`, `clef`, `jev`, `jev-<version>`, `tev1`, `pix-fast`, `vault:<entry>` | Required on publish. A draft that leaves it out runs on the tenant's `systemone.model`. |
+| `question` | text, at most 500 characters | What the model is asked. |
+| `threshold` | `{value 0..1, adapter}` | The minimum confidence, and the adapter it was set for. Required on publish, except for `pix-fast` and `vault:` adapters. |
 | `belowThreshold` | `escalate_human`, `route_to_fallback_model`, `take_safest_outcome`, `end_run` | What to do when the confidence is too low. |
 | `onAbstain` | `escalate_human`, `retry_once_then_escalate`, `end_run` | What to do when there is no answer. |
 | `fallback` | `{adapter, threshold}` | The second model. Required for `route_to_fallback_model`. |
@@ -75,7 +75,7 @@ A threshold is stored with the adapter it was set for, because a confidence of 0
 
 Each decision writes a ledger row, an audit entry of kind `decision` and a `decision` event, in the same transaction as the step. The row stores a hash of the input, never the text. Decisions show in the run trace and on the decision inspector in the builder.
 
-A person can **override** a decision that is waiting on an escalation. The approval is cancelled and the step takes the person's outcome. Overriding an outcome that is not one of the step's outcomes is refused with `invalid_outcome`. See [Human approval](/decisions/human-approval/).
+A person can **override** a decision until the run has moved past it. If the step is waiting on an escalation, the approval is cancelled and the step takes the person's outcome. Once a later step has started, the override is refused with `bad_state`. Overriding an outcome that is not one of the step's outcomes is refused with `invalid_outcome`. See [Human approval](/decisions/human-approval/).
 
 > [!PIX] Ask why a run went the way it did
 > On a call, ask "why did triage escalate on the payments pull request?". Pix reads the decision's outcome, confidence and threshold with `run_facts` and says them back.

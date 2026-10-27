@@ -3,7 +3,7 @@ title: Scan node
 description: A step that gathers findings from Vulnetix scanners and GitHub's alerts, and can stop the run when it finds malware, a known exploited vulnerability or a secret.
 order: 11
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_engine_node_scan.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -13,8 +13,8 @@ A scan step collects findings for the run's repository and writes them to `scan/
 
 | Key | Values | Default |
 |---|---|---|
-| `source` | `posture`, `webhook`, `api`, `s3`, `fresh_clone` | `posture` |
-| `scanners` | `sca`, `sast`, `secrets`, `iac`, `containers`, `license`, `malscan`, `eol`, `cbom`, `aibom`, `scorecard` | |
+| `source` | `posture`, `webhook`, `api`, `s3`, `fresh_clone` | required on publish; the engine falls back to `github.read.default`, then `posture` |
+| `scanners` | `sca`, `sast`, `secrets`, `iac`, `containers`, `license`, `malscan`, `eol`, `cbom`, `aibom`, `scorecard` | required on publish; the engine falls back to `sca`, `malscan`, `secrets` |
 | `failOn` | `malware`, `kev`, `secrets`, `never` | |
 | `sbomFormat` | `cyclonedx-1.6`, `spdx-2.3` | |
 
@@ -24,7 +24,7 @@ A scan step collects findings for the run's repository and writes them to `scan/
 |---|---|---|
 | `posture` | The stored scanner results and the alerts GitHub's webhooks deliver (Dependabot, code scanning, secret scanning) | 0 |
 | `webhook`, `api` | The same webhook-fed alert tables | 0 |
-| `s3` | SARIF and SBOM files uploaded to the run's `scan/` folder. The step waits until the Vulnetix CLI uploads them. | 0 |
+| `s3` | SARIF and SBOM files uploaded to the run's `scan/` folder. With none there yet, the step waits until an upload arrives. | 0 |
 | `fresh_clone` | Meant to clone the repository and scan it on a worker. See below. | 0 |
 
 Older graphs may say `posture_mirror` and `s3_raw`. They are read as `posture` and `s3`.
@@ -47,7 +47,7 @@ A step that hits one fails with `scan_blocking` and the run stops.
 
 ## New-package checks
 
-When the scan feeds a firewall review, `newTo` decides whether a package counts as new to the organisation (`org`) or to the repository (`repo`). It applies to packages only. Using it with another source is refused with `new_to_package_only`.
+On a `firewall` trigger that feeds a review, `newTo` decides whether a package counts as new to the organisation (`org`) or to the repository (`repo`). `repo` applies to the Package Firewall source only. Using it with another source is refused with `new_to_package_only`.
 
 ## Related
 

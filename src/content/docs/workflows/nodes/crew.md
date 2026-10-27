@@ -3,7 +3,7 @@ title: Crew node
 description: A step that hands work to agents on a host. How the card is written, how the host is chosen, replicas, retries, the author's brief, and what the step does when no machine can take it.
 order: 13
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_engine_node_crew.go, vdb-site/api/internal/handler/factory_host_select.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -27,7 +27,7 @@ A crew step is where agents do the work. The engine writes a card on the [board]
 
 A crew step can also carry agent limits: `agentCostUsd`, `agentFinalizeAt`, `agentMaxAttempts`, `agentMaxContinuations`, `agentMaxPasses`, `agentMaxWallMinutes` and `agentMaxIterations`. Each falls back to the workflow's limit, then to the organisation's `agents.*` setting. 0 keeps the agent profile's own. See [Budgets](/cost/budgets/).
 
-Naming a crew or agent that no library or host offers is refused with `crew_not_found`. A malformed `runOn` is refused with `runs_on_invalid`. Naming a background agent instead of a worker gives the warning `agent_not_dispatchable`.
+Naming no crew or agent, or a name that is not a valid one, is refused with `crew_not_found`. Naming both is refused with `invalid_type`. A well-formed name that no host offers is not caught on publish; it shows when the step looks for a host (see below). A malformed `runOn` is refused with `runs_on_invalid`. Naming a background agent instead of a worker gives the warning `agent_not_dispatchable`.
 
 ## The brief
 
@@ -74,7 +74,7 @@ Belai has no callback, so the step reads the card:
 
 A failed attempt is retried with a backoff, up to `maxAttempts`. Then the line stops and the run fails.
 
-At autonomy `observe`, the crew step is skipped.
+Below autonomy `suggest` (that is, at `observe`), the crew step is skipped.
 
 ## When no host can take it
 

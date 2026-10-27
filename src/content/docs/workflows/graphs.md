@@ -4,7 +4,7 @@ nav: Workflow graphs
 description: What a workflow is made of (nodes, edges, scope and limits), how drafts, versions and publishing work, what a dry run tells you, and the limits every graph must fit.
 order: 1
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_workflow_graph.go, vdb-site/api/internal/handler/factory_workflows.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -31,7 +31,7 @@ A node with several incoming edges starts when one of them is taken and no other
 
 ## Scope
 
-`scope.repos` lists repositories by `owner/name`. Every repository must be in a managed org, or publish fails with `scope_unmanaged_repo`.
+`scope.repos` lists repositories as `owner/name`, `owner/*` for every repository of an owner, or `*` for all of them. Starting a run by hand on a repository that is not managed, or not in the scope, is refused with `scope_unmanaged_repo`.
 
 An **empty scope** is allowed and is often what you want:
 
@@ -66,8 +66,8 @@ A workflow has one editable **draft** and any number of frozen **published versi
 
 - **Save** stores the draft. It checks only that each step's config is well formed. It never starts a run or creates a schedule.
 - **Publish** runs every check, freezes the draft as a version and reconciles triggers: new schedules are created, removed ones deleted, changed ones recreated. Only owners and admins can publish.
-- **Discard draft** goes back to the published version.
-- **Delete** archives the workflow. It is refused with `bad_state` while a run is `running`, `held` or `paused`, unless you also cancel those runs.
+- **Discard draft** goes back to the published version. With nothing published it is refused with `bad_state`.
+- **Delete** archives the workflow. Only owners and admins can delete. It is refused with `bad_state` while a run is `queued`, `running`, `waiting_approval`, `paused` or `held`, unless you also cancel those runs.
 
 Only the published version's triggers fire. A draft's triggers do nothing.
 
@@ -77,14 +77,14 @@ Drafts carry a revision, like the settings document. If someone saved the draft 
 
 ## Dry run
 
-**Dry run** walks the draft, or a chosen version, with no side effects: no crew is dispatched, no output written, no GitHub call made and no schedule created. You give it a repository and a trigger, and it returns:
+**Dry run** walks the draft, or a chosen version, statically with no side effects: no crew is dispatched, no model called, no output written, no GitHub call made and no schedule created. It returns:
 
-- whether the graph is valid, with every problem found
+- whether the graph is valid: a graph with errors is refused with every problem found, and warnings such as `agent_not_dispatchable` are listed while the graph stays valid
 - the plan: each step it would run, with token and GitHub call estimates
-- for each decision, a simulated outcome from recorded sample inputs
+- for each decision, a simulated outcome: the first outcome listed (`source: static_walk`)
 - where a real run would start: the scope, any managed repository an online host has, or the repository of the event
 
-With **call models** on, decision steps call their model once on the sample inputs. This costs tokens and counts against the daily decision cap, and the response says so. A dry run leaves no run behind unless you ask to keep it, in which case it shows on the Runs page marked as a dry run.
+The body accepts a repository, a trigger and inputs, but the static walk does not use them yet. **Call models** is not available yet: `callModels: true` is refused with a 400. A dry run never leaves a run behind: `?keep=1` is accepted and `runId` stays null.
 
 ## Publish checks
 
@@ -93,8 +93,8 @@ Publish refuses a graph that breaks a rule. Each problem names the step by its t
 | Code | Means |
 |---|---|
 | `no_trigger` | Add a trigger. A workflow needs something to start it. |
-| `cycle` | A step is connected back to itself. Only a gate or decision may send work back to a crew. |
-| `invalid_loop` | A loop edge starts somewhere other than a gate or decision. |
+| `cycle` | A step is connected to itself, or the steps loop back on themselves. Only a gate or decision may send work back to a crew. |
+| `invalid_loop` | An edge marked `loop` is not a gate or decision sending work back to a crew. |
 | `outcome_without_route` | A decision outcome leads nowhere. Connect it, or mark it as ending the run. |
 | `unknown_node` | An edge starts or ends at a step that is not in the graph. |
 | `duplicate_edge` | Two edges join the same steps for the same outcome. |
@@ -103,9 +103,8 @@ Publish refuses a graph that breaks a rule. Each problem names the step by its t
 | `too_long` | A title over 200 characters, or a brief over 2,000. |
 | `too_many` | A list with too many entries. |
 | `required`, `invalid_type`, `invalid_enum`, `out_of_range` | A field is missing, the wrong type, not one of the allowed values, or out of range. |
-| `invalid_repo` | A repository is not in `owner/name` form. |
-| `custom_required` | A custom choice needs its values filled in. |
-| `scope_unmanaged_repo` | The scope names a repository outside your managed orgs. |
+| `invalid_repo` | A repository is not `owner/name`, `owner/*` or `*`. |
+| `scope_unmanaged_repo` | A manual start names a repository that is not managed, or not in the scope. The run start returns it, not publish. |
 | `github_calls_exceed_run_cap` | The steps' GitHub call caps add up to more than the run's cap. |
 
 [Error codes](/reference/validation-codes/) lists every code with its message.
@@ -130,10 +129,10 @@ Publish refuses a graph that breaks a rule. Each problem names the step by its t
 | POST | `/v1/factory/workflows` | `{name, slug, templateId}` or `{name, slug, graph}`. Neither gives one manual trigger. |
 | GET | `/v1/factory/workflows/{id}` | `?format=yaml`, `?version=6` |
 | PUT | `/v1/factory/workflows/{id}` | Save the draft, with `revision`. |
-| DELETE | `/v1/factory/workflows/{id}` | Archive. `?cancelRuns=1` to cancel live runs first. |
+| DELETE | `/v1/factory/workflows/{id}` | Archive. Owner or admin. `?cancelRuns=1` to cancel live runs first. |
 | DELETE | `/v1/factory/workflows/{id}/draft` | Discard the draft. |
 | GET | `/v1/factory/workflows/{id}/versions` | Every version, and `/versions/{v}` for one. |
 | POST | `/v1/factory/workflows/{id}/publish` | `{version, revision, note}`. Owner or admin. |
-| POST | `/v1/factory/workflows/{id}/dry-run` | `{repo, trigger, callModels, inputs}`. `?keep=1` keeps the run. |
+| POST | `/v1/factory/workflows/{id}/dry-run` | `{version, repo, trigger, callModels, inputs}`. `callModels` must be false. `?keep=1` is accepted; no run is kept. |
 
 A workflow can be named by its id or its `slug` anywhere a path takes one.

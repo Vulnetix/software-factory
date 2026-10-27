@@ -3,13 +3,13 @@ title: Human node
 description: A step that waits for a person to approve. Who can approve, how they are told, how long they have, and the fork rule that makes some workflows need one.
 order: 15
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_engine_node_human.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
 A human step stops the run until a person approves or rejects. The step creates an [approval](/decisions/human-approval/), notifies the approvers, and waits. The approval shows on the Checkpoints page and the cockpit's Needs you list.
 
-The approval's kind depends on where the step sits in the graph: `plan` after a planner, `merge` before a merge-ready change, `suppression` before a suppression, or `escalation`.
+The approval's kind depends on where the step sits in the graph: `plan` after a planner agent step, `suppression` when a decision routed to it on a suppress outcome, `merge` when an output step follows it, or `escalation`.
 
 ## Config
 
@@ -17,7 +17,7 @@ The approval's kind depends on where the step sits in the graph: `plan` after a 
 |---|---|---|
 | `approvers` | at least one | |
 | `notifyVia` | `slack`, `teams`, `google_chat`, `discord`, `webhook`, `email`, `push` | your notification routes |
-| `slaHours` | 1 to 720 | |
+| `slaHours` | 1 to 720 | 24 |
 | `onTimeout` | `park_and_renotify`, `end_run` | `park_and_renotify` |
 
 An approver is one of:
@@ -55,7 +55,7 @@ A pull request from a fork contains code an outsider wrote. A workflow whose `pu
 
 ## Plan approval
 
-A human step that follows a planner is skipped when `autonomy.plan_approval` is off.
+When `autonomy.plan_approval` is off, a human step that follows a planner succeeds at once without asking anyone.
 
 ## Related
 

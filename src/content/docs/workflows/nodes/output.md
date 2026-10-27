@@ -3,7 +3,7 @@ title: Output node
 description: The step that writes a run's result back. Draft pull requests, comments, reviews, approval when ready, merge conflict cards, TEA releases, VEX and notifications, with every key and the rules each one follows.
 order: 16
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_engine_node_output.go, vdb-site/api/internal/handler/factory_engine_review.go, vdb-site/api/internal/handler/factory_engine_approve.go, vdb-site/api/internal/handler/factory_engine_conflicts.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -12,7 +12,7 @@ An output step writes the run's result somewhere you will see it. A skipped outp
 | `kind` | Writes | Needs autonomy |
 |---|---|---|
 | `draft_pr` | A pull request from the crew's branch | `draft_pr` |
-| `issue_comment` | A comment on the run's issue or pull request | |
+| `issue_comment` | A comment on the run's issue or pull request | `suggest` |
 | `pr_review` | A GitHub review from the reviewer agent's verdict | `suggest` |
 | `approve_ready` | An APPROVE review once the pull request is ready | `auto_merge_low_risk` |
 | `conflict_cards` | Merge conflict cards for conflicting pull requests | `draft_pr` |
@@ -26,7 +26,7 @@ Opens a pull request from the card's branch. It costs 1 to 3 GitHub calls. If a 
 
 | Key | Values | Default |
 |---|---|---|
-| `prState` | `draft`, `ready` | `draft` |
+| `prState` | `draft`, `ready` | `github.pr_state`, then `draft` |
 | `base` | `default`, `pr_head`, or a branch name | `default` |
 | `ifNoBranch` | `fail`, `skip` | `fail` |
 | `reviewers` | `codeowners`, `none` | |
@@ -34,9 +34,9 @@ Opens a pull request from the card's branch. It costs 1 to 3 GitHub calls. If a 
 
 - `base: pr_head` stacks the fix onto the branch of the pull request the run is about, so a fix for a failing pull request lands as a draft into that pull request's branch. With no open pull request from the same repository it uses the default branch. Any other value that is not a branch name is refused with `invalid_base`.
 - `ifNoBranch: skip` ends the step quietly when the crew pushed nothing, for example a sweep that found nothing to fix.
-- `attach` adds a CycloneDX SBOM with SLSA provenance, or the SBOM alone.
+- `attach` names a CycloneDX SBOM with SLSA provenance, or the SBOM alone. It is validated and stored, but the `draft_pr` step does not read it yet, so nothing is attached.
 
-A pull request GitHub refuses fails the step with GitHub's reason. A 4xx is not retried.
+A pull request GitHub refuses fails the step with GitHub's reason. A 4xx other than 429 is not retried.
 
 ## issue_comment
 
@@ -74,7 +74,7 @@ A step that waits more than 72 hours ends. GitHub does not let an App approve a 
 
 ## conflict_cards
 
-Files a [merge conflict](/decisions/merge-conflicts/) card for each open pull request that is conflicting. For a run about one pull request it looks at that one. For a push to the default branch it looks at the open pull requests based on it, newest first, at most 20. GitHub works out mergeability lazily, so the step rechecks at 0, 1, 3 and 10 minutes, at most 40 rechecks in all. A fork's card carries `checkpoint:fork_code` and waits for a person before any host touches the code.
+Files a [merge conflict](/decisions/merge-conflicts/) card for each open pull request that is conflicting. For a run about one pull request it looks at that one. For a push to the default branch it looks at the open pull requests based on it, newest first, at most 20. GitHub works out mergeability lazily, so the step rechecks at 0, 1, 3 and 10 minutes (1, 3 and 10 for a push), at most 40 rechecks in all. A fork's card carries `checkpoint:fork_code` and waits for a person before any host touches the code.
 
 ## tea_publish
 
@@ -96,9 +96,9 @@ Sends a message through your messaging connections.
 | Key | Values |
 |---|---|
 | `message` | at most 1,000 characters. `{workflow}`, `{run}`, `{repo}`, `{node}` and `{status}` are filled in. |
-| `severity` | `info`, `notice`, `warning`, `critical` |
+| `severity` | `info` (the default), `notice`, `warning`, `critical` |
 | `connections` | up to 10 connection ids. None means your notification routes decide. |
-| `push` | `owner`, the run's starter, or `none` |
+| `push` | `owner` (the default), the run's starter, or `none` |
 
 ## Related
 

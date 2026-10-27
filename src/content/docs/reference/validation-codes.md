@@ -22,7 +22,7 @@ Codes the API returns in `issues[].code` when it refuses a request, and the code
 | <span id="budget_exceeds_parent"></span>`budget_exceeds_parent` | The run budget is larger than the month budget. Lower the run budget or raise the month budget. | [Budgets](/cost/budgets/) |
 | <span id="conclusion_unsupported_event"></span>`conclusion_unsupported_event` | In {node}, the conclusion condition only applies to check runs, check suites, workflow runs and deployment statuses. Remove it or choose one of those events. | [Triggers and webhook conditions](/workflows/triggers/) |
 | <span id="crew_not_found"></span>`crew_not_found` | Choose the crew or agent that {node} hands the work to. | [Crew node](/workflows/nodes/crew/) |
-| <span id="custom_required"></span>`custom_required` | security.scanners custom needs security.scanners.custom | [Graph limits](/workflows/graphs/) |
+| <span id="custom_required"></span>`custom_required` | security.scanners custom needs security.scanners.custom | [Trust and SLSA](/evidence/trust-and-slsa/) |
 | <span id="cycle"></span>`cycle` | %s is connected to itself. Remove that connection. | [Graph limits](/workflows/graphs/) |
 | <span id="duplicate_edge"></span>`duplicate_edge` | %s is connected to %s twice for the same outcome. Remove one of the connections. | [Graph limits](/workflows/graphs/) |
 | <span id="duplicate_id"></span>`duplicate_id` | {node} has the id " | [Graph limits](/workflows/graphs/) |

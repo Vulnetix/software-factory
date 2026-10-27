@@ -4,7 +4,7 @@ nav: Builder
 description: The canvas you build workflows on. The node palette, which agents a step can dispatch, the decision inspector's statistics, and the handoff map.
 order: 2
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_palette.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -16,7 +16,7 @@ The builder is the canvas on the Workflows page. You drag steps from the palette
 
 | Group | Holds |
 |---|---|
-| Triggers | Webhook events, cron and manual |
+| Triggers | Webhook events, label, finding, kanban, cron and manual |
 | GitHub reads | Where a step reads GitHub from: posture (the default), raw files in storage, the webhook payload, or a live API read that costs 1 to 3 calls |
 | System One | Classify, gate, route and score decisions |
 | Crews | Your library's crews, and the built-in crews with their members |
@@ -35,17 +35,18 @@ The others run as background agents (mode `single`), for example the `deps-*` ag
 
 ## The decision inspector
 
-Select a decision step to see what it decided over the last 7, 30 or 90 days:
+Select a decision step of a published workflow to see what it decided over the last 30 days:
 
 - how many decisions it made
 - the share of each outcome
 - how often confidence was under the threshold
 - escalations, and how many a person overrode
-- which models answered
+
+The stats route also takes 7 or 90 days, and reports which models answered.
 
 ## Handoffs
 
-The builder draws the edges inside a crew from your agents' handoff rules: which list and labels each agent claims, what it does on success and on failure, and who it hands to. The same map appears in the agent builder as "Who hands work to whom". Labels that an agent adds but no agent claims are flagged, because work with those labels would sit unclaimed.
+The edges inside a crew come from your agents' handoff rules: which list and labels each agent claims, what it does on success and on failure, and who it hands to. The map of them appears in the agent builder as "Who hands work to whom". Labels that an agent adds but no agent claims are flagged, because work with those labels would sit unclaimed.
 
 ## API
 
