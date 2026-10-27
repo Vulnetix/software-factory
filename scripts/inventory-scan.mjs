@@ -1,0 +1,241 @@
+#!/usr/bin/env node
+// inventory-scan.mjs: list every Software Factory feature surface in the code.
+//
+// Reads sibling checkouts of the source repositories and writes
+// inventory/atoms.json: one "atom" per thing a user can touch (an API route, a
+// console page, a settings key, an enum value, a CLI flag, a TUI command, a
+// voice tool, a handler file...). inventory-check.mjs then proves that every
+// atom is mapped to a feature in inventory/features.json and that the feature
+// has a page.
+//
+// The scan is regex-based on purpose: no Go or TS toolchain is needed, and
+// every pattern below names the file it reads so a miss is easy to trace.
+//
+// Usage: node scripts/inventory-scan.mjs [--out inventory/atoms.json]
+// Repo paths default to ../<name>; override with SF_SRC_<NAME>=/path.
+
+import { readFileSync, readdirSync, statSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { join, basename, dirname, relative } from 'node:path';
+import { execFileSync } from 'node:child_process';
+
+const root = new URL('..', import.meta.url).pathname;
+const repoPath = (name) => process.env[`SF_SRC_${name.toUpperCase().replace(/-/g, '_')}`] ?? join(root, '..', name);
+const REPOS = ['vdb-site', 'website', 'belai', 'saas'];
+
+const out = process.argv.includes('--out') ? process.argv[process.argv.indexOf('--out') + 1] : join(root, 'inventory', 'atoms.json');
+
+const atoms = new Map();
+function atom(kind, value, repo, file, extra = {}) {
+  const id = `${kind}:${value}`;
+  if (!atoms.has(id)) atoms.set(id, { id, kind, value, sources: [], ...extra });
+  const a = atoms.get(id);
+  const src = `${repo}/${file}`;
+  if (!a.sources.includes(src)) a.sources.push(src);
+}
+
+const read = (p) => readFileSync(p, 'utf8');
+const isTest = (f) => /(_test\.go|\.test\.ts|\.spec\.ts|\.test\.mjs)$/.test(f);
+function ls(dir, re) {
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir).filter((f) => re.test(f) && !isTest(f)).sort();
+}
+function walk(dir, re, acc = []) {
+  if (!existsSync(dir)) return acc;
+  for (const e of readdirSync(dir)) {
+    if (e === 'node_modules' || e === 'testdata' || e.startsWith('.')) continue;
+    const p = join(dir, e);
+    if (statSync(p).isDirectory()) walk(p, re, acc);
+    else if (re.test(e) && !isTest(e)) acc.push(p);
+  }
+  return acc;
+}
+function headSha(repo) {
+  try { return execFileSync('git', ['-C', repoPath(repo), 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(); } catch { return null; }
+}
+
+// ---------------------------------------------------------------------------
+// vdb-site: chi routes. main.go nests r.Route groups and calls Register*
+// functions; handler files declare Register* functions with relative routes.
+// Brace depth tracks which group a route sits in.
+const SF_HANDLER = /^(Factory|Belai|Pix|InternalPixCommander|Call|Sandbox)/;
+const SF_PATH = /^\/v1\/(factory|belai|internal\/(factory|pix-commander|decisions)|admin\/pix-sandboxes)(\/|$)/;
+
+function scanGoRoutes() {
+  const api = join(repoPath('vdb-site'), 'api');
+  const files = [join(api, 'main.go'), ...ls(join(api, 'internal', 'handler'), /\.go$/).map((f) => join(api, 'internal', 'handler', f))];
+  const funcs = new Map(); // Register fn -> { routes: [{method, path, handler, file}], calls: [{fn, prefix}] }
+  const top = { routes: [], calls: [] };
+  for (const file of files) {
+    const rel = relative(repoPath('vdb-site'), file);
+    const lines = read(file).split('\n');
+    let depth = 0;
+    let ctx = file.endsWith('main.go') ? top : null;
+    let ctxDepth = -1;
+    const stack = [];
+    for (const raw of lines) {
+      const line = raw.replace(/"(?:[^"\\]|\\.)*"|`[^`]*`|\/\/.*$/g, (m) => (m.startsWith('/') && m.startsWith('//') ? '' : m.replace(/[{}]/g, '')));
+      const fn = raw.match(/^func (Register\w+)\(r chi\.Router/);
+      if (fn) { ctx = { routes: [], calls: [] }; funcs.set(fn[1], ctx); ctxDepth = depth; stack.length = 0; }
+      const prefix = stack.map((s) => s.p).join('');
+      const route = raw.match(/\br\.Route\("([^"]+)"/);
+      const m = raw.match(/\br\.(Get|Post|Put|Patch|Delete|Head|Options)\("([^"]+)",\s*(?:handler\.)?(\w+)/);
+      const call = raw.match(/\b(?:handler\.)?(Register\w+)\(r,/);
+      if (ctx && m) ctx.routes.push({ method: m[1].toUpperCase(), path: prefix + m[2], handler: m[3], file: rel });
+      if (ctx && call && !raw.match(/^func /)) ctx.calls.push({ fn: call[1], prefix });
+      const opens = (line.match(/{/g) || []).length;
+      const closes = (line.match(/}/g) || []).length;
+      if (route) stack.push({ p: route[1], d: depth + opens - closes });
+      depth += opens - closes;
+      while (stack.length && depth < stack[stack.length - 1].d) stack.pop();
+      if (ctx && ctx !== top && depth <= ctxDepth) { ctx = file.endsWith('main.go') ? top : null; }
+    }
+  }
+  const resolved = [];
+  const visit = (node, prefix, seen) => {
+    for (const r of node.routes) resolved.push({ ...r, path: prefix + r.path });
+    for (const c of node.calls) {
+      const f = funcs.get(c.fn);
+      if (f && !seen.has(c.fn)) visit(f, prefix + c.prefix, new Set([...seen, c.fn]));
+    }
+  };
+  visit(top, '', new Set());
+  for (const r of resolved) {
+    if (SF_PATH.test(r.path) || SF_HANDLER.test(r.handler)) atom('route', `${r.method} ${r.path}`, 'vdb-site', r.file, { handler: r.handler });
+  }
+}
+
+// vdb-site: every SF handler file, so a new file is never silently skipped.
+function scanGoFiles() {
+  const dir = join(repoPath('vdb-site'), 'api', 'internal', 'handler');
+  for (const f of ls(dir, /^(factory|belai|pix)_.*\.go$/)) atom('gofile', f.replace(/\.go$/, ''), 'vdb-site', `api/internal/handler/${f}`);
+  for (const pkg of ['systemone', 'facts', 'lifecycle', 'tenantmodel']) {
+    const d = join(repoPath('vdb-site'), 'api', 'internal', pkg);
+    for (const f of ls(d, /\.go$/)) atom('gofile', `${pkg}/${f.replace(/\.go$/, '')}`, 'vdb-site', `api/internal/${pkg}/${f}`);
+  }
+}
+
+// vdb-site: settings schema, enum literals, validation codes, templates, defaults.
+function scanGoSemantics() {
+  const dir = join(repoPath('vdb-site'), 'api', 'internal', 'handler');
+  const settings = join(dir, 'factory_settings_store.go');
+  if (existsSync(settings)) {
+    const src = read(settings);
+    for (const m of src.matchAll(/(?:\bKey:\s*|\bfc\w*Spec\()"([a-zA-Z][\w]*(?:\.[\w]+)+)"/g)) atom('setting', m[1], 'vdb-site', 'api/internal/handler/factory_settings_store.go');
+  }
+  for (const f of ls(dir, /^(factory|belai|pix)_.*\.go$/)) {
+    const rel = `api/internal/handler/${f}`;
+    const src = read(join(dir, f));
+    // Validation and API error codes: v.add(path, "code", ...) and Code: "code".
+    for (const m of src.matchAll(/\bv\.add\([^,]+,\s*"([a-z][a-z0-9_]+)"/g)) atom('code', m[1], 'vdb-site', rel);
+    for (const m of src.matchAll(/\bCode:\s*"([a-z][a-z0-9_]+)"/g)) atom('code', m[1], 'vdb-site', rel);
+    // Named string sets: var factoryX = []string{...} / map[string]bool{...}.
+    for (const m of src.matchAll(/\b(?:var\s+)?((?:factory|belai|fw|fc|pix)\w*)\s*=\s*(?:\[\]string|map\[string\](?:bool|struct\{\}|string))\{([^}]*)\}/g)) {
+      const values = [...m[2].matchAll(/"([a-z][a-z0-9_:.\-]*)"\s*(?::|,|$)/g)].map((x) => x[1]);
+      if (values.length < 2) continue;
+      for (const v of values) atom('enum', `${m[1]}=${v}`, 'vdb-site', rel, { set: m[1] });
+    }
+  }
+  const tpl = join(dir, 'factory_templates.go');
+  if (existsSync(tpl)) for (const m of read(tpl).matchAll(/\bID:\s*"([a-z0-9-]+)"/g)) atom('template', m[1], 'vdb-site', 'api/internal/handler/factory_templates.go');
+  for (const f of ls(dir, /^factory_defaults.*\.go$/)) {
+    for (const m of read(join(dir, f)).matchAll(/\b(?:Slug|ID|Key):\s*"([a-z0-9-]+)"/g)) atom('default', m[1], 'vdb-site', `api/internal/handler/${f}`);
+  }
+}
+
+// vdb-site docs: the contract's settings table (2.15) as a cross-check of the
+// Go schema, and every factory/belai doc so a new doc is a new todo.
+function scanContract() {
+  const docs = join(repoPath('vdb-site'), 'docs');
+  const md = join(docs, 'factory.md');
+  if (existsSync(md)) {
+    const src = read(md);
+    const s = src.indexOf('### 2.15');
+    const e = src.indexOf('### 2.16');
+    if (s > 0 && e > s) for (const m of src.slice(s, e).matchAll(/^\| `([a-zA-Z][\w]*(?:\.[\w]+)+)` \|/gm)) atom('setting', m[1], 'vdb-site', 'docs/factory.md');
+  }
+  for (const f of ls(docs, /^(factory|belai|pix|signing).*\.md$/)) atom('doc', `vdb-site/${f}`, 'vdb-site', `docs/${f}`);
+}
+
+// website: console routes, call worker voice tools, contract notes.
+function scanWebsite() {
+  const w = repoPath('website');
+  for (const f of ls(join(w, 'src', 'pages', 'resolve'), /^(factory|belai)-.*\.vue$/)) atom('console', `/resolve/${f.replace(/\.vue$/, '')}`, 'website', `src/pages/resolve/${f}`);
+  if (existsSync(join(w, 'src', 'pages', 'call.vue'))) atom('console', '/call', 'website', 'src/pages/call.vue');
+  const tools = join(w, 'src', 'worker', 'call', 'tools.ts');
+  if (existsSync(tools)) for (const m of read(tools).matchAll(/spec:\s*fn\(`([a-z_]+)`/g)) atom('voice-tool', m[1], 'website', 'src/worker/call/tools.ts');
+  for (const f of ls(join(w, '.repo'), /^(software-factory|factory|pix|a2a|conflict|commit-signing|session-trigger|tenant-model|belai).*\.md$/)) atom('doc', `website/${f}`, 'website', `.repo/${f}`);
+  for (const f of ls(join(w, 'sandbox-worker', 'docs'), /\.md$/)) atom('doc', `website/sandbox-worker/${f}`, 'website', `sandbox-worker/docs/${f}`);
+  for (const f of ls(join(w, 'src', 'worker', 'call'), /\.ts$/)) atom('tsfile', `call/${f.replace(/\.ts$/, '')}`, 'website', `src/worker/call/${f}`);
+  for (const f of ls(join(w, 'sandbox-worker', 'src'), /\.ts$/)) atom('tsfile', `sandbox/${f.replace(/\.ts$/, '')}`, 'website', `sandbox-worker/src/${f}`);
+}
+
+// saas: Prisma models behind the factory.
+function scanSaas() {
+  const dir = join(repoPath('saas'), 'prisma', 'models');
+  for (const f of ls(dir, /^factory.*\.prisma$/)) {
+    for (const m of read(join(dir, f)).matchAll(/^model (\w+) \{/gm)) atom('model', m[1], 'saas', `prisma/models/${f}`);
+  }
+}
+
+// belai: CLI commands and flags, TUI slash commands and keys, packages, docs.
+function scanBelai() {
+  const b = repoPath('belai');
+  const cmd = join(b, 'cmd', 'belai');
+  const help = join(cmd, 'help.go');
+  if (existsSync(help)) {
+    for (const m of read(help).matchAll(/^\s*\{"([a-z][a-z0-9-]*)", "[^"]*"\},/gm)) atom('cli-cmd', m[1], 'belai', 'cmd/belai/help.go');
+  }
+  for (const f of ls(cmd, /\.go$/)) {
+    const src = read(join(cmd, f));
+    // Subcommands are switch cases on the first argument: case "add":.
+    if (f !== 'main.go') {
+      for (const m of src.matchAll(/^\tcase ("[a-z][a-z0-9-]*"(?:, "[a-z][a-z0-9-]*")*):/gm)) {
+        for (const v of m[1].matchAll(/"([^"]+)"/g)) atom('cli-sub', `${f.replace(/(cmd)?\.go$/, '')} ${v[1]}`, 'belai', `cmd/belai/${f}`);
+      }
+    }
+    let set = 'belai';
+    for (const line of src.split('\n')) {
+      const fs = line.match(/flag\.NewFlagSet\("([^"]+)"/);
+      if (fs) set = fs[1];
+      if (/^func main\(\)/.test(line)) set = 'belai';
+      for (const m of line.matchAll(/\b\w+\.(?:String|Bool|Int|Int64|Uint|Float64|Duration|StringVar|BoolVar|IntVar|Int64Var|DurationVar|Float64Var|Var|Func|BoolFunc|TextVar)\((?:&?[\w.]+,\s*)?"([a-z][a-z0-9-]*)"/g)) {
+        atom('cli-flag', `${set} -${m[1]}`, 'belai', `cmd/belai/${f}`);
+      }
+    }
+  }
+  const tui = join(b, 'internal', 'tui');
+  for (const f of ls(tui, /\.go$/)) {
+    const src = read(join(tui, f));
+    for (const m of src.matchAll(/\br\.(?:Register|Alias|RegisterHidden)\("([a-z][a-z0-9-]*)"/g)) atom('tui-cmd', `/${m[1]}`, 'belai', `internal/tui/${f}`);
+    for (const m of src.matchAll(/"((?:ctrl|alt|shift)\+[a-z0-9]+|f\d{1,2})"/g)) atom('tui-key', m[1], 'belai', `internal/tui/${f}`);
+  }
+  // Settings file keys: JSON tags on the config package's structs.
+  const conf = join(b, 'internal', 'config');
+  for (const f of ls(conf, /\.go$/)) {
+    for (const m of read(join(conf, f)).matchAll(/json:"([a-zA-Z_][\w]*)(?:,[a-z]+)*"/g)) atom('belai-config', `${f.replace(/\.go$/, '')}.${m[1]}`, 'belai', `internal/config/${f}`);
+  }
+  for (const d of readdirSync(join(b, 'internal')).sort()) {
+    if (statSync(join(b, 'internal', d)).isDirectory()) atom('belai-pkg', d, 'belai', `internal/${d}`);
+  }
+  for (const f of ls(join(b, 'docs'), /\.md$/)) atom('doc', `belai/${f}`, 'belai', `docs/${f}`);
+}
+
+scanGoRoutes();
+scanGoFiles();
+scanGoSemantics();
+scanContract();
+scanWebsite();
+scanSaas();
+scanBelai();
+
+const result = {
+  generatedAt: new Date().toISOString(),
+  repos: Object.fromEntries(REPOS.map((r) => [r, headSha(r)])),
+  counts: {},
+  atoms: [...atoms.values()].sort((a, b) => a.id.localeCompare(b.id)),
+};
+for (const a of result.atoms) result.counts[a.kind] = (result.counts[a.kind] ?? 0) + 1;
+mkdirSync(dirname(out), { recursive: true });
+writeFileSync(out, JSON.stringify(result, null, 1) + '\n');
+console.log(`${result.atoms.length} atoms -> ${relative(process.cwd(), out)}`);
+for (const [k, n] of Object.entries(result.counts)) console.log(`  ${k.padEnd(11)} ${n}`);

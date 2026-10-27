@@ -37,6 +37,11 @@ jobs:
       - name: Install
         run: yarn install --immutable
 
+      # Every atom in inventory/atoms.json must map to a documented feature.
+      # The scan itself runs locally against sibling checkouts (see README).
+      - name: Check feature coverage
+        run: node scripts/inventory-check.mjs --strict
+
       # Builds the site and the Pagefind search index into dist/.
       - name: Build
         run: yarn build
