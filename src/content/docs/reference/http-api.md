@@ -373,7 +373,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/factory/call-log` |  |
+| POST | `/v1/factory/call-log` | [Call history, memory and review](/pix/call-history/) |
 
 ## /v1/factory/checkpoints
 
@@ -651,7 +651,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/internal/pix-commander/models` |  |
+| GET | `/v1/internal/pix-commander/models` | [Calling Pix](/pix/calling-pix/) |
 
 ## /v1/messaging/catalogue
 
@@ -747,30 +747,30 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/pix-call/feedback` |  |
+| POST | `/v1/pix-call/feedback` | [Call history, memory and review](/pix/call-history/) |
 
 ## /v1/pix-call/history
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/pix-call/history` |  |
-| POST | `/v1/pix-call/history` |  |
-| DELETE | `/v1/pix-call/history/{id}` |  |
-| GET | `/v1/pix-call/history/{id}` |  |
+| GET | `/v1/pix-call/history` | [Call history, memory and review](/pix/call-history/) |
+| POST | `/v1/pix-call/history` | [Call history, memory and review](/pix/call-history/) |
+| DELETE | `/v1/pix-call/history/{id}` | [Call history, memory and review](/pix/call-history/) |
+| GET | `/v1/pix-call/history/{id}` | [Call history, memory and review](/pix/call-history/) |
 
 ## /v1/pix-call/memories
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/pix-call/memories` |  |
-| POST | `/v1/pix-call/memories` |  |
-| DELETE | `/v1/pix-call/memories/{id}` |  |
+| GET | `/v1/pix-call/memories` | [Call history, memory and review](/pix/call-history/) |
+| POST | `/v1/pix-call/memories` | [Call history, memory and review](/pix/call-history/) |
+| DELETE | `/v1/pix-call/memories/{id}` | [Call history, memory and review](/pix/call-history/) |
 
 ## /v1/pix-call/review
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/pix-call/review` |  |
+| POST | `/v1/pix-call/review` | [Call history, memory and review](/pix/call-history/) |
 
 ## /v1/pulls/{…}
 

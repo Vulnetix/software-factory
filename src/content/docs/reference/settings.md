@@ -33,9 +33,9 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="audit.calls"></span>`audit.calls` | bool. bool: log every model call with its input hash | `true` | factory | [Trust and SLSA](/evidence/trust-and-slsa/) |
-| <span id="audit.sign"></span>`audit.sign` | bool. bool: sign the decision ledger | `true` | factory | [Trust and SLSA](/evidence/trust-and-slsa/) |
-| <span id="audit.weekly_report"></span>`audit.weekly_report` | bool | `true` | factory | [Trust and SLSA](/evidence/trust-and-slsa/) |
+| <span id="audit.calls"></span>`audit.calls` | bool. bool: log every model call with its input hash | `true` | factory | [The audit ledger](/evidence/audit-ledger/) |
+| <span id="audit.sign"></span>`audit.sign` | bool. bool: sign the decision ledger | `true` | factory | [The audit ledger](/evidence/audit-ledger/) |
+| <span id="audit.weekly_report"></span>`audit.weekly_report` | bool | `true` | factory | [The audit ledger](/evidence/audit-ledger/) |
 
 ## autonomy
 

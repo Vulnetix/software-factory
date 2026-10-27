@@ -857,7 +857,7 @@ Defined in `api/internal/handler/pix_sandbox_store.go`.
 
 ### pixCommanderEfforts
 
-Defined in `api/internal/handler/pix_commander.go`.
+Explained in [Calling Pix](/pix/calling-pix/). Defined in `api/internal/handler/pix_commander.go`.
 
 `high`, `low`, `none`
 

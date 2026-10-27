@@ -11,7 +11,7 @@ Pages in the Vulnetix console that belong to Software Factory. All are under `ht
 
 | Path | Explained in |
 |---|---|
-| [`/call`](https://www.vulnetix.com/call) |  |
+| [`/call`](https://www.vulnetix.com/call) | [Calling Pix](/pix/calling-pix/) |
 | [`/resolve/belai-hosts`](https://www.vulnetix.com/resolve/belai-hosts) |  |
 | [`/resolve/belai-library`](https://www.vulnetix.com/resolve/belai-library) |  |
 | [`/resolve/factory-agent`](https://www.vulnetix.com/resolve/factory-agent) |  |

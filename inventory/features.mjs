@@ -197,7 +197,8 @@ const STATUS = {
     'runs', 'run-artifacts', 'engine', 'no-host', 'sessions', 'session-trigger', 'handoffs', 'pr-checker',
     'systemone', 'approvals', 'checkpoints', 'merge-conflicts', 'signing',
     'budgets', 'agent-budgets', 'model-routing', 'usage', 'github-quota',
-    'cockpit', 'trust', 'firewalls', 'audit', 'events', 'facts', 'lifecycle', 'delivery', 'sightings', 'attribution', 'vex', 'analytics'],
+    'cockpit', 'trust', 'firewalls', 'audit', 'events', 'facts', 'lifecycle', 'delivery', 'sightings', 'attribution', 'vex', 'analytics',
+    'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops'],
   verified: [],
 };
 for (const [status, ids] of Object.entries(STATUS)) {
