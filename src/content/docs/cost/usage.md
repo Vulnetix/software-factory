@@ -4,17 +4,17 @@ nav: Usage
 description: Where to see what the factory and your agents used, by model, host, workflow and agent, and how Pix answers spend questions on a call.
 order: 3
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_summary_usage.go, website/src/worker/call/tools.ts]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
-Usage shows what was spent, over 7, 30 or 90 days. It is on the Budgets page, and the cockpit shows the headline figures.
+Usage shows what was spent today, over 7, 30 or 90 days, or for the month so far. It is on the Budgets page, and the cockpit shows the headline figures.
 
 | View | Shows |
 |---|---|
 | By model | Tokens per model label |
 | By host | Each host's budget gauge and 7 day spend per model |
-| By workflow and agent | Which workflows and agents used what. The Workforce page's **Used by workflows** filter reads the same data. |
+| By agent role and project | Tokens per agent role and per project, the most used tools, and the estimated cost. The Workforce page's **Used by workflows** filter shows which published workflows use each crew and agent. |
 
 Token and tool usage per host also comes from Belai's analytics for the same ranges. See [Analytics](/evidence/analytics/).
 
@@ -25,7 +25,7 @@ Token and tool usage per host also comes from Belai's analytics for the same ran
 
 | Method | Path |
 |---|---|
-| GET | `/v1/factory/budgets/usage?range=7d` (`7d`, `30d`, `90d`) |
+| GET | `/v1/factory/budgets/usage?range=7d` (`today`, `7d`, `30d`, `90d`, `mtd`; `tz` for `today` and `mtd`) |
 | GET | `/v1/factory/budgets/hosts` |
 | GET | `/v1/factory/workforce/usage` |
 

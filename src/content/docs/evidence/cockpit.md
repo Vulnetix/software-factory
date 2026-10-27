@@ -3,7 +3,7 @@ title: The cockpit
 description: The Software Factory home page. The headline figures, Needs you, the live lanes of runs, recent decisions, the control plane, and the Fleet, Health and Delivery views.
 order: 1
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_summary.go, website/.repo/software-factory.md]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -46,7 +46,7 @@ The latest decisions, from runs and from sessions, with the model, outcome, conf
 What feeds the factory and where its work goes:
 
 - **Inputs**: managed orgs, the webhook events arriving, schedules, finding triggers
-- **Package Firewall**: ecosystems covered and blocks in the last 24 hours (malware, known exploited, cooldown)
+- **Package Firewall**: ecosystems covered and blocks in the last 24 hours
 - **Sandbox**: size, workers busy, live sessions, crews running, the queue, repositories ready, the image, and System One use
 - **Hosts**: each host's kind, whether it is online, its workers and sessions, and its Belai version
 - **AI Firewall**: allows, redactions, flags and blocks

@@ -4,7 +4,7 @@ nav: Sightings
 description: The record of each new package, AI capability and outbound host the firewalls saw, its state, the research gathered on it, and the review card that decides it.
 order: 9
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_sightings.go, vdb-site/api/internal/handler/factory_sighting_facts.go, vdb-site/api/internal/handler/factory_links.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -42,7 +42,7 @@ Nothing is written until you confirm on that page. When you add the rule, the si
 
 | Method | Path |
 |---|---|
-| GET | `/v1/factory/sightings?source=&state=&card=&q=` (newest first, up to 200; with `card`, each carries its research) |
+| GET | `/v1/factory/sightings?source=&state=&card=&q=` (most recently seen first, up to 200; with `card`, each carries its research) |
 | POST | `/v1/factory/sightings/lookup` with `{source, keys}` (up to 200 keys, one sighting each) |
 
 The firewall pages call the lookup for the rows on screen, to show which have a sighting and a card.

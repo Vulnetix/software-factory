@@ -3,7 +3,7 @@ title: Facts
 description: An index of what every session and run touched (vulnerabilities, repositories, files, domains, tools, models) so you can find every run that worked on a CVE or every session that reached a domain.
 order: 6
 sources: [vdb-site/docs/factory.md, vdb-site/docs/belai-session-facts.md, vdb-site/api/internal/facts/kinds.go, vdb-site/api/internal/handler/factory_facts.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -25,7 +25,7 @@ Facts are an append-only index of `(kind, value)` pairs about sessions and runs:
 
 ### Private kinds
 
-`file.read`, `file.write`, `filename`, `command`, `command.line` and `agent.mention` can reveal more than other kinds, so they are **private**. The Events and Audit pages refuse them as filters. Pages that show them, such as a session's own page, ask for them by name.
+`file.read`, `file.write`, `filename`, `command`, `command.line`, `agent.mention` and the eight `client.*` kinds can reveal more than other kinds, so they are **private**. The Events and Audit pages refuse them as filters. Pages that show them, such as a session's own page, ask for them by name.
 
 > [!WHY] Why facts are separate from events
 > Events and the audit ledger promise never to hold file paths or command lines. Facts need them to be useful, so they live in their own index with their own access rules, and commands are redacted before they are stored.

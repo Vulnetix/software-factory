@@ -4,7 +4,7 @@ nav: Attribution
 description: How commits and comments the factory's agents make are marked, so anyone reading the history can see an agent made them and trace them back to the session.
 order: 10
 sources: [belai/docs/bot-attribution.md, vdb-site/api/internal/handler/belai_github_attribution.go]
-checked: [belai@b5d33b6, vdb-site@c29ffeb]
+checked: [belai@35506b9, vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -15,7 +15,7 @@ Co-authored-by: ...
 Signed-off-by: Pix [bot] <...>
 ```
 
-with links to the session that made it and to any vulnerability ids it fixes.
+with a link to the session that made it and, when the caller passes them, to the vulnerability ids the session touched (at most 10).
 
 ## When trailers are added
 

@@ -3,7 +3,7 @@ title: Lifecycle and flow
 description: How the factory measures its queues as work in against work done. The stages a piece of work passes through, what the flow figures mean, and how capture is checked.
 order: 7
 sources: [vdb-site/docs/factory-lifecycle.md, website/.repo/factory-lifecycle.md, vdb-site/api/internal/lifecycle/catalogue.go, vdb-site/api/internal/lifecycle/flow.go]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 

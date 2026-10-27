@@ -4,7 +4,7 @@ nav: Model routing
 description: Which model each kind of factory work uses, how to send a route to your own key in the Secrets Vault, what happens when the allowance runs out, and the reserve for interactive sessions.
 order: 2
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/tenantmodel/tenantmodel.go, website/.repo/tenant-model-labels.md, website/sandbox-worker/src/model-routing.ts]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -25,9 +25,9 @@ A crew step chooses `smart`, `fast` or a vault key with its `codeTier`.
 | Provider | What it is | Billed to |
 |---|---|---|
 | Pix Fast, Pix Smart | The models included with your plan | Your Pix allowance |
-| System One, Clef Flash | The decision classifier | Your allowance, and the daily decision cap |
+| System One, Clef Flash | The decision classifier | The daily decision cap |
 | `vault:<entry>` | A key you keep in the Secrets Vault, such as your own Anthropic or OpenRouter key | Your provider account |
-| Cloudflare AI Gateway | Calls routed through Cloudflare's gateway | |
+| Cloudflare AI Gateway | Calls routed through Cloudflare's gateway (off for the factory by default) | |
 
 The factory can use a provider only when it is switched on for the factory on the Budgets page. A vault key also needs a grant to the `pix_sandbox` surface in the Secrets Vault, or it is refused with `grant_missing`. Grants are edited in the vault, not here. A route can only point at a provider that is on for the factory.
 

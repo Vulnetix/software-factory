@@ -3,7 +3,7 @@ title: Delivery
 description: What the factory delivered in a period, the agent time and spend behind it, the decisions it scored, the people it needed, and what the same work would take a team by hand. Every figure is marked measured, derived or assumed.
 order: 8
 sources: [vdb-site/docs/factory-delivery-api.md, vdb-site/docs/factory-delivery-capture.md, website/.repo/factory-delivery.md, vdb-site/api/internal/handler/factory_delivery_settings.go, vdb-site/api/internal/handler/factory_delivery_estimate.go]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -13,7 +13,7 @@ Delivery answers "what did the factory get done, and what did it take?". It is a
 
 ## Ranges
 
-Today, 7 days, 30 days, this month, and the quarter. Today starts at midnight and this month on the 1st, in your timezone. You can compare a range with the one before it.
+Today, 7 days, 30 days, this month, and the quarter (the last 90 days, `90d`). Today starts at midnight and this month on the 1st, in your timezone. You can compare a range with the one before it.
 
 ## Measured, derived, assumed
 

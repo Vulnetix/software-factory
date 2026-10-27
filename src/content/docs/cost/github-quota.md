@@ -4,7 +4,7 @@ nav: GitHub quota
 description: How the factory shares your GitHub App's rate limit with your own tools. Where it reads GitHub from, the factory's share and the reserve, what each priced action costs, what happens when the share runs out, and the GitHub settings.
 order: 4
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_quota.go, vdb-site/api/internal/handler/factory_engine_quota.go, website/src/shared/factory-settings.ts]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -83,7 +83,7 @@ Every button that calls GitHub shows its price before you press it, and the resp
 
 ## The Quota panel
 
-The Budgets page shows each installation's current hour: the limit and what is left, when it resets, calls by enrichment, the factory and people, the reserve held back, the factory's share used, calls per workflow over 24 hours, and the enrichment queue. The state is `ok`, `share_exhausted`, `limited` (below the reserve) or `secondary_limited` (GitHub asked the factory to back off). `quota` events mark each threshold.
+The Budgets page shows each installation's current hour: the limit and what is left, when it resets, calls by enrichment, the factory and people, the reserve held back, the factory's share used, calls per workflow over 24 hours, and the enrichment queue. The state is `ok`, `share_exhausted`, `limited` (below the reserve) or `secondary_limited` (GitHub asked the factory to back off; not yet recorded, as nothing stores the Retry-After). `quota` events mark each threshold.
 
 ## Other GitHub settings
 

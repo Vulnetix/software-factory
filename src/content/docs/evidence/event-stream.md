@@ -3,7 +3,7 @@ title: The event stream
 description: The live feed of everything the factory does. The event kinds and their types, the filters, how to read the stream from your own code, unanswered deliveries, and what an event never contains.
 order: 5
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-events.md, vdb-site/api/internal/handler/factory_events.go, vdb-site/api/internal/handler/factory_events_store.go, vdb-site/api/internal/handler/factory_events_unanswered.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
@@ -51,7 +51,7 @@ Every change in the factory writes an event in the same transaction. The console
 | `tea` | `publish` |
 | `github` | `issues`, `issue_comment`, `pull_request`, `pull_request_review`, `push`, `repository`, `release`, `check_run`, `check_suite`, `workflow_run`, `alert`, `installation`, `sync_conflict` |
 | `cron` | `scheduled`, `fired`, `held`, `skipped`, `released`, `schedule_error` |
-| `budget` | `threshold`, `exceeded`, `action_taken` |
+| `budget` | `threshold`, `exceeded`, `action_taken`, `changed` |
 | `quota` | `observed`, `share_threshold`, `exhausted`, `limited`, `reset` |
 | `provider` | `switch`, `error`, `key_revoked`, `key_expired` |
 | `setting` | `changed` |
@@ -62,7 +62,7 @@ Every change in the factory writes an event in the same transaction. The console
 | `memory` | `created`, `edited`, `deleted`, `cleared` |
 | `lifecycle` | `entered`, `exited` |
 
-Some types are defined but not written yet, because the [lifecycle ledger](/evidence/lifecycle-and-flow/) records those transitions instead: session types other than `finished`, the `host` and `worker` types, `scan.started` and `evidence.attested`.
+Some types are defined but not written yet, because the [lifecycle ledger](/evidence/lifecycle-and-flow/) records those transitions instead: session types other than `finished`, the `host` and `worker` types, `scan.started` and `evidence.attested`. `budget.action_taken`, `quota.reset` and the `provider` types other than `switch` are not written either.
 
 An event that waits on a person carries `needsHuman: true`: a requested approval, a run that stopped the line, a lapsed card, and a crew's card moved into review. The filter `needs=human` selects them. Failure types (`failed`, `error`, `deny`, `block`, `exhausted`) are drawn as failures in the chart.
 
@@ -88,7 +88,7 @@ The subject keys `node`, `step`, `budget`, `model`, `setting`, `installation` an
 |---|---|---|
 | `event` | One per matching event. Its `id` is the `eventSeq`. | Apply it and remember the id. |
 | `ping` | Every 15 seconds of silence. Carries the tenant's newest `eventSeq`. | Reset your idle timer. |
-| `reconnect` | The server is about to close: after 5 minutes, on shutdown, when your sign-in expires, or because your resume point is older than 30 days | Reconnect at once with `Last-Event-ID` set to its `after`. |
+| `reconnect` | The server is about to close: after 5 minutes (`reason: max_duration`), or because your resume point is older than 30 days (`reason: gap`) | Reconnect at once with `Last-Event-ID` set to its `after`. |
 
 Send `Last-Event-ID` (or `?after=`) to resume: you get every matching event since, in order, then the live feed. Treat 20 seconds without any frame as a dead connection. A tenant may hold 20 streams at once and a person 5.
 

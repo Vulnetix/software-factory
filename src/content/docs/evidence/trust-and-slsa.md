@@ -3,7 +3,7 @@ title: Trust and SLSA
 description: What you can prove about factory work. SLSA levels per repository and why, the scanner matrix, the firewall and gate settings in force, the security settings, and the attestation bundle export.
 order: 2
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_trust.go, vdb-site/api/internal/handler/factory_trust_store.go]
-checked: [vdb-site@c29ffeb]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -18,9 +18,9 @@ Each managed repository gets a SLSA build level from 0 to 3, with the reason:
 | Level | Reason | Means |
 |---|---|---|
 | 0 | `no_factory_build` | The factory has not built it |
-| 1 | `unsigned_provenance` | Provenance exists but is not signed |
-| 2 | `hosted_signed` | Built on a hosted builder, provenance signed |
-| 3 | `sandbox_isolated` | Built in an isolated Pix Sandbox with signed provenance |
+| 1 | `unsigned_provenance` | Built in a Pix Sandbox whose launch evidence is not attestation verified |
+| 2 | `hosted_signed` | Built on a hosted builder, provenance signed. Nothing assigns this level yet. |
+| 3 | `sandbox_isolated` | Built in an isolated Pix Sandbox whose latest launch evidence is attestation verified |
 
 `security.slsa_min` (default `L3`) is the level the factory aims for.
 
@@ -30,7 +30,7 @@ One row per managed repository, one column per scanner, over the last 30 days:
 
 `sca`, `sast`, `secrets`, `iac`, `containers`, `license`, `malscan`, `eol`, `cbom`, `aibom`, `scorecard`
 
-Each cell is `clean`, `findings`, `blocking` or `not_run`. The row also shows the SLSA level and the latest TEA release and how stale it is.
+Each cell is `clean`, `findings` or `not_run` (`blocking` is reserved and not set yet). The row also shows the SLSA level and the latest TEA release and how stale it is.
 
 Scanner names have accepted aliases when you configure them: `secret` for `secrets`, `malware` for `malscan`, `container` and `oci` for `containers`, `infra` for `iac`, `licence` for `license`, `ai` for `aibom`, `openssf` for `scorecard`.
 
@@ -40,7 +40,7 @@ Scanner names have accepted aliases when you configure them: `secret` for `secre
 |---|---|
 | Package Firewall | The ecosystems covered; whether malware, known exploited (KEV) and weaponised packages are blocked; how end-of-life is treated; the CVSS and EPSS thresholds; the cooldown in days; enforce or warn; blocks in the last 24 hours |
 | AI Firewall | Guardrails in force, how secrets and personal data in prompts are handled, prompt injection, MCP servers allowed, tools allowed to crews, and decisions in the last 24 hours |
-| Egress | The sandbox's egress mode, allowed hosts, and its first 50 decisions |
+| Egress | The sandbox's egress mode, how many hosts are allowed, and the 50 most recently seen hosts with their decision |
 | Gate | The severity that blocks, whether unpinned dependencies block, the largest major version bump an autofix may make, version lag, release jail mode, stale SBOM rule, and exemptions |
 
 The Package Firewall covers these ecosystems: alpine, arch, aur, cargo, chef, composer, conan, conda, cran, debian, gem, go, helm, hex, homebrew, homebrew-bottle, julia, maven, npm, nuget, oci, pub, pypi, rpm and terraform.
@@ -63,7 +63,7 @@ Choosing `custom` without a list is refused with `custom_required`.
 
 ## Export
 
-**Export attestation bundle** downloads a zip of in-toto attestations, CycloneDX SBOMs and VEX for your managed repositories, optionally limited to some.
+**Export attestation bundle** downloads a zip that indexes the evidence for your managed repositories, optionally limited to some: `manifest.json` has one entry per Pix Sandbox launch evidence pack (its hash, size, attestation state, image digest and storage key) and `slsa.json` the SLSA summary. The packs themselves stay in storage.
 
 ## API
 

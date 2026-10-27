@@ -3,7 +3,7 @@ title: Budgets
 description: How factory budgets nest from the Pix allowance down to a single step, what happens at a limit, alerts, the per-card limits every agent inherits, and the Budgets page.
 order: 1
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_budgets.go, vdb-site/api/internal/handler/factory_engine_budget.go, vdb-site/api/internal/handler/factory_agent_budget.go, website/src/shared/factory-settings.ts]
-checked: [vdb-site@c29ffeb, website@70b0582]
+checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -27,14 +27,14 @@ The Budgets page (`/resolve/factory-budgets`) shows the tiers as nested bars, ev
 
 | Field | Values |
 |---|---|
-| Applies to | `tenant`, `org`, `workflow`, `node`, `repo`, `reserve` |
-| Window | `run`, `node`, `session`, `day`, `week`, `month` |
-| Unit | `tokens`, `calls`, `usd` |
+| Applies to | `tenant`, `org`, `workflow`, `node`, `repo` (the `reserve` row is read-only, set with `pix.reservePercent`) |
+| Window | `run`, `day`, `week`, `month` for the tenant or a workflow; `node` for a node; `month` for a repo or org |
+| Unit | `tokens`, `calls` (`usd` is refused as `unsupported` for now) |
 | Provider | a provider, a comma list, or `all` |
 | Alert at | percentages from 1 to 100, such as 50, 80 and 100 |
 | At the limit | one of the actions below |
 
-A child budget's limit cannot be above its parent's. That is refused with `budget_exceeds_parent` (for example, a run budget larger than the month budget).
+A child budget's limit cannot be above its parent's. The Budgets API refuses it with `limit_exceeds_parent`; in a workflow graph the same check is `budget_exceeds_parent` (a run budget larger than the month budget, or a step budget larger than the run budget).
 
 A repository's **monthly token cap**, set on the Repos page, shows here as a `repo` budget. The tenant's **Factory** budget and the **reserve** for interactive sessions cannot be deleted.
 
@@ -46,7 +46,7 @@ A repository's **monthly token cap**, set on the Repos page, shows here as a `re
 | `downgrade_to_fast` | The rest of the run uses the fast model route. |
 | `switch_to_pix_allocation` | The rest of the run uses the Pix allocation instead of your own key. |
 | `escalate_human` | An approval of kind `budget` is created. |
-| `hard_stop` | The run ends at once. |
+| `hard_stop` | The step fails, and so the run, with no retry. |
 | `alert_only` | A `budget` event is emitted and the run continues. |
 
 Every budget write is audited and emits a `budget` event. Alerts fire as events and notifications at each threshold.
@@ -72,7 +72,7 @@ Every worker the factory starts claims one card at a time. These limits apply pe
 | `agents.max_cost_usd_per_item` | 0 to 10,000 | Estimated cost in US dollars at which a worker's claim on one card ends. The built-in agents allow $8 to $25. |
 | `agents.finalize_at` | 0 to 0.95 | The share of any per-card limit at which the worker is told to wrap up: commit, record findings, publish a draft pull request. A value under 0.5 is raised to 0.5. Built-in agents use 0.85. |
 | `agents.max_attempts` | 0 to 10 | Failed attempts at one stage before Belai blocks the card. Not the same as `autonomy.max_attempts`, which retries a workflow step. |
-| `agents.max_continuations` | 0 to 50 | Times a card may go back to be resumed after its budget ran out with progress made, before a person must decide. 5 by default. |
+| `agents.max_continuations` | 0 to 50 | Times a card may go back to be resumed after its budget ran out with progress made, before a person must decide. The agents' own default is 5. |
 | `agents.max_passes_per_item` | 0 to 1,000 | Goal passes per card |
 | `agents.max_wall_minutes` | 0 to 10,080 | Minutes per card |
 | `agents.max_iterations` | 0 to 400 | Tool rounds per pass |

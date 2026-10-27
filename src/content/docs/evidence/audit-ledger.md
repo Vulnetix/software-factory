@@ -4,7 +4,7 @@ nav: Audit ledger
 description: The permanent, hash-chained record of what the factory, its workers and its people did. What goes in it, how to filter it, how to verify the chain, and how to export a signed copy.
 order: 4
 sources: [vdb-site/docs/factory.md, belai/docs/audit.md, vdb-site/api/internal/handler/factory_audit.go, vdb-site/api/internal/handler/factory_audit_store.go, vdb-site/api/internal/handler/belai_audit.go]
-checked: [vdb-site@c29ffeb, belai@b5d33b6]
+checked: [vdb-site@284f1d6, belai@35506b9, website@a31d470]
 updated: 28 Oct 2026
 ---
 
@@ -31,7 +31,7 @@ The factory chain:
 | `session`, `session_deleted` | A session started; a session deleted (a tombstone keeps the chain whole) |
 | `a2a_blackout`, `a2a_withheld`, `a2a` | The A2A blackout switched; a host's relay refused during the blackout (a count, never text); messages sent and received |
 | `memory` | A person changed agent memory: `created`, `edited`, `deleted` or `cleared`, with the note id and scope, never the text |
-| `killswitch` | The kill switch |
+| `killswitch` | The kill switch (listed as `crew_control`) |
 
 The ledger also accepts the dotted names hosts use for the same things, so a filter on either finds both: `card.moved`, `gate.held`, `provider.switch`, `session.started`, `session.deleted` and `setting.changed`.
 
@@ -39,7 +39,7 @@ Host chains record, among others: `worker.started`, `worker.stopped`, `worker.st
 
 ## Who acted
 
-Each entry names an actor and what kind it is: `user` or `person` (a person in the console), `agent`, `host`, `harness` (Belai itself), `engine` or `system` (the factory), `rule` or `budget_rule` (a policy), `webhook` (GitHub), or `web`. Host chains use `human`, `agent`, `harness` and `web`.
+Each entry names an actor and what kind it is: `user` or `person` (a person in the console), `agent`, `host`, `harness` (Belai itself), `engine` or `system` (the factory), `rule` or `budget_rule` (a policy), `webhook` (GitHub), or `web`. Host chains use `human`, `agent`, `harness` and `web`. The API folds these into `user`, `agent`, `host`, `system` and `rule`.
 
 ## Filtering
 
@@ -57,11 +57,11 @@ Each entry links to the events around it.
 
 ## Verifying the chain
 
-**Verify** recomputes the hash of every entry in your chain and each host chain. A broken chain shows where it breaks: the entry, the hash expected and the hash found. A full pass over 50,000 entries takes a few seconds. With `audit.sign` on (the default), the decision ledger is also signed.
+**Verify** recomputes the hash of every entry in your chain and each host chain. A broken chain shows where it breaks: the entry, the hash expected and the hash found.
 
 ## Exporting
 
-**Export signed JSONL** downloads entries for a date range (up to 400 days), one per line in order, ending with a head line signed with an AWS KMS key. Anyone with the public key can check that the export is complete and unchanged.
+**Export signed JSONL** downloads entries for a date range (up to 400 days), one per line in order, ending with a head line that carries the chain head's sequence and hash. The head line is meant to be signed with an AWS KMS key so anyone with the public key can check the export is complete and unchanged; until a key is wired in, its `signature` and `keyId` are null.
 
 ## Settings
 
@@ -71,7 +71,9 @@ Settings › Transparency and audit:
 |---|---|---|
 | `audit.sign` | on | Sign the decision ledger |
 | `audit.calls` | on | Log every model call with its input hash |
-| `audit.weekly_report` | on | A weekly audit report |
+| `audit.weekly_report` | on | A weekly factory report to org owners |
+
+These three are stored and shown in Settings; nothing in the factory reads them yet.
 
 > [!WHY] Why the entry is written with the change
 > If the record were written after the change, a crash in between would leave a change with no record. Writing both in one transaction means either both happened or neither did.

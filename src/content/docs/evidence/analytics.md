@@ -3,7 +3,7 @@ title: Analytics
 description: Token use and activity across your Belai sessions, by day, hour, host, model and agent, read from the sessions your hosts already sync.
 order: 12
 sources: [vdb-site/docs/belai-analytics.md, belai/docs/git-directories-analytics.md, vdb-site/api/internal/handler/belai_analytics.go]
-checked: [vdb-site@c29ffeb, belai@b5d33b6]
+checked: [vdb-site@284f1d6, belai@35506b9]
 updated: 28 Oct 2026
 ---
 
@@ -36,7 +36,7 @@ Every query is scoped to your own sessions.
 
 ## Git directories
 
-Belai also reports which git directories each host works in, so the console can show activity per repository and directory.
+Belai also works out the git directories around a session, read-only: the repository and its top-level layout (file counts per directory), the checkouts next to it, and the directories a `belai rc` daemon offers to the console for starting work.
 
 ## Related
 

@@ -4,7 +4,7 @@ nav: Firewalls
 description: How the Package Firewall and the AI Firewall sit in front of every factory session, how Belai routes model traffic through an AI Firewall, holding unreviewed capabilities for review, and the settings that control it.
 order: 3
 sources: [vdb-site/docs/factory.md, belai/docs/firewall.md, belai/docs/firewall-permissions.md, vdb-site/api/internal/handler/ai_firewall_hold.go]
-checked: [vdb-site@c29ffeb, belai@b5d33b6]
+checked: [vdb-site@284f1d6, belai@35506b9]
 updated: 28 Oct 2026
 ---
 
