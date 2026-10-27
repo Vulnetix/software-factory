@@ -25,7 +25,7 @@ A custom provider is a named entry in your settings:
 |---|---|
 | `kind` | `openai-compatible`, `ollama`, `llama-server`, or a decision backend: `jev` or `systemone` |
 | `base_url` | Where it is |
-| `api` | Its API style |
+| `api` | Its API style: `openai-chat`, `openai-responses` or `anthropic-messages` |
 | `auth` | How the key is sent: `bearer`, `x-api-key` or `cf-aig` (Cloudflare AI Gateway) |
 | `api_key_env` | The environment variable holding the key. The key itself is never in settings. |
 | `models` | Its models, each with `id`, `name`, `context_window`, `max_tokens` and whether it takes `images` |

@@ -120,8 +120,8 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| DELETE | `/v1/belai/commands/{cid}` |  |
-| POST | `/v1/belai/commands/{cid}/ack` |  |
+| DELETE | `/v1/belai/commands/{cid}` | [Session controls from the web](/workforce/remote-control/) |
+| POST | `/v1/belai/commands/{cid}/ack` | [Session controls from the web](/workforce/remote-control/) |
 
 ## /v1/belai/dispatches
 
@@ -215,41 +215,41 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/library/crew-names/check` |  |
-| GET | `/v1/belai/library/crews` |  |
-| POST | `/v1/belai/library/crews` |  |
-| DELETE | `/v1/belai/library/crews/{id}` |  |
-| GET | `/v1/belai/library/crews/{id}` |  |
-| POST | `/v1/belai/library/crews/{id}/rewind` |  |
-| POST | `/v1/belai/library/crews/{id}/versions` |  |
-| DELETE | `/v1/belai/library/crews/{id}/versions/{v}` |  |
-| GET | `/v1/belai/library/crews/{id}/versions/{v}` |  |
-| GET | `/v1/belai/library/files/{sha}` |  |
-| PUT | `/v1/belai/library/files/{sha}` |  |
-| GET | `/v1/belai/library/item-names/check` |  |
-| GET | `/v1/belai/library/items/{kind}` |  |
-| POST | `/v1/belai/library/items/{kind}` |  |
-| DELETE | `/v1/belai/library/items/{kind}/{id}` |  |
-| GET | `/v1/belai/library/items/{kind}/{id}` |  |
-| POST | `/v1/belai/library/items/{kind}/{id}/rewind` |  |
-| POST | `/v1/belai/library/items/{kind}/{id}/versions` |  |
-| DELETE | `/v1/belai/library/items/{kind}/{id}/versions/{v}` |  |
-| GET | `/v1/belai/library/items/{kind}/{id}/versions/{v}` |  |
-| GET | `/v1/belai/library/names/check` |  |
-| GET | `/v1/belai/library/profiles` |  |
-| POST | `/v1/belai/library/profiles` |  |
-| DELETE | `/v1/belai/library/profiles/{id}` |  |
-| GET | `/v1/belai/library/profiles/{id}` |  |
-| POST | `/v1/belai/library/profiles/{id}/rewind` |  |
-| POST | `/v1/belai/library/profiles/{id}/versions` |  |
-| DELETE | `/v1/belai/library/profiles/{id}/versions/{v}` |  |
-| GET | `/v1/belai/library/profiles/{id}/versions/{v}` |  |
-| GET | `/v1/belai/library/repositories` |  |
-| POST | `/v1/belai/library/repositories/catalogue` |  |
-| GET | `/v1/belai/library/scans` |  |
-| GET | `/v1/belai/library/scans/{dispatchId}` |  |
-| GET | `/v1/belai/library/settings` |  |
-| PUT | `/v1/belai/library/settings` |  |
+| GET | `/v1/belai/library/crew-names/check` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/crews` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/library/crews` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| DELETE | `/v1/belai/library/crews/{id}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/crews/{id}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/library/crews/{id}/rewind` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/library/crews/{id}/versions` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| DELETE | `/v1/belai/library/crews/{id}/versions/{v}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/crews/{id}/versions/{v}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/files/{sha}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| PUT | `/v1/belai/library/files/{sha}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/item-names/check` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/items/{kind}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/library/items/{kind}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| DELETE | `/v1/belai/library/items/{kind}/{id}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/items/{kind}/{id}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/library/items/{kind}/{id}/rewind` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/library/items/{kind}/{id}/versions` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| DELETE | `/v1/belai/library/items/{kind}/{id}/versions/{v}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/items/{kind}/{id}/versions/{v}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/names/check` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/profiles` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/library/profiles` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| DELETE | `/v1/belai/library/profiles/{id}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/profiles/{id}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/library/profiles/{id}/rewind` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/library/profiles/{id}/versions` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| DELETE | `/v1/belai/library/profiles/{id}/versions/{v}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/profiles/{id}/versions/{v}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/repositories` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/library/repositories/catalogue` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/scans` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/scans/{dispatchId}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| GET | `/v1/belai/library/settings` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| PUT | `/v1/belai/library/settings` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
 
 ## /v1/belai/memory
 
@@ -261,8 +261,8 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| DELETE | `/v1/belai/prompts/{pid}` |  |
-| POST | `/v1/belai/prompts/{pid}/ack` |  |
+| DELETE | `/v1/belai/prompts/{pid}` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| POST | `/v1/belai/prompts/{pid}/ack` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
 
 ## /v1/belai/repo-hosts
 
@@ -303,7 +303,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/schedules` |  |
+| GET | `/v1/belai/schedules` | [Host schedules](/workforce/host-schedules/) |
 
 ## /v1/belai/sessions
 
@@ -657,91 +657,91 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/messaging/catalogue` |  |
+| GET | `/v1/messaging/catalogue` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
 
 ## /v1/messaging/connections
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/messaging/connections` |  |
-| POST | `/v1/messaging/connections` |  |
-| DELETE | `/v1/messaging/connections/{id}` |  |
-| PATCH | `/v1/messaging/connections/{id}` |  |
-| POST | `/v1/messaging/connections/{id}/rotate-secret` |  |
-| POST | `/v1/messaging/connections/{id}/test` |  |
+| GET | `/v1/messaging/connections` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/connections` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| DELETE | `/v1/messaging/connections/{id}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| PATCH | `/v1/messaging/connections/{id}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/connections/{id}/rotate-secret` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/connections/{id}/test` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
 
 ## /v1/messaging/deliveries
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/messaging/deliveries` |  |
-| POST | `/v1/messaging/deliveries/{id}/retry` |  |
+| GET | `/v1/messaging/deliveries` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/deliveries/{id}/retry` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
 
 ## /v1/messaging/events
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/messaging/events` |  |
+| GET | `/v1/messaging/events` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
 
 ## /v1/messaging/identities
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/messaging/identities` |  |
-| DELETE | `/v1/messaging/identities/{principalUuid}/{provider}` |  |
-| PUT | `/v1/messaging/identities/{principalUuid}/{provider}` |  |
-| POST | `/v1/messaging/identities/auto-link` |  |
+| GET | `/v1/messaging/identities` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| DELETE | `/v1/messaging/identities/{principalUuid}/{provider}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| PUT | `/v1/messaging/identities/{principalUuid}/{provider}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/identities/auto-link` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
 
 ## /v1/messaging/routes
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/messaging/routes` |  |
-| POST | `/v1/messaging/routes` |  |
-| DELETE | `/v1/messaging/routes/{id}` |  |
-| PATCH | `/v1/messaging/routes/{id}` |  |
-| POST | `/v1/messaging/routes/{id}/dry-run` |  |
-| POST | `/v1/messaging/routes/{id}/test` |  |
+| GET | `/v1/messaging/routes` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/routes` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| DELETE | `/v1/messaging/routes/{id}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| PATCH | `/v1/messaging/routes/{id}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/routes/{id}/dry-run` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/routes/{id}/test` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
 
 ## /v1/messaging/templates
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/messaging/templates` |  |
-| POST | `/v1/messaging/templates` |  |
-| DELETE | `/v1/messaging/templates/{id}` |  |
-| GET | `/v1/messaging/templates/{id}` |  |
-| PATCH | `/v1/messaging/templates/{id}` |  |
-| POST | `/v1/messaging/templates/{id}/restore/{v}` |  |
-| GET | `/v1/messaging/templates/{id}/versions/{v}` |  |
-| POST | `/v1/messaging/templates/preview` |  |
+| GET | `/v1/messaging/templates` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/templates` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| DELETE | `/v1/messaging/templates/{id}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| GET | `/v1/messaging/templates/{id}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| PATCH | `/v1/messaging/templates/{id}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/templates/{id}/restore/{v}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| GET | `/v1/messaging/templates/{id}/versions/{v}` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| POST | `/v1/messaging/templates/preview` | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
 
 ## /v1/notifications/actions
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/notifications/actions/describe` |  |
-| POST | `/v1/notifications/actions/execute` |  |
+| GET | `/v1/notifications/actions/describe` | [Notifications](/workforce/notifications/) |
+| POST | `/v1/notifications/actions/execute` | [Notifications](/workforce/notifications/) |
 
 ## /v1/notifications/catalogue
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/notifications/catalogue` |  |
+| GET | `/v1/notifications/catalogue` | [Notifications](/workforce/notifications/) |
 
 ## /v1/notifications/preferences
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/notifications/preferences` |  |
-| PUT | `/v1/notifications/preferences` |  |
+| GET | `/v1/notifications/preferences` | [Notifications](/workforce/notifications/) |
+| PUT | `/v1/notifications/preferences` | [Notifications](/workforce/notifications/) |
 
 ## /v1/notifications/tenant-defaults
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/notifications/tenant-defaults` |  |
-| PUT | `/v1/notifications/tenant-defaults` |  |
+| GET | `/v1/notifications/tenant-defaults` | [Notifications](/workforce/notifications/) |
+| PUT | `/v1/notifications/tenant-defaults` | [Notifications](/workforce/notifications/) |
 
 ## /v1/pix-call/feedback
 
@@ -783,20 +783,20 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| DELETE | `/v1/push/subscriptions` |  |
-| POST | `/v1/push/subscriptions` |  |
+| DELETE | `/v1/push/subscriptions` | [Notifications](/workforce/notifications/) |
+| POST | `/v1/push/subscriptions` | [Notifications](/workforce/notifications/) |
 
 ## /v1/push/test
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/push/test` |  |
+| POST | `/v1/push/test` | [Notifications](/workforce/notifications/) |
 
 ## /v1/push/vapid-public-key
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/push/vapid-public-key` |  |
+| GET | `/v1/push/vapid-public-key` | [Notifications](/workforce/notifications/) |
 
 ## /v1/signing/github
 

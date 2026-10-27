@@ -209,8 +209,8 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="notify.connector"></span>`notify.connector` | enum: `slack`, `teams`, `discord`, `google_chat`, `webhook`, `jira` | `slack` | factory |  |
-| <span id="notify.events"></span>`notify.events` | enum: `escalations_holds_budget`, `everything`, `escalations_only` | `escalations_holds_budget` | factory |  |
+| <span id="notify.connector"></span>`notify.connector` | enum: `slack`, `teams`, `discord`, `google_chat`, `webhook`, `jira` | `slack` | factory | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
+| <span id="notify.events"></span>`notify.events` | enum: `escalations_holds_budget`, `everything`, `escalations_only` | `escalations_holds_budget` | factory | [The messaging centre: connections, routes and templates](/workforce/messaging-centre/) |
 
 ## persistence
 

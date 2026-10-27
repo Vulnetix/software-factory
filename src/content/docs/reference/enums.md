@@ -41,13 +41,13 @@ Explained in [The audit ledger](/evidence/audit-ledger/). Defined in `api/intern
 
 ### belaiBudgetEntryFields
 
-Defined in `api/internal/handler/belai_items_validate_budget.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_validate_budget.go`.
 
 `model`, `provider`, `scope`, `tokens`
 
 ### belaiBudgetFields
 
-Defined in `api/internal/handler/belai_items_validate_budget.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_validate_budget.go`.
 
 `budgets`, `cycle_seconds`, `name`, `warn`
 
@@ -65,13 +65,13 @@ Explained in [What started a session](/runs/sessions/). Defined in `api/internal
 
 ### belaiCommandFieldNames
 
-Defined in `api/internal/handler/belai_items_skill_spec.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_skill_spec.go`.
 
 `allowed-tools`, `argument-hint`, `compatibility`, `description`, `disable-model-invocation`, `license`, `metadata`, `name`
 
 ### belaiCommandKeys
 
-Defined in `api/internal/handler/belai_commands.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_commands.go`.
 
 `f2`, `f3`, `f4`, `f5`, `f6`
 
@@ -137,13 +137,13 @@ Explained in [GitHub sync: issues, projects and labels](/workforce/github-sync/)
 
 ### belaiGitOutcomes
 
-Defined in `api/internal/handler/belai_git.go`.
+Explained in [Host shell, git and web sessions](/workforce/host-shell-and-web/). Defined in `api/internal/handler/belai_git.go`.
 
 `conflict`, `current`, `error`, `skipped`, `synced`
 
 ### belaiHookFields
 
-Defined in `api/internal/handler/belai_items_validate_hook.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_validate_hook.go`.
 
 `description`, `hooks`, `name`
 
@@ -203,7 +203,7 @@ Explained in [Pix Sandboxes](/workforce/pix-sandboxes/). Defined in `api/interna
 
 ### belaiMCPFields
 
-Defined in `api/internal/handler/belai_items_validate_mcp.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_validate_mcp.go`.
 
 `args`, `command`, `disabled`, `env`, `headers`, `name`, `sandbox`, `secrets`, `timeout_ms`, `tools`, `transport`, `url`
 
@@ -221,13 +221,13 @@ Explained in [Crews](/workforce/crews/). Defined in `api/internal/handler/belai_
 
 ### belaiPrefOrigins
 
-Defined in `api/internal/handler/belai_commands.go`.
+Explained in [Session controls from the web](/workforce/remote-control/). Defined in `api/internal/handler/belai_commands.go`.
 
 `default`, `env`, `flag`, `global`, `project`, `project_prefs`, `state`
 
 ### belaiProcessFields
 
-Defined in `api/internal/handler/belai_items_validate_process.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_validate_process.go`.
 
 `args`, `command`, `cwd`, `enabled`, `env`, `name`, `options`, `order`, `stderr`, `stdout`, `user`
 
@@ -239,7 +239,7 @@ Explained in [Providers, keys and secrets](/workforce/providers-and-keys/). Defi
 
 ### belaiPromptFields
 
-Defined in `api/internal/handler/belai_items_validate.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_validate.go`.
 
 `description`, `enabled`, `name`, `order`
 
@@ -263,73 +263,73 @@ Explained in [Providers, keys and secrets](/workforce/providers-and-keys/). Defi
 
 ### belaiRedirectModes
 
-Defined in `api/internal/handler/belai_items_validate_process.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_validate_process.go`.
 
 `append`, `discard`, `file`, `log`, `stdout`
 
 ### belaiRepoFields
 
-Defined in `api/internal/handler/belai_items_validate_repo.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_validate_repo.go`.
 
 `auth`, `depth`, `dir`, `enabled`, `installation_id`, `name`, `refs`, `submodules`, `url`, `visibility`
 
 ### belaiRewriteFields
 
-Defined in `api/internal/handler/belai_items_validate_budget.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_validate_budget.go`.
 
 `enabled`, `name`, `rules`
 
 ### belaiRunEditors
 
-Defined in `api/internal/handler/belai_rc_crewruns.go`.
+Explained in [Crews](/workforce/crews/). Defined in `api/internal/handler/belai_rc_crewruns.go`.
 
 `harness`, `human`, `launch`, `rc`, `supervisor`, `web`, `worker`
 
 ### belaiRunStates
 
-Defined in `api/internal/handler/belai_rc_crewruns.go`.
+Explained in [Crews](/workforce/crews/). Defined in `api/internal/handler/belai_rc_crewruns.go`.
 
 `failed`, `orphaned`, `running`, `stopped`, `stopping`
 
 ### belaiScanNoteKinds
 
-Defined in `api/internal/handler/belai_library_scan.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_library_scan.go`.
 
 `dropped`, `mapped`, `metadata`, `warning`
 
 ### belaiScanVerdicts
 
-Defined in `api/internal/handler/belai_library_scan.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_library_scan.go`.
 
 `invalid`, `valid`, `warning`
 
 ### belaiScheduleStatuses
 
-Defined in `api/internal/handler/belai_schedules_store.go`.
+Explained in [Host schedules](/workforce/host-schedules/). Defined in `api/internal/handler/belai_schedules_store.go`.
 
 `drained`, `error`, `refused_cap`, `refused_cron`, `refused_dir`, `refused_disabled`, `refused_profile`, `skipped_busy`, `started`, `worked`, `worker_failed`
 
 ### belaiSkillFieldNames
 
-Defined in `api/internal/handler/belai_items_skill_spec.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_skill_spec.go`.
 
 `allowed-tools`, `compatibility`, `description`, `disable-model-invocation`, `license`, `metadata`, `name`
 
 ### belaiSkillReservedKeys
 
-Defined in `api/internal/handler/belai_items_skill_spec.go`.
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_items_skill_spec.go`.
 
 `belai.contexts`, `belai.niche`, `belai.resources`, `belai.role`, `belai.updated`
 
 ### belaiSteerEvents
 
-Defined in `api/internal/handler/belai_forge.go`.
+Explained in [Forge requests](/workforce/forge-requests/). Defined in `api/internal/handler/belai_forge.go`.
 
 `failed`, `took_over`, `waiting`
 
 ### belaiSurfaces
 
-Defined in `api/internal/handler/belai_items_validate_provider.go`.
+Explained in [Providers, keys and secrets](/workforce/providers-and-keys/). Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 `anthropic-messages`, `openai-chat`, `openai-responses`
 
@@ -521,19 +521,19 @@ Explained in [Workflow graphs, versions and publishing](/workflows/graphs/). Def
 
 ### factoryNotifyPush
 
-Defined in `api/internal/handler/factory_workflow_graph.go`.
+Explained in [Notifications](/workforce/notifications/). Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 `none`, `owner`
 
 ### factoryNotifySev
 
-Defined in `api/internal/handler/factory_workflow_graph.go`.
+Explained in [Notifications](/workforce/notifications/). Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 `critical`, `info`, `notice`, `warning`
 
 ### factoryNotifyVia
 
-Defined in `api/internal/handler/factory_workflow_graph.go`.
+Explained in [Notifications](/workforce/notifications/). Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 `discord`, `email`, `google_chat`, `push`, `slack`, `teams`, `webhook`
 

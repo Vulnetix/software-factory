@@ -46,6 +46,10 @@ A running worker reads a control file before every claim and round: its model, i
 
 The crew controls the factory and the console can send are: `replicas`, `max_workers`, `pool`, `switch_after`, `final_retry`, `scope_add`, `scope_remove`, `scope_pause`, `scope_weight`, `worker_target`, `worker_effort`, `worker_drain`, `worker_stop`, `worker_auto` and `stop`.
 
+## Crew run states
+
+A crew run is `running`, `stopping`, `stopped`, `orphaned` (its supervisor died and a new one is being started) or `failed`. Every edit to a run records who made it: the `launch`, a `human`, the `supervisor`, the `harness`, the `web`, a `worker`, or `rc`.
+
 ## The control room
 
 `/crew` in the TUI opens the crew control room: a run's workers, cards, providers, scope and faults, all editable while it runs.

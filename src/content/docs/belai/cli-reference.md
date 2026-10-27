@@ -16,21 +16,21 @@ Every `belai` command, subcommand and flag. Flags take one dash or two (`-json` 
 | `belai acp` |  |
 | `belai agent` | [Agents and agent profiles](/workforce/agents/) |
 | `belai` |  |
-| `belai budget` |  |
-| `belai command` |  |
+| `belai budget` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| `belai command` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
 | `belai crew` | [Crews](/workforce/crews/) |
 | `belai kanban` | [The board](/workforce/board/) |
-| `belai library` |  |
+| `belai library` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
 | `belai login` |  |
-| `belai mcp` |  |
+| `belai mcp` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
 | `belai plugin` |  |
-| `belai process` |  |
-| `belai prompt` |  |
-| `belai provider` |  |
-| `belai rc` |  |
-| `belai repo` |  |
-| `belai rewrite` |  |
-| `belai skill` |  |
+| `belai process` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| `belai prompt` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| `belai provider` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| `belai rc` | [Remote control and connected hosts](/workforce/remote-control/) |
+| `belai repo` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| `belai rewrite` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
+| `belai skill` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
 
 ## Subcommands
 

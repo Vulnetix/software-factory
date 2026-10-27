@@ -43,7 +43,7 @@ Only harness facts cross: ids, commit hashes, enums, counts, timestamps and the 
 | `rate_limited`, `server` | GitHub limited or failed the request. It can be tried again. |
 | `expired` | Nobody handled it in time |
 
-The worker reads the outcome and carries on: it records the pull request on its card, or blocks the card with the reason.
+The worker reads the outcome and carries on: it records the pull request on its card, or blocks the card with the reason. While the coordinator works, the worker is told it `took_over` the job, that it is `waiting`, or that it `failed`.
 
 > [!WHY] Why the coordinator never force-pushes
 > The coordinator acts for a worker it cannot see. If the remote branch moved, someone else pushed; overwriting it could lose their work. `non_fast_forward` hands the decision back.

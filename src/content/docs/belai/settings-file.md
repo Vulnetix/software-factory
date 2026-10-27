@@ -30,6 +30,8 @@ Explained in [Package and AI firewalls on factory work](/evidence/firewalls/).
 
 ### gitrepos
 
+Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/).
+
 `auth`, `depth`, `dir`, `enabled`, `installation_id`, `kind`, `name`, `refs`, `submodules`, `url`, `visibility`
 
 ### jev
@@ -41,6 +43,8 @@ Explained in [Package and AI firewalls on factory work](/evidence/firewalls/).
 `align_at`, `allow_at`, `clear_at`, `cover_at`, `deny_at`, `drop_at`, `goal_complete_at`, `goal_not_started_at`, `goal_rival_max`, `hit_at`, `keep_at`, `lead_at`, `mode_confident`, `mode_headless`, `mode_margin`, `option_hit`, `option_lead`, `option_margin`, `route_at`, `simple_at`, `strong_at`, `swap_at`, `topic_at`, `triage_at`, `voice_at`
 
 ### knowledge
+
+Explained in [Knowledge](/workforce/knowledge/).
 
 `max_index_tokens`, `max_project_tokens`, `max_result_tokens`, `topic_budget_docs`, `topic_chunks`
 
