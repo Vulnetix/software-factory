@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import { satteri } from '@astrojs/markdown-satteri';
-import { callouts } from './src/plugins/docs-markdown.mjs';
+import { callouts, pendingLinks } from './src/plugins/docs-markdown.mjs';
 
 export default defineConfig({
   // Keep in sync with public/CNAME and terraform/dns.tf.
@@ -10,7 +10,7 @@ export default defineConfig({
   base: '/',
   trailingSlash: 'always',
   markdown: {
-    processor: satteri({ hastPlugins: [callouts] }),
+    processor: satteri({ hastPlugins: [callouts, pendingLinks] }),
     shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' }, wrap: false },
   },
   vite: { plugins: [tailwindcss()] },

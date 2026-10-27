@@ -6,8 +6,10 @@
 // 2. Every feature that is drafted or verified has its page on disk.
 // 3. Every user-facing atom of a drafted or verified feature (a setting key, an
 //    error code, an enum value, a route, a flag, a slash command, a voice tool,
-//    a template, a default, a console route) is named on that feature's page,
-//    or on a reference page listed in REFERENCE_PAGES.
+//    a template, a default, a console route) is named on that feature's page.
+//    Routes, flags, Belai config keys and templates may instead be named only
+//    on the generated reference pages (REF_KINDS), and a feature can list
+//    atoms it leaves to the reference pages in `refOnly` (patterns).
 //
 // Flags:
 //   --strict           exit 1 on any gap (CI uses this)
@@ -27,8 +29,10 @@ const features = (await import(join(root, 'inventory', 'features.mjs'))).default
 
 const pagePath = (page) => join(root, 'src', 'content', 'docs', `${page}.md`);
 const USER_FACING = new Set(['setting', 'code', 'enum', 'route', 'cli-flag', 'cli-sub', 'cli-cmd', 'tui-cmd', 'voice-tool', 'template', 'default', 'console', 'belai-config']);
-// Generated reference pages list whole atom kinds, so an atom named there
-// counts as documented wherever its feature page is.
+// Generated reference pages list whole atom kinds. For the kinds in REF_KINDS
+// (long lists a guide should summarise, not repeat) an atom named there counts
+// as documented; every other user-facing atom must be on its guide page.
+const REF_KINDS = new Set(['route', 'cli-flag', 'belai-config', 'template']);
 const REFERENCE_PAGES = ['reference/settings', 'reference/validation-codes', 'reference/enums', 'reference/http-api', 'reference/console-routes', 'reference/templates', 'reference/voice-tools', 'belai/cli-reference', 'belai/tui-commands', 'belai/settings-file'];
 
 const problems = [];
@@ -38,6 +42,7 @@ for (const ft of features) {
   ids.add(ft.id);
   ft._re = ft.match.map((p) => new RegExp(p));
   ft._atoms = [];
+  ft._refOnly = (ft.refOnly ?? []).map((p) => new RegExp(p));
 }
 
 const unmatched = [];
@@ -77,7 +82,9 @@ for (const ft of features) {
   for (const a of ft._atoms) {
     if (!USER_FACING.has(a.kind)) continue;
     const n = needle(a);
-    if (!text.includes(n) && !ref.includes(n)) missing.push(`${ft.id} (${ft.page}): ${a.id}`);
+    if (text.includes(n)) continue;
+    if ((REF_KINDS.has(a.kind) || ft._refOnly.some((re) => re.test(a.id))) && ref.includes(n)) continue;
+    missing.push(`${ft.id} (${ft.page}): ${a.id}`);
   }
 }
 

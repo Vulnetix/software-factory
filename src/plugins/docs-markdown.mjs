@@ -14,6 +14,9 @@
 // Heading ids are assigned by Astro after these plugins run, so the "#" links
 // next to headings are added by the page script in src/layouts/Doc.astro.
 
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
 const KINDS = {
   WHY: { cls: 'why', title: 'Why it works this way' },
   CAREFUL: { cls: 'careful', title: 'Careful' },
@@ -42,6 +45,29 @@ export const callouts = {
       while (pChildren[0] && pChildren[0].type === 'element' && pChildren[0].tagName === 'br') pChildren.shift();
       const body = [...(pChildren.length ? [el('p', {}, pChildren)] : []), ...kids.slice(1)];
       return el('aside', { className: ['callout', `callout-${kind.cls}`] }, [el('p', { className: ['callout-title'] }, [txt(m[2].trim() || kind.title)]), ...body]);
+    },
+  },
+};
+
+// pendingLinks: a link to a docs page that has not been written yet renders as
+// plain text, so the site never ships a dead link while sections land one at
+// a time. The link appears by itself on the build after its page exists.
+const DOCS = fileURLToPath(new URL('../content/docs/', import.meta.url));
+const exists = (path) => {
+  const p = path.replace(/^\/|\/$/g, '');
+  if (p === '') return true;
+  return existsSync(`${DOCS}${p}.md`) || !/^[a-z-]+(\/[a-z0-9-]+)+$/.test(p);
+};
+
+export const pendingLinks = {
+  name: 'sf-pending-links',
+  element: {
+    filter: ['a'],
+    visit(node) {
+      const href = node.properties?.href;
+      if (typeof href !== 'string' || !href.startsWith('/') || href.startsWith('//')) return;
+      if (exists(href.split('#')[0])) return;
+      return el('span', { className: ['pending-link'] }, node.children ?? []);
     },
   },
 };
