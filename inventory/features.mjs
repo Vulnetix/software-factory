@@ -193,7 +193,8 @@ const STATUS = {
     'workflow-graphs', 'builder-palette', 'node-trigger', 'node-scan', 'node-decision', 'node-crew', 'node-gate', 'node-human',
     'node-output', 'node-state', 'triggers', 'source-events', 'label-dispatch', 'schedules', 'internal-fire', 'templates',
     'template-search', 'defaults', 'graph-limits', 'validation-codes', 'settings-reference',
-    'runs', 'run-artifacts', 'engine', 'no-host', 'sessions', 'session-trigger', 'handoffs', 'pr-checker'],
+    'runs', 'run-artifacts', 'engine', 'no-host', 'sessions', 'session-trigger', 'handoffs', 'pr-checker',
+    'systemone', 'approvals', 'checkpoints', 'merge-conflicts', 'signing'],
   verified: [],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

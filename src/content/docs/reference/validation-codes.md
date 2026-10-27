@@ -14,7 +14,7 @@ Codes the API returns in `issues[].code` when it refuses a request, and the code
 |---|---|---|
 | <span id="action_conflict"></span>`action_conflict` | In {node}, the event already names the action " | [Triggers and webhook conditions](/workflows/triggers/) |
 | <span id="adapter_unavailable"></span>`adapter_unavailable` | In {node}, that model is not one this workflow can use. Choose clef-flash, clef, jev, tev1, pix-fast or a model from your vault. | [Decision node](/workflows/nodes/decision/) |
-| <span id="already_decided"></span>`already_decided` |  |  |
+| <span id="already_decided"></span>`already_decided` |  | [Human approval](/decisions/human-approval/) |
 | <span id="approver_missing"></span>`approver_missing` | Name who can approve in {node}. Add a team, a member, a role or the repository admins. | [Human node](/workflows/nodes/human/) |
 | <span id="autonomy_above_max"></span>`autonomy_above_max` | autonomy is above autonomy.max ( | [Autonomy levels](/control/autonomy/) |
 | <span id="bad_request"></span>`bad_request` |  |  |

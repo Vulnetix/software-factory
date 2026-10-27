@@ -228,25 +228,25 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="signing.auto_add"></span>`signing.auto_add` | bool. bool: add a new key's public key to the person's GitHub account | `true` | factory |  |
-| <span id="signing.email"></span>`signing.email` | enum: `primary`, `noreply`, `ask` | `primary` | factory |  |
-| <span id="signing.mode"></span>`signing.mode` | enum: `required`, `preferred`, `off` | `preferred` | factory |  |
-| <span id="signing.on_missing"></span>`signing.on_missing` | enum: `readd`, `ask` | `readd` | factory |  |
-| <span id="signing.retire_days"></span>`signing.retire_days` | enum: `30`, `7`, `0`, `-1` | `30` | factory |  |
-| <span id="signing.rotate_days"></span>`signing.rotate_days` | enum: `365`, `180`, `90`, `0` | `365` | factory |  |
+| <span id="signing.auto_add"></span>`signing.auto_add` | bool. bool: add a new key's public key to the person's GitHub account | `true` | factory | [Commit signing](/decisions/commit-signing/) |
+| <span id="signing.email"></span>`signing.email` | enum: `primary`, `noreply`, `ask` | `primary` | factory | [Commit signing](/decisions/commit-signing/) |
+| <span id="signing.mode"></span>`signing.mode` | enum: `required`, `preferred`, `off` | `preferred` | factory | [Commit signing](/decisions/commit-signing/) |
+| <span id="signing.on_missing"></span>`signing.on_missing` | enum: `readd`, `ask` | `readd` | factory | [Commit signing](/decisions/commit-signing/) |
+| <span id="signing.retire_days"></span>`signing.retire_days` | enum: `30`, `7`, `0`, `-1` | `30` | factory | [Commit signing](/decisions/commit-signing/) |
+| <span id="signing.rotate_days"></span>`signing.rotate_days` | enum: `365`, `180`, `90`, `0` | `365` | factory | [Commit signing](/decisions/commit-signing/) |
 
 ## systemone
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="systemone.below_threshold"></span>`systemone.below_threshold` | enum: `escalate_human`, `route_to_fallback_model`, `take_safest_outcome`, `end_run` | `escalate_human` | factory |  |
-| <span id="systemone.fallback"></span>`systemone.fallback` | enum: `jev`, `pix-fast`, `none` | `jev` | factory |  |
-| <span id="systemone.min_confidence"></span>`systemone.min_confidence` | num 0 to 1 | `0.8` | factory |  |
-| <span id="systemone.min_confidence.adapter"></span>`systemone.min_confidence.adapter` | str. str, read-only, identity the threshold was set for | `clef-flash` | factory |  |
-| <span id="systemone.model"></span>`systemone.model` | enum adapter name: `clef-flash`, `clef`, `jev`, `tev1` | `clef-flash` | factory |  |
-| <span id="systemone.on_abstain"></span>`systemone.on_abstain` | enum: `escalate_human`, `retry_once_then_escalate`, `end_run` | `escalate_human` | factory |  |
-| <span id="systemone.override"></span>`systemone.override` | bool. bool: a person may override any decision | `true` | factory |  |
-| <span id="systemone.retention"></span>`systemone.retention` | enum: `full_400d`, `hash_only`, `days_30` | `full_400d` | factory |  |
+| <span id="systemone.below_threshold"></span>`systemone.below_threshold` | enum: `escalate_human`, `route_to_fallback_model`, `take_safest_outcome`, `end_run` | `escalate_human` | factory | [System One decisions](/decisions/system-one/) |
+| <span id="systemone.fallback"></span>`systemone.fallback` | enum: `jev`, `pix-fast`, `none` | `jev` | factory | [System One decisions](/decisions/system-one/) |
+| <span id="systemone.min_confidence"></span>`systemone.min_confidence` | num 0 to 1 | `0.8` | factory | [System One decisions](/decisions/system-one/) |
+| <span id="systemone.min_confidence.adapter"></span>`systemone.min_confidence.adapter` | str. str, read-only, identity the threshold was set for | `clef-flash` | factory | [System One decisions](/decisions/system-one/) |
+| <span id="systemone.model"></span>`systemone.model` | enum adapter name: `clef-flash`, `clef`, `jev`, `tev1` | `clef-flash` | factory | [System One decisions](/decisions/system-one/) |
+| <span id="systemone.on_abstain"></span>`systemone.on_abstain` | enum: `escalate_human`, `retry_once_then_escalate`, `end_run` | `escalate_human` | factory | [System One decisions](/decisions/system-one/) |
+| <span id="systemone.override"></span>`systemone.override` | bool. bool: a person may override any decision | `true` | factory | [System One decisions](/decisions/system-one/) |
+| <span id="systemone.retention"></span>`systemone.retention` | enum: `full_400d`, `hash_only`, `days_30` | `full_400d` | factory | [System One decisions](/decisions/system-one/) |
 
 ## tea
 

@@ -587,7 +587,7 @@ Explained in [Gate node](/workflows/nodes/gate/). Defined in `api/internal/handl
 
 ### factoryRetention
 
-Defined in `api/internal/handler/factory_workflow_graph.go`.
+Explained in [System One decisions](/decisions/system-one/). Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 `days_30`, `full_400d`, `hash_only`
 
@@ -713,7 +713,7 @@ Defined in `api/internal/handler/factory_templates.go`.
 
 ### fcAdapters
 
-Defined in `api/internal/handler/factory_settings_store.go`.
+Explained in [System One decisions](/decisions/system-one/). Defined in `api/internal/handler/factory_settings_store.go`.
 
 `clef`, `clef-flash`, `jev`, `tev1`
 
@@ -743,13 +743,13 @@ Defined in `api/internal/handler/factory_budgets_store.go`.
 
 ### fcNeedKinds
 
-Defined in `api/internal/handler/factory_summary_store.go`.
+Explained in [Checkpoints and Needs you](/decisions/checkpoints/). Defined in `api/internal/handler/factory_summary_store.go`.
 
 `approval`, `card_blocked`, `card_confirm`, `card_held`, `claim_lapsed`, `host_offline`, `issue_external`, `pr_draft`, `pr_ready`, `question`
 
 ### fcpKindOrder
 
-Defined in `api/internal/handler/factory_checkpoints.go`.
+Explained in [Checkpoints and Needs you](/decisions/checkpoints/). Defined in `api/internal/handler/factory_checkpoints.go`.
 
 `approval`, `card_blocked`, `card_confirm`, `card_held`, `claim_lapsed`, `host_offline`, `issue_external`, `pr_draft`, `pr_ready`, `question`
 
@@ -797,7 +797,7 @@ Defined in `api/internal/handler/factory_repos_store.go`.
 
 ### fwApprovalDecidedStates
 
-Defined in `api/internal/handler/factory_approvals.go`.
+Explained in [Human approval](/decisions/human-approval/). Defined in `api/internal/handler/factory_approvals.go`.
 
 `approved`, `cancelled`, `expired`, `rejected`
 

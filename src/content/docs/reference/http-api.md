@@ -344,8 +344,8 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/approvals` |  |
-| POST | `/v1/factory/approvals/{id}/decide` |  |
+| GET | `/v1/factory/approvals` | [Human approval](/decisions/human-approval/) |
+| POST | `/v1/factory/approvals/{id}/decide` | [Human approval](/decisions/human-approval/) |
 
 ## /v1/factory/audit
 
@@ -379,16 +379,16 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/checkpoints` |  |
-| POST | `/v1/factory/checkpoints/conflicts` |  |
-| POST | `/v1/factory/checkpoints/pulls` |  |
+| GET | `/v1/factory/checkpoints` | [Checkpoints and Needs you](/decisions/checkpoints/) |
+| POST | `/v1/factory/checkpoints/conflicts` | [Checkpoints and Needs you](/decisions/checkpoints/) |
+| POST | `/v1/factory/checkpoints/pulls` | [Checkpoints and Needs you](/decisions/checkpoints/) |
 
 ## /v1/factory/decisions
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/decisions` |  |
-| POST | `/v1/factory/decisions/{id}/override` |  |
+| GET | `/v1/factory/decisions` | [System One decisions](/decisions/system-one/) |
+| POST | `/v1/factory/decisions/{id}/override` | [System One decisions](/decisions/system-one/) |
 
 ## /v1/factory/defaults
 
@@ -486,7 +486,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/needs` |  |
+| GET | `/v1/factory/needs` | [Checkpoints and Needs you](/decisions/checkpoints/) |
 
 ## /v1/factory/orgs
 
@@ -592,7 +592,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/systemone/adapters` |  |
+| GET | `/v1/factory/systemone/adapters` | [System One decisions](/decisions/system-one/) |
 
 ## /v1/factory/templates
 
@@ -644,8 +644,8 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/internal/decisions/answers` |  |
-| POST | `/v1/internal/decisions/claim` |  |
+| POST | `/v1/internal/decisions/answers` | [System One decisions](/decisions/system-one/) |
+| POST | `/v1/internal/decisions/claim` | [System One decisions](/decisions/system-one/) |
 
 ## /v1/internal/pix-commander
 
@@ -776,8 +776,8 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/pulls/{owner}/{name}/{number}/conflicts` |  |
-| POST | `/v1/pulls/{owner}/{name}/{number}/resolve` |  |
+| GET | `/v1/pulls/{owner}/{name}/{number}/conflicts` | [Merge conflicts](/decisions/merge-conflicts/) |
+| POST | `/v1/pulls/{owner}/{name}/{number}/resolve` | [Merge conflicts](/decisions/merge-conflicts/) |
 
 ## /v1/push/subscriptions
 
@@ -802,25 +802,25 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/signing/github/authorize` |  |
-| GET | `/v1/signing/github/callback` |  |
+| GET | `/v1/signing/github/authorize` | [Commit signing](/decisions/commit-signing/) |
+| GET | `/v1/signing/github/callback` | [Commit signing](/decisions/commit-signing/) |
 
 ## /v1/signing/keys
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/signing/keys` |  |
-| POST | `/v1/signing/keys` |  |
-| DELETE | `/v1/signing/keys/{id}` |  |
-| POST | `/v1/signing/keys/{id}/check` |  |
-| POST | `/v1/signing/keys/{id}/github` |  |
-| POST | `/v1/signing/keys/{id}/rotate` |  |
+| GET | `/v1/signing/keys` | [Commit signing](/decisions/commit-signing/) |
+| POST | `/v1/signing/keys` | [Commit signing](/decisions/commit-signing/) |
+| DELETE | `/v1/signing/keys/{id}` | [Commit signing](/decisions/commit-signing/) |
+| POST | `/v1/signing/keys/{id}/check` | [Commit signing](/decisions/commit-signing/) |
+| POST | `/v1/signing/keys/{id}/github` | [Commit signing](/decisions/commit-signing/) |
+| POST | `/v1/signing/keys/{id}/rotate` | [Commit signing](/decisions/commit-signing/) |
 
 ## /v1/signing/state
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/signing/state` |  |
+| GET | `/v1/signing/state` | [Commit signing](/decisions/commit-signing/) |
 
 ## /v1/webhooks/github
 
