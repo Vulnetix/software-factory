@@ -13,13 +13,13 @@ Slash commands you type in the Belai terminal UI. Type `/` to see them with comp
 | Command | What it does | Explained in |
 |---|---|---|
 | <span id="add-dir"></span>`/add-dir` | add a directory to the current workspace |  |
-| <span id="agent"></span>`/agent` | pick an agent profile or manage background agents |  |
-| <span id="agents"></span>`/agents` | live agents, workers, profiles and the audit trail |  |
+| <span id="agent"></span>`/agent` | pick an agent profile or manage background agents | [Agents and agent profiles](/workforce/agents/) |
+| <span id="agents"></span>`/agents` | live agents, workers, profiles and the audit trail | [Agents and agent profiles](/workforce/agents/) |
 | <span id="budgets"></span>`/budgets` | manage token budgets per provider and model |  |
 | <span id="clear"></span>`/clear` | start a new session |  |
 | <span id="commands"></span>`/commands` | list custom slash commands; /<name> runs one |  |
 | <span id="compact"></span>`/compact` | summarise the session into a new one |  |
-| <span id="crew"></span>`/crew` | the crew control room: a crew run's workers, cards, providers, scope, faults and audit |  |
+| <span id="crew"></span>`/crew` | the crew control room: a crew run's workers, cards, providers, scope, faults and audit | [Crews](/workforce/crews/) |
 | <span id="diff"></span>`/diff` | read-only pane of the working tree's changes: staged, unstaged and untracked, per-file hunks |  |
 | <span id="execute"></span>`/execute` | leave plan mode and execute the plan |  |
 | <span id="exit"></span>`/exit` | quit and print the resume card |  |
@@ -42,7 +42,7 @@ Slash commands you type in the Belai terminal UI. Type `/` to see them with comp
 | <span id="permissions"></span>`/permissions` | edit tool permissions |  |
 | <span id="plugin"></span>`/plugin` | list, enable, disable or remove plugins (install with belai plugin install) |  |
 | <span id="processes"></span>`/processes` | manage the process library |  |
-| <span id="profile"></span>`/profile` | switch agent profile |  |
+| <span id="profile"></span>`/profile` | switch agent profile | [Agents and agent profiles](/workforce/agents/) |
 | <span id="prompts"></span>`/prompts` | manage the prompt library |  |
 | <span id="providers"></span>`/providers` | manage providers, credentials and local models |  |
 | <span id="rc"></span>`/rc` | remote control: let the Vulnetix website start and drive Belai sessions on this machine |  |

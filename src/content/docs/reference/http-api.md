@@ -47,40 +47,40 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/belai/agent-creators` |  |
-| DELETE | `/v1/belai/agent-creators/{id}` |  |
-| GET | `/v1/belai/agent-creators/{id}` |  |
-| GET | `/v1/belai/agent-creators/{id}/avatar` |  |
+| POST | `/v1/belai/agent-creators` | [The agent builder and drafts](/workforce/agent-builder/) |
+| DELETE | `/v1/belai/agent-creators/{id}` | [The agent builder and drafts](/workforce/agent-builder/) |
+| GET | `/v1/belai/agent-creators/{id}` | [The agent builder and drafts](/workforce/agent-builder/) |
+| GET | `/v1/belai/agent-creators/{id}/avatar` | [The agent builder and drafts](/workforce/agent-builder/) |
 
 ## /v1/belai/agent-drafts
 
 | Method | Path | Explained in |
 |---|---|---|
-| DELETE | `/v1/belai/agent-drafts/{did}` |  |
-| GET | `/v1/belai/agent-drafts/{did}` |  |
-| POST | `/v1/belai/agent-drafts/{did}/result` |  |
+| DELETE | `/v1/belai/agent-drafts/{did}` | [The agent builder and drafts](/workforce/agent-builder/) |
+| GET | `/v1/belai/agent-drafts/{did}` | [The agent builder and drafts](/workforce/agent-builder/) |
+| POST | `/v1/belai/agent-drafts/{did}/result` | [The agent builder and drafts](/workforce/agent-builder/) |
 
 ## /v1/belai/ai
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/ai/status` |  |
+| GET | `/v1/belai/ai/status` | [The agent builder and drafts](/workforce/agent-builder/) |
 
 ## /v1/belai/ai-avatars
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/ai-avatars` |  |
-| POST | `/v1/belai/ai-avatars` |  |
-| DELETE | `/v1/belai/ai-avatars/{id}` |  |
+| GET | `/v1/belai/ai-avatars` | [Agent avatars](/workforce/avatars/) |
+| POST | `/v1/belai/ai-avatars` | [Agent avatars](/workforce/avatars/) |
+| DELETE | `/v1/belai/ai-avatars/{id}` | [Agent avatars](/workforce/avatars/) |
 
 ## /v1/belai/ai-drafts
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/ai-drafts` |  |
-| POST | `/v1/belai/ai-drafts` |  |
-| GET | `/v1/belai/ai-drafts/{did}` |  |
+| GET | `/v1/belai/ai-drafts` | [The agent builder and drafts](/workforce/agent-builder/) |
+| POST | `/v1/belai/ai-drafts` | [The agent builder and drafts](/workforce/agent-builder/) |
+| GET | `/v1/belai/ai-drafts/{did}` | [The agent builder and drafts](/workforce/agent-builder/) |
 
 ## /v1/belai/analytics
 
@@ -338,7 +338,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| POST | `/v1/factory/agents/check` |  |
+| POST | `/v1/factory/agents/check` | [Agents and agent profiles](/workforce/agents/) |
 
 ## /v1/factory/approvals
 
@@ -638,7 +638,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/workforce/usage` | [Usage and spend](/cost/usage/) |
+| GET | `/v1/factory/workforce/usage` | [Agents and agent profiles](/workforce/agents/) |
 
 ## /v1/internal/decisions
 

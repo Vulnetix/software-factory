@@ -98,7 +98,7 @@ f('merge-conflicts', 'decisions', 'decisions/merge-conflicts', 'Merge conflicts'
 f('signing', 'decisions', 'decisions/commit-signing', 'Commit signing', [g('factory_signing'), set('signing.'), r('signing'), gp('signing_'), doc('vdb-site/signing\\.md', 'website/commit-signing\\.md', 'website/pix-sandbox-git-signing\\.md'), ts('sandbox/git-sign', 'sandbox/kms')]);
 
 // ── Workforce ──────────────────────────────────────────────────────────────
-f('agents', 'workforce', 'workforce/agents', 'Agents and agent profiles', [r('factory/(agents|workforce)'), g('factory_workforce'), con('factory-workforce'), e('factoryBuiltinProfiles'), e('factoryWorkerProfiles'), e('belaiProfileFields'), pkg('agentprofile', 'profiles', 'agentstore', 'agentscan'), doc('belai/agent-profiles\\.md', 'belai/agent-stores\\.md'), '^cli-cmd:agent$', sub('agent'), flags('agent'), tui('agent', 'agents', 'profile'), cfg('profiles', 'agents')]);
+f('agents', 'workforce', 'workforce/agents', 'Agents and agent profiles', [r('factory/(agents|workforce)'), g('factory_workforce'), con('factory-workforce'), e('factoryBuiltinProfiles'), e('factoryWorkerProfiles'), pkg('agentprofile', 'profiles', 'agentstore', 'agentscan'), doc('belai/agent-profiles\\.md', 'belai/agent-stores\\.md'), '^cli-cmd:agent$', sub('agent'), flags('agent'), tui('agent', 'agents', 'profile'), cfg('profiles', 'agents')]);
 f('agent-builder', 'workforce', 'workforce/agent-builder', 'The agent builder and drafts', [r('belai/(agent-creators|agent-drafts|ai-drafts|ai)( |/|$)'), g('belai_ai'), g('belai_ai_draft'), g('belai_drafts'), con('factory-agent'), pkg('agentdraft')]);
 f('agent-import', 'workforce', 'workforce/agent-import', 'Importing agents and agent files', [pkg('agentimport', 'agentfiles'), sub('agentfiles'), doc('belai/agent-import\\.md')]);
 f('avatars', 'workforce', 'workforce/avatars', 'Agent avatars', [r('belai/ai-avatars'), g('belai_ai_avatar'), gp('belai_avatar'), pkg('avatar', 'pix')]);
@@ -116,7 +116,7 @@ f('memory', 'workforce', 'workforce/memory', 'Agent and repository memory', [r('
 f('a2a', 'workforce', 'workforce/a2a-messaging', 'A2A messaging and blackout', [r('factory/a2a'), r('belai/a2a'), g('belai_a2a'), pkg('a2a', 'a2alink'), doc('belai/a2a\\.md', 'website/a2a-messaging\\.md')]);
 f('forge', 'workforce', 'workforce/forge-requests', 'Forge requests', [g('belai_forge'), e('belaiForge\\w+'), pkg('forge'), doc('vdb-site/belai-forge-requests\\.md')]);
 f('library', 'workforce', 'workforce/library', 'The library: skills, prompts, commands, processes, repos and more', [r('belai/(library|prompts)'), gp('belai_library'), gp('belai_items'), con('belai-library'), e('belai(RedirectModes|Skill\\w+|Prompt\\w+|Command\\w+|Process\\w+|Repo\\w+|Rewrite\\w+|Hook\\w+|MCP\\w+|Budget\\w+|ScanNoteKinds|ScanVerdicts)'), pkg('libitem', 'libstore', 'libscan', 'libinstall', 'promptlib', 'commandlib', 'processlib', 'filelib', 'skills'), doc('belai/library-items\\.md', 'belai/skills\\.md', 'vdb-site/belai-library-items\\.md', 'vdb-site/belai-library-settings\\.md', 'belai/harnesses\\.md'), sub('lib'), flags('library'), flags('repo'), sub('repo'), '^cli-cmd:(skill|prompt|command|process|repo|budget|rewrite|provider|mcp|library)$', tui('skills', 'prompts', 'commands', 'processes'), cfg('gitrepos')]);
-f('providers', 'workforce', 'workforce/providers-and-keys', 'Providers, keys and secrets', [g('belai_provider_keys'), g('belai_mcp_secrets'), e('belaiProvider\\w+'), e('belaiBuiltinProviders'), e('belaiForbiddenFirewallHeaders'), pkg('provider', 'credentials', 'vaultenv', 'copilotauth', 'kiroauth', 'kiromodels'), doc('belai/vault-env\\.md', 'belai/kiro\\.md'), cfg('providers'), tui('providers')]);
+f('providers', 'workforce', 'workforce/providers-and-keys', 'Providers, keys and secrets', [g('belai_provider_keys'), g('belai_mcp_secrets'), e('belaiProvider\\w+'), e('belaiProfileFields'), e('belaiBuiltinProviders'), e('belaiForbiddenFirewallHeaders'), pkg('provider', 'credentials', 'vaultenv', 'copilotauth', 'kiroauth', 'kiromodels'), doc('belai/vault-env\\.md', 'belai/kiro\\.md'), cfg('providers'), tui('providers')]);
 f('asks', 'workforce', 'workforce/questions-and-permissions', 'Agent questions, answers and permission offers', [r('belai/answers'), g('belai_answers'), g('belai_open_asks'), g('belai_permission_offers'), e('belaiAnswerKinds'), e('belaiAskKindText'), pkg('clarify', 'webask', 'permissions'), doc('belai/firewall-permissions\\.md'), cfg('permissions'), tui('permissions', 'inbox'), g('factory_events_unanswered')]);
 f('web-controls', 'workforce', 'workforce/remote-control', 'Session controls from the web', [r('belai/commands'), g('belai_commands'), e('belaiPrefOrigins'), e('belaiCommandKeys'), pkg('sessionctl')], { foundIn: '2026-10-27' });
 f('messaging', 'workforce', 'workforce/messaging-centre', 'The messaging centre: connections, routes and templates', [r('messaging'), gp('messaging_'), set('notify.')], { foundIn: '2026-10-28' });
@@ -198,7 +198,8 @@ const STATUS = {
     'systemone', 'approvals', 'checkpoints', 'merge-conflicts', 'signing',
     'budgets', 'agent-budgets', 'model-routing', 'usage', 'github-quota',
     'cockpit', 'trust', 'firewalls', 'audit', 'events', 'facts', 'lifecycle', 'delivery', 'sightings', 'attribution', 'vex', 'analytics',
-    'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops'],
+    'pix-call', 'voice-tools', 'call-history', 'pix-ask', 'stops',
+    'agents', 'agent-builder', 'agent-import', 'avatars', 'crews', 'role-manager'],
   verified: [],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

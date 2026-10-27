@@ -77,7 +77,7 @@ Defined in `api/internal/handler/belai_commands.go`.
 
 ### belaiCrewControlOps
 
-Defined in `api/internal/handler/belai_rc_crewruns.go`.
+Explained in [Crews](/workforce/crews/). Defined in `api/internal/handler/belai_rc_crewruns.go`.
 
 `final_retry`, `max_workers`, `pool`, `replicas`, `scope_add`, `scope_pause`, `scope_remove`, `scope_weight`, `stop`, `switch_after`, `worker_auto`, `worker_drain`, `worker_effort`, `worker_stop`, `worker_target`
 
@@ -377,7 +377,7 @@ Explained in [Decision node](/workflows/nodes/decision/). Defined in `api/intern
 
 ### factoryBuiltinProfiles
 
-Defined in `api/internal/handler/factory_templates.go`.
+Explained in [Agents and agent profiles](/workforce/agents/). Defined in `api/internal/handler/factory_templates.go`.
 
 `ai-capability-reviewer`, `alert-triager`, `builder`, `ci-explainer`, `debug`, `dep-scope`, `dep-strategist`, `deps-apple`, `deps-ci`, `deps-containers`, `deps-dotnet`, `deps-go`, `deps-javascript`, `deps-jvm`, `deps-other`, `deps-php`, `deps-python`, `deps-ruby`, `deps-rust`, `designer`, `egress-reviewer`, `fanout`, `flaky-hunter`, `lint-fixer`, `package-reviewer`, `patcher`, `plan-handoff`, `planner`, `pr-reviewer`, `pr-steward`, `release-steward`, `repo-onboarder`, `repro`, `reviewer`, `scout`, `secret-triager`, `tea-publisher`, `test-fixer`, `ticket-writer`, `triage`, `triage-vulns`, `verifier`, `vuln-scout`, `vulnetix-scanner`, `workflow-hardener`
 
@@ -707,7 +707,7 @@ Explained in [Triggers and webhook conditions](/workflows/triggers/). Defined in
 
 ### factoryWorkerProfiles
 
-Defined in `api/internal/handler/factory_templates.go`.
+Explained in [Agents and agent profiles](/workforce/agents/). Defined in `api/internal/handler/factory_templates.go`.
 
 `belai:ai-capability-reviewer`, `belai:alert-triager`, `belai:builder`, `belai:ci-explainer`, `belai:dep-scope`, `belai:dep-strategist`, `belai:designer`, `belai:egress-reviewer`, `belai:flaky-hunter`, `belai:lint-fixer`, `belai:package-reviewer`, `belai:patcher`, `belai:planner`, `belai:pr-reviewer`, `belai:pr-steward`, `belai:release-steward`, `belai:repo-onboarder`, `belai:repro`, `belai:reviewer`, `belai:scout`, `belai:secret-triager`, `belai:tea-publisher`, `belai:test-fixer`, `belai:ticket-writer`, `belai:verifier`, `belai:vuln-scout`, `belai:workflow-hardener`
 

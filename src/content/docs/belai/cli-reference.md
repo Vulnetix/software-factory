@@ -14,11 +14,11 @@ Every `belai` command, subcommand and flag. Flags take one dash or two (`-json` 
 | Command | Explained in |
 |---|---|
 | `belai acp` |  |
-| `belai agent` |  |
+| `belai agent` | [Agents and agent profiles](/workforce/agents/) |
 | `belai` |  |
 | `belai budget` |  |
 | `belai command` |  |
-| `belai crew` |  |
+| `belai crew` | [Crews](/workforce/crews/) |
 | `belai kanban` |  |
 | `belai library` |  |
 | `belai login` |  |

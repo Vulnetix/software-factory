@@ -14,7 +14,7 @@ Pages in the Vulnetix console that belong to Software Factory. All are under `ht
 | [`/call`](https://www.vulnetix.com/call) | [Calling Pix](/pix/calling-pix/) |
 | [`/resolve/belai-hosts`](https://www.vulnetix.com/resolve/belai-hosts) |  |
 | [`/resolve/belai-library`](https://www.vulnetix.com/resolve/belai-library) |  |
-| [`/resolve/factory-agent`](https://www.vulnetix.com/resolve/factory-agent) |  |
+| [`/resolve/factory-agent`](https://www.vulnetix.com/resolve/factory-agent) | [The agent builder and drafts](/workforce/agent-builder/) |
 | [`/resolve/factory-audit`](https://www.vulnetix.com/resolve/factory-audit) | [The audit ledger](/evidence/audit-ledger/) |
 | [`/resolve/factory-board`](https://www.vulnetix.com/resolve/factory-board) |  |
 | [`/resolve/factory-budgets`](https://www.vulnetix.com/resolve/factory-budgets) | [Budgets](/cost/budgets/) |
@@ -35,4 +35,4 @@ Pages in the Vulnetix console that belong to Software Factory. All are under `ht
 | [`/resolve/factory-templates`](https://www.vulnetix.com/resolve/factory-templates) | [Templates](/workflows/templates/) |
 | [`/resolve/factory-trust`](https://www.vulnetix.com/resolve/factory-trust) | [Trust and SLSA](/evidence/trust-and-slsa/) |
 | [`/resolve/factory-workflows`](https://www.vulnetix.com/resolve/factory-workflows) | [Workflow graphs, versions and publishing](/workflows/graphs/) |
-| [`/resolve/factory-workforce`](https://www.vulnetix.com/resolve/factory-workforce) |  |
+| [`/resolve/factory-workforce`](https://www.vulnetix.com/resolve/factory-workforce) | [Agents and agent profiles](/workforce/agents/) |
