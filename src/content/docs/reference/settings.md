@@ -27,7 +27,7 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="approve.sensitive_paths"></span>`approve.sensitive_paths` | list. list of path globs (feGlobMatch dialect) that stop an approval, besides the built-in list | `[]any{` | factory |  |
+| <span id="approve.sensitive_paths"></span>`approve.sensitive_paths` | list. list of path globs (feGlobMatch dialect) that stop an approval, besides the built-in list | `[]` | factory |  |
 
 ## audit
 
@@ -67,7 +67,7 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="budget.alerts"></span>`budget.alerts` | list. list of int 1 to 100, ascending | `[]any{50` | factory | [Budgets](/cost/budgets/) |
+| <span id="budget.alerts"></span>`budget.alerts` | list. list of int 1 to 100, ascending | `[50, 80, 100]` | factory | [Budgets](/cost/budgets/) |
 | <span id="budget.factory_share"></span>`budget.factory_share` | pct. pct of the Pix allowance | `75` | factory | [Budgets](/cost/budgets/) |
 | <span id="budget.month"></span>`budget.month` | int 0 to 1e15. int tokens, all providers | `30000000` | factory | [Budgets](/cost/budgets/) |
 | <span id="budget.on_exceed"></span>`budget.on_exceed` | enum: `pause_run`, `downgrade_to_fast`, `switch_to_pix_allocation`, `escalate_human`, `hard_stop` | `switch_to_pix_allocation` | factory | [Budgets](/cost/budgets/) |
@@ -234,7 +234,7 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 | <span id="pix.egressMode"></span>`pix.egressMode` | enum. enum `deny_except_allow`, `allow_all_logged` | `deny_except_allow` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
 | <span id="pix.extensionMode"></span>`pix.extensionMode` | enum: `packs_only`, `any_indexed` | `packs_only` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
 | <span id="pix.jevDailyCap"></span>`pix.jevDailyCap` | int 0 to 100_000_000. int, calls per day, shared with the sandbox | `2000` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
-| <span id="pix.maintenance"></span>`pix.maintenance` | list. list of `{days:["sun"],start:"02:00",end:"04:00",tz:"Australia/Melbourne"}`, same value as `PUT /v1/belai/sandboxes/{id}/maintenance-window` | `[]any{` | sandbox | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
+| <span id="pix.maintenance"></span>`pix.maintenance` | list. list of `{days:["sun"],start:"02:00",end:"04:00",tz:"Australia/Melbourne"}`, same value as `PUT /v1/belai/sandboxes/{id}/maintenance-window` | `[]` | sandbox | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
 | <span id="pix.reservePercent"></span>`pix.reservePercent` | pct. pct (same value as budgets `reserveInteractivePct`) | `20` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
 | <span id="pix.size"></span>`pix.size` | enum. enum `small`, `medium`, `large` | `medium` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
 | <span id="pix.versionPolicy"></span>`pix.versionPolicy` | enum. enum `safest`, `stable`, `latest`, `rolling`, `pinned` (the first four are the Safe Harbour picks, see `pix-sandbox-safe-harbour.md`) | `safest` | sandbox | [Pix Sandboxes](/workforce/pix-sandboxes/) |
@@ -250,7 +250,7 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="schedules.blackout"></span>`schedules.blackout` | list. list of `{from:{day,time},to:{day,time},label}`; `day` is `mon` to `sun`, `time` `HH:MM` | `[]any{` | factory | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
+| <span id="schedules.blackout"></span>`schedules.blackout` | list. list of `{from:{day,time},to:{day,time},label}`; `day` is `mon` to `sun`, `time` `HH:MM` | `[]` | factory | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
 | <span id="schedules.missed"></span>`schedules.missed` | enum: `run_once`, `skip`, `run_all` | `run_once` | factory | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
 | <span id="schedules.tz"></span>`schedules.tz` | tz. IANA zone | `UTC` | factory | [Holds, maintenance windows and blackouts](/control/holds-and-blackouts/) |
 
@@ -261,7 +261,7 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 | <span id="scope.archived"></span>`scope.archived` | bool | `false` | factory | [Managed orgs and repositories](/control/managed-scope/) |
 | <span id="scope.dependencies"></span>`scope.dependencies` | bool | `false` | factory | [Managed orgs and repositories](/control/managed-scope/) |
 | <span id="scope.interest"></span>`scope.interest` | enum: `any_signal`, `scanned_or_pix`, `watched_only` | `any_signal` | factory | [Managed orgs and repositories](/control/managed-scope/) |
-| <span id="scope.orgs"></span>`scope.orgs` | list. `"all_active"` or list of installation logins; same write as `PUT /orgs/{id}` | `[]any{` | factory | [Managed orgs and repositories](/control/managed-scope/) |
+| <span id="scope.orgs"></span>`scope.orgs` | list. `"all_active"` or list of installation logins; same write as `PUT /orgs/{id}` | `[]` | factory | [Managed orgs and repositories](/control/managed-scope/) |
 | <span id="scope.sync"></span>`scope.sync` | enum: `6h`, `1h`, `webhook_only` | `6h` | factory | [Managed orgs and repositories](/control/managed-scope/) |
 
 ## security
@@ -270,7 +270,7 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 |---|---|---|---|---|
 | <span id="security.evidence"></span>`security.evidence` | enum: `cdx_slsa`, `sbom_only` | `cdx_slsa` | factory | [Trust and SLSA](/evidence/trust-and-slsa/) |
 | <span id="security.scanners"></span>`security.scanners` | enum: `minimum`, `all`, `custom` | `minimum` | factory | [Trust and SLSA](/evidence/trust-and-slsa/) |
-| <span id="security.scanners.custom"></span>`security.scanners.custom` | list | `[]any{` | factory | [Trust and SLSA](/evidence/trust-and-slsa/) |
+| <span id="security.scanners.custom"></span>`security.scanners.custom` | list | `[]` | factory | [Trust and SLSA](/evidence/trust-and-slsa/) |
 | <span id="security.slsa_min"></span>`security.slsa_min` | enum: `L1`, `L2`, `L3` | `L3` | factory | [Trust and SLSA](/evidence/trust-and-slsa/) |
 
 ## signing
@@ -307,5 +307,5 @@ Sections: [agents](#agents) · [approve](#approve) · [audit](#audit) · [autono
 
 | Key | Type and values | Default | Stored | Explained in |
 |---|---|---|---|---|
-| <span id="vault.grant"></span>`vault.grant` | object. `{"mode":"specific","entries":["ve_1"]}` for the `pix_sandbox` surface; `mode` is `specific`, `all` or `all_except` | `map[string]any{"mode": "all` | vault |  |
+| <span id="vault.grant"></span>`vault.grant` | object. `{"mode":"specific","entries":["ve_1"]}` for the `pix_sandbox` surface; `mode` is `specific`, `all` or `all_except` | `{"mode": "all"}` | vault |  |
 | <span id="vault.on_error"></span>`vault.on_error` | enum: `pause_affected_workflows`, `fall_back_to_pix` | `pause_affected_workflows` | factory |  |

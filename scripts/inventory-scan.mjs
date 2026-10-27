@@ -139,8 +139,8 @@ function scanGoSemantics() {
       } else if ((m = line.match(/\{Key: "([\w.]+)", Kind: fcK(\w+)(.*)\}/))) {
         const d = { type: m[2].toLowerCase() };
         const min = m[3].match(/Min: (-?[\d._e+]+)/); const max = m[3].match(/Max: (-?[\d._e+]+)/);
-        const def = m[3].match(/Default: ("[^"]*"|[^,}]+)/); const st = m[3].match(/Store: "(\w+)"/);
-        if (min) d.min = min[1]; if (max) d.max = max[1]; if (def) d.default = def[1].replace(/^"|"$/g, '').replace(/^\[\]any\{\}$/, '[]').replace(/^(\d+(?:_\d+)+)$/, (x) => x.replace(/_/g, ''));
+        const def = m[3].match(/Default: ((?:\[\]|map\[[\w.]+\])[\w.]+\{[^}]*\}|"[^"]*"|[^,}]+)/); const st = m[3].match(/Store: "(\w+)"/);
+        if (min) d.min = min[1]; if (max) d.max = max[1]; if (def) d.default = def[1].replace(/^"|"$/g, '').replace(/^\[\][\w.]+\{(.*)\}$/, '[$1]').replace(/^map\[[\w.]+\][\w.]+\{(.*)\}$/, '{$1}').replace(/^(\d+(?:_\d+)+)$/, (x) => x.replace(/_/g, ''));
         if (/Locked: true/.test(m[3])) d.locked = true; if (st) d.store = st[1];
         atom('setting', m[1], 'vdb-site', file, { detail: d });
       } else if (isStore && /fdSettingSpecs\(\)/.test(line)) {

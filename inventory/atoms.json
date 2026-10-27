@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-27T21:32:43.388Z",
+ "generatedAt": "2026-10-27T22:06:37.974Z",
  "repos": {
   "vdb-site": "79e503724bda281bf63c8b30c73605f429fc728d",
   "website": "3f90fa20884e9b2ffbfc1384a022d18d011c3708",
@@ -23281,7 +23281,7 @@
     "docDefault": "none",
     "store": "factory",
     "type": "list",
-    "default": "[]any{"
+    "default": "[]"
    }
   },
   {
@@ -23649,7 +23649,7 @@
     "docDefault": "`[50,80,100]`",
     "store": "factory",
     "type": "list",
-    "default": "[]any{50"
+    "default": "[50, 80, 100]"
    }
   },
   {
@@ -25329,7 +25329,7 @@
     "docDefault": "none",
     "store": "sandbox",
     "type": "list",
-    "default": "[]any{"
+    "default": "[]"
    }
   },
   {
@@ -25425,7 +25425,7 @@
     "docDefault": "none",
     "store": "factory",
     "type": "list",
-    "default": "[]any{"
+    "default": "[]"
    }
   },
   {
@@ -25531,7 +25531,7 @@
     "docDefault": "managed orgs",
     "store": "factory",
     "type": "list",
-    "default": "[]any{"
+    "default": "[]"
    }
   },
   {
@@ -25605,7 +25605,7 @@
    ],
    "detail": {
     "type": "list",
-    "default": "[]any{",
+    "default": "[]",
     "store": "factory"
    }
   },
@@ -25935,7 +25935,7 @@
     "docDefault": "`all`",
     "store": "vault",
     "type": "object",
-    "default": "map[string]any{\"mode\": \"all"
+    "default": "{\"mode\": \"all\"}"
    }
   },
   {
