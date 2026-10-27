@@ -13,7 +13,7 @@ Every `belai` command, subcommand and flag. Flags take one dash or two (`-json` 
 
 | Command | Explained in |
 |---|---|
-| `belai acp` |  |
+| `belai acp` | [Editors over ACP](/belai/editors-acp/) |
 | `belai agent` | [Agents and agent profiles](/workforce/agents/) |
 | `belai` |  |
 | `belai budget` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
@@ -21,9 +21,9 @@ Every `belai` command, subcommand and flag. Flags take one dash or two (`-json` 
 | `belai crew` | [Crews](/workforce/crews/) |
 | `belai kanban` | [The board](/workforce/board/) |
 | `belai library` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
-| `belai login` |  |
+| `belai login` | [Install, update and sign in](/belai/install-and-sign-in/) |
 | `belai mcp` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
-| `belai plugin` |  |
+| `belai plugin` | [Plugins](/belai/plugins/) |
 | `belai process` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
 | `belai prompt` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |
 | `belai provider` | [The library: skills, prompts, commands, processes, repos and more](/workforce/library/) |

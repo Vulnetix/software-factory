@@ -71,7 +71,7 @@ Explained in [The library: skills, prompts, commands, processes, repos and more]
 
 ### belaiCommandKeys
 
-Explained in [The library: skills, prompts, commands, processes, repos and more](/workforce/library/). Defined in `api/internal/handler/belai_commands.go`.
+Explained in [Session controls from the web](/workforce/remote-control/). Defined in `api/internal/handler/belai_commands.go`.
 
 `f2`, `f3`, `f4`, `f5`, `f6`
 

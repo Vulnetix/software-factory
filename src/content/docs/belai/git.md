@@ -1,0 +1,36 @@
+---
+title: Git sync and repository info
+nav: Git
+description: How Belai keeps a session's branch up to date with the default branch, what it tells the model about the repository, and per-project preferences.
+order: 16
+sources: [belai/docs/git-sync.md, belai/internal/gitinfo, belai/internal/projectregistry, belai/internal/config]
+checked: [belai@b5d33b6]
+updated: 28 Oct 2026
+---
+
+## Git sync
+
+Before a session starts work, Belai brings its branch up to date with the default branch, so the work does not start from a base that has moved on. It is on by default.
+
+It runs before a turn, never during one: on the first turn of a session, and on the first turn after a commit. It first checks the repository is quiet (no merge or rebase in progress, nothing uncommitted in the way); if not, it skips and says why.
+
+| Control | Effect |
+|---|---|
+| `/gitsync on\|off` | This session |
+| `/gitsync global on\|off` | Your default |
+| `git.sync` | The setting |
+| `-no-git-sync` | One run from the command line |
+
+A web session has a **Sync with main** switch for the same thing.
+
+## What Belai knows about the repository
+
+Belai reads the repository's remotes, branch and recent state and tells the model, so it names the right branch and remote. It also detects the repository's build, test and lint commands. See [Tests and lint](/belai/tests-and-lint/).
+
+## Project preferences
+
+Each directory has its own preferences: mode, guardrails, ask, the display switches, tests after a turn, language servers and Jev. They live in `.vulnetix/settings.json` and Belai's project registry, and a remote control host can let the console edit them. See [Remote control](/workforce/remote-control/).
+
+## Auto-commit
+
+With `auto_commit_per_task` on, the TUI commits each completed goal's changed files as one conventional commit. It is off by default, works only in the interactive TUI, and can be set only in your global settings: a cloned repository's settings can never make Belai commit.

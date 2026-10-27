@@ -12,13 +12,19 @@ Keys Belai reads from its settings files, grouped by the part of the configurati
 
 ### bashrewrite
 
+Explained in [Built-in tools](/belai/tools/).
+
 `enabled`, `match`, `replace`, `rules`
 
 ### budgets
 
+Explained in [Token budgets and session intelligence](/belai/token-budgets/).
+
 `model`, `plan_limits`, `provider`, `scope`, `tokens`
 
 ### codemode
+
+Explained in [Built-in tools](/belai/tools/).
 
 `enabled`, `max_calls`, `max_output_bytes`, `model`, `provider`, `tier`, `timeout_ms`
 
@@ -36,9 +42,13 @@ Explained in [The library: skills, prompts, commands, processes, repos and more]
 
 ### jev
 
+Explained in [Guardrails, classifier, sandbox and trust](/belai/guardrails/).
+
 `jobs`, `locate_previews`, `thresholds`
 
 ### jevthresholds
+
+Explained in [Guardrails, classifier, sandbox and trust](/belai/guardrails/).
 
 `align_at`, `allow_at`, `clear_at`, `cover_at`, `deny_at`, `drop_at`, `goal_complete_at`, `goal_not_started_at`, `goal_rival_max`, `hit_at`, `keep_at`, `lead_at`, `mode_confident`, `mode_headless`, `mode_margin`, `option_hit`, `option_lead`, `option_margin`, `route_at`, `simple_at`, `strong_at`, `swap_at`, `topic_at`, `triage_at`, `voice_at`
 
@@ -50,13 +60,19 @@ Explained in [Knowledge](/workforce/knowledge/).
 
 ### lsp
 
+Explained in [Language servers](/belai/lsp/).
+
 `classify_diagnostics`, `enabled`, `fallback`, `languages`, `max_diagnostics`, `max_repair_attempts`, `servers`, `timeout_ms`
 
 ### mcp
 
+Explained in [MCP servers](/belai/mcp/).
+
 `clef`, `enabled`, `skip_ask`, `skip_ask_at`, `vulnetix`
 
 ### offload
+
+Explained in [Sessions: resume, export, compact and rename](/belai/sessions/).
 
 `enabled`, `preview_tokens`, `threshold_tokens`
 
@@ -67,6 +83,8 @@ Explained in [Agent questions, answers and permission offers](/workforce/questio
 `allow`, `ask`, `block`, `deny`
 
 ### projectprefs
+
+Explained in [Git sync and repository info](/belai/git/).
 
 `agent`, `ask_permission`, `auto_commit_per_task`, `caveman`, `enabled`, `firewall_enabled`, `guardrails`, `jev`, `jobs`, `languages`, `layout`, `lsp`, `mode`, `on_fail`, `post_end`, `show_edits`, `show_internal_work`, `show_reasoning`, `show_tool_calls`, `tests`, `thresholds`
 
