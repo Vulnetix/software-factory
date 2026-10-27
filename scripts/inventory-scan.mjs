@@ -17,6 +17,7 @@
 import { readFileSync, readdirSync, statSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, basename, dirname, relative } from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { settingSpec, goSubcommands } from './lib/go-source.mjs';
 
 const root = new URL('..', import.meta.url).pathname;
 const repoPath = (name) => process.env[`SF_SRC_${name.toUpperCase().replace(/-/g, '_')}`] ?? join(root, '..', name);
@@ -137,11 +138,7 @@ function scanGoSemantics() {
       } else if ((m = line.match(/fcDurSpec\("([\w.]+)", "([^"]*)"\)/))) {
         atom('setting', m[1], 'vdb-site', file, { detail: { type: 'duration', default: m[2], store: 'factory' } });
       } else if ((m = line.match(/\{Key: "([\w.]+)", Kind: fcK(\w+)(.*)\}/))) {
-        const d = { type: m[2].toLowerCase() };
-        const min = m[3].match(/Min: (-?[\d._e+]+)/); const max = m[3].match(/Max: (-?[\d._e+]+)/);
-        const def = m[3].match(/Default: ((?:\[\]|map\[[\w.]+\])[\w.]+\{[^}]*\}|"[^"]*"|[^,}]+)/); const st = m[3].match(/Store: "(\w+)"/);
-        if (min) d.min = min[1]; if (max) d.max = max[1]; if (def) d.default = def[1].replace(/^"|"$/g, '').replace(/^\[\][\w.]+\{(.*)\}$/, '[$1]').replace(/^map\[[\w.]+\][\w.]+\{(.*)\}$/, '{$1}').replace(/^(\d+(?:_\d+)+)$/, (x) => x.replace(/_/g, ''));
-        if (/Locked: true/.test(m[3])) d.locked = true; if (st) d.store = st[1];
+        const d = { type: m[2].toLowerCase(), ...settingSpec(m[3]) };
         atom('setting', m[1], 'vdb-site', file, { detail: d });
       } else if (isStore && /fdSettingSpecs\(\)/.test(line)) {
         // The defaults' switches are built in a loop: defaults.<key>.enabled.
@@ -251,21 +248,10 @@ function scanBelai() {
   if (existsSync(help)) {
     for (const m of read(help).matchAll(/^\s*\{"([a-z][a-z0-9-]*)", "[^"]*"\},/gm)) atom('cli-cmd', m[1], 'belai', 'cmd/belai/help.go');
   }
-  // A file's subcommands belong to the command that dispatches to it; most
-  // files are named for their command, a few are not.
-  const SUB_PARENT = { agentfiles: 'agent crew' };
-  const subParent = (f) => { const n = f.replace(/(cmd)?\.go$/, ''); return SUB_PARENT[n] ?? n; };
   for (const f of ls(cmd, /\.go$/)) {
     const src = read(join(cmd, f));
     // Subcommands are switch cases on the first argument: case "add":.
-    if (f !== 'main.go') {
-      for (const m of src.matchAll(/^\tcase ("[a-z][a-z0-9-]*"(?:, "[a-z][a-z0-9-]*")*):/gm)) {
-        // A switch on a flag's value (switch *backend) lists flag values, not subcommands.
-        const sw = [...src.slice(0, m.index).matchAll(/^\tswitch (.*) \{$/gm)].pop();
-        if (sw && /\*[a-zA-Z]/.test(sw[1])) continue;
-        for (const v of m[1].matchAll(/"([^"]+)"/g)) atom('cli-sub', `${subParent(f)} ${v[1]}`, 'belai', `cmd/belai/${f}`);
-      }
-    }
+    for (const sub of goSubcommands(f, src)) atom('cli-sub', sub, 'belai', `cmd/belai/${f}`);
     let set = 'belai';
     for (const line of src.split('\n')) {
       const fs = line.match(/flag\.NewFlagSet\("([^"]+)"/);

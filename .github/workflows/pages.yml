@@ -37,6 +37,10 @@ jobs:
       - name: Install
         run: yarn install --immutable
 
+      # The scanner's parsing rules, the coverage rules and the Markdown plugins.
+      - name: Test
+        run: yarn test
+
       # Every atom in inventory/atoms.json must map to a documented feature.
       # The scan itself runs locally against sibling checkouts (see README).
       - name: Check feature coverage
