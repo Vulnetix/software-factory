@@ -155,6 +155,20 @@ function scanGoSemantics() {
       for (const v of values) atom('enum', `${m[1]}=${v}`, 'vdb-site', rel, { set: m[1] });
     }
   }
+  // Webhook trigger events and their actions: factoryWebhookActions.
+  const trig = join(dir, 'factory_trigger_conditions.go');
+  if (existsSync(trig)) {
+    const src = read(trig);
+    const start = src.indexOf('factoryWebhookActions = map[string][]string{');
+    const body = start >= 0 ? src.slice(start, src.indexOf('\n\t}', start)) : '';
+    for (const m of body.matchAll(/^\s+"([a-z_]+)":\s+\{([^}]*)\},/gm)) {
+      atom('webhook-event', m[1], 'vdb-site', 'api/internal/handler/factory_trigger_conditions.go');
+      for (const a of m[2].matchAll(/"([a-z_]+)"/g)) atom('webhook-event', `${m[1]}.${a[1]}`, 'vdb-site', 'api/internal/handler/factory_trigger_conditions.go');
+    }
+  }
+  // sf: labels shipped to repositories: {label, subject, description, agent, ...}.
+  const labels = join(dir, 'factory_labels.go');
+  if (existsSync(labels)) for (const m of read(labels).matchAll(/\{"(sf:[a-z0-9-]+)",\s*"([^"]*)",\s*"([^"]*)",\s*"([^"]*)"/g)) atom('sf-label', m[1], 'vdb-site', 'api/internal/handler/factory_labels.go', { detail: { on: m[2], description: m[3], agent: m[4] } });
   // Templates: every factory_templates*.go. A template literal names its
   // Category right after its ID, which keeps node IDs inside graphs out.
   for (const tf of ls(dir, /^factory_templates.*\.go$/)) for (const m of read(join(dir, tf)).matchAll(/\bID:\s*"([a-z0-9-]+)",\s*Category:\s*"([^"]*)"(?:,\s*Name:\s*"([^"]*)")?/g)) atom('template', m[1], 'vdb-site', `api/internal/handler/${tf}`, { detail: { category: m[2], name: m[3] } });

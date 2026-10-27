@@ -1,8 +1,8 @@
 {
- "generatedAt": "2026-10-27T13:06:15.768Z",
+ "generatedAt": "2026-10-27T13:24:58.417Z",
  "repos": {
-  "vdb-site": "3d23e48c44e7dc10335b4086a91b980c1ec84d9d",
-  "website": "fe563eb658f156158c24190e96b3178ee7553da4",
+  "vdb-site": "c29ffeb0c29fe6504e2f5a923cdef17f55448bff",
+  "website": "9f13169d0a3ba074f99d9004b937280e04815301",
   "belai": "b5d33b62b9af7144805bbaaab7082f3d3cc030f4",
   "saas": "aa6c2b46d08710a89f05fdd478bc14e1ae7abe6c"
  },
@@ -17,15 +17,17 @@
   "default": 7,
   "doc": 114,
   "enum": 1016,
-  "gofile": 270,
+  "gofile": 272,
   "model": 42,
-  "route": 325,
+  "route": 327,
   "setting": 118,
+  "sf-label": 21,
   "template": 37,
   "tsfile": 66,
   "tui-cmd": 49,
   "tui-key": 36,
-  "voice-tool": 33
+  "voice-tool": 33,
+  "webhook-event": 94
  },
  "atoms": [
   {
@@ -18466,6 +18468,14 @@
    ]
   },
   {
+   "id": "gofile:factory_labels",
+   "kind": "gofile",
+   "value": "factory_labels",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ]
+  },
+  {
    "id": "gofile:factory_lifecycle_backfill",
    "kind": "gofile",
    "value": "factory_lifecycle_backfill",
@@ -18511,6 +18521,14 @@
    "value": "factory_lifecycle_sweep",
    "sources": [
     "vdb-site/api/internal/handler/factory_lifecycle_sweep.go"
+   ]
+  },
+  {
+   "id": "gofile:factory_links",
+   "kind": "gofile",
+   "value": "factory_links",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_links.go"
    ]
   },
   {
@@ -20882,6 +20900,15 @@
    "handler": "FactoryHostsEligibility"
   },
   {
+   "id": "route:GET /v1/factory/labels",
+   "kind": "route",
+   "value": "GET /v1/factory/labels",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_core_register.go"
+   ],
+   "handler": "FactoryLabelsList"
+  },
+  {
    "id": "route:GET /v1/factory/lifecycle/coverage",
    "kind": "route",
    "value": "GET /v1/factory/lifecycle/coverage",
@@ -21951,6 +21978,15 @@
     "vdb-site/api/internal/handler/factory_internal.go"
    ],
    "handler": "FactoryInternalTrigger"
+  },
+  {
+   "id": "route:POST /v1/factory/labels/sync",
+   "kind": "route",
+   "value": "POST /v1/factory/labels/sync",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_core_register.go"
+   ],
+   "handler": "FactoryLabelsSync"
   },
   {
    "id": "route:POST /v1/factory/memory",
@@ -24535,6 +24571,279 @@
    }
   },
   {
+   "id": "sf-label:sf:backport",
+   "kind": "sf-label",
+   "value": "sf:backport",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: cherry-pick to the release branches",
+    "agent": "belai:builder"
+   }
+  },
+  {
+   "id": "sf-label:sf:build",
+   "kind": "sf-label",
+   "value": "sf:build",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "issue",
+    "description": "Factory: plan, sign-off, build and open a draft pull request",
+    "agent": "belai:feature"
+   }
+  },
+  {
+   "id": "sf-label:sf:dep-check",
+   "kind": "sf-label",
+   "value": "sf:dep-check",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: check a dependency pull request's resolution strategy and scope",
+    "agent": "belai:dep-strategist"
+   }
+  },
+  {
+   "id": "sf-label:sf:describe",
+   "kind": "sf-label",
+   "value": "sf:describe",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: write the pull request description from the diff",
+    "agent": "belai:pr-steward"
+   }
+  },
+  {
+   "id": "sf-label:sf:docs",
+   "kind": "sf-label",
+   "value": "sf:docs",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "both",
+    "description": "Factory: write or update docs for the change",
+    "agent": "belai:builder"
+   }
+  },
+  {
+   "id": "sf-label:sf:explain",
+   "kind": "sf-label",
+   "value": "sf:explain",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: reviewer brief of what changed, the risk and how to test",
+    "agent": "belai:reviewer"
+   }
+  },
+  {
+   "id": "sf-label:sf:fix",
+   "kind": "sf-label",
+   "value": "sf:fix",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "issue",
+    "description": "Factory: reproduce and fix, then open a draft pull request",
+    "agent": "belai:bug"
+   }
+  },
+  {
+   "id": "sf-label:sf:fix-tests",
+   "kind": "sf-label",
+   "value": "sf:fix-tests",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: run the failing checks and push fixes as a stacked draft pull request",
+    "agent": "belai:test-fixer"
+   }
+  },
+  {
+   "id": "sf-label:sf:plan",
+   "kind": "sf-label",
+   "value": "sf:plan",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "issue",
+    "description": "Factory: plan only; a person signs off before any build",
+    "agent": "belai:planner"
+   }
+  },
+  {
+   "id": "sf-label:sf:quarantine",
+   "kind": "sf-label",
+   "value": "sf:quarantine",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: quarantine the flaky tests named in the pull request",
+    "agent": "belai:flaky-hunter"
+   }
+  },
+  {
+   "id": "sf-label:sf:rebase",
+   "kind": "sf-label",
+   "value": "sf:rebase",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: rebase on the base branch and resolve conflicts, never a force push",
+    "agent": "belai:conflict-resolver"
+   }
+  },
+  {
+   "id": "sf-label:sf:repro",
+   "kind": "sf-label",
+   "value": "sf:repro",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "issue",
+    "description": "Factory: reproduce the bug in a sandbox and attach the failing test",
+    "agent": "belai:repro"
+   }
+  },
+  {
+   "id": "sf-label:sf:review",
+   "kind": "sf-label",
+   "value": "sf:review",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: review now, even a draft; never approves",
+    "agent": "belai:reviewer"
+   }
+  },
+  {
+   "id": "sf-label:sf:rotate-secret",
+   "kind": "sf-label",
+   "value": "sf:rotate-secret",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "issue",
+    "description": "Factory: rotation steps for the secret named in the issue",
+    "agent": "belai:secret-triager"
+   }
+  },
+  {
+   "id": "sf-label:sf:sbom",
+   "kind": "sf-label",
+   "value": "sf:sbom",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "both",
+    "description": "Factory: build the SBOM at HEAD and publish it to TEA",
+    "agent": "belai:tea-publisher"
+   }
+  },
+  {
+   "id": "sf-label:sf:security-review",
+   "kind": "sf-label",
+   "value": "sf:security-review",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: security review with a threat note",
+    "agent": "belai:security"
+   }
+  },
+  {
+   "id": "sf-label:sf:split",
+   "kind": "sf-label",
+   "value": "sf:split",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "issue",
+    "description": "Factory: split into sub-issues with estimates",
+    "agent": "belai:planner"
+   }
+  },
+  {
+   "id": "sf-label:sf:split-pr",
+   "kind": "sf-label",
+   "value": "sf:split-pr",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: propose how to split a large pull request",
+    "agent": "belai:planner"
+   }
+  },
+  {
+   "id": "sf-label:sf:ticket",
+   "kind": "sf-label",
+   "value": "sf:ticket",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "issue",
+    "description": "Factory: write the board card in the ticket standard",
+    "agent": "belai:ticket-writer"
+   }
+  },
+  {
+   "id": "sf-label:sf:triage",
+   "kind": "sf-label",
+   "value": "sf:triage",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "issue",
+    "description": "Factory: label type, area and severity, find duplicates, ask for missing details",
+    "agent": "belai:ticket-writer"
+   }
+  },
+  {
+   "id": "sf-label:sf:write-tests",
+   "kind": "sf-label",
+   "value": "sf:write-tests",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_labels.go"
+   ],
+   "detail": {
+    "on": "pr",
+    "description": "Factory: add tests for the changed source",
+    "agent": "belai:builder"
+   }
+  },
+  {
    "id": "template:actions-workflow-hardening",
    "kind": "template",
    "value": "actions-workflow-hardening",
@@ -26760,6 +27069,758 @@
    "detail": {
     "description": "Turn permission asks back on for a running session, when the caller asks. No read-back needed."
    }
+  },
+  {
+   "id": "webhook-event:check_run",
+   "kind": "webhook-event",
+   "value": "check_run",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:check_run.completed",
+   "kind": "webhook-event",
+   "value": "check_run.completed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:check_run.created",
+   "kind": "webhook-event",
+   "value": "check_run.created",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:check_run.rerequested",
+   "kind": "webhook-event",
+   "value": "check_run.rerequested",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:check_suite",
+   "kind": "webhook-event",
+   "value": "check_suite",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:check_suite.completed",
+   "kind": "webhook-event",
+   "value": "check_suite.completed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:check_suite.requested",
+   "kind": "webhook-event",
+   "value": "check_suite.requested",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:check_suite.rerequested",
+   "kind": "webhook-event",
+   "value": "check_suite.rerequested",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:code_scanning_alert",
+   "kind": "webhook-event",
+   "value": "code_scanning_alert",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:code_scanning_alert.appeared_in_branch",
+   "kind": "webhook-event",
+   "value": "code_scanning_alert.appeared_in_branch",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:code_scanning_alert.closed_by_user",
+   "kind": "webhook-event",
+   "value": "code_scanning_alert.closed_by_user",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:code_scanning_alert.created",
+   "kind": "webhook-event",
+   "value": "code_scanning_alert.created",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:code_scanning_alert.fixed",
+   "kind": "webhook-event",
+   "value": "code_scanning_alert.fixed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:code_scanning_alert.reopened",
+   "kind": "webhook-event",
+   "value": "code_scanning_alert.reopened",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:code_scanning_alert.reopened_by_user",
+   "kind": "webhook-event",
+   "value": "code_scanning_alert.reopened_by_user",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:dependabot_alert",
+   "kind": "webhook-event",
+   "value": "dependabot_alert",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:dependabot_alert.auto_dismissed",
+   "kind": "webhook-event",
+   "value": "dependabot_alert.auto_dismissed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:dependabot_alert.auto_reopened",
+   "kind": "webhook-event",
+   "value": "dependabot_alert.auto_reopened",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:dependabot_alert.created",
+   "kind": "webhook-event",
+   "value": "dependabot_alert.created",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:dependabot_alert.dismissed",
+   "kind": "webhook-event",
+   "value": "dependabot_alert.dismissed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:dependabot_alert.fixed",
+   "kind": "webhook-event",
+   "value": "dependabot_alert.fixed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:dependabot_alert.reintroduced",
+   "kind": "webhook-event",
+   "value": "dependabot_alert.reintroduced",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:dependabot_alert.reopened",
+   "kind": "webhook-event",
+   "value": "dependabot_alert.reopened",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:deployment_status",
+   "kind": "webhook-event",
+   "value": "deployment_status",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:deployment_status.created",
+   "kind": "webhook-event",
+   "value": "deployment_status.created",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:installation_repositories",
+   "kind": "webhook-event",
+   "value": "installation_repositories",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:installation_repositories.added",
+   "kind": "webhook-event",
+   "value": "installation_repositories.added",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:installation_repositories.removed",
+   "kind": "webhook-event",
+   "value": "installation_repositories.removed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issue_comment",
+   "kind": "webhook-event",
+   "value": "issue_comment",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issue_comment.created",
+   "kind": "webhook-event",
+   "value": "issue_comment.created",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issue_comment.deleted",
+   "kind": "webhook-event",
+   "value": "issue_comment.deleted",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issue_comment.edited",
+   "kind": "webhook-event",
+   "value": "issue_comment.edited",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issues",
+   "kind": "webhook-event",
+   "value": "issues",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issues.assigned",
+   "kind": "webhook-event",
+   "value": "issues.assigned",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issues.closed",
+   "kind": "webhook-event",
+   "value": "issues.closed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issues.edited",
+   "kind": "webhook-event",
+   "value": "issues.edited",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issues.labeled",
+   "kind": "webhook-event",
+   "value": "issues.labeled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issues.milestoned",
+   "kind": "webhook-event",
+   "value": "issues.milestoned",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issues.opened",
+   "kind": "webhook-event",
+   "value": "issues.opened",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issues.reopened",
+   "kind": "webhook-event",
+   "value": "issues.reopened",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:issues.unlabeled",
+   "kind": "webhook-event",
+   "value": "issues.unlabeled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:merge_group",
+   "kind": "webhook-event",
+   "value": "merge_group",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:merge_group.checks_requested",
+   "kind": "webhook-event",
+   "value": "merge_group.checks_requested",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:merge_group.destroyed",
+   "kind": "webhook-event",
+   "value": "merge_group.destroyed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request",
+   "kind": "webhook-event",
+   "value": "pull_request",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request_review",
+   "kind": "webhook-event",
+   "value": "pull_request_review",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request_review_comment",
+   "kind": "webhook-event",
+   "value": "pull_request_review_comment",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request_review_comment.created",
+   "kind": "webhook-event",
+   "value": "pull_request_review_comment.created",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request_review_comment.deleted",
+   "kind": "webhook-event",
+   "value": "pull_request_review_comment.deleted",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request_review_comment.edited",
+   "kind": "webhook-event",
+   "value": "pull_request_review_comment.edited",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request_review.dismissed",
+   "kind": "webhook-event",
+   "value": "pull_request_review.dismissed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request_review.edited",
+   "kind": "webhook-event",
+   "value": "pull_request_review.edited",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request_review.submitted",
+   "kind": "webhook-event",
+   "value": "pull_request_review.submitted",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request.closed",
+   "kind": "webhook-event",
+   "value": "pull_request.closed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request.converted_to_draft",
+   "kind": "webhook-event",
+   "value": "pull_request.converted_to_draft",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request.edited",
+   "kind": "webhook-event",
+   "value": "pull_request.edited",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request.labeled",
+   "kind": "webhook-event",
+   "value": "pull_request.labeled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request.opened",
+   "kind": "webhook-event",
+   "value": "pull_request.opened",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request.ready_for_review",
+   "kind": "webhook-event",
+   "value": "pull_request.ready_for_review",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request.reopened",
+   "kind": "webhook-event",
+   "value": "pull_request.reopened",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request.review_requested",
+   "kind": "webhook-event",
+   "value": "pull_request.review_requested",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request.synchronize",
+   "kind": "webhook-event",
+   "value": "pull_request.synchronize",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:pull_request.unlabeled",
+   "kind": "webhook-event",
+   "value": "pull_request.unlabeled",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:push",
+   "kind": "webhook-event",
+   "value": "push",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:registry_package",
+   "kind": "webhook-event",
+   "value": "registry_package",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:registry_package.published",
+   "kind": "webhook-event",
+   "value": "registry_package.published",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:registry_package.updated",
+   "kind": "webhook-event",
+   "value": "registry_package.updated",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:release",
+   "kind": "webhook-event",
+   "value": "release",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:release.created",
+   "kind": "webhook-event",
+   "value": "release.created",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:release.edited",
+   "kind": "webhook-event",
+   "value": "release.edited",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:release.prereleased",
+   "kind": "webhook-event",
+   "value": "release.prereleased",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:release.published",
+   "kind": "webhook-event",
+   "value": "release.published",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:release.released",
+   "kind": "webhook-event",
+   "value": "release.released",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:repository",
+   "kind": "webhook-event",
+   "value": "repository",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:repository.archived",
+   "kind": "webhook-event",
+   "value": "repository.archived",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:repository.created",
+   "kind": "webhook-event",
+   "value": "repository.created",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:repository.edited",
+   "kind": "webhook-event",
+   "value": "repository.edited",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:repository.privatized",
+   "kind": "webhook-event",
+   "value": "repository.privatized",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:repository.publicized",
+   "kind": "webhook-event",
+   "value": "repository.publicized",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:repository.renamed",
+   "kind": "webhook-event",
+   "value": "repository.renamed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:repository.transferred",
+   "kind": "webhook-event",
+   "value": "repository.transferred",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:repository.unarchived",
+   "kind": "webhook-event",
+   "value": "repository.unarchived",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:secret_scanning_alert",
+   "kind": "webhook-event",
+   "value": "secret_scanning_alert",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:secret_scanning_alert_location",
+   "kind": "webhook-event",
+   "value": "secret_scanning_alert_location",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:secret_scanning_alert_location.created",
+   "kind": "webhook-event",
+   "value": "secret_scanning_alert_location.created",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:secret_scanning_alert.created",
+   "kind": "webhook-event",
+   "value": "secret_scanning_alert.created",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:secret_scanning_alert.publicly_leaked",
+   "kind": "webhook-event",
+   "value": "secret_scanning_alert.publicly_leaked",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:secret_scanning_alert.reopened",
+   "kind": "webhook-event",
+   "value": "secret_scanning_alert.reopened",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:secret_scanning_alert.resolved",
+   "kind": "webhook-event",
+   "value": "secret_scanning_alert.resolved",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:secret_scanning_alert.validated",
+   "kind": "webhook-event",
+   "value": "secret_scanning_alert.validated",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:workflow_run",
+   "kind": "webhook-event",
+   "value": "workflow_run",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:workflow_run.completed",
+   "kind": "webhook-event",
+   "value": "workflow_run.completed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:workflow_run.in_progress",
+   "kind": "webhook-event",
+   "value": "workflow_run.in_progress",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:workflow_run.requested",
+   "kind": "webhook-event",
+   "value": "workflow_run.requested",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
   }
  ]
 }

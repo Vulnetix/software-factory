@@ -47,7 +47,7 @@ Some values are checked together:
 
 - Changing `systemone.model` needs a new `systemone.min_confidence` in the same save, or the save fails with `threshold_required`. Confidence from one model is not comparable with another's.
 - `github.check_runs` needs the App permission `checks: write` on every managed installation, or the save fails with `permission_missing`.
-- `persistence.postgres` can be switched off only while no workflow is published.
+- `persistence.postgres` can be switched off only while no workflow is published. Otherwise the save fails with `workflows_published`.
 - Lowering `autonomy.max` lowers every repository's effective autonomy at once. Their stored values are kept.
 
 A value that is the wrong type or out of range is refused with the key named, so the page can show the error beside the field.
