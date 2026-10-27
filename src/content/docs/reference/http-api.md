@@ -296,23 +296,23 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/belai/sessions` |  |
-| DELETE | `/v1/belai/sessions/{id}` |  |
-| GET | `/v1/belai/sessions/{id}` |  |
-| PUT | `/v1/belai/sessions/{id}` |  |
-| POST | `/v1/belai/sessions/{id}/agent-drafts` |  |
-| POST | `/v1/belai/sessions/{id}/answers` |  |
-| POST | `/v1/belai/sessions/{id}/commands` |  |
-| POST | `/v1/belai/sessions/{id}/end` |  |
-| GET | `/v1/belai/sessions/{id}/entries` |  |
-| POST | `/v1/belai/sessions/{id}/entries` |  |
-| PUT | `/v1/belai/sessions/{id}/git-sync` |  |
-| POST | `/v1/belai/sessions/{id}/heartbeat` |  |
-| POST | `/v1/belai/sessions/{id}/prompts` |  |
-| POST | `/v1/belai/sessions/{id}/shell` |  |
-| POST | `/v1/belai/sessions/{id}/stop` |  |
-| GET | `/v1/belai/sessions/{id}/stream` |  |
-| GET | `/v1/belai/sessions/{id}/timeline` |  |
+| GET | `/v1/belai/sessions` | [Sessions](/runs/sessions/) |
+| DELETE | `/v1/belai/sessions/{id}` | [Sessions](/runs/sessions/) |
+| GET | `/v1/belai/sessions/{id}` | [Sessions](/runs/sessions/) |
+| PUT | `/v1/belai/sessions/{id}` | [Sessions](/runs/sessions/) |
+| POST | `/v1/belai/sessions/{id}/agent-drafts` | [Sessions](/runs/sessions/) |
+| POST | `/v1/belai/sessions/{id}/answers` | [Sessions](/runs/sessions/) |
+| POST | `/v1/belai/sessions/{id}/commands` | [Sessions](/runs/sessions/) |
+| POST | `/v1/belai/sessions/{id}/end` | [Sessions](/runs/sessions/) |
+| GET | `/v1/belai/sessions/{id}/entries` | [Sessions](/runs/sessions/) |
+| POST | `/v1/belai/sessions/{id}/entries` | [Sessions](/runs/sessions/) |
+| PUT | `/v1/belai/sessions/{id}/git-sync` | [Sessions](/runs/sessions/) |
+| POST | `/v1/belai/sessions/{id}/heartbeat` | [Sessions](/runs/sessions/) |
+| POST | `/v1/belai/sessions/{id}/prompts` | [Sessions](/runs/sessions/) |
+| POST | `/v1/belai/sessions/{id}/shell` | [Sessions](/runs/sessions/) |
+| POST | `/v1/belai/sessions/{id}/stop` | [Sessions](/runs/sessions/) |
+| GET | `/v1/belai/sessions/{id}/stream` | [Sessions](/runs/sessions/) |
+| GET | `/v1/belai/sessions/{id}/timeline` | [Sessions](/runs/sessions/) |
 
 ## /v1/factory/a2a
 
@@ -429,7 +429,7 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/handoffs` |  |
+| GET | `/v1/factory/handoffs` | [Handoffs between agents](/runs/handoffs/) |
 
 ## /v1/factory/hosts
 
@@ -511,18 +511,18 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/runs` |  |
-| POST | `/v1/factory/runs` |  |
-| GET | `/v1/factory/runs/{id}` |  |
-| GET | `/v1/factory/runs/{id}/artifacts` |  |
-| GET | `/v1/factory/runs/{id}/artifacts/content` |  |
-| POST | `/v1/factory/runs/{id}/cancel` |  |
-| GET | `/v1/factory/runs/{id}/evidence.zip` |  |
-| GET | `/v1/factory/runs/{id}/facts` |  |
-| POST | `/v1/factory/runs/{id}/pause` |  |
-| POST | `/v1/factory/runs/{id}/recheck-pr` |  |
-| POST | `/v1/factory/runs/{id}/resume` |  |
-| POST | `/v1/factory/runs/{id}/retry` |  |
+| GET | `/v1/factory/runs` | [Runs and steps](/runs/runs-and-steps/) |
+| POST | `/v1/factory/runs` | [Runs and steps](/runs/runs-and-steps/) |
+| GET | `/v1/factory/runs/{id}` | [Runs and steps](/runs/runs-and-steps/) |
+| GET | `/v1/factory/runs/{id}/artifacts` | [Runs and steps](/runs/runs-and-steps/) |
+| GET | `/v1/factory/runs/{id}/artifacts/content` | [Runs and steps](/runs/runs-and-steps/) |
+| POST | `/v1/factory/runs/{id}/cancel` | [Runs and steps](/runs/runs-and-steps/) |
+| GET | `/v1/factory/runs/{id}/evidence.zip` | [Runs and steps](/runs/runs-and-steps/) |
+| GET | `/v1/factory/runs/{id}/facts` | [Runs and steps](/runs/runs-and-steps/) |
+| POST | `/v1/factory/runs/{id}/pause` | [Runs and steps](/runs/runs-and-steps/) |
+| POST | `/v1/factory/runs/{id}/recheck-pr` | [Runs and steps](/runs/runs-and-steps/) |
+| POST | `/v1/factory/runs/{id}/resume` | [Runs and steps](/runs/runs-and-steps/) |
+| POST | `/v1/factory/runs/{id}/retry` | [Runs and steps](/runs/runs-and-steps/) |
 
 ## /v1/factory/schedules
 
@@ -537,11 +537,11 @@ Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/fa
 
 | Method | Path | Explained in |
 |---|---|---|
-| GET | `/v1/factory/sessions` |  |
-| GET | `/v1/factory/sessions/{id}/context` |  |
-| GET | `/v1/factory/sessions/{id}/facts` |  |
-| POST | `/v1/factory/sessions/{id}/git/recheck` |  |
-| GET | `/v1/factory/sessions/aggregate` |  |
+| GET | `/v1/factory/sessions` | [Sessions](/runs/sessions/) |
+| GET | `/v1/factory/sessions/{id}/context` | [Sessions](/runs/sessions/) |
+| GET | `/v1/factory/sessions/{id}/facts` | [Sessions](/runs/sessions/) |
+| POST | `/v1/factory/sessions/{id}/git/recheck` | [Sessions](/runs/sessions/) |
+| GET | `/v1/factory/sessions/aggregate` | [Sessions](/runs/sessions/) |
 
 ## /v1/factory/settings
 

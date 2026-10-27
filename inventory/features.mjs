@@ -69,7 +69,7 @@ f('node-gate', 'workflows', 'workflows/nodes/gate', 'Gate node', [g('factory_eng
 f('node-human', 'workflows', 'workflows/nodes/human', 'Human node', [g('factory_engine_node_human'), e('factoryHumanTimeout'), e('factoryApproverKinds'), '^code:(approver_missing|fork_pr_needs_human)$']);
 f('node-output', 'workflows', 'workflows/nodes/output', 'Output node', [g('factory_engine_node_output'), e('factoryOutputKinds'), e('factoryAttach'), e('factoryNoBranch'), e('factoryPRStates'), e('factoryTeaWhen'), e('factoryReviewers'), '^code:invalid_base$']);
 f('node-state', 'workflows', 'workflows/nodes/state', 'State node', [g('factory_engine_node_common'), e('factoryStateKinds')]);
-f('triggers', 'workflows', 'workflows/triggers', 'Triggers and webhook conditions', [gp('factory_trigger'), g('factory_triggers_store'), '^model:FactoryTrigger$', e('factoryConditionKeys'), e('factoryDraftModes'), e('factoryAlertSeverities'), '^webhook-event:', e('factoryConclusions'), e('factoryConclusionEvents'), e('factoryAuthorTypes'), e('factoryReviewStates'), e('factorySeverities'), e('factoryPackageTypes'), e('factoryWebhookRefs'), e('factoryOriginModes'), e('factorySubjectModes'), e('factoryDeployStates'), '^code:(unknown_condition|paths_need_push|invalid_glob|conclusion_unsupported_event|environment_unsupported_event|review_state_unsupported_event|severity_unsupported_event|package_type_unsupported_event)$', r('webhooks/github')]);
+f('triggers', 'workflows', 'workflows/triggers', 'Triggers and webhook conditions', [gp('factory_trigger'), g('factory_triggers_store'), '^model:FactoryTrigger$', e('factoryConditionKeys'), e('factoryDraftModes'), e('factoryAlertSeverities'), '^webhook-event:', e('factoryConclusions'), e('factoryConclusionEvents'), e('factoryAuthorTypes'), e('factoryReviewStates'), e('factorySeverities'), e('factoryPackageTypes'), e('factoryWebhookRefs'), e('factoryOriginModes'), e('factorySubjectModes'), e('factoryDeployStates'), '^code:(action_conflict|unknown_condition|paths_need_push|invalid_glob|conclusion_unsupported_event|environment_unsupported_event|review_state_unsupported_event|severity_unsupported_event|package_type_unsupported_event)$', r('webhooks/github')]);
 f('source-events', 'workflows', 'workflows/source-events', 'Source events and firewall triggers', [gp('factory_sources'), '^model:(FactorySourceEvent|FactorySourceCursor)$', e('factorySourceEventTypes'), '^code:firewall_condition_unsupported_source$']);
 f('label-dispatch', 'workflows', 'workflows/labels-and-commands', 'sf: labels and /sf commands', [g('factory_label_dispatch'), g('factory_labels'), r('factory/labels'), '^sf-label:']);
 f('schedules', 'workflows', 'workflows/schedules', 'Schedules', [r('factory/schedules'), e('factoryRunsOnValues'), g('factory_cron'), g('factory_scheduler'), gp('factory_schedules'), e('factoryOverlaps'), '^code:tz_invalid$']);
@@ -81,7 +81,7 @@ f('validation-codes', 'reference', 'reference/validation-codes', 'Validation and
 f('graph-limits', 'workflows', 'workflows/graphs', 'Graph limits', ['^code:(too_many_nodes|too_many_edges|too_many|too_long|cycle|duplicate_edge|duplicate_id|unknown_node|no_trigger|invalid_loop|github_calls_exceed_run_cap|out_of_range|required|invalid_enum|invalid_type|invalid_id|invalid_repo|scope_unmanaged_repo|custom_required)$']);
 
 // ── Runs ───────────────────────────────────────────────────────────────────
-f('runs', 'runs', 'runs/runs-and-steps', 'Runs and steps', [r('factory/runs'), g('factory_runs'), g('factory_runs_store'), g('factory_runs_actions'), g('factory_run_detail'), con('factory-runs', 'factory-run'), '^model:(FactoryRun|FactoryRunStep)$', e('fwRunStatuses'), e('factoryActiveRunStatuses'), e('fwRetryFrom'), '^code:(bad_state|action_conflict|already_decided)$']);
+f('runs', 'runs', 'runs/runs-and-steps', 'Runs and steps', [r('factory/runs'), g('factory_runs'), g('factory_runs_store'), g('factory_runs_actions'), g('factory_run_detail'), con('factory-runs', 'factory-run'), '^model:(FactoryRun|FactoryRunStep)$', e('fwRunStatuses'), e('factoryActiveRunStatuses'), e('fwRetryFrom'), '^code:bad_state$']);
 f('run-artifacts', 'runs', 'runs/artifacts', 'Run artifacts', [g('factory_runs_artifacts')]);
 f('engine', 'runs', 'runs/how-the-engine-runs', 'How the engine walks a graph', [g('factory_engine'), gp('factory_engine_(walker|exec|run|state|record|context|ports|adapters|route|capacity|attribution)'), doc('vdb-site/factory-engine\\.md')]);
 f('no-host', 'runs', 'runs/waiting-for-a-machine', 'Waiting for a machine', [g('factory_engine_nohost')]);
@@ -92,7 +92,7 @@ f('pr-checker', 'runs', 'runs/pull-request-checks', 'Pull request checks and rec
 
 // ── Decisions and review ───────────────────────────────────────────────────
 f('systemone', 'decisions', 'decisions/system-one', 'System One decisions', [r('factory/(systemone|decisions)'), r('internal/decisions'), g('factory_systemone'), g('factory_decisions_store'), '^gofile:systemone/', '^model:(FactoryDecision|FactoryDecisionDay)$', set('systemone.'), e('fcAdapters'), e('factoryRetention'), doc('vdb-site/factory-systemone\\.md'), g('factory_session_decision_events')]);
-f('approvals', 'decisions', 'decisions/human-approval', 'Human approval', [r('factory/approvals'), gp('factory_approvals'), g('factory_engine_approval'), g('factory_engine_approve'), '^model:(FactoryApproval|FactoryHumanAction)$', e('fwApprovalDecidedStates')]);
+f('approvals', 'decisions', 'decisions/human-approval', 'Human approval', [r('factory/approvals'), gp('factory_approvals'), g('factory_engine_approval'), g('factory_engine_approve'), '^model:(FactoryApproval|FactoryHumanAction)$', e('fwApprovalDecidedStates'), '^code:already_decided$']);
 f('checkpoints', 'decisions', 'decisions/checkpoints', 'Checkpoints and Needs you', [r('factory/(checkpoints|needs)'), g('factory_checkpoints'), g('factory_checkpoints_store'), g('factory_checkpoints_pulls'), con('factory-checkpoints'), e('fcNeedKinds'), e('fcpKindOrder'), doc('website/factory-checkpoints\\.md', 'website/belai-checkpoints\\.md')]);
 f('merge-conflicts', 'decisions', 'decisions/merge-conflicts', 'Merge conflicts', [g('factory_checkpoints_conflicts'), g('factory_engine_conflicts'), con('factory-conflicts'), g('belai_github_merge'), pkg('mergefix'), doc('belai/merge-conflicts\\.md', 'website/conflict-editor\\.md')]);
 f('signing', 'decisions', 'decisions/commit-signing', 'Commit signing', [g('factory_signing'), doc('vdb-site/signing\\.md', 'website/commit-signing\\.md', 'website/pix-sandbox-git-signing\\.md'), ts('sandbox/git-sign', 'sandbox/kms')]);
@@ -191,7 +191,8 @@ const STATUS = {
     'managed-scope', 'repo-profiles', 'issue-mirroring', 'autonomy', 'kill-switch', 'holds', 'settings-document',
     'workflow-graphs', 'builder-palette', 'node-trigger', 'node-scan', 'node-decision', 'node-crew', 'node-gate', 'node-human',
     'node-output', 'node-state', 'triggers', 'source-events', 'label-dispatch', 'schedules', 'internal-fire', 'templates',
-    'template-search', 'defaults', 'graph-limits', 'validation-codes', 'settings-reference'],
+    'template-search', 'defaults', 'graph-limits', 'validation-codes', 'settings-reference',
+    'runs', 'run-artifacts', 'engine', 'no-host', 'sessions', 'session-trigger', 'handoffs', 'pr-checker'],
   verified: [],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

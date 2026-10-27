@@ -28,9 +28,9 @@ Pages in the Vulnetix console that belong to Software Factory. All are under `ht
 | [`/resolve/factory-outcome`](https://www.vulnetix.com/resolve/factory-outcome) |  |
 | [`/resolve/factory-people`](https://www.vulnetix.com/resolve/factory-people) |  |
 | [`/resolve/factory-repos`](https://www.vulnetix.com/resolve/factory-repos) | [Managed orgs and repositories](/control/managed-scope/) |
-| [`/resolve/factory-run`](https://www.vulnetix.com/resolve/factory-run) |  |
-| [`/resolve/factory-runs`](https://www.vulnetix.com/resolve/factory-runs) |  |
-| [`/resolve/factory-session`](https://www.vulnetix.com/resolve/factory-session) |  |
+| [`/resolve/factory-run`](https://www.vulnetix.com/resolve/factory-run) | [Runs and steps](/runs/runs-and-steps/) |
+| [`/resolve/factory-runs`](https://www.vulnetix.com/resolve/factory-runs) | [Runs and steps](/runs/runs-and-steps/) |
+| [`/resolve/factory-session`](https://www.vulnetix.com/resolve/factory-session) | [Sessions](/runs/sessions/) |
 | [`/resolve/factory-settings`](https://www.vulnetix.com/resolve/factory-settings) | [The settings document](/control/settings-document/) |
 | [`/resolve/factory-templates`](https://www.vulnetix.com/resolve/factory-templates) | [Templates](/workflows/templates/) |
 | [`/resolve/factory-trust`](https://www.vulnetix.com/resolve/factory-trust) |  |

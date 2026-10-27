@@ -59,7 +59,7 @@ Defined in `api/internal/handler/belai_items_validate_provider.go`.
 
 ### belaiClientTriggerSources
 
-Defined in `api/internal/handler/belai_trigger.go`.
+Explained in [What started a session](/runs/sessions/). Defined in `api/internal/handler/belai_trigger.go`.
 
 `console`, `finding`, `fleet`, `pix_call`, `pull_request`
 
@@ -341,7 +341,7 @@ Defined in `api/internal/handler/belai_rc_fleet.go`.
 
 ### factoryActiveRunStatuses
 
-Defined in `api/internal/handler/factory_runs_store.go`.
+Explained in [Runs and steps](/runs/runs-and-steps/). Defined in `api/internal/handler/factory_runs_store.go`.
 
 `held`, `paused`, `queued`, `running`, `waiting_approval`
 
@@ -389,7 +389,7 @@ Defined in `api/internal/handler/factory_trigger_validate.go`.
 
 ### factoryCheckSources
 
-Defined in `api/internal/handler/factory_workflow_graph.go`.
+Explained in [Pull request checks and rechecks](/runs/pull-request-checks/). Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 `live_if_stale`, `mirror`, `posture`
 
@@ -617,7 +617,7 @@ Explained in [Crew node](/workflows/nodes/crew/). Defined in `api/internal/handl
 
 ### factoryRunsOnValues
 
-Explained in [Crew node](/workflows/nodes/crew/). Defined in `api/internal/handler/factory_workflow_graph.go`.
+Explained in [Schedules](/workflows/schedules/). Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 `aws`, `cloudflare`, `engine`, `host`
 
@@ -677,13 +677,13 @@ Explained in [Output node](/workflows/nodes/output/). Defined in `api/internal/h
 
 ### factoryTestsOnFail
 
-Explained in [Gate node](/workflows/nodes/gate/). Defined in `api/internal/handler/factory_workflow_graph.go`.
+Explained in [Crew node](/workflows/nodes/crew/). Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 `diagnose`, `fix`, `off`
 
 ### factoryTestsPostEnd
 
-Explained in [Gate node](/workflows/nodes/gate/). Defined in `api/internal/handler/factory_workflow_graph.go`.
+Explained in [Crew node](/workflows/nodes/crew/). Defined in `api/internal/handler/factory_workflow_graph.go`.
 
 `goal`, `goal_plan`, `off`, `session`
 
@@ -719,7 +719,7 @@ Defined in `api/internal/handler/factory_settings_store.go`.
 
 ### fcAggregateGroupBys
 
-Defined in `api/internal/handler/factory_sessions_aggregate.go`.
+Explained in [Sessions](/runs/sessions/). Defined in `api/internal/handler/factory_sessions_aggregate.go`.
 
 `model`, `repo`, `source`, `state`
 
@@ -779,7 +779,7 @@ Defined in `api/internal/handler/factory_trust_store.go`.
 
 ### fcSessionSources
 
-Defined in `api/internal/handler/factory_workforce.go`.
+Explained in [Sessions](/runs/sessions/). Defined in `api/internal/handler/factory_workforce.go`.
 
 `acp`, `cloud`, `sandbox`, `tui`, `worker`
 
@@ -839,13 +839,13 @@ Explained in [Pause, stop and resume](/control/pause-and-stop/). Defined in `api
 
 ### fwRetryFrom
 
-Defined in `api/internal/handler/factory_runs_actions.go`.
+Explained in [Runs and steps](/runs/runs-and-steps/). Defined in `api/internal/handler/factory_runs_actions.go`.
 
 `cancelled`, `failed`
 
 ### fwRunStatuses
 
-Defined in `api/internal/handler/factory_runs.go`.
+Explained in [Runs and steps](/runs/runs-and-steps/). Defined in `api/internal/handler/factory_runs.go`.
 
 `cancelled`, `failed`, `held`, `paused`, `queued`, `running`, `succeeded`, `waiting_approval`
 

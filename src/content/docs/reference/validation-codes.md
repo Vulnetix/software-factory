@@ -12,13 +12,13 @@ Codes the API returns in `issues[].code` when it refuses a request, and the code
 
 | Code | Message | Explained in |
 |---|---|---|
-| <span id="action_conflict"></span>`action_conflict` | In {node}, the event already names the action " |  |
+| <span id="action_conflict"></span>`action_conflict` | In {node}, the event already names the action " | [Triggers and webhook conditions](/workflows/triggers/) |
 | <span id="adapter_unavailable"></span>`adapter_unavailable` | In {node}, that model is not one this workflow can use. Choose clef-flash, clef, jev, tev1, pix-fast or a model from your vault. | [Decision node](/workflows/nodes/decision/) |
 | <span id="already_decided"></span>`already_decided` |  |  |
 | <span id="approver_missing"></span>`approver_missing` | Name who can approve in {node}. Add a team, a member, a role or the repository admins. | [Human node](/workflows/nodes/human/) |
 | <span id="autonomy_above_max"></span>`autonomy_above_max` | autonomy is above autonomy.max ( | [Autonomy levels](/control/autonomy/) |
 | <span id="bad_request"></span>`bad_request` |  |  |
-| <span id="bad_state"></span>`bad_state` |  |  |
+| <span id="bad_state"></span>`bad_state` |  | [Runs and steps](/runs/runs-and-steps/) |
 | <span id="budget_exceeds_parent"></span>`budget_exceeds_parent` | The run budget is larger than the month budget. Lower the run budget or raise the month budget. |  |
 | <span id="conclusion_unsupported_event"></span>`conclusion_unsupported_event` | In {node}, the conclusion condition only applies to check runs, check suites, workflow runs and deployment statuses. Remove it or choose one of those events. | [Triggers and webhook conditions](/workflows/triggers/) |
 | <span id="crew_not_found"></span>`crew_not_found` | Choose the crew or agent that {node} hands the work to. | [Crew node](/workflows/nodes/crew/) |
