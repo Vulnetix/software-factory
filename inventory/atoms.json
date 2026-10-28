@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-10-27T22:06:37.974Z",
+ "generatedAt": "2026-10-28T02:27:23.898Z",
  "repos": {
-  "vdb-site": "79e503724bda281bf63c8b30c73605f429fc728d",
-  "website": "3f90fa20884e9b2ffbfc1384a022d18d011c3708",
+  "vdb-site": "45fd979942c6571efbe767d4478a812e45ca5269",
+  "website": "deb1a073c39f3ecb558952c0c0a9fa1e70c2a86e",
   "belai": "7c256b9b2951282931e42e9c7ef56a1b1c8abbbb",
-  "saas": "aa6c2b46d08710a89f05fdd478bc14e1ae7abe6c"
+  "saas": "e91cbeacde81d5bda0dd07ea43ef1cf620dad2c7"
  },
  "counts": {
   "belai-config": 306,
@@ -16,18 +16,18 @@
   "console": 25,
   "default": 7,
   "doc": 115,
-  "enum": 1018,
+  "enum": 1023,
   "gofile": 291,
   "model": 42,
   "route": 380,
-  "setting": 169,
+  "setting": 168,
   "sf-label": 21,
-  "template": 37,
+  "template": 38,
   "tsfile": 66,
   "tui-cmd": 49,
   "tui-key": 36,
   "voice-tool": 33,
-  "webhook-event": 94
+  "webhook-event": 98
  },
  "atoms": [
   {
@@ -6587,7 +6587,7 @@
     "vdb-site/api/internal/handler/factory_trigger_validate.go"
    ],
    "detail": {
-    "message": "In {node}, the severity condition only applies to Dependabot and code scanning alerts. Remove it or choose one of those events."
+    "message": "In {node}, the severity condition only applies to Dependabot alerts, code scanning alerts and posture findings. Remove it or choose one of those events."
    }
   },
   {
@@ -11307,6 +11307,15 @@
    "set": "factoryAlertSeverities"
   },
   {
+   "id": "enum:factoryAlertSeverities=informational",
+   "kind": "enum",
+   "value": "factoryAlertSeverities=informational",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ],
+   "set": "factoryAlertSeverities"
+  },
+  {
    "id": "enum:factoryAlertSeverities=low",
    "kind": "enum",
    "value": "factoryAlertSeverities=low",
@@ -11667,6 +11676,15 @@
    "set": "factoryBuiltinProfiles"
   },
   {
+   "id": "enum:factoryBuiltinProfiles=github-investigator",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=github-investigator",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
    "id": "enum:factoryBuiltinProfiles=lint-fixer",
    "kind": "enum",
    "value": "factoryBuiltinProfiles=lint-fixer",
@@ -11850,6 +11868,15 @@
    "id": "enum:factoryBuiltinProfiles=vulnetix-scanner",
    "kind": "enum",
    "value": "factoryBuiltinProfiles=vulnetix-scanner",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryBuiltinProfiles"
+  },
+  {
+   "id": "enum:factoryBuiltinProfiles=workflow-fixer",
+   "kind": "enum",
+   "value": "factoryBuiltinProfiles=workflow-fixer",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
    ],
@@ -14709,6 +14736,15 @@
    "set": "factoryWorkerProfiles"
   },
   {
+   "id": "enum:factoryWorkerProfiles=belai:github-investigator",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:github-investigator",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
    "id": "enum:factoryWorkerProfiles=belai:lint-fixer",
    "kind": "enum",
    "value": "factoryWorkerProfiles=belai:lint-fixer",
@@ -14856,6 +14892,15 @@
    "id": "enum:factoryWorkerProfiles=belai:vuln-scout",
    "kind": "enum",
    "value": "factoryWorkerProfiles=belai:vuln-scout",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates.go"
+   ],
+   "set": "factoryWorkerProfiles"
+  },
+  {
+   "id": "enum:factoryWorkerProfiles=belai:workflow-fixer",
+   "kind": "enum",
+   "value": "factoryWorkerProfiles=belai:workflow-fixer",
    "sources": [
     "vdb-site/api/internal/handler/factory_templates.go"
    ],
@@ -25381,22 +25426,6 @@
    }
   },
   {
-   "id": "setting:providers.ai_gateway",
-   "kind": "setting",
-   "value": "providers.ai_gateway",
-   "sources": [
-    "vdb-site/api/internal/handler/factory_settings_store.go",
-    "vdb-site/docs/factory.md"
-   ],
-   "detail": {
-    "doc": "bool: route calls through Cloudflare AI Gateway",
-    "docDefault": "false",
-    "store": "factory",
-    "type": "bool",
-    "default": "false"
-   }
-  },
-  {
    "id": "setting:providers.code",
    "kind": "setting",
    "value": "providers.code",
@@ -26457,6 +26486,18 @@
    "detail": {
     "category": "Testing",
     "name": "Flaky test card"
+   }
+  },
+  {
+   "id": "template:github-risk-investigation",
+   "kind": "template",
+   "value": "github-risk-investigation",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Investigate a risky GitHub event"
    }
   },
   {
@@ -28806,6 +28847,38 @@
    "id": "webhook-event:merge_group.destroyed",
    "kind": "webhook-event",
    "value": "merge_group.destroyed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:posture_finding",
+   "kind": "webhook-event",
+   "value": "posture_finding",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:posture_finding.opened",
+   "kind": "webhook-event",
+   "value": "posture_finding.opened",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:posture_finding.regressed",
+   "kind": "webhook-event",
+   "value": "posture_finding.regressed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:posture_finding.resolved",
+   "kind": "webhook-event",
+   "value": "posture_finding.resolved",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_conditions.go"
    ]

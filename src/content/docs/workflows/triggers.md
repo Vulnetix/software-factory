@@ -3,8 +3,8 @@ title: Triggers and webhook conditions
 nav: Triggers
 description: Every GitHub event and action a workflow can start on, every condition you can narrow it with, how storms and forks are handled, and why a trigger did not fire.
 order: 20
-sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_trigger_conditions.go, vdb-site/api/internal/handler/factory_trigger_validate.go, vdb-site/api/internal/handler/factory_engine_events.go]
-checked: [vdb-site@284f1d6, website@a31d470]
+sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_trigger_conditions.go, vdb-site/api/internal/handler/factory_trigger_validate.go, vdb-site/api/internal/handler/factory_engine_events.go, vdb-site/api/internal/handler/github_posture.go]
+checked: [vdb-site@45fd979, website@deb1a07]
 updated: 28 Oct 2026
 ---
 
@@ -37,6 +37,9 @@ Every condition is checked against the delivery as GitHub sent it. No condition 
 | `secret_scanning_alert_location` | `created` | `secret:N` |
 | `registry_package` | `published`, `updated` | `package:name@version` |
 | `deployment_status` | `created` | `deploy:<id>` |
+| `posture_finding` | `opened`, `resolved`, `regressed` | `finding:<uuid>` |
+
+`posture_finding` is not a GitHub delivery. Vulnetix raises it when one of its GitHub misconfiguration rules fails on a repository for the first time (`opened`), passes again after a fix (`resolved`), or fails again after passing (`regressed`). The rules run on pushes that change workflows, actions, `CODEOWNERS`, `SECURITY.md` or the Dependabot configuration, on branch protection, ruleset, deploy key and security setting changes, and once a day. Its `severity` is the finding's after the repository's own settings rated it: a pull request target checkout in a private repository with forking disabled is rated lower than the same workflow in a public one, so a `critical` trigger does not fire for it.
 
 Some events need App permissions or subscriptions your installation may not have yet. The Organisations panel on the Repos page shows each event's state. See [Managed scope](/control/managed-scope/).
 
@@ -59,7 +62,7 @@ Every condition you set must match. Names may be written snake_case (`base_branc
 | `conclusion` | `success`, `failure`, `cancelled`, `timed_out`, `neutral`, `skipped`, `action_required`, `stale`, `startup_failure` | the conclusion of a `workflow_run`, `check_run` or `check_suite` |
 | `conclusion` on `deployment_status` | `success`, `failure`, `error`, `inactive`, `in_progress`, `queued`, `pending` | the deployment status's state |
 | `reviewState` | `approved`, `changes_requested`, `dismissed`, `commented` | a `pull_request_review`'s state |
-| `severity` | `critical`, `high`, `medium`, `low`, `error`, `warning`, `note` | a Dependabot alert's advisory severity, or a code scanning rule's security severity |
+| `severity` | `critical`, `high`, `medium`, `low`, `informational`, `error`, `warning`, `note` | a Dependabot alert's advisory severity, a code scanning rule's security severity, or a posture finding's severity |
 | `environment` | globs, without case | a `deployment_status`'s environment |
 | `packageType` | `container`, `docker`, `npm`, `maven`, `rubygems`, `nuget` | a `registry_package`'s type |
 
