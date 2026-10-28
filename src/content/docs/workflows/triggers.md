@@ -4,7 +4,7 @@ nav: Triggers
 description: Every GitHub event and action a workflow can start on, every condition you can narrow it with, how storms and forks are handled, and why a trigger did not fire.
 order: 20
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_trigger_conditions.go, vdb-site/api/internal/handler/factory_trigger_validate.go, vdb-site/api/internal/handler/factory_engine_events.go, vdb-site/api/internal/handler/github_posture.go]
-checked: [vdb-site@45fd979, website@deb1a07]
+checked: [vdb-site@df5eba5, website@00c3dfa]
 updated: 28 Oct 2026
 ---
 
@@ -37,9 +37,9 @@ Every condition is checked against the delivery as GitHub sent it. No condition 
 | `secret_scanning_alert_location` | `created` | `secret:N` |
 | `registry_package` | `published`, `updated` | `package:name@version` |
 | `deployment_status` | `created` | `deploy:<id>` |
-| `posture_finding` | `opened`, `resolved`, `regressed` | `finding:<uuid>` |
+| `posture_finding` | `opened`, `resolved`, `regressed`, `introduced` | `finding:<uuid>`; `pr:N` for `introduced` |
 
-`posture_finding` is not a GitHub delivery. Vulnetix raises it when one of its GitHub misconfiguration rules fails on a repository for the first time (`opened`), passes again after a fix (`resolved`), or fails again after passing (`regressed`). The rules run on pushes that change workflows, actions, `CODEOWNERS`, `SECURITY.md` or the Dependabot configuration, on branch protection, ruleset, deploy key and security setting changes, and once a day. Its `severity` is the finding's after the repository's own settings rated it: a pull request target checkout in a private repository with forking disabled is rated lower than the same workflow in a public one, so a `critical` trigger does not fire for it.
+`posture_finding` is not a GitHub delivery. Vulnetix raises it when one of its GitHub misconfiguration rules fails on a repository for the first time (`opened`), passes again after a fix (`resolved`), or fails again after passing (`regressed`). `introduced` is raised for a pull request that changes a workflow, an action or `CODEOWNERS` when its head would add a misconfiguration the default branch does not have: its subject is the pull request, its `severity` the worst new finding, and `origin` says whether it comes from a fork. The rules run on pushes that change workflows, actions, `CODEOWNERS`, `SECURITY.md` or the Dependabot configuration, on branch protection, ruleset, deploy key and security setting changes, and once a day. Its `severity` is the finding's after the repository's own settings rated it: a pull request target checkout in a private repository with forking disabled is rated lower than the same workflow in a public one, so a `critical` trigger does not fire for it.
 
 Some events need App permissions or subscriptions your installation may not have yet. The Organisations panel on the Repos page shows each event's state. See [Managed scope](/control/managed-scope/).
 

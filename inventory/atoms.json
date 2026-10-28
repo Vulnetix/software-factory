@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-28T02:27:23.898Z",
+ "generatedAt": "2026-10-28T02:41:03.760Z",
  "repos": {
-  "vdb-site": "45fd979942c6571efbe767d4478a812e45ca5269",
-  "website": "deb1a073c39f3ecb558952c0c0a9fa1e70c2a86e",
-  "belai": "7c256b9b2951282931e42e9c7ef56a1b1c8abbbb",
+  "vdb-site": "df5eba5957241f301eabbcc0ba41353282e86aa0",
+  "website": "00c3dfa6310ad326974acebb3fd913f678f27997",
+  "belai": "8d0a0ad82d733aa7c0a69d344ccc11b1e48c0eba",
   "saas": "e91cbeacde81d5bda0dd07ea43ef1cf620dad2c7"
  },
  "counts": {
@@ -27,7 +27,7 @@
   "tui-cmd": 49,
   "tui-key": 36,
   "voice-tool": 33,
-  "webhook-event": 98
+  "webhook-event": 99
  },
  "atoms": [
   {
@@ -28855,6 +28855,14 @@
    "id": "webhook-event:posture_finding",
    "kind": "webhook-event",
    "value": "posture_finding",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ]
+  },
+  {
+   "id": "webhook-event:posture_finding.introduced",
+   "kind": "webhook-event",
+   "value": "posture_finding.introduced",
    "sources": [
     "vdb-site/api/internal/handler/factory_trigger_conditions.go"
    ]

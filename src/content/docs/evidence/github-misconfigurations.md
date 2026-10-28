@@ -4,7 +4,7 @@ nav: GitHub misconfigurations
 description: How the factory finds misconfigured GitHub workflows, actions and settings as webhooks arrive, rates each one against the repository's own settings, files it as a finding, and opens a draft pull request that fixes it.
 order: 13
 sources: [vdb-site/docs/github-posture-rules.md, vdb-site/api/internal/handler/github_posture.go, vdb-sca-match/ghaudit, vdb-sca-match/docs/ghaudit-rules.md]
-checked: [vdb-site@45fd979, website@deb1a07]
+checked: [vdb-site@df5eba5, website@00c3dfa]
 updated: 28 Oct 2026
 ---
 
@@ -27,6 +27,7 @@ The full list, with what each rule needs and how to fix it, is the [GitHub rules
 - A change to branch protection, a ruleset, a deploy key, the security settings or the repository itself.
 - An organisation or membership change, for the organisation rules.
 - Once a day for every repository, to catch anything no event announced.
+- A pull request that changes a workflow, an action or `CODEOWNERS`: its head is checked before it merges. What it would add is not filed as a finding, since it is not on the default branch yet; it is announced as `posture_finding.introduced` on the pull request, so a workflow can review it or propose the fix on the same branch.
 
 Deliveries that arrive while a repository is being checked are folded into one more pass, so a burst of pushes costs one evaluation, not one each.
 
