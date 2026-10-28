@@ -29,7 +29,12 @@ The full list, with what each rule needs and how to fix it, is the [GitHub rules
 - Once a day for every repository, to catch anything no event announced.
 - A pull request that changes a workflow, an action or `CODEOWNERS`: its head is checked before it merges. What it would add is not filed as a finding, since it is not on the default branch yet; it is announced as `posture_finding.introduced` on the pull request, so a workflow can review it or propose the fix on the same branch.
 
+- Right away when the GitHub App is installed or claimed, when new App permissions are accepted, when repositories are added to the installation, and when a posture capability is turned on, so the first results do not wait for the daily pass.
+- When an owner or admin presses **Evaluate now** on the GitHub posture page.
+
 Deliveries that arrive while a repository is being checked are folded into one more pass, so a burst of pushes costs one evaluation, not one each.
+
+Settings reads are kept for up to 30 minutes between settings events, so a push that changes a workflow does not re-read every setting; any settings event clears them first, and the daily pass always reads GitHub.
 
 ## Your settings decide the rating
 
@@ -41,6 +46,8 @@ A rule's severity is a starting point. The factory reads the repository's config
 - a self-hosted runner reachable from pull requests is rated higher in a public repository.
 
 Anything the GitHub App is not allowed to read is recorded as **not evaluated** with the reason, never as a pass.
+
+The **GitHub posture** page (Resolve, GitHub posture) lists each repository and the organisation, worst first. For each one it shows the failing rules, linked to their findings; the rules that were not evaluated, grouped by the reason (usually one missing App permission explains several); and what was fixed.
 
 ## Findings without a scan
 
