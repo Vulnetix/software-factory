@@ -3,8 +3,8 @@ title: Triggers and webhook conditions
 nav: Triggers
 description: Every GitHub event and action a workflow can start on, every condition you can narrow it with, how storms and forks are handled, and why a trigger did not fire.
 order: 20
-sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_trigger_conditions.go, vdb-site/api/internal/handler/factory_trigger_validate.go, vdb-site/api/internal/handler/factory_engine_events.go]
-checked: [vdb-site@597344c, website@58b9ffa]
+sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_trigger_conditions.go, vdb-site/api/internal/handler/factory_trigger_validate.go, vdb-site/api/internal/handler/factory_engine_events.go, vdb-site/api/internal/handler/github_posture.go]
+checked: [vdb-site@c33d5bb, website@3302530]
 updated: 28 Oct 2026
 ---
 
@@ -39,6 +39,9 @@ Event names are GitHub's on every forge. A GHES, Gitea, Forgejo or GitLab delive
 | `secret_scanning_alert_location` | `created` | `secret:N` |
 | `registry_package` | `published`, `updated` | `package:name@version` |
 | `deployment_status` | `created` | `deploy:<id>` |
+| `posture_finding` | `opened`, `resolved`, `regressed`, `introduced` | `finding:<uuid>`; `pr:N` for `introduced` |
+
+`posture_finding` is not a GitHub delivery. Vulnetix raises it when one of its GitHub misconfiguration rules fails on a repository for the first time (`opened`), passes again after a fix (`resolved`), or fails again after passing (`regressed`). `introduced` is raised for a pull request that changes a workflow, an action or `CODEOWNERS` when its head would add a misconfiguration the default branch does not have: its subject is the pull request, its `severity` the worst new finding, and `origin` says whether it comes from a fork. The rules run on pushes that change workflows, actions, `CODEOWNERS`, `SECURITY.md` or the Dependabot configuration, on branch protection, ruleset, deploy key and security setting changes, and once a day. Its `severity` is the finding's after the repository's own settings rated it: a pull request target checkout in a private repository with forking disabled is rated lower than the same workflow in a public one, so a `critical` trigger does not fire for it.
 
 Some events need App permissions or subscriptions your installation may not have yet. The Organisations panel on the Repos page shows each event's state. See [Managed scope](/control/managed-scope/).
 
@@ -61,7 +64,7 @@ Every condition you set must match. Names may be written snake_case (`base_branc
 | `conclusion` | `success`, `failure`, `cancelled`, `timed_out`, `neutral`, `skipped`, `action_required`, `stale`, `startup_failure` | the conclusion of a `workflow_run`, `check_run` or `check_suite` |
 | `conclusion` on `deployment_status` | `success`, `failure`, `error`, `inactive`, `in_progress`, `queued`, `pending` | the deployment status's state |
 | `reviewState` | `approved`, `changes_requested`, `dismissed`, `commented` | a `pull_request_review`'s state |
-| `severity` | `critical`, `high`, `medium`, `low`, `error`, `warning`, `note` | a Dependabot alert's advisory severity, or a code scanning rule's security severity |
+| `severity` | `critical`, `high`, `medium`, `low`, `informational`, `error`, `warning`, `note` | a Dependabot alert's advisory severity, a code scanning rule's security severity, or a posture finding's severity |
 | `environment` | globs, without case | a `deployment_status`'s environment |
 | `packageType` | `container`, `docker`, `npm`, `maven`, `rubygems`, `nuget` | a `registry_package`'s type |
 
