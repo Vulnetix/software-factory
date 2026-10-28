@@ -3,7 +3,7 @@ title: Output node
 description: The step that writes a run's result back. Draft pull requests, comments, reviews, approval when ready, merge conflict cards, TEA releases, VEX and notifications, with every key and the rules each one follows.
 order: 16
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_engine_node_output.go, vdb-site/api/internal/handler/factory_engine_review.go, vdb-site/api/internal/handler/factory_engine_approve.go, vdb-site/api/internal/handler/factory_engine_conflicts.go]
-checked: [vdb-site@284f1d6]
+checked: [vdb-site@597344c]
 updated: 28 Oct 2026
 ---
 
@@ -26,7 +26,7 @@ Opens a pull request from the card's branch. It costs 1 to 3 GitHub calls. If a 
 
 | Key | Values | Default |
 |---|---|---|
-| `prState` | `draft`, `ready` | `github.pr_state`, then `draft` |
+| `prState` | `draft`, `ready` | `forge.pr_state`, then `draft` |
 | `base` | `default`, `pr_head`, or a branch name | `default` |
 | `ifNoBranch` | `fail`, `skip` | `fail` |
 | `reviewers` | `codeowners`, `none` | |

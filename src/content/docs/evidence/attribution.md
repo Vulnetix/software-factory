@@ -1,10 +1,10 @@
 ---
-title: Bot attribution on GitHub
+title: Bot attribution
 nav: Attribution
 description: How commits and comments the factory's agents make are marked, so anyone reading the history can see an agent made them and trace them back to the session.
 order: 10
 sources: [belai/docs/bot-attribution.md, vdb-site/api/internal/handler/belai_github_attribution.go]
-checked: [belai@35506b9, vdb-site@284f1d6]
+checked: [belai@8aa7760, vdb-site@597344c]
 updated: 28 Oct 2026
 ---
 
@@ -30,6 +30,6 @@ Agents are told the trailers are added for them and must not write, change or re
 > [!WHY] Why mark agent work in the history
 > A reviewer reading `git log` a year from now should be able to tell which changes a person made and which an agent made, and find the session that explains why.
 
-## On GitHub
+## On GitHub and other forges
 
-The factory recognises its own identities: the Vulnetix App's bot, `Pix [bot]` and commits authored by `security@vulnetix.com`. Events from them never start runs. See [Triggers](/workflows/triggers/). [Delivery](/evidence/delivery/) lists them under "Seen, and left out" and never counts them as people.
+The factory recognises its own identities: the Vulnetix App's bot, `Pix [bot]` and commits authored by `security@vulnetix.com`. On a [forge connection](/control/forge-connections/) its identity is the connection's bot account instead: its commits, pull requests and comments there sign off as that account, and events from its login or email are recognised as the factory's own. Events from them never start runs. See [Triggers](/workflows/triggers/). [Delivery](/evidence/delivery/) lists them under "Seen, and left out" and never counts them as people.

@@ -3,11 +3,11 @@ title: Issue mirroring
 description: How a board card and a GitHub issue are kept as one record, what each binding's status means, how clashes are settled, and where to change it.
 order: 3
 sources: [vdb-site/docs/factory.md, vdb-site/docs/belai-github-sync.md, vdb-site/api/internal/handler/factory_repos.go]
-checked: [vdb-site@284f1d6]
+checked: [vdb-site@597344c]
 updated: 28 Oct 2026
 ---
 
-When mirroring is on, a [board](/workforce/board/) card and its GitHub issue are one record that either side can edit. The Repos page has an **Issue mirroring** section that shows every binding at once. This page explains what it shows. The sync itself is described in [GitHub sync](/workforce/github-sync/).
+When mirroring is on, a [board](/workforce/board/) card and its GitHub issue are one record that either side can edit. The Repos page has an **Issue mirroring** section that shows every binding at once. This page explains what it shows. The sync itself is described in [Issue sync](/workforce/github-sync/).
 
 A board with nothing bound works as before, and none of this runs for it.
 
@@ -97,5 +97,5 @@ The section itself is `GET /v1/factory/repos/mirroring`. It makes no GitHub call
 
 ## Related
 
-- [GitHub sync](/workforce/github-sync/) for the sync engine, sign-in and failures.
+- [Issue sync](/workforce/github-sync/) for the sync engine, sign-in and failures.
 - [The board](/workforce/board/)

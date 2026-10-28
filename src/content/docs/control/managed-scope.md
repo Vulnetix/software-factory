@@ -4,7 +4,7 @@ nav: Managed scope
 description: Which GitHub organisations and repositories the factory may act on, how a repository gets listed, and the per-repository settings that override the tenant's.
 order: 1
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_orgs.go, vdb-site/api/internal/handler/factory_repos_store.go, website/src/shared/factory-settings.ts]
-checked: [vdb-site@284f1d6, website@a31d470]
+checked: [vdb-site@597344c, website@58b9ffa]
 updated: 28 Oct 2026
 ---
 
@@ -12,7 +12,7 @@ The factory explores and acts only inside **managed orgs**. Every GitHub App ins
 
 ## Managing an organisation
 
-On the Repos page, under Organisations, switch **Managed** on for an installation. Only owners and admins can. This is the same value as the `scope.orgs` setting, so changing either changes both.
+On the Repos page, under Organisations, switch **Managed** on for an installation. A [forge connection](/control/forge-connections/) is listed there too, as its forge and host (for example "Gitea on git.example.com"), and is managed the same way; in `scope.orgs` its account is written `host/account`, so `acme` on github.com and `codeberg.org/acme` stay apart, and its repositories are named `host/owner/name`. Only owners and admins can. This is the same value as the `scope.orgs` setting, so changing either changes both.
 
 When you manage an organisation:
 

@@ -1,14 +1,17 @@
 ---
-title: GitHub quota and the data plane
-nav: GitHub quota
-description: How the factory shares your GitHub App's rate limit with your own tools. Where it reads GitHub from, the factory's share and the reserve, what each priced action costs, what happens when the share runs out, and the GitHub settings.
+title: Forge quota and the data plane
+nav: Forge quota
+description: How the factory shares each forge's rate limit with your own tools. Where it reads a forge from, the factory's share and the reserve, the local budget on forges that report none, what each priced action costs, what happens when the share runs out, and the forge settings.
 order: 4
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_quota.go, vdb-site/api/internal/handler/factory_engine_quota.go, website/src/shared/factory-settings.ts]
-checked: [vdb-site@284f1d6, website@a31d470]
+checked: [vdb-site@597344c, website@58b9ffa]
 updated: 28 Oct 2026
 ---
 
-Each GitHub App installation has one rate limit, 5,000 calls an hour, shared by Vulnetix's enrichment, the factory and the people using the console. It is the scarcest thing the factory uses, so the factory is built to spend as little of it as possible.
+Each GitHub App installation has one rate limit, 5,000 calls an hour, shared by Vulnetix's enrichment, the factory and the people using the console. A [forge connection](/control/forge-connections/) has one too. It is the scarcest thing the factory uses, so the factory is built to spend as little of it as possible.
+
+> [!CAREFUL] Gitea and Forgejo report no budget
+> GHES and GitLab send their rate limit with every answer, and the factory reads it as it does GitHub's. Gitea and Forgejo send none, so the factory counts its own calls on each connection in the clock hour against `forge.calls_per_hour` (default 5,000, from 100 to 100,000) and applies the share and reserve to that. The Quota panel marks such a connection as counted locally. Set it to what your instance allows.
 
 ## Where the factory reads GitHub from
 
@@ -24,14 +27,14 @@ No page load calls GitHub. Only an action marked with a price, or a gate or outp
 
 | Setting | Values | Default | Effect |
 |---|---|---|---|
-| `github.read.default` | `posture_mirror`, `s3_raw`, `live_api` | `posture_mirror` | Where steps read GitHub from by default |
-| `github.stale.repo` | duration | `6h` | How old repository data may be before a step reads it live |
-| `github.stale.pulls` | duration | `5m` | The same, for pull requests |
-| `github.stale.checks` | duration | `2m` | The same, for check runs |
-| `github.stale.alerts` | duration | `1h` | The same, for alerts |
-| `github.etag` | on, off | on | Send `If-None-Match` on every live read |
-| `github.polling.forbidden` | locked on | on | The factory never polls GitHub on a timer |
-| `github.poll.fallback` | `conditional_poll_10m`, `none` | `conditional_poll_10m` | For a board binding with no webhook, a 10 minute conditional poll |
+| `forge.read.default` | `posture_mirror`, `s3_raw`, `live_api` | `posture_mirror` | Where steps read GitHub from by default |
+| `forge.stale.repo` | duration | `6h` | How old repository data may be before a step reads it live |
+| `forge.stale.pulls` | duration | `5m` | The same, for pull requests |
+| `forge.stale.checks` | duration | `2m` | The same, for check runs |
+| `forge.stale.alerts` | duration | `1h` | The same, for alerts |
+| `forge.etag` | on, off | on | Send `If-None-Match` on every live read |
+| `forge.polling.forbidden` | locked on | on | The factory never polls GitHub on a timer |
+| `forge.poll.fallback` | `conditional_poll_10m`, `none` | `conditional_poll_10m` | For a board binding with no webhook, a 10 minute conditional poll |
 
 The staleness settings apply to steps only. They never make a page call GitHub.
 
@@ -39,10 +42,10 @@ The staleness settings apply to steps only. They never make a page call GitHub.
 
 | Setting | Default | Effect |
 |---|---|---|
-| `github.quota.factory_share` | 10% | What the factory's own reads may use of each installation's hourly limit |
-| `github.quota.reserve` | 20% | Kept free for people and time-critical writes |
-| `github.quota.on_exhausted` | `pause_live_reads` | What a step does when the share is used up |
-| `github.quota.proactive_writes_per_hour` | 60 | Calls an hour the [default workflows](/workflows/default-workflows/) may make on their own, per installation |
+| `forge.quota.factory_share` | 10% | What the factory's own reads may use of each installation's hourly limit |
+| `forge.quota.reserve` | 20% | Kept free for people and time-critical writes |
+| `forge.quota.on_exhausted` | `pause_live_reads` | What a step does when the share is used up |
+| `forge.quota.proactive_writes_per_hour` | 60 | Calls an hour the [default workflows](/workflows/default-workflows/) may make on their own, per installation |
 
 `factory_share` plus `reserve` cannot exceed 100.
 
@@ -56,7 +59,7 @@ Calls are classed by who makes them:
 
 ### When the share runs out
 
-A step that is refused does what its `onQuotaLow` says, or else what `github.quota.on_exhausted` maps to:
+A step that is refused does what its `onQuotaLow` says, or else what `forge.quota.on_exhausted` maps to:
 
 | `onQuotaLow` | `on_exhausted` | Effect |
 |---|---|---|
@@ -83,22 +86,23 @@ Every button that calls GitHub shows its price before you press it, and the resp
 
 ## The Quota panel
 
-The Budgets page shows each installation's current hour: the limit and what is left, when it resets, calls by enrichment, the factory and people, the reserve held back, the factory's share used, calls per workflow over 24 hours, and the enrichment queue. The state is `ok`, `share_exhausted`, `limited` (below the reserve) or `secondary_limited` (GitHub asked the factory to back off; not yet recorded, as nothing stores the Retry-After). `quota` events mark each threshold.
+The Budgets page shows each installation's and each forge connection's current hour: the limit and what is left, when it resets, calls by enrichment, the factory and people, the reserve held back, the factory's share used, calls per workflow over 24 hours, and the enrichment queue. The state is `ok`, `share_exhausted`, `limited` (below the reserve) or `secondary_limited` (GitHub asked the factory to back off; not yet recorded, as nothing stores the Retry-After). `quota` events mark each threshold.
 
-## Other GitHub settings
+## Other forge settings
 
-Settings › GitHub:
+Settings › Forge. These keys were `github.*`; the old names still work ([Forge connections](/control/forge-connections/#settings-that-apply-to-every-forge)).
 
 | Setting | Values | Default | Effect |
 |---|---|---|---|
-| `github.branch_prefix` | 1 to 40 characters of letters, digits and `/ _ . -` | `belai/K-` | The prefix of every branch agents push. Events on these branches never start runs. |
-| `github.pr_state` | `draft`, `ready` | `draft` | The state pull requests open in |
-| `github.protected` | on, off | on | Never push to protected branches |
-| `github.check_runs` | on, off | off | Publish gate results as check runs. Needs the App permission `checks: write`. |
+| `forge.calls_per_hour` | 100 to 100,000 | 5000 | The hourly budget the factory counts against on a Gitea or Forgejo connection, which reports none |
+| `forge.branch_prefix` | 1 to 40 characters of letters, digits and `/ _ . -` | `belai/K-` | The prefix of every branch agents push. Events on these branches never start runs. |
+| `forge.pr_state` | `draft`, `ready` | `draft` | The state pull requests open in |
+| `forge.protected` | on, off | on | Never push to protected branches |
+| `forge.check_runs` | on, off | off | Publish gate results as check runs. Needs the App permission `checks: write`. Gitea, Forgejo and GitLab have no check runs: there the result is a commit status. |
 
 ## API
 
 | Method | Path |
 |---|---|
-| GET | `/v1/factory/quota?installation=` (includes the full price list) |
+| GET | `/v1/factory/quota?installation=` (includes the full price list; a forge connection's negative key filters on it, and its row carries `forge`, `host` and `budgetKnown`) |
 | GET, PUT | `/v1/factory/quota/rules` with `{factoryShare, reserve, onExhausted, revision}` |

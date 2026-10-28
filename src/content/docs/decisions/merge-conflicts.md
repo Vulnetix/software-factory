@@ -3,7 +3,7 @@ title: Merge conflicts
 description: How the factory resolves a pull request's merge conflicts on its own, in up to five checked attempts, and how a person resolves them in the browser with the conflict editor.
 order: 5
 sources: [belai/docs/merge-conflicts.md, website/.repo/conflict-editor.md, vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_checkpoints_conflicts.go, vdb-site/api/internal/handler/pulls_conflicts.go]
-checked: [vdb-site@284f1d6, belai@35506b9, website@a31d470]
+checked: [vdb-site@597344c, belai@8aa7760, website@58b9ffa]
 updated: 28 Oct 2026
 ---
 
@@ -75,6 +75,9 @@ The conflict editor (`/resolve/factory-conflicts?repo=owner/name&pr=N`) resolves
 Lockfiles are never offered for editing. The base's copy goes into the commit, and nothing regenerates it, so regenerate it locally or send the pull request to Pix. A file the editor cannot merge as text, a fork, a pull request too large, or one with no merge base is named, with the local git commands to use instead.
 
 If the pull request's head or base moved while you worked, nothing is written (`head_moved`, `base_moved`). Reloading keeps the files whose conflict did not change.
+
+> [!CAREFUL] On GHES, Gitea, Forgejo and GitLab
+> The editor works the same. The `repo` is the forge repository's name (`codeberg.org/acme/app`). Only GitHub's API can make a two-parent or self-signed commit, so on the other forges the factory builds the merge commit and pushes it over git with the connection's token, as a fast-forward that is refused if the branch moved. The conflict card's `repo` line is the same name, and its `pr` line is the forge's own link (`/pulls/N`, or `/-/merge_requests/N` on GitLab).
 
 ## API
 

@@ -4,7 +4,7 @@ nav: How the pieces fit
 description: Where each part of Software Factory runs and how they talk to each other. Read this before you connect your own machines or debug a run that does not start.
 order: 5
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/docs/factory-operations.md, belai/docs/architecture.md, website/.repo/pix-call.md]
-checked: [vdb-site@284f1d6, belai@35506b9, website@a31d470]
+checked: [vdb-site@597344c, belai@8aa7760, website@58b9ffa]
 updated: 28 Oct 2026
 ---
 
@@ -34,6 +34,7 @@ The engine has no timer that scans for work. A run moves only when something tel
 ## Triggers
 
 - **GitHub events** arrive as webhooks at `POST /v1/webhooks/github`, signed by GitHub. The factory updates its mirror, then wakes matching triggers and waiting steps.
+- **Other forges' events** (GHES, Gitea, Forgejo, GitLab) arrive at `POST /v1/webhooks/{kind}/{connection}`, checked against the [forge connection's](/control/forge-connections/) secret, and are translated into GitHub's events before the same path runs.
 - **Schedules** are fired by AWS EventBridge Scheduler (`runsOn: aws`), Cloudflare (`cloudflare`) or a host (`host`). A fire is a signed request to the factory's internal trigger endpoint. A fire that arrives while the factory is paused or stopped is answered `held` and starts no run; one during a maintenance window or blackout starts a run that waits as `held`.
 - **Scanner results** uploaded by the Vulnetix CLI wake scan steps.
 - **Labels and comments** (`sf:<name>`, `/sf <name>`) on issues and pull requests start a run of the named workflow.

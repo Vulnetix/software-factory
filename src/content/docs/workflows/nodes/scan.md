@@ -3,7 +3,7 @@ title: Scan node
 description: A step that gathers findings from Vulnetix scanners and GitHub's alerts, and can stop the run when it finds malware, a known exploited vulnerability or a secret.
 order: 11
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_engine_node_scan.go]
-checked: [vdb-site@284f1d6]
+checked: [vdb-site@597344c]
 updated: 28 Oct 2026
 ---
 
@@ -13,7 +13,7 @@ A scan step collects findings for the run's repository and writes them to `scan/
 
 | Key | Values | Default |
 |---|---|---|
-| `source` | `posture`, `webhook`, `api`, `s3`, `fresh_clone` | required on publish; the engine falls back to `github.read.default`, then `posture` |
+| `source` | `posture`, `webhook`, `api`, `s3`, `fresh_clone` | required on publish; the engine falls back to `forge.read.default`, then `posture` |
 | `scanners` | `sca`, `sast`, `secrets`, `iac`, `containers`, `license`, `malscan`, `eol`, `cbom`, `aibom`, `scorecard` | required on publish; the engine falls back to `sca`, `malscan`, `secrets` |
 | `failOn` | `malware`, `kev`, `secrets`, `never` | |
 | `sbomFormat` | `cyclonedx-1.6`, `spdx-2.3` | |

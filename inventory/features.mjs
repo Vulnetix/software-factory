@@ -46,10 +46,13 @@ f('concepts', 'get-started', 'get-started/concepts', 'Concepts', [gp('factory_co
 f('quickstart', 'get-started', 'get-started/quickstart', 'Quickstart: manage an org and run a workflow', []);
 f('never-does', 'get-started', 'get-started/what-the-factory-never-does', 'What the factory never does', []);
 f('glossary', 'get-started', 'get-started/glossary', 'Glossary', []);
+f('forges', 'get-started', 'get-started/forges', 'Supported forges: GitHub, GHES, Gitea, Forgejo and GitLab', [doc('belai/forges\\.md')], { foundIn: '2026-10-28' });
 f('architecture', 'get-started', 'get-started/architecture', 'How the pieces fit: console, API, hosts, sandboxes and Belai', [doc('belai/architecture\\.md', 'vdb-site/factory-operations\\.md'), g('belai_client'), g('belai_store')]);
 
 // ── Control ────────────────────────────────────────────────────────────────
 f('managed-scope', 'control', 'control/managed-scope', 'Managed orgs and repositories', [r('factory/orgs'), r('factory/repos(/\\{|$| )'), r('factory/repos/bulk'), gp('factory_orgs'), gp('factory_repos'), g('factory_scope'), con('factory-repos'), set('scope.'), '^model:(FactoryManagedOrg|FactoryRepoSettings|FactoryRepoProfile|OrgKnownPackage)$', e('factoryVisibility')]);
+f('forge-connections', 'control', 'control/forge-connections', 'Forge connections', [r('integrations/forges'), '^route:POST /v1/webhooks/\\{kind\\}', g('forge_connections'), g('forge_webhooks'), g('factory_engine_forge'), g('belai_github_forge'), g('pulls_conflicts_forge'), '^gofile:forge/', e('fcSettingAliases'), '^model:(ForgeConnection|ForgeRepoHook|ForgeLabelState|ForgeOAuthIdentity|GitHubCommitStatus)$', doc('vdb-site/forge-connections\\.md', 'website/forge-connections\\.md')], { foundIn: '2026-10-28' });
+f('forge-capabilities', 'reference', 'reference/forge-capabilities', 'Forge capabilities', ['^gofile:forgecap/'], { foundIn: '2026-10-28' });
 f('repo-profiles', 'control', 'control/repository-profiles', 'Repository profiles', [g('factory_repo_profile')], { foundIn: '2026-10-28' });
 f('issue-mirroring', 'control', 'control/issue-mirroring', 'Issue mirroring', [r('factory/repos/mirroring')]);
 f('autonomy', 'control', 'control/autonomy', 'Autonomy levels', [set('autonomy.'), '^code:autonomy_above_max$']);
@@ -111,7 +114,7 @@ f('builtin-models', 'workforce', 'workforce/built-in-models', 'Built-in models, 
 f('board', 'workforce', 'workforce/board', 'The board', [r('belai/kanban'), gp('belai_kanban'), g('factory_kanban'), con('factory-board'), e('belaiKanbanLists'), e('belaiKanbanListOrder'), pkg('kanban', 'todos'), doc('belai/kanban\\.md', 'belai/bkan\\.md', 'vdb-site/belai-kanban-classify\\.md'), '^cli-cmd:kanban$', sub('kanban'), sub('kanbanassign'), flags('kanban'), tui('kanban', 'todos'), cfg('kanban')]);
 f('ticket-standard', 'workforce', 'workforce/ticket-standard', 'The ticket standard for cards', [g('factory_ticket'), pkg('ticketrules')], { foundIn: '2026-10-28' });
 f('assignment', 'workforce', 'workforce/board', 'Assigning cards to people and agents', [r('belai/assignees'), g('belai_assignees'), doc('vdb-site/belai-assignment-mail\\.md')]);
-f('github-sync', 'workforce', 'workforce/github-sync', 'GitHub sync: issues, projects and labels', [gp('belai_github'), e('belaiGHLabelColors'), e('belaiGHListLabels'), doc('vdb-site/belai-github-sync\\.md', 'website/belai-github-sync\\.md')]);
+f('github-sync', 'workforce', 'workforce/github-sync', 'Issue and label sync with your forge', [gp('belai_github'), e('belaiGHLabelColors'), e('belaiGHListLabels'), doc('vdb-site/belai-github-sync\\.md', 'website/belai-github-sync\\.md')]);
 f('memory', 'workforce', 'workforce/memory', 'Agent and repository memory', [r('factory/memory'), r('belai/memory'), g('belai_memory'), con('factory-memory'), pkg('repomemory')]);
 f('a2a', 'workforce', 'workforce/a2a-messaging', 'A2A messaging and blackout', [r('factory/a2a'), r('belai/a2a'), g('belai_a2a'), pkg('a2a', 'a2alink'), doc('belai/a2a\\.md', 'website/a2a-messaging\\.md')]);
 f('forge', 'workforce', 'workforce/forge-requests', 'Forge requests', [g('belai_forge'), e('belaiForge\\w+'), e('belaiSteerEvents'), pkg('forge'), doc('vdb-site/belai-forge-requests\\.md')]);
@@ -135,7 +138,7 @@ f('budgets', 'cost', 'cost/budgets', 'Budgets', [r('factory/budgets'), gp('facto
 f('agent-budgets', 'cost', 'cost/budgets', 'Per-agent and per-card limits', [g('factory_agent_budget'), set('agents.')]);
 f('model-routing', 'cost', 'cost/model-routing', 'Model routing and the Pix allowance', [r('factory/budgets/routing'), '^gofile:tenantmodel/', e('fcRouteKeys'), e('fcRouteDefaults'), ts('sandbox/model-routing'), doc('website/tenant-model-labels\\.md'), set('providers.')]);
 f('usage', 'cost', 'cost/usage', 'Usage and spend', [r('factory/budgets/usage'), r('factory/workforce/usage'), g('factory_summary_usage')]);
-f('github-quota', 'cost', 'cost/github-quota', 'GitHub quota and the data plane', [r('factory/quota'), gp('factory_quota'), g('factory_engine_quota'), '^model:(FactoryGithubCall|FactoryGithubQuota)$', set('github.'), set('githubdata.'), e('factoryOnQuotaLow'), '^code:github_rate_limited$']);
+f('github-quota', 'cost', 'cost/github-quota', 'Forge quota and the data plane', [r('factory/quota'), gp('factory_quota'), g('factory_engine_quota'), '^model:(FactoryGithubCall|FactoryGithubQuota)$', set('forge.'), set('github.'), set('githubdata.'), e('factoryOnQuotaLow'), '^code:github_rate_limited$']);
 
 // ── Evidence ───────────────────────────────────────────────────────────────
 f('cockpit', 'evidence', 'evidence/cockpit', 'The cockpit', [r('factory/summary'), g('factory_summary'), g('factory_summary_store'), '^console:/resolve/factory$', e('fcSignal\\w+')]);
@@ -145,9 +148,9 @@ f('audit', 'evidence', 'evidence/audit-ledger', 'The audit ledger', [r('factory/
 f('events', 'evidence', 'evidence/event-stream', 'The event stream', [r('factory/events'), gp('factory_events'), g('factory_engine_events'), con('factory-events'), '^model:FactoryEvent$', e('factoryEvent\\w+'), doc('vdb-site/factory-events\\.md')]);
 f('facts', 'evidence', 'evidence/facts', 'Facts', [r('factory/facts'), g('factory_facts'), gp('belai_facts'), '^gofile:facts/', '^model:Fact$', doc('vdb-site/belai-session-facts\\.md'), pkg('factspec')]);
 f('lifecycle', 'evidence', 'evidence/lifecycle-and-flow', 'Lifecycle and flow', [r('factory/(lifecycle|flow)'), gp('factory_lifecycle'), '^gofile:lifecycle/', '^model:FactoryLifecycle$', doc('vdb-site/factory-lifecycle\\.md', 'website/factory-lifecycle\\.md')]);
-f('delivery', 'evidence', 'evidence/delivery', 'Delivery', [r('factory/delivery'), gp('factory_delivery'), con('factory-delivery-decisions', 'factory-people', 'factory-contributors', 'factory-contributor', 'factory-outcome'), '^model:(FactoryOutcome|FactoryOutcomeModel|FactoryPerson|FactoryCommit)$', set('delivery.'), doc('vdb-site/factory-delivery-api\\.md', 'vdb-site/factory-delivery-capture\\.md', 'website/factory-delivery\\.md')], { refOnly: ['^setting:delivery\\.(roles|kinds|sources)\\.'] });
+f('delivery', 'evidence', 'evidence/delivery', 'Delivery', [r('factory/delivery'), gp('factory_delivery'), g('forge_profile'), con('factory-delivery-decisions', 'factory-people', 'factory-contributors', 'factory-contributor', 'factory-outcome'), '^model:(FactoryOutcome|FactoryOutcomeModel|FactoryPerson|FactoryCommit)$', set('delivery.'), doc('vdb-site/factory-delivery-api\\.md', 'vdb-site/factory-delivery-capture\\.md', 'website/factory-delivery\\.md')], { refOnly: ['^setting:delivery\\.(roles|kinds|sources)\\.'] });
 f('sightings', 'evidence', 'evidence/sightings', 'Sightings and detections', [r('factory/sightings'), gp('factory_sighting'), g('factory_links'), '^model:(FactorySighting|FactoryDetectionRun|FactoryDetectionStep|FactoryTag)$']);
-f('attribution', 'evidence', 'evidence/attribution', 'Bot attribution on GitHub', [g('belai_github_attribution'), pkg('attribution'), doc('belai/bot-attribution\\.md')]);
+f('attribution', 'evidence', 'evidence/attribution', 'Bot attribution', [g('belai_github_attribution'), pkg('attribution'), doc('belai/bot-attribution\\.md')]);
 f('vex', 'evidence', 'evidence/vex-and-tea', 'VEX and TEA publishing', [pkg('vex')]);
 
 // ── Pix calls ──────────────────────────────────────────────────────────────
@@ -208,7 +211,7 @@ const STATUS = {
     'belai-agent-loop', 'belai-resilience', 'belai-repo-memory', 'belai-docs-tooling', 'agents', 'agent-builder',
     'agent-import', 'avatars', 'crews', 'role-manager', 'hosts', 'host-attention', 'sandboxes', 'builtin-models',
     'board', 'ticket-standard', 'assignment', 'github-sync', 'pix-call', 'voice-tools', 'call-history', 'pix-ask',
-    'stops',
+    'stops', 'forges', 'forge-connections', 'forge-capabilities',
   ],
 };
 for (const [status, ids] of Object.entries(STATUS)) {

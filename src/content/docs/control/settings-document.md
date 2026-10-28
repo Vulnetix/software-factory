@@ -4,7 +4,7 @@ nav: Settings document
 description: How factory settings are stored, saved and exported. One revisioned document per tenant, sections on the Settings page, keys that take effect later, locked keys, and per-host project overrides.
 order: 7
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_settings_store.go, website/src/shared/factory-settings.ts]
-checked: [vdb-site@284f1d6, website@a31d470, belai@35506b9]
+checked: [vdb-site@597344c, website@58b9ffa, belai@8aa7760]
 updated: 28 Oct 2026
 ---
 
@@ -46,7 +46,7 @@ The document has a **revision**. A save carries the revision you loaded. If some
 Some values are checked together:
 
 - Changing `systemone.model` needs a new `systemone.min_confidence` in the same save, or the save fails with `threshold_required`. Confidence from one model is not comparable with another's.
-- `github.check_runs` needs the App permission `checks: write` on every managed installation, or the save fails with `permission_missing`.
+- `forge.check_runs` needs the App permission `checks: write` on every managed installation, or the save fails with `permission_missing`.
 - `persistence.postgres` can be switched off only while no workflow is published. Otherwise the save fails with `workflows_published`.
 - Lowering `autonomy.max` lowers every repository's effective autonomy at once. Their stored values are kept.
 
@@ -62,7 +62,7 @@ Two keys cannot be changed:
 
 | Key | Locked to |
 |---|---|
-| `github.polling.forbidden` | `true`. The factory never polls GitHub on a timer; it listens for webhooks and reads stored data. |
+| `forge.polling.forbidden` | `true`. The factory never polls GitHub on a timer; it listens for webhooks and reads stored data. |
 | `firewall_enabled` | `true`. The AI Firewall stays on for factory sessions. |
 
 Trying to save one is refused with `403 locked`. So is the read-only `systemone.min_confidence.adapter`, which the server sets itself.

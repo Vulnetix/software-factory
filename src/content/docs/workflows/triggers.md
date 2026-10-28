@@ -4,7 +4,7 @@ nav: Triggers
 description: Every GitHub event and action a workflow can start on, every condition you can narrow it with, how storms and forks are handled, and why a trigger did not fire.
 order: 20
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_trigger_conditions.go, vdb-site/api/internal/handler/factory_trigger_validate.go, vdb-site/api/internal/handler/factory_engine_events.go]
-checked: [vdb-site@284f1d6, website@a31d470]
+checked: [vdb-site@597344c, website@58b9ffa]
 updated: 28 Oct 2026
 ---
 
@@ -13,6 +13,8 @@ A webhook trigger starts a run when a GitHub delivery matches its event and its 
 Every condition is checked against the delivery as GitHub sent it. No condition calls GitHub or spends quota. A condition the delivery has no value for **fails closed**: the trigger does not fire on a guess.
 
 ## Events and actions
+
+Event names are GitHub's on every forge. A GHES, Gitea, Forgejo or GitLab delivery is translated into the same events first (a Gitea `pull_request_sync` is `pull_request.synchronize`, a GitLab `Merge Request Hook` update that brings new commits is `pull_request.synchronize`, a Gitea commit status is a `check_run`), so one trigger covers every forge in its scope. An event a forge cannot send, such as `dependabot_alert` on Gitea, never starts a run for that forge's repositories; the builder marks it "not on" that forge. [Forge capabilities](/reference/forge-capabilities/#trigger-events) has the table.
 
 `event` is a base event, which matches every action unless `conditions.actions` narrows it, or an exact `event.action` pair such as `pull_request.opened`. Using both an exact pair and `conditions.actions` is refused with `action_conflict`.
 
@@ -86,7 +88,7 @@ A delivery that matches can still be stopped. Each stop is recorded as a `trigge
 
 | Reason | Why |
 |---|---|
-| `own_branch` | The head branch starts with the factory's own branch prefix (`github.branch_prefix`, `belai/K-` by default). |
+| `own_branch` | The head branch starts with the factory's own branch prefix (`forge.branch_prefix`, `belai/K-` by default). |
 | `own_identity` | The author or sender is the Vulnetix App's bot, `pix[bot]` or `pix-bot[bot]`, or the head commit is by `Pix [bot]` or `security@vulnetix.com`. |
 | `coalesced` | Another delivery in the same debounce window already started the run. |
 | `rate_limited` | The trigger hit `maxRunsPerHour`. |
