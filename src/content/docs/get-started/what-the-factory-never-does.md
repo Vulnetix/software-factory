@@ -4,7 +4,7 @@ nav: What it never does
 description: The hard limits. These are built into the code and the GitHub App's permissions, not settings you might change by accident.
 order: 4
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_settings_store.go, website/src/shared/pix-pocket.ts]
-checked: [vdb-site@284f1d6, website@a31d470]
+checked: [vdb-site@597344c, website@58b9ffa]
 updated: 28 Oct 2026
 ---
 
@@ -16,7 +16,7 @@ The GitHub App has `contents: read`, not `contents: write`. Nothing in the facto
 
 ## It never pushes to a protected branch
 
-`github.protected` is on by default and only an owner or admin can switch it off for a repository. Agents push to their own branches, named with `github.branch_prefix` (`belai/K-` by default). The merge conflict fixer is the one exception that pushes to an existing pull request's head branch. It only fast-forwards that branch, and only after its fix passes. A fork's pull request gets a comment instead.
+`forge.protected` is on by default and only an owner or admin can switch it off for a repository. Agents push to their own branches, named with `forge.branch_prefix` (`belai/K-` by default). The merge conflict fixer is the one exception that pushes to an existing pull request's head branch. It only fast-forwards that branch, and only after its fix passes. A fork's pull request gets a comment instead.
 
 ## It never acts outside managed orgs
 
@@ -24,7 +24,7 @@ An installation that is not managed is read-only to the factory. A managed org t
 
 ## It never polls GitHub
 
-`github.polling.forbidden` is locked on. The factory learns about GitHub from webhooks and its mirror tables, and no page load calls GitHub. The one exception is a binding with no webhook, which falls back to a conditional poll every 10 minutes using `If-None-Match`; an unchanged response costs nothing against your rate limit. Every button that calls GitHub shows its price first.
+`forge.polling.forbidden` is locked on, on every forge. The factory learns about GitHub, and about each [forge connection](/control/forge-connections/), from webhooks and its mirror tables, and no page load calls a forge. The one exception is a binding with no webhook, which falls back to a conditional poll every 10 minutes using `If-None-Match`; an unchanged response costs nothing against your rate limit. Every button that calls GitHub shows its price first.
 
 ## It never drops a held run
 

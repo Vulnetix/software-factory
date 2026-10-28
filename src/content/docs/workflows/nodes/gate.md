@@ -3,7 +3,7 @@ title: Gate node
 description: A deterministic check with no model. It reads the crew's check runs and applies the quality gate and release jail, then passes, sends the work back, ends the run or asks a person.
 order: 14
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_engine_node_gate.go]
-checked: [vdb-site@284f1d6]
+checked: [vdb-site@597344c]
 updated: 28 Oct 2026
 ---
 
@@ -25,7 +25,7 @@ Without a scan after the crew, the quality gate and release jail are recorded as
 | `releaseJail` | `enforce`, `warn` | `enforce` |
 | `onFail` | `return_to_crew`, `end_run`, `human_approval` | required on publish; the engine falls back to `return_to_crew` |
 | `checkSource` | `mirror`, `posture`, `live_if_stale` | `mirror` |
-| `liveIfOlderThanMs` | milliseconds, 0 to 86,400,000 | `github.stale.checks` (2 minutes) |
+| `liveIfOlderThanMs` | milliseconds, 0 to 86,400,000 | `forge.stale.checks` (2 minutes) |
 | `maxGithubCalls` | 0 to 100 | |
 | `onQuotaLow` | `use_cached`, `defer`, `escalate` | |
 

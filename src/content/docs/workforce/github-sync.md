@@ -1,10 +1,10 @@
 ---
-title: "GitHub sync: issues, projects and labels"
-nav: GitHub sync
-description: How a board card and a GitHub issue stay one record. Sign-in, how changes arrive, the merge that settles both sides, which cards get an issue, labels, and what happens on failure.
+title: Issue and label sync with your forge
+nav: Issue sync
+description: How a board card and an issue on GitHub, GHES, Gitea, Forgejo or GitLab stay one record. Sign-in, how changes arrive, the merge that settles both sides, which cards get an issue, labels, and what happens on failure.
 order: 11
 sources: [vdb-site/docs/belai-github-sync.md, website/.repo/belai-github-sync.md, vdb-site/api/internal/handler/belai_github.go, vdb-site/api/internal/handler/belai_github_engine.go]
-checked: [vdb-site@284f1d6, website@a31d470]
+checked: [vdb-site@597344c, website@58b9ffa]
 updated: 28 Oct 2026
 ---
 
@@ -18,8 +18,12 @@ A binding signs in one of two ways:
 |---|---|
 | GitHub App | Your installation's token, cached for 40 minutes |
 | A token in the Secrets Vault | The first `GITHUB_TOKEN` entry in your vault that can write issues on the repository. Its entry is remembered on the binding. |
+| A forge connection | For a repository on GHES, Gitea, Forgejo or GitLab: the [connection's](/control/forge-connections/) bot, with `via: "connection"`. Its own webhooks bring the issue events, so the binding makes no hook. |
 
 If no sign-in can write issues, the binding's status is `lost_access`.
+
+> [!CAREFUL] What differs off GitHub
+> Issue deliveries match a binding by host and name, so a Gitea issue never reaches a GitHub binding of the same name. Gitea, Forgejo and GitLab issues have no close reason, so the card keeps "not planned" on the board only. Gitea names labels by id; the factory resolves them, and creates a missing one.
 
 ## How changes arrive
 

@@ -4,7 +4,7 @@ nav: Pull request checks
 description: How the factory knows a pull request's checks and merge state without polling GitHub, where it reads them from, and when it spends a call to read them live.
 order: 7
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_pr_checker.go, vdb-site/api/internal/handler/factory_session_recheck.go]
-checked: [vdb-site@284f1d6, website@a31d470]
+checked: [vdb-site@597344c, website@58b9ffa]
 updated: 28 Oct 2026
 ---
 
@@ -18,7 +18,7 @@ Gate steps choose with `checkSource`:
 |---|---|
 | `mirror` | The webhook-fed mirror. The default. |
 | `posture` | Accepted; a gate reads the mirror as it does for `mirror` |
-| `live_if_stale` | The mirror, unless the newest signal is older than `liveIfOlderThanMs` (default `github.stale.checks`, 2 minutes) and checks are still pending. Then one live read through the quota guard. A tenant whose `github.read.default` is `live_api` reads this way whatever the node says. |
+| `live_if_stale` | The mirror, unless the newest signal is older than `liveIfOlderThanMs` (default `forge.stale.checks`, 2 minutes) and checks are still pending. Then one live read through the quota guard. A tenant whose `forge.read.default` is `live_api` reads this way whatever the node says. |
 
 ## Re-check on GitHub
 

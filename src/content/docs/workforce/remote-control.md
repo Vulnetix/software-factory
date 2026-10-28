@@ -4,7 +4,7 @@ nav: Remote control
 description: Connect your own machine with belai rc so the console and the factory can start sessions and workers on it. What it needs, every flag, cloning for the factory, session controls and slash commands from the web, project settings from the web, and the per-session flags the daemon sets.
 order: 19
 sources: [belai/docs/remote-control.md, belai/docs/session-controls.md, belai/cmd/belai/rccmd.go, vdb-site/api/internal/handler/belai_rc.go, vdb-site/api/internal/handler/belai_commands.go]
-checked: [belai@35506b9, vdb-site@284f1d6, website@a31d470]
+checked: [belai@8aa7760, vdb-site@597344c, website@58b9ffa]
 updated: 28 Oct 2026
 ---
 
@@ -54,7 +54,7 @@ Run it signed in as the member whose workflows should use this machine. The fact
 
 ## Cloning for the factory
 
-With `agents.clone` on (the default), when the factory asks for a GitHub repository this machine does not offer, `belai rc` clones it under its worktrees directory (`repos/<owner>/<name>`) using the GitHub CLI's credential, offers it, and starts the workers there. Workers run in that checkout only when it is clean and on the default branch; otherwise they run in a worktree for the branch. `--no-clone` turns this off for the daemon.
+With `agents.clone` on (the default), when the factory asks for a GitHub repository this machine does not offer, `belai rc` clones it under its worktrees directory (`repos/<owner>/<name>`) using the GitHub CLI's credential, offers it, and starts the workers there. A repository on another forge is named `host/owner/name` and carries its host, kind and exact `https` clone URL, is cloned under `repos/<host>/<owner>/<name>`, and authenticates with the token this machine holds for that host (`BELAI_FORGE_TOKEN_<HOST>`, else `GITEA_TOKEN`, `FORGEJO_TOKEN` or `GITLAB_TOKEN`), read by a git credential helper and never put in a URL. A Gitea or Forgejo host must be named in Belai's `forges` setting; see [Git](/belai/git/#other-forges). Workers run in that checkout only when it is clean and on the default branch; otherwise they run in a worktree for the branch. `--no-clone` turns this off for the daemon.
 
 ## Session controls from the web
 

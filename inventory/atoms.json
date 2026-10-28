@@ -1,28 +1,28 @@
 {
- "generatedAt": "2026-10-28T02:41:03.760Z",
+ "generatedAt": "2026-10-28T05:29:36.653Z",
  "repos": {
-  "vdb-site": "df5eba5957241f301eabbcc0ba41353282e86aa0",
-  "website": "00c3dfa6310ad326974acebb3fd913f678f27997",
-  "belai": "8d0a0ad82d733aa7c0a69d344ccc11b1e48c0eba",
-  "saas": "e91cbeacde81d5bda0dd07ea43ef1cf620dad2c7"
+  "vdb-site": "61e0604b47d27a223f75b572fca51fbf4c0808d4",
+  "website": "bdf934598284313065fa66e6a95892f2012ab6a2",
+  "belai": "0b0d9b8bcc35a7df0d04c8c89662bfd531f908af",
+  "saas": "935e9785237a9c1fbff94c6b872678f51e5a0c0c"
  },
  "counts": {
-  "belai-config": 306,
+  "belai-config": 307,
   "belai-pkg": 146,
   "cli-cmd": 18,
   "cli-flag": 162,
   "cli-sub": 48,
-  "code": 57,
+  "code": 58,
   "console": 25,
   "default": 7,
-  "doc": 115,
-  "enum": 1023,
-  "gofile": 291,
+  "doc": 118,
+  "enum": 1058,
+  "gofile": 313,
   "model": 42,
-  "route": 380,
-  "setting": 168,
+  "route": 394,
+  "setting": 169,
   "sf-label": 21,
-  "template": 38,
+  "template": 39,
   "tsfile": 66,
   "tui-cmd": 49,
   "tui-key": 36,
@@ -1338,6 +1338,14 @@
    "id": "belai-config:settings.firewall_enabled",
    "kind": "belai-config",
    "value": "settings.firewall_enabled",
+   "sources": [
+    "belai/internal/config/settings.go"
+   ]
+  },
+  {
+   "id": "belai-config:settings.forges",
+   "kind": "belai-config",
+   "value": "settings.forges",
    "sources": [
     "belai/internal/config/settings.go"
    ]
@@ -6517,7 +6525,18 @@
     "vdb-site/api/internal/handler/factory_orgs.go"
    ],
    "detail": {
-    "message": "github.check_runs needs the App permission checks: write on every managed installation"
+    "message": "forge.check_runs needs the App permission checks: write on every managed installation"
+   }
+  },
+  {
+   "id": "code:properties_invalid",
+   "kind": "code",
+   "value": "properties_invalid",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_validate.go"
+   ],
+   "detail": {
+    "message": "In {node}, properties must name each custom property with the values it may hold, like {\"team\": [\"payments\"]}."
    }
   },
   {
@@ -7196,6 +7215,14 @@
    ]
   },
   {
+   "id": "doc:belai/forges.md",
+   "kind": "doc",
+   "value": "belai/forges.md",
+   "sources": [
+    "belai/docs/forges.md"
+   ]
+  },
+  {
    "id": "doc:belai/git-directories-analytics.md",
    "kind": "doc",
    "value": "belai/git-directories-analytics.md",
@@ -7716,6 +7743,14 @@
    ]
   },
   {
+   "id": "doc:vdb-site/forge-connections.md",
+   "kind": "doc",
+   "value": "vdb-site/forge-connections.md",
+   "sources": [
+    "vdb-site/docs/forge-connections.md"
+   ]
+  },
+  {
    "id": "doc:vdb-site/pix-builtin-models.md",
    "kind": "doc",
    "value": "vdb-site/pix-builtin-models.md",
@@ -7833,6 +7868,14 @@
    "value": "website/factory-lifecycle.md",
    "sources": [
     "website/.repo/factory-lifecycle.md"
+   ]
+  },
+  {
+   "id": "doc:website/forge-connections.md",
+   "kind": "doc",
+   "value": "website/forge-connections.md",
+   "sources": [
+    "website/.repo/forge-connections.md"
    ]
   },
   {
@@ -12144,6 +12187,15 @@
    "set": "factoryConditionKeys"
   },
   {
+   "id": "enum:factoryConditionKeys=properties",
+   "kind": "enum",
+   "value": "factoryConditionKeys=properties",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ],
+   "set": "factoryConditionKeys"
+  },
+  {
    "id": "enum:factoryConditionKeys=severity",
    "kind": "enum",
    "value": "factoryConditionKeys=severity",
@@ -15609,6 +15661,15 @@
    "set": "fcNeedKinds"
   },
   {
+   "id": "enum:fcNeedKinds=deploy_gate",
+   "kind": "enum",
+   "value": "fcNeedKinds=deploy_gate",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_summary_store.go"
+   ],
+   "set": "fcNeedKinds"
+  },
+  {
    "id": "enum:fcNeedKinds=firewall_review",
    "kind": "enum",
    "value": "fcNeedKinds=firewall_review",
@@ -15702,6 +15763,15 @@
    "id": "enum:fcpKindOrder=claim_lapsed",
    "kind": "enum",
    "value": "fcpKindOrder=claim_lapsed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_checkpoints.go"
+   ],
+   "set": "fcpKindOrder"
+  },
+  {
+   "id": "enum:fcpKindOrder=deploy_gate",
+   "kind": "enum",
+   "value": "fcpKindOrder=deploy_gate",
    "sources": [
     "vdb-site/api/internal/handler/factory_checkpoints.go"
    ],
@@ -16156,6 +16226,294 @@
     "vdb-site/api/internal/handler/factory_workforce.go"
    ],
    "set": "fcSessionSources"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.branch_prefix",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.branch_prefix",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.check_runs",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.check_runs",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.etag",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.etag",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.poll.fallback",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.poll.fallback",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.polling.forbidden",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.polling.forbidden",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.pr_state",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.pr_state",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.protected",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.protected",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.quota.factory_share",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.quota.factory_share",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.quota.on_exhausted",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.quota.on_exhausted",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.quota.proactive_writes_per_hour",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.quota.proactive_writes_per_hour",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.quota.reserve",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.quota.reserve",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.read.default",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.read.default",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.stale.alerts",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.stale.alerts",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.stale.checks",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.stale.checks",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.stale.pulls",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.stale.pulls",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=forge.stale.repo",
+   "kind": "enum",
+   "value": "fcSettingAliases=forge.stale.repo",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.branch_prefix",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.branch_prefix",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.check_runs",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.check_runs",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.etag",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.etag",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.poll.fallback",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.poll.fallback",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.polling.forbidden",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.polling.forbidden",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.pr_state",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.pr_state",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.protected",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.protected",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.quota.factory_share",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.quota.factory_share",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.quota.on_exhausted",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.quota.on_exhausted",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.quota.proactive_writes_per_hour",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.quota.proactive_writes_per_hour",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.quota.reserve",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.quota.reserve",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.read.default",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.read.default",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.stale.alerts",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.stale.alerts",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.stale.checks",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.stale.checks",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.stale.pulls",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.stale.pulls",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
+  },
+  {
+   "id": "enum:fcSettingAliases=github.stale.repo",
+   "kind": "enum",
+   "value": "fcSettingAliases=github.stale.repo",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "set": "fcSettingAliases"
   },
   {
    "id": "enum:fcSignalOrder=app",
@@ -17355,6 +17713,14 @@
    ]
   },
   {
+   "id": "gofile:belai_github_forge",
+   "kind": "gofile",
+   "value": "belai_github_forge",
+   "sources": [
+    "vdb-site/api/internal/handler/belai_github_forge.go"
+   ]
+  },
+  {
    "id": "gofile:belai_github_map",
    "kind": "gofile",
    "value": "belai_github_map",
@@ -18323,6 +18689,14 @@
    ]
   },
   {
+   "id": "gofile:factory_engine_forge",
+   "kind": "gofile",
+   "value": "factory_engine_forge",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_engine_forge.go"
+   ]
+  },
+  {
    "id": "gofile:factory_engine_handoff",
    "kind": "gofile",
    "value": "factory_engine_handoff",
@@ -19091,6 +19465,158 @@
    ]
   },
   {
+   "id": "gofile:forge_connections",
+   "kind": "gofile",
+   "value": "forge_connections",
+   "sources": [
+    "vdb-site/api/internal/handler/forge_connections.go"
+   ]
+  },
+  {
+   "id": "gofile:forge_oauth",
+   "kind": "gofile",
+   "value": "forge_oauth",
+   "sources": [
+    "vdb-site/api/internal/handler/forge_oauth.go"
+   ]
+  },
+  {
+   "id": "gofile:forge_profile",
+   "kind": "gofile",
+   "value": "forge_profile",
+   "sources": [
+    "vdb-site/api/internal/handler/forge_profile.go"
+   ]
+  },
+  {
+   "id": "gofile:forge_schema",
+   "kind": "gofile",
+   "value": "forge_schema",
+   "sources": [
+    "vdb-site/api/internal/handler/forge_schema.go"
+   ]
+  },
+  {
+   "id": "gofile:forge_webhooks",
+   "kind": "gofile",
+   "value": "forge_webhooks",
+   "sources": [
+    "vdb-site/api/internal/handler/forge_webhooks.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/client",
+   "kind": "gofile",
+   "value": "forge/client",
+   "sources": [
+    "vdb-site/api/internal/forge/client.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/git",
+   "kind": "gofile",
+   "value": "forge/git",
+   "sources": [
+    "vdb-site/api/internal/forge/git.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/gitapi",
+   "kind": "gofile",
+   "value": "forge/gitapi",
+   "sources": [
+    "vdb-site/api/internal/forge/gitapi.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/gitea",
+   "kind": "gofile",
+   "value": "forge/gitea",
+   "sources": [
+    "vdb-site/api/internal/forge/gitea.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/github",
+   "kind": "gofile",
+   "value": "forge/github",
+   "sources": [
+    "vdb-site/api/internal/forge/github.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/gitlab",
+   "kind": "gofile",
+   "value": "forge/gitlab",
+   "sources": [
+    "vdb-site/api/internal/forge/gitlab.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/http",
+   "kind": "gofile",
+   "value": "forge/http",
+   "sources": [
+    "vdb-site/api/internal/forge/http.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/kind",
+   "kind": "gofile",
+   "value": "forge/kind",
+   "sources": [
+    "vdb-site/api/internal/forge/kind.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/oauth",
+   "kind": "gofile",
+   "value": "forge/oauth",
+   "sources": [
+    "vdb-site/api/internal/forge/oauth.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/probe",
+   "kind": "gofile",
+   "value": "forge/probe",
+   "sources": [
+    "vdb-site/api/internal/forge/probe.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/webhook",
+   "kind": "gofile",
+   "value": "forge/webhook",
+   "sources": [
+    "vdb-site/api/internal/forge/webhook.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/webhook_gitea",
+   "kind": "gofile",
+   "value": "forge/webhook_gitea",
+   "sources": [
+    "vdb-site/api/internal/forge/webhook_gitea.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/webhook_gitlab",
+   "kind": "gofile",
+   "value": "forge/webhook_gitlab",
+   "sources": [
+    "vdb-site/api/internal/forge/webhook_gitlab.go"
+   ]
+  },
+  {
+   "id": "gofile:forgecap/forgecap",
+   "kind": "gofile",
+   "value": "forgecap/forgecap",
+   "sources": [
+    "vdb-site/api/internal/forgecap/forgecap.go"
+   ]
+  },
+  {
    "id": "gofile:lifecycle/catalogue",
    "kind": "gofile",
    "value": "lifecycle/catalogue",
@@ -19360,6 +19886,14 @@
    "value": "pulls_conflicts",
    "sources": [
     "vdb-site/api/internal/handler/pulls_conflicts.go"
+   ]
+  },
+  {
+   "id": "gofile:pulls_conflicts_forge",
+   "kind": "gofile",
+   "value": "pulls_conflicts_forge",
+   "sources": [
+    "vdb-site/api/internal/handler/pulls_conflicts_forge.go"
    ]
   },
   {
@@ -20017,6 +20551,24 @@
     "vdb-site/api/internal/handler/factory_workflows.go"
    ],
    "handler": "FactoryWorkflowDiscardDraft"
+  },
+  {
+   "id": "route:DELETE /v1/integrations/forges/{uuid}",
+   "kind": "route",
+   "value": "DELETE /v1/integrations/forges/{uuid}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeDelete"
+  },
+  {
+   "id": "route:DELETE /v1/integrations/forges/{uuid}/me",
+   "kind": "route",
+   "value": "DELETE /v1/integrations/forges/{uuid}/me",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeUnlink"
   },
   {
    "id": "route:DELETE /v1/messaging/connections/{id}",
@@ -21522,6 +22074,33 @@
    "handler": "FactoryWorkforceUsage"
   },
   {
+   "id": "route:GET /v1/integrations/forges",
+   "kind": "route",
+   "value": "GET /v1/integrations/forges",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgesList"
+  },
+  {
+   "id": "route:GET /v1/integrations/forges/{uuid}/me",
+   "kind": "route",
+   "value": "GET /v1/integrations/forges/{uuid}/me",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeMe"
+  },
+  {
+   "id": "route:GET /v1/integrations/forges/capabilities",
+   "kind": "route",
+   "value": "GET /v1/integrations/forges/capabilities",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeCapabilities"
+  },
+  {
    "id": "route:GET /v1/internal/pix-commander/models",
    "kind": "route",
    "value": "GET /v1/internal/pix-commander/models",
@@ -22674,6 +23253,69 @@
    "handler": "FactoryTriggerEnable"
   },
   {
+   "id": "route:POST /v1/integrations/forges",
+   "kind": "route",
+   "value": "POST /v1/integrations/forges",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeConnect"
+  },
+  {
+   "id": "route:POST /v1/integrations/forges/{uuid}/hooks",
+   "kind": "route",
+   "value": "POST /v1/integrations/forges/{uuid}/hooks",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeHooks"
+  },
+  {
+   "id": "route:POST /v1/integrations/forges/{uuid}/me/authorize",
+   "kind": "route",
+   "value": "POST /v1/integrations/forges/{uuid}/me/authorize",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeAuthorize"
+  },
+  {
+   "id": "route:POST /v1/integrations/forges/{uuid}/me/signing-key",
+   "kind": "route",
+   "value": "POST /v1/integrations/forges/{uuid}/me/signing-key",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeAddSigningKey"
+  },
+  {
+   "id": "route:POST /v1/integrations/forges/{uuid}/refresh",
+   "kind": "route",
+   "value": "POST /v1/integrations/forges/{uuid}/refresh",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeRefresh"
+  },
+  {
+   "id": "route:POST /v1/integrations/forges/oauth/callback",
+   "kind": "route",
+   "value": "POST /v1/integrations/forges/oauth/callback",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeOAuthCallback"
+  },
+  {
+   "id": "route:POST /v1/integrations/forges/probe",
+   "kind": "route",
+   "value": "POST /v1/integrations/forges/probe",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeProbe"
+  },
+  {
    "id": "route:POST /v1/internal/decisions/answers",
    "kind": "route",
    "value": "POST /v1/internal/decisions/answers",
@@ -22897,6 +23539,15 @@
     "vdb-site/api/internal/handler/signing_handlers.go"
    ],
    "handler": "a"
+  },
+  {
+   "id": "route:POST /v1/webhooks/{kind}/{uuid}",
+   "kind": "route",
+   "value": "POST /v1/webhooks/{kind}/{uuid}",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "ForgeWebhook"
   },
   {
    "id": "route:POST /v1/webhooks/github",
@@ -23194,6 +23845,15 @@
     "vdb-site/api/internal/handler/factory_workflows.go"
    ],
    "handler": "FactoryWorkflowPut"
+  },
+  {
+   "id": "route:PUT /v1/integrations/forges/{uuid}/oauth",
+   "kind": "route",
+   "value": "PUT /v1/integrations/forges/{uuid}/oauth",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeOAuthPut"
   },
   {
    "id": "route:PUT /v1/messaging/identities/{principalUuid}/{provider}",
@@ -24794,9 +25454,9 @@
    }
   },
   {
-   "id": "setting:github.branch_prefix",
+   "id": "setting:forge.branch_prefix",
    "kind": "setting",
-   "value": "github.branch_prefix",
+   "value": "forge.branch_prefix",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24810,9 +25470,24 @@
    }
   },
   {
-   "id": "setting:github.check_runs",
+   "id": "setting:forge.calls_per_hour",
    "kind": "setting",
-   "value": "github.check_runs",
+   "value": "forge.calls_per_hour",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_settings_store.go"
+   ],
+   "detail": {
+    "type": "int",
+    "min": "100",
+    "max": "100_000",
+    "default": "5000",
+    "store": "factory"
+   }
+  },
+  {
+   "id": "setting:forge.check_runs",
+   "kind": "setting",
+   "value": "forge.check_runs",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24826,9 +25501,9 @@
    }
   },
   {
-   "id": "setting:github.etag",
+   "id": "setting:forge.etag",
    "kind": "setting",
-   "value": "github.etag",
+   "value": "forge.etag",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24842,9 +25517,9 @@
    }
   },
   {
-   "id": "setting:github.poll.fallback",
+   "id": "setting:forge.poll.fallback",
    "kind": "setting",
-   "value": "github.poll.fallback",
+   "value": "forge.poll.fallback",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24862,9 +25537,9 @@
    }
   },
   {
-   "id": "setting:github.polling.forbidden",
+   "id": "setting:forge.polling.forbidden",
    "kind": "setting",
-   "value": "github.polling.forbidden",
+   "value": "forge.polling.forbidden",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24879,9 +25554,9 @@
    }
   },
   {
-   "id": "setting:github.pr_state",
+   "id": "setting:forge.pr_state",
    "kind": "setting",
-   "value": "github.pr_state",
+   "value": "forge.pr_state",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24899,9 +25574,9 @@
    }
   },
   {
-   "id": "setting:github.protected",
+   "id": "setting:forge.protected",
    "kind": "setting",
-   "value": "github.protected",
+   "value": "forge.protected",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24915,9 +25590,9 @@
    }
   },
   {
-   "id": "setting:github.quota.factory_share",
+   "id": "setting:forge.quota.factory_share",
    "kind": "setting",
-   "value": "github.quota.factory_share",
+   "value": "forge.quota.factory_share",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24931,9 +25606,9 @@
    }
   },
   {
-   "id": "setting:github.quota.on_exhausted",
+   "id": "setting:forge.quota.on_exhausted",
    "kind": "setting",
-   "value": "github.quota.on_exhausted",
+   "value": "forge.quota.on_exhausted",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24952,9 +25627,9 @@
    }
   },
   {
-   "id": "setting:github.quota.proactive_writes_per_hour",
+   "id": "setting:forge.quota.proactive_writes_per_hour",
    "kind": "setting",
-   "value": "github.quota.proactive_writes_per_hour",
+   "value": "forge.quota.proactive_writes_per_hour",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24970,9 +25645,9 @@
    }
   },
   {
-   "id": "setting:github.quota.reserve",
+   "id": "setting:forge.quota.reserve",
    "kind": "setting",
-   "value": "github.quota.reserve",
+   "value": "forge.quota.reserve",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -24986,9 +25661,9 @@
    }
   },
   {
-   "id": "setting:github.read.default",
+   "id": "setting:forge.read.default",
    "kind": "setting",
-   "value": "github.read.default",
+   "value": "forge.read.default",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -25007,9 +25682,9 @@
    }
   },
   {
-   "id": "setting:github.stale.alerts",
+   "id": "setting:forge.stale.alerts",
    "kind": "setting",
-   "value": "github.stale.alerts",
+   "value": "forge.stale.alerts",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -25023,9 +25698,9 @@
    }
   },
   {
-   "id": "setting:github.stale.checks",
+   "id": "setting:forge.stale.checks",
    "kind": "setting",
-   "value": "github.stale.checks",
+   "value": "forge.stale.checks",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -25039,9 +25714,9 @@
    }
   },
   {
-   "id": "setting:github.stale.pulls",
+   "id": "setting:forge.stale.pulls",
    "kind": "setting",
-   "value": "github.stale.pulls",
+   "value": "forge.stale.pulls",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -25055,9 +25730,9 @@
    }
   },
   {
-   "id": "setting:github.stale.repo",
+   "id": "setting:forge.stale.repo",
    "kind": "setting",
-   "value": "github.stale.repo",
+   "value": "forge.stale.repo",
    "sources": [
     "vdb-site/api/internal/handler/factory_settings_store.go",
     "vdb-site/docs/factory.md"
@@ -26702,6 +27377,18 @@
    "detail": {
     "category": "Security",
     "name": "Security patch train"
+   }
+  },
+  {
+   "id": "template:settings-fix-ticket",
+   "kind": "template",
+   "value": "settings-fix-ticket",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Ticket a GitHub settings fix"
    }
   },
   {

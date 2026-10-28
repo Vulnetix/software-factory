@@ -3,7 +3,7 @@ title: Default workflows
 description: The seven workflows every managed organisation gets. What each starts on and does, the autonomy each needs, how to switch them off for the tenant or one repository, and what happens when you edit one.
 order: 25
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_defaults.go, vdb-site/api/internal/handler/factory_defaults_gate.go, vdb-site/api/internal/handler/factory_defaults_seed.go, website/src/shared/factory-settings.ts]
-checked: [vdb-site@284f1d6, website@a31d470, saas@aa6c2b4]
+checked: [vdb-site@597344c, website@58b9ffa, saas@aa6c2b4]
 updated: 28 Oct 2026
 ---
 
@@ -37,7 +37,7 @@ A repository with no settings of its own runs at `autonomy.default`. Defaults ar
 
 Every default has a debounce window and an hourly run cap on its event trigger, a dedupe key so one commit starts one run, `skip_if_running` on its sweeps, and a token budget per run on the defaults that run an agent (`approve-ready` and `conflict-fix` set none). They name no host, so a step for a repository no machine has is recorded and skipped.
 
-`github.quota.proactive_writes_per_hour` caps the GitHub calls the defaults make on their own, per installation per hour. The default is 60. A call over the cap waits for the next hour. A person's own actions are not counted.
+`forge.quota.proactive_writes_per_hour` caps the GitHub calls the defaults make on their own, per installation per hour. The default is 60. A call over the cap waits for the next hour. A person's own actions are not counted.
 
 ## Switching defaults off
 
@@ -72,7 +72,7 @@ The defaults are created when a person makes an organisation managed, after that
 | `defaults.approve-ready.enabled` | `true` |
 | `defaults.conflict-fix.enabled` | `true` |
 | `autonomy.default` | `draft_pr` |
-| `github.quota.proactive_writes_per_hour` | 60 |
+| `forge.quota.proactive_writes_per_hour` | 60 |
 | `approve.sensitive_paths` | none |
 
 ## API

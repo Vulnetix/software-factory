@@ -17,7 +17,7 @@ const features = (await import(join(root, 'inventory', 'features.mjs'))).default
 for (const ft of features) ft._re = ft.match.map((p) => new RegExp(p));
 
 const docs = join(root, 'src', 'content', 'docs');
-const GENERATED = new Set(['reference/settings', 'reference/validation-codes', 'reference/enums', 'reference/http-api', 'reference/console-routes', 'reference/templates', 'reference/voice-tools', 'belai/cli-reference', 'belai/tui-commands', 'belai/settings-file']);
+const GENERATED = new Set(['reference/forge-capabilities', 'reference/settings', 'reference/validation-codes', 'reference/enums', 'reference/http-api', 'reference/console-routes', 'reference/templates', 'reference/voice-tools', 'belai/cli-reference', 'belai/tui-commands', 'belai/settings-file']);
 const checked = Object.entries(repos).filter(([, s]) => s).map(([r, s]) => `${r}@${s.slice(0, 7)}`);
 const short = (repo) => checked.filter((c) => c.startsWith(`${repo}@`));
 
@@ -169,6 +169,35 @@ function write(page, fm, body) {
     body += `\n### ${f}\n\n${ft ? `Explained in ${link(ft)}.\n\n` : ''}${rows.map((r) => code(r.value.split('.').slice(1).join('.'))).join(', ')}\n`;
   }
   write('belai/settings-file', { title: 'Settings file reference', nav: 'Settings file', description: `The ${by('belai-config').length} keys Belai reads from its settings files, by group.`, order: 92, checked: short('belai') }, body);
+}
+
+// ── Forge capabilities ─────────────────────────────────────────────────────
+// From vdb-site's forgecap table (api/internal/forgecap), the one source the
+// console and the engine's refusals read too.
+{
+  const vdb = process.env.SF_SRC_VDB_SITE ?? join(root, '..', 'vdb-site');
+  const file = join(vdb, 'api', 'internal', 'forgecap', 'testdata', 'forge-capabilities.json');
+  if (existsSync(file)) {
+    const doc = JSON.parse(readFileSync(file, 'utf8'));
+    const kinds = doc.kinds.map((k) => k.id);
+    const label = Object.fromEntries(doc.kinds.map((k) => [k.id, k.label]));
+    const word = { native: 'Yes', emulated: 'Emulated', unavailable: 'Not available' };
+    const at = (s) => (s ? `${word[s.level] ?? s.level}${s.note ? `: ${s.note}` : ''}` : '');
+    let body = 'What each forge supports, emulates or lacks, from the factory\'s capability table. The console, the connect dialog and the engine\'s refusals read the same table: a step that needs something a forge lacks fails with `forge_capability_unavailable` and the reason below. Connecting each forge is in ' + pageLink('control/forge-connections', 'Forge connections') + '.\n\n';
+    body += '| Forge | API dialect | A pull request is called |\n|---|---|---|\n';
+    for (const k of doc.kinds) body += `| ${cell(k.label)} | ${code(k.dialect)} | ${cell(k.prNoun)} |\n`;
+    body += '\n## Capabilities\n';
+    for (const c of doc.capabilities) {
+      body += `\n### ${cell(c.label)}\n\n<span id="${c.id}"></span>${cell(c.summary)} (${code(c.id)})\n\n| Forge | Support |\n|---|---|\n`;
+      for (const k of kinds) body += `| ${cell(label[k])} | ${cell(at(c.support[k]))} |\n`;
+    }
+    body += '\n## Trigger events\n\nThe event names a trigger uses are GitHub\'s. Each forge\'s deliveries are translated into them; an event a forge cannot send never starts a run for its repositories.\n\n';
+    body += `| Event | ${kinds.filter((k) => k !== 'github').map((k) => cell(label[k])).join(' | ')} |\n|---|${kinds.filter((k) => k !== 'github').map(() => '---').join('|')}|\n`;
+    for (const [ev, sup] of Object.entries(doc.events)) {
+      body += `| ${code(ev)} | ${kinds.filter((k) => k !== 'github').map((k) => cell(at(sup[k]))).join(' | ')} |\n`;
+    }
+    write('reference/forge-capabilities', { title: 'Forge capabilities', description: `What GitHub, GitHub Enterprise Server, Gitea, Forgejo and GitLab each support for the factory: ${doc.capabilities.length} capabilities and ${Object.keys(doc.events).length} trigger events.`, order: 8, checked: short('vdb-site') }, body);
+  }
 }
 
 console.log('reference pages written');

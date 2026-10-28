@@ -3,8 +3,8 @@ title: Git sync and repository info
 nav: Git
 description: How Belai keeps a session's branch up to date with the default branch, what it tells the model about the repository, and per-project preferences.
 order: 16
-sources: [belai/docs/git-sync.md, belai/internal/gitinfo, belai/internal/projectregistry, belai/internal/config]
-checked: [belai@35506b9]
+sources: [belai/docs/git-sync.md, belai/docs/forges.md, belai/internal/gitinfo, belai/internal/projectregistry, belai/internal/config, belai/internal/forge]
+checked: [belai@aebead5]
 updated: 28 Oct 2026
 ---
 
@@ -34,3 +34,16 @@ Each directory has its own preferences: mode, guardrails, ask, the display switc
 ## Auto-commit
 
 With `auto_commit_per_task` on, the TUI commits each completed goal's changed files as one conventional commit. It is off by default, works only in the interactive TUI, and can be set only in your global settings or your own per-project preferences: a cloned repository's `.vulnetix/settings.json` can never make Belai commit.
+
+## Other forges
+
+Belai reads pull requests and CI with `gh` on github.com and GHES, `glab` on GitLab, and the REST API on Gitea and Forgejo. A Gitea or Forgejo host is never guessed from its name: name it in your own settings file, never a project's, which cannot add one.
+
+```json
+{ "forges": { "git.example.com": "gitea", "code.example.org": "forgejo", "ghe.example.net": "ghes" } }
+```
+
+The kinds are `github`, `ghes`, `gitea`, `forgejo` and `gitlab`. `codeberg.org` is known as Forgejo without a setting. The token for a Gitea or Forgejo host is read from `BELAI_FORGE_TOKEN_<HOST>` (the host upper-cased, other characters as `_`, so `BELAI_FORGE_TOKEN_CODEBERG_ORG`), then `FORGEJO_TOKEN` or `GITEA_TOKEN`. A token the Secrets Vault granted the machine is read first. git gets it through a credential helper for that one host, never in a URL or on a command line.
+
+On Gitea and Forgejo a draft pull request is the `WIP: ` title prefix, and the CI tab and gates read the head commit's statuses. Fleet workers publish there as on GitHub; the forge coordinator, which takes over a push that failed for the machine's credential, works on GitHub only.
+

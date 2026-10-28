@@ -59,8 +59,8 @@ function headSha(repo) {
 // vdb-site: chi routes. main.go nests r.Route groups and calls Register*
 // functions; handler files declare Register* functions with relative routes.
 // Brace depth tracks which group a route sits in.
-const SF_HANDLER = /^(Factory|Belai|Pix|InternalPixCommander|Call|Sandbox)/;
-const SF_PATH = /^\/v1\/(factory|belai|internal\/(factory|pix-commander|decisions)|admin\/pix-sandboxes|signing|pulls|push|notifications|messaging|pix-call|ai-firewall\/(hold|capabilities\/review))(\/|-|$)/;
+const SF_HANDLER = /^(Factory|Belai|Pix|InternalPixCommander|Call|Sandbox|IntegrationForge|ForgeWebhook)/;
+const SF_PATH = /^\/v1\/(factory|belai|internal\/(factory|pix-commander|decisions)|admin\/pix-sandboxes|signing|pulls|push|notifications|messaging|pix-call|ai-firewall\/(hold|capabilities\/review)|integrations\/forges|webhooks\/\{kind\})(\/|-|$)/;
 
 function scanGoRoutes() {
   const api = join(repoPath('vdb-site'), 'api');
@@ -111,8 +111,8 @@ function scanGoRoutes() {
 // vdb-site: every SF handler file, so a new file is never silently skipped.
 function scanGoFiles() {
   const dir = join(repoPath('vdb-site'), 'api', 'internal', 'handler');
-  for (const f of ls(dir, /^(factory|belai|pix|signing|pulls|notify|push|messaging|ai_firewall_hold)[_.].*\.go$|^notify\.go$/)) atom('gofile', f.replace(/\.go$/, ''), 'vdb-site', `api/internal/handler/${f}`);
-  for (const pkg of ['systemone', 'facts', 'lifecycle', 'tenantmodel']) {
+  for (const f of ls(dir, /^(factory|belai|pix|signing|pulls|notify|push|messaging|ai_firewall_hold|forge)[_.].*\.go$|^notify\.go$/)) atom('gofile', f.replace(/\.go$/, ''), 'vdb-site', `api/internal/handler/${f}`);
+  for (const pkg of ['systemone', 'facts', 'lifecycle', 'tenantmodel', 'forge', 'forgecap']) {
     const d = join(repoPath('vdb-site'), 'api', 'internal', pkg);
     for (const f of ls(d, /\.go$/)) atom('gofile', `${pkg}/${f.replace(/\.go$/, '')}`, 'vdb-site', `api/internal/${pkg}/${f}`);
   }
@@ -216,7 +216,7 @@ function scanContract() {
     const e = src.indexOf('### 2.16');
     if (s > 0 && e > s) for (const m of src.slice(s, e).matchAll(/^\| `([a-zA-Z][\w]*(?:\.[\w-]+)+)` \| (.*?) \| (.*?) \| (\w+) \|$/gm)) atom('setting', m[1], 'vdb-site', 'docs/factory.md', { detail: { doc: m[2], docDefault: m[3], store: m[4] } });
   }
-  for (const f of ls(docs, /^(factory|belai|pix|signing).*\.md$/)) atom('doc', `vdb-site/${f}`, 'vdb-site', `docs/${f}`);
+  for (const f of ls(docs, /^(factory|belai|pix|signing|forge).*\.md$/)) atom('doc', `vdb-site/${f}`, 'vdb-site', `docs/${f}`);
 }
 
 // website: console routes, call worker voice tools, contract notes.
@@ -226,7 +226,7 @@ function scanWebsite() {
   if (existsSync(join(w, 'src', 'pages', 'call.vue'))) atom('console', '/call', 'website', 'src/pages/call.vue');
   const tools = join(w, 'src', 'worker', 'call', 'tools.ts');
   if (existsSync(tools)) for (const m of read(tools).matchAll(/spec:\s*fn\(`([a-z_]+)`(?:,\s*`([^`]*)`)?/g)) atom('voice-tool', m[1], 'website', 'src/worker/call/tools.ts', { detail: m[2] ? { description: m[2] } : undefined });
-  for (const f of ls(join(w, '.repo'), /^(software-factory|factory|pix|a2a|conflict|commit-signing|session-trigger|tenant-model|belai).*\.md$/)) atom('doc', `website/${f}`, 'website', `.repo/${f}`);
+  for (const f of ls(join(w, '.repo'), /^(software-factory|factory|pix|a2a|conflict|commit-signing|session-trigger|tenant-model|belai|forge).*\.md$/)) atom('doc', `website/${f}`, 'website', `.repo/${f}`);
   for (const f of ls(join(w, 'sandbox-worker', 'docs'), /\.md$/)) atom('doc', `website/sandbox-worker/${f}`, 'website', `sandbox-worker/docs/${f}`);
   for (const f of ls(join(w, 'src', 'worker', 'call'), /\.ts$/)) atom('tsfile', `call/${f.replace(/\.ts$/, '')}`, 'website', `src/worker/call/${f}`);
   for (const f of ls(join(w, 'sandbox-worker', 'src'), /\.ts$/)) atom('tsfile', `sandbox/${f.replace(/\.ts$/, '')}`, 'website', `sandbox-worker/src/${f}`);

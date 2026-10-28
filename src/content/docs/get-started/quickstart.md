@@ -4,13 +4,16 @@ nav: Quickstart
 description: From an empty tenant to a first run. Install the GitHub App, make an organisation managed, give the factory a machine to work on, watch a default workflow run, then publish a workflow of your own.
 order: 3
 sources: [vdb-site/docs/factory.md, vdb-site/api/internal/handler/factory_defaults.go, vdb-site/api/internal/handler/factory_orgs.go]
-checked: [vdb-site@284f1d6, website@a31d470, belai@35506b9]
+checked: [vdb-site@597344c, website@58b9ffa, belai@8aa7760]
 updated: 28 Oct 2026
 ---
 
 You need a Vulnetix account with the owner or admin role in its organisation. Members can use the factory once it is set up, but only owners and admins can manage orgs, publish workflows and change settings.
 
 ## 1. Install the GitHub App
+
+> [!CAREFUL] On GHES, Gitea, Forgejo or GitLab
+> Connect the forge instead, from the Integrations page: see [Forge connections](/control/forge-connections/). Its accounts then appear on the Repos page as below, and every later step is the same. [Supported forges](/get-started/forges/) says what differs on each.
 
 Install the Vulnetix GitHub App on the GitHub organisation whose repositories you want the factory to work on: `https://github.com/apps/vulnetix/installations/new`. You can give it all repositories or a selection.
 
