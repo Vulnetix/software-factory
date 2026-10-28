@@ -3,7 +3,7 @@ title: Commit signing
 description: How commits you make from factory pages are signed as you with a key held in AWS KMS, how agent commits are signed, the key lifecycle, and the signing settings.
 order: 6
 sources: [vdb-site/docs/signing.md, website/.repo/commit-signing.md, website/.repo/pix-sandbox-git-signing.md, vdb-site/api/internal/handler/signing_handlers.go, vdb-site/api/internal/handler/factory_signing.go]
-checked: [vdb-site@597344c, website@58b9ffa]
+checked: [vdb-site@72a0135, website@255a6c8]
 updated: 28 Oct 2026
 ---
 
@@ -18,7 +18,7 @@ Three kinds of commit come out of the factory, and each is signed differently:
 Agents never use a person's key.
 
 > [!CAREFUL] On GHES, Gitea, Forgejo and GitLab
-> Commits you make from a factory page on a [forge connection's](/control/forge-connections/) repository are signed with the same KMS key. The factory builds the commit and pushes it over git, because only GitHub's API takes a signature the client made. The forge shows it verified only when your public key is on your account there: add it yourself, since adding it for you is GitHub only. Without a ready key the commit is made by the connection's bot, unsigned.
+> Commits you make from a factory page on a [forge connection's](/control/forge-connections/) repository are signed with the same KMS key. The factory builds the commit and pushes it over git, because only GitHub's API takes a signature the client made. The forge shows it verified only when your public key is on your account there. Link your forge account on the connection and choose **Add my signing key** ([Forge connections](/control/forge-connections/#peoples-own-accounts)), or add it yourself. A linked account's email is the commit's email. Without a ready key the commit is made by the connection's bot, unsigned.
 
 ## Your signing key
 

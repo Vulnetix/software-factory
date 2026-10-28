@@ -4,7 +4,7 @@ nav: Git
 description: How Belai keeps a session's branch up to date with the default branch, what it tells the model about the repository, and per-project preferences.
 order: 16
 sources: [belai/docs/git-sync.md, belai/docs/forges.md, belai/internal/gitinfo, belai/internal/projectregistry, belai/internal/config, belai/internal/forge]
-checked: [belai@8aa7760]
+checked: [belai@aebead5]
 updated: 28 Oct 2026
 ---
 

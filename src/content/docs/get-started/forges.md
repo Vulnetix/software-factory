@@ -4,7 +4,7 @@ nav: Supported forges
 description: The git forges the factory works on, how each one connects, what the factory emulates where a forge lacks something GitHub has, and how to choose.
 order: 2.5
 sources: [vdb-site/docs/forge-connections.md, vdb-site/api/internal/forgecap/forgecap.go, website/.repo/forge-connections.md, belai/docs/forges.md]
-checked: [vdb-site@597344c, website@58b9ffa, belai@8aa7760]
+checked: [vdb-site@72a0135, website@255a6c8, belai@aebead5]
 updated: 28 Oct 2026
 ---
 

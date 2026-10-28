@@ -3,7 +3,7 @@ title: Forge connections
 description: Connect GitHub Enterprise Server, Gitea, Forgejo or GitLab to the factory. The bot account and token each needs, the webhooks, what the connection stores, and how forge repositories are named.
 order: 1.5
 sources: [vdb-site/docs/forge-connections.md, vdb-site/api/internal/handler/forge_connections.go, vdb-site/api/internal/handler/forge_webhooks.go, vdb-site/api/internal/forge/probe.go, website/.repo/forge-connections.md, website/src/components/integrations/console/ForgeConnectDialog.vue]
-checked: [vdb-site@597344c, website@58b9ffa]
+checked: [vdb-site@72a0135, website@255a6c8]
 updated: 28 Oct 2026
 ---
 
@@ -62,6 +62,16 @@ The factory then translates the delivery into GitHub's event names, so a trigger
 - The repositories the bot can reach, listed again when you choose **Check again** on the row.
 
 The status reads **connected**, or **the token was refused** when the forge answers 401 or 403. Paste a new token by connecting the same host again.
+
+## People's own accounts
+
+The bot does the factory's work. Each member can also link their own account on a connection, so a merge they commit from the conflict editor carries an email the forge matches to them, and so their signing key can be added to their account there.
+
+1. An owner or admin chooses **Set up sign-in** on the connection's row. On the forge, create an OAuth application with the redirect URI the row shows (`https://www.vulnetix.com/resolve/integrations`), then paste its client id and secret. On Gitea and Forgejo the application asks for `read:user write:user`; on GitLab, `api`; on GHES, the App you registered is the application.
+2. A member chooses **Link my account**, signs in on the forge and comes back to Integrations. The row then names their login and email.
+3. **Add my signing key** puts their ready [signing key](/decisions/commit-signing/) on their forge account, so the forge can show their signed commits as verified.
+
+The person's token is sealed in the vault, bound to them and the connection. **Unlink** removes it.
 
 ## Repository names
 

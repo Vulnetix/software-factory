@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-28T04:28:47.240Z",
+ "generatedAt": "2026-10-28T04:48:14.298Z",
  "repos": {
-  "vdb-site": "dc1bf561969fffb44ed1d0ce351275c2f98d92f6",
-  "website": "c5ac72025b57b50fc22ad413f4464d247862be45",
-  "belai": "226f6fcec5ea5f793491a46d7cf236499073889f",
+  "vdb-site": "72a01350e9907552c398c3f2805eb8f8c1174694",
+  "website": "255a6c8539d92c470c61aa293b25eb91bd0fe302",
+  "belai": "aebead5e9fc1e01aac7887d369f6d3d885e3f698",
   "saas": "ec155d310bb59e9dd228516f96c414c72724fe6c"
  },
  "counts": {
@@ -17,12 +17,12 @@
   "default": 7,
   "doc": 118,
   "enum": 1055,
-  "gofile": 311,
+  "gofile": 313,
   "model": 42,
-  "route": 388,
+  "route": 394,
   "setting": 169,
   "sf-label": 21,
-  "template": 38,
+  "template": 39,
   "tsfile": 66,
   "tui-cmd": 49,
   "tui-key": 36,
@@ -19435,6 +19435,14 @@
    ]
   },
   {
+   "id": "gofile:forge_oauth",
+   "kind": "gofile",
+   "value": "forge_oauth",
+   "sources": [
+    "vdb-site/api/internal/handler/forge_oauth.go"
+   ]
+  },
+  {
    "id": "gofile:forge_profile",
    "kind": "gofile",
    "value": "forge_profile",
@@ -19520,6 +19528,14 @@
    "value": "forge/kind",
    "sources": [
     "vdb-site/api/internal/forge/kind.go"
+   ]
+  },
+  {
+   "id": "gofile:forge/oauth",
+   "kind": "gofile",
+   "value": "forge/oauth",
+   "sources": [
+    "vdb-site/api/internal/forge/oauth.go"
    ]
   },
   {
@@ -20506,6 +20522,15 @@
     "vdb-site/api/main.go"
    ],
    "handler": "IntegrationForgeDelete"
+  },
+  {
+   "id": "route:DELETE /v1/integrations/forges/{uuid}/me",
+   "kind": "route",
+   "value": "DELETE /v1/integrations/forges/{uuid}/me",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeUnlink"
   },
   {
    "id": "route:DELETE /v1/messaging/connections/{id}",
@@ -22020,6 +22045,15 @@
    "handler": "IntegrationForgesList"
   },
   {
+   "id": "route:GET /v1/integrations/forges/{uuid}/me",
+   "kind": "route",
+   "value": "GET /v1/integrations/forges/{uuid}/me",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeMe"
+  },
+  {
    "id": "route:GET /v1/integrations/forges/capabilities",
    "kind": "route",
    "value": "GET /v1/integrations/forges/capabilities",
@@ -23199,6 +23233,24 @@
    "handler": "IntegrationForgeHooks"
   },
   {
+   "id": "route:POST /v1/integrations/forges/{uuid}/me/authorize",
+   "kind": "route",
+   "value": "POST /v1/integrations/forges/{uuid}/me/authorize",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeAuthorize"
+  },
+  {
+   "id": "route:POST /v1/integrations/forges/{uuid}/me/signing-key",
+   "kind": "route",
+   "value": "POST /v1/integrations/forges/{uuid}/me/signing-key",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeAddSigningKey"
+  },
+  {
    "id": "route:POST /v1/integrations/forges/{uuid}/refresh",
    "kind": "route",
    "value": "POST /v1/integrations/forges/{uuid}/refresh",
@@ -23206,6 +23258,15 @@
     "vdb-site/api/main.go"
    ],
    "handler": "IntegrationForgeRefresh"
+  },
+  {
+   "id": "route:POST /v1/integrations/forges/oauth/callback",
+   "kind": "route",
+   "value": "POST /v1/integrations/forges/oauth/callback",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeOAuthCallback"
   },
   {
    "id": "route:POST /v1/integrations/forges/probe",
@@ -23746,6 +23807,15 @@
     "vdb-site/api/internal/handler/factory_workflows.go"
    ],
    "handler": "FactoryWorkflowPut"
+  },
+  {
+   "id": "route:PUT /v1/integrations/forges/{uuid}/oauth",
+   "kind": "route",
+   "value": "PUT /v1/integrations/forges/{uuid}/oauth",
+   "sources": [
+    "vdb-site/api/main.go"
+   ],
+   "handler": "IntegrationForgeOAuthPut"
   },
   {
    "id": "route:PUT /v1/messaging/identities/{principalUuid}/{provider}",
@@ -27269,6 +27339,18 @@
    "detail": {
     "category": "Security",
     "name": "Security patch train"
+   }
+  },
+  {
+   "id": "template:settings-fix-ticket",
+   "kind": "template",
+   "value": "settings-fix-ticket",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_templates_events.go"
+   ],
+   "detail": {
+    "category": "Security",
+    "name": "Ticket a GitHub settings fix"
    }
   },
   {
