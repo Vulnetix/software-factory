@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-10-28T04:48:14.298Z",
+ "generatedAt": "2026-10-28T05:29:36.653Z",
  "repos": {
-  "vdb-site": "72a01350e9907552c398c3f2805eb8f8c1174694",
-  "website": "255a6c8539d92c470c61aa293b25eb91bd0fe302",
-  "belai": "aebead5e9fc1e01aac7887d369f6d3d885e3f698",
-  "saas": "ec155d310bb59e9dd228516f96c414c72724fe6c"
+  "vdb-site": "61e0604b47d27a223f75b572fca51fbf4c0808d4",
+  "website": "bdf934598284313065fa66e6a95892f2012ab6a2",
+  "belai": "0b0d9b8bcc35a7df0d04c8c89662bfd531f908af",
+  "saas": "935e9785237a9c1fbff94c6b872678f51e5a0c0c"
  },
  "counts": {
   "belai-config": 307,
@@ -12,11 +12,11 @@
   "cli-cmd": 18,
   "cli-flag": 162,
   "cli-sub": 48,
-  "code": 57,
+  "code": 58,
   "console": 25,
   "default": 7,
   "doc": 118,
-  "enum": 1055,
+  "enum": 1058,
   "gofile": 313,
   "model": 42,
   "route": 394,
@@ -6529,6 +6529,17 @@
    }
   },
   {
+   "id": "code:properties_invalid",
+   "kind": "code",
+   "value": "properties_invalid",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_validate.go"
+   ],
+   "detail": {
+    "message": "In {node}, properties must name each custom property with the values it may hold, like {\"team\": [\"payments\"]}."
+   }
+  },
+  {
    "id": "code:provider_not_allowed",
    "kind": "code",
    "value": "provider_not_allowed",
@@ -12176,6 +12187,15 @@
    "set": "factoryConditionKeys"
   },
   {
+   "id": "enum:factoryConditionKeys=properties",
+   "kind": "enum",
+   "value": "factoryConditionKeys=properties",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_trigger_conditions.go"
+   ],
+   "set": "factoryConditionKeys"
+  },
+  {
    "id": "enum:factoryConditionKeys=severity",
    "kind": "enum",
    "value": "factoryConditionKeys=severity",
@@ -15641,6 +15661,15 @@
    "set": "fcNeedKinds"
   },
   {
+   "id": "enum:fcNeedKinds=deploy_gate",
+   "kind": "enum",
+   "value": "fcNeedKinds=deploy_gate",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_summary_store.go"
+   ],
+   "set": "fcNeedKinds"
+  },
+  {
    "id": "enum:fcNeedKinds=firewall_review",
    "kind": "enum",
    "value": "fcNeedKinds=firewall_review",
@@ -15734,6 +15763,15 @@
    "id": "enum:fcpKindOrder=claim_lapsed",
    "kind": "enum",
    "value": "fcpKindOrder=claim_lapsed",
+   "sources": [
+    "vdb-site/api/internal/handler/factory_checkpoints.go"
+   ],
+   "set": "fcpKindOrder"
+  },
+  {
+   "id": "enum:fcpKindOrder=deploy_gate",
+   "kind": "enum",
+   "value": "fcpKindOrder=deploy_gate",
    "sources": [
     "vdb-site/api/internal/handler/factory_checkpoints.go"
    ],

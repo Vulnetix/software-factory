@@ -67,6 +67,7 @@ Every condition you set must match. Names may be written snake_case (`base_branc
 | `severity` | `critical`, `high`, `medium`, `low`, `informational`, `error`, `warning`, `note` | a Dependabot alert's advisory severity, a code scanning rule's security severity, or a posture finding's severity |
 | `environment` | globs, without case | a `deployment_status`'s environment |
 | `packageType` | `container`, `docker`, `npm`, `maven`, `rubygems`, `nuget` | a `registry_package`'s type |
+| `properties` | a map of property name to a list of values, without case | the repository's custom properties: every named property must hold one of its values, and a repository without the property does not match |
 
 A `push` trigger can also set `ref` on the trigger itself: `tags` matches only tag pushes; `default` (or no `ref`) matches branch pushes and never a tag. A push that deletes its ref never matches.
 

@@ -19,7 +19,7 @@ The host must be reachable from the public internet. A host that resolves to a p
 
 ### Gitea and Forgejo
 
-1. Make a bot account, for example `vulnetix-bot`, and add it to the organisation with write access to the repositories.
+1. Make a bot account, for example `vulnetix-bot`, and add it to the organisation with write access to the repositories. To let the factory create its own webhooks, give it admin instead: Gitea and Forgejo let only a repository's admins add a webhook. With write access, add the webhook by hand with the URL and secret the dialog shows.
 2. Signed in as the bot, open **Settings › Applications** (`https://<host>/user/settings/applications`) and create an access token with `read:user`, `write:repository`, `write:issue` and `read:organization`.
 3. Paste the token. Leave **Organisation** empty to use every repository the bot can reach, or name one organisation.
 
@@ -28,7 +28,7 @@ Codeberg is Forgejo: use the Forgejo card with host `codeberg.org`. The factory 
 ### GitLab
 
 1. Make a bot user, or use a group or project access token.
-2. Give it the `api`, `read_repository` and `write_repository` scopes, at the Developer role or above.
+2. Give it the `api`, `read_repository` and `write_repository` scopes, at the Developer role or above. Only a Maintainer may add a project webhook, so give it Maintainer for the factory to create its own, or add the webhook by hand.
 3. Paste the token, and name the group if you want only one. The host is `gitlab.com` or your own.
 
 ### GitHub Enterprise Server
@@ -43,7 +43,7 @@ The factory signs in as the App, exactly as on github.com, so a GHES installatio
 
 After connecting, the dialog shows the connection's webhook URL and its secret, once. The URL is `https://www.vulnetix.com/api/site/v1/webhooks/<kind>/<connection id>`.
 
-Choose the webhook button on the connection's row to have the factory create its webhook on every repository the bot can reach. It subscribes to push, pull requests, reviews, review comments, issues, issue comments, checks (commit statuses on Gitea and Forgejo, jobs on GitLab), workflow runs (GitLab pipelines), releases, repository events and deployment statuses. A webhook that already exists is left as it is. Removing the connection removes the factory's webhooks.
+Choose the webhook button on the connection's row to have the factory create its webhook on every repository the bot can reach. It subscribes to push, pull requests, reviews, review comments, issues, issue comments, checks (commit statuses on Gitea and Forgejo, jobs on GitLab; Gitea 1.22 has no status event, so a check trigger does not fire there, though gates still read the statuses), workflow runs (GitLab pipelines), releases, repository events and deployment statuses. A webhook that already exists is left as it is. Removing the connection removes the factory's webhooks. Where the bot may not add a webhook, the row says so for each repository it could not reach; add the webhook there by hand with the same URL and secret.
 
 Each delivery is checked before anything reads it:
 

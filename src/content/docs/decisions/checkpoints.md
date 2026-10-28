@@ -19,6 +19,7 @@ The Checkpoints page (`/resolve/factory-checkpoints`) is one queue of everything
 | `approval` | Waiting for your decision | An [approval](/decisions/human-approval/) |
 | `question` | Question for you | An agent asked something and is waiting for the answer |
 | `firewall_review` | Capability held for review | An AI capability (an MCP server, tool, skill or client) the AI Firewall holds for review while a caller waits. **Review** opens it on the AI Firewall page. |
+| `deploy_gate` | Deployment waiting on reviewers | A deployment waiting on an environment's required reviewers, from the last 7 days. The review itself happens on GitHub. An owner who turns `factory.deploy_gates` off sees none. |
 | `card_held` | Card held for you | A card with a `checkpoint:<reason>` label that no agent will claim until a person clears it |
 | `card_blocked` | Blocked card | A card in the blocked list |
 | `card_confirm` | Card to confirm | A card an agent filed that a person should confirm |
@@ -30,7 +31,7 @@ The Checkpoints page (`/resolve/factory-checkpoints`) is one queue of everything
 
 ## How rows are merged
 
-A pull request or issue linked to a card is shown as one row for the card, with the pull request or issue folded in. A row that is several kinds at once shows its most urgent kind, in this order: `approval`, `question`, `firewall_review`, `card_held`, `card_blocked`, `card_confirm`, `pr_ready`, `pr_draft`, `issue_external`, `claim_lapsed`, `host_offline`. Within a kind, the newest rows come first.
+A pull request or issue linked to a card is shown as one row for the card, with the pull request or issue folded in. A row that is several kinds at once shows its most urgent kind, in this order: `approval`, `question`, `firewall_review`, `deploy_gate`, `card_held`, `card_blocked`, `card_confirm`, `pr_ready`, `pr_draft`, `issue_external`, `claim_lapsed`, `host_offline`. Within a kind, the newest rows come first.
 
 It covers the repositories your GitHub App installations reach, those attached to your Pix Sandboxes, and those your boards are bound to.
 
